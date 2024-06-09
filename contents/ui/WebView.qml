@@ -51,12 +51,6 @@ Item {
             }
         }
 
-        onLoadingChanged: loadingInfo => {
-            if (loadingInfo.status === WebEngineLoadingInfo.LoadStartedStatus) {
-                infoButton.dismiss();
-            }
-        }
-
         onContextMenuRequested: request => {
             if (request.mediaType === ContextMenuRequest.MediaTypeNone && request.linkUrl.toString() !== "") {
                 linkContextMenu.link = request.linkUrl;
