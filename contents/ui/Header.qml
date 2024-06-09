@@ -9,9 +9,13 @@ RowLayout {
 
     PlasmaComponents3.Button {
         icon.name: "go-home-symbolic"
-        onClicked: webview.url = urlComboBox.currentValue
-        display: PlasmaComponents3.AbstractButton.IconOnly
         text: "Go back to " + urlComboBox.currentText
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        onClicked: webview.url = urlComboBox.currentValue
+
+        PlasmaComponents3.ToolTip.text: text
+        PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+        PlasmaComponents3.ToolTip.visible: hovered
     }
 
     QQC2.ComboBox {
@@ -36,6 +40,26 @@ RowLayout {
             onShowHugginChatChanged: renderChatModel()
             onShowBingCopilotChanged: renderChatModel()
         }
+    }
+
+    PlasmaComponents3.Button {
+        icon.name: "window-pin"
+        text: i18n("Keep Open")
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        checkable: true
+        checked: plasmoid.configuration.pin
+        onToggled: plasmoid.configuration.pin = checked
+
+        PlasmaComponents3.ToolTip.text: text
+        PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+        PlasmaComponents3.ToolTip.visible: hovered
+    }
+
+    Binding {
+        target: root
+        property: "hideOnWindowDeactivate"
+        value: !plasmoid.configuration.pin
+        restoreMode: Binding.RestoreBinding
     }
 
     function renderChatModel() {
