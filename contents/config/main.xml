@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+
+  <group name="General">
+    <entry name="url" type="String">
+        <default>https://duckduckgo.com/chat</default>
+    </entry>
+    <entry name="icon" type="String">
+      <label>The name of the icon used in the compact representation (e.g. on a small panel).</label>
+      <default></default>
+    </entry>
+    <entry name="favIcon" type="String">
+      <label>The url of the website's favicon that is saved in the last session.</label>
+      <default></default>
+    </entry>
+    <entry name="useFavIcon" type="Bool">
+      <label>Use the website's favicon instead of a system icon</label>
+      <default>false</default>
+    </entry>
+    <entry name="useDefaultIcon" type="Bool">
+      <label>Use the widget's default adaptive icon</label>
+      <default>true</default>
+    </entry>
+    <entry name="useDefaultLightIcon" type="Bool">
+      <label>Use the widget's default light icon</label>
+      <default>false</default>
+    </entry>
+    <entry name="useDefaultDarktIcon" type="Bool">
+      <label>Use the widget's default dark icon</label>
+      <default>false</default>
+    </entry>
+    <entry name="showDuckDuckGoChat" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="showChatGPT" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="showHugginChat" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="showBingCopilot" type="Bool">
+      <default>false</default>
+    </entry>
+  </group>
+</kcfg>

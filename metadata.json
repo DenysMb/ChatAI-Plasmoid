@@ -1,0 +1,19 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "denysmb@zoho.com",
+                "Name": "Denys Madureira"
+            }
+        ],
+        "Category": "Online Services",
+        "Description": "A range of chatbots in your desktop",
+        "Icon": "applications-internet",
+        "Id": "ChatAI-Plasmoid",
+        "License": "GPL-2.0+",
+        "Name": "ChatAI",
+        "Website": "https://kde.org/plasma-desktop"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}
