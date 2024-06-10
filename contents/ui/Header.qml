@@ -32,6 +32,7 @@ RowLayout {
         text: "Go back to " + urlComboBox.currentText
         display: PlasmaComponents3.AbstractButton.IconOnly
         onClicked: goBackToHomePage()
+        visible: !plasmoid.configuration.hideGoToButton
 
         PlasmaComponents3.ToolTip.text: text
         PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
@@ -69,6 +70,7 @@ RowLayout {
         checkable: true
         checked: plasmoid.configuration.pin
         onToggled: plasmoid.configuration.pin = checked
+        visible: !plasmoid.configuration.hideKeepOpen
 
         PlasmaComponents3.ToolTip.text: text
         PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay

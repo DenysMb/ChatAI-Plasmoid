@@ -45,7 +45,13 @@
     <entry name="showBingCopilot" type="Bool">
       <default>false</default>
     </entry>
-    <entry name="hideaHeader" type="Bool">
+    <entry name="hideHeader" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="hideGoToButton" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="hideKeepOpen" type="Bool">
       <default>false</default>
     </entry>
   </group>

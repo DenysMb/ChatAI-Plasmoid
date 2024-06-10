@@ -11,6 +11,8 @@ KCM.SimpleKCM {
     property alias cfg_showHugginChat: showHugginChat.checked
     property alias cfg_showBingCopilot: showBingCopilot.checked
     property alias cfg_hideHeader: hideHeader.checked
+    property alias cfg_hideGoToButton: hideGoToButton.checked
+    property alias cfg_hideKeepOpen: hideKeepOpen.checked
 
     Kirigami.FormLayout {
 
@@ -63,10 +65,26 @@ KCM.SimpleKCM {
             }
         }
 
+        RowLayout {
+            QQC2.CheckBox {
+                id: hideGoToButton
+
+                text: qsTr("Hide \"Go to ...\" button")
+            }
+        }
+
+        RowLayout {
+            QQC2.CheckBox {
+                id: hideKeepOpen
+
+                text: qsTr("Hide \"Keep Open\" button")
+            }
+        }
+
         Kirigami.InlineMessage {
             Layout.fillWidth: true
             text: 'You can still use the "Go back to ..." and "Keep open" actions by right-clicking the widget icon.'
-            visible: hideHeader.checked
+            visible: hideHeader.checked || hideGoToButton.checked || hideKeepOpen.checked
         }
 
     }
