@@ -1,4 +1,5 @@
 import QtQuick
+import org.kde.plasma.core as PlasmaCore
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.12 as QQC2
 import org.kde.plasma.components 3.0 as PlasmaComponents3
@@ -7,11 +8,30 @@ import org.kde.plasma.plasmoid 2.0
 RowLayout {
     Layout.fillWidth: true
 
+    signal goBackToHomePage()
+
+    Plasmoid.contextualActions: [
+        PlasmaCore.Action {
+            text: i18n("Keep Open")
+            icon.name: "window-pin"
+            priority: Plasmoid.LowPriorityAction
+            checkable: true
+            checked: plasmoid.configuration.pin
+            onTriggered: plasmoid.configuration.pin = checked
+        },
+        PlasmaCore.Action {
+            text: "Go back to " + urlComboBox.currentText
+            icon.name: "go-home-symbolic"
+            priority: Plasmoid.LowPriorityAction
+            onTriggered: goBackToHomePage()
+        }
+    ]
+
     PlasmaComponents3.Button {
         icon.name: "go-home-symbolic"
         text: "Go back to " + urlComboBox.currentText
         display: PlasmaComponents3.AbstractButton.IconOnly
-        onClicked: webview.url = urlComboBox.currentValue
+        onClicked: goBackToHomePage()
 
         PlasmaComponents3.ToolTip.text: text
         PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay

@@ -11,8 +11,13 @@ PlasmoidItem {
         Layout.minimumWidth: Kirigami.Units.gridUnit * 28
         Layout.minimumHeight: Kirigami.Units.gridUnit * 39
 
-        Header {}
+        Header {
+            id: headerRoot
+            onGoBackToHomePage: webviewRoot.goBackToHomePage()
+        }
 
-        WebView {}
+        WebView {
+            id: webviewRoot
+        }
     }
 }
