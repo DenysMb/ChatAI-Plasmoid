@@ -82,6 +82,10 @@ RowLayout {
         restoreMode: Binding.RestoreBinding
     }
 
+    function getModelsLength() {
+        return urlComboBox.model.length
+    }
+
     function renderChatModel() {
             const chatModel = [];
             

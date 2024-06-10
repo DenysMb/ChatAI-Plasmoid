@@ -14,6 +14,7 @@ PlasmoidItem {
         Header {
             id: headerRoot
             onGoBackToHomePage: webviewRoot.goBackToHomePage()
+            visible: plasmoid.configuration.hideHeader ? headerRoot.getModelsLength() > 1 : true
         }
 
         WebView {
