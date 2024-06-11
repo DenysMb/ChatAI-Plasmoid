@@ -10,6 +10,8 @@ KCM.SimpleKCM {
     property alias cfg_showChatGPT: showChatGPT.checked
     property alias cfg_showHugginChat: showHugginChat.checked
     property alias cfg_showBingCopilot: showBingCopilot.checked
+    property alias cfg_showGoogleGemini: showGoogleGemini.checked
+    property alias cfg_showBlackBox: showBlackBox.checked
     property alias cfg_hideHeader: hideHeader.checked
     property alias cfg_hideGoToButton: hideGoToButton.checked
     property alias cfg_hideKeepOpen: hideKeepOpen.checked
@@ -45,7 +47,7 @@ KCM.SimpleKCM {
 
         RowLayout {
             QQC2.CheckBox {
-                id: showHugginChat
+                id: showGoogleGemini
 
                 text: qsTr("Google Gemini")
             }
@@ -53,7 +55,7 @@ KCM.SimpleKCM {
 
         RowLayout {
             QQC2.CheckBox {
-                id: showHugginChat
+                id: showBlackBox
 
                 text: qsTr("BlackBox AI")
             }
@@ -102,6 +104,5 @@ KCM.SimpleKCM {
             text: 'You can still use the "Go back to ..." and "Keep open" actions by right-clicking the widget icon.'
             visible: hideHeader.checked || hideGoToButton.checked || hideKeepOpen.checked
         }
-
     }
 }
