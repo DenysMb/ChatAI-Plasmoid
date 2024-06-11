@@ -1,64 +1,108 @@
-/*
- *  SPDX-FileCopyrightText: 2023 Fushan Wen <qydwhotmail@gmail.com>
- *
- *  SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 import QtQuick
-import QtQuick.Layouts
-import QtQuick.Controls as QQC2
+import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.12 as QQC2
 
-import org.kde.iconthemes as KIconThemes
 import org.kde.kirigami 2.20 as Kirigami
-import org.kde.ksvg 1.0 as KSvg
 import org.kde.kcmutils as KCM
 
-import org.kde.plasma.core as PlasmaCore
-
 KCM.SimpleKCM {
-    property string cfg_icon: plasmoid.configuration.icon
-    property alias cfg_useFavIcon: useFavIcon.checked
-    property alias cfg_useDefaultIcon: useDefaultIcon.checked
-    property alias cfg_useDefaultLightIcon: useDefaultLightIcon.checked
-    property alias cfg_useDefaultDarkIcon: useDefaultDarkIcon.checked
+    property alias cfg_showDuckDuckGoChat: showDuckDuckGoChat.checked
+    property alias cfg_showChatGPT: showChatGPT.checked
+    property alias cfg_showHugginChat: showHugginChat.checked
+    property alias cfg_showBingCopilot: showBingCopilot.checked
+    property alias cfg_showGoogleGemini: showGoogleGemini.checked
+    property alias cfg_showBlackBox: showBlackBox.checked
+    property alias cfg_hideHeader: hideHeader.checked
+    property alias cfg_hideGoToButton: hideGoToButton.checked
+    property alias cfg_hideKeepOpen: hideKeepOpen.checked
 
     Kirigami.FormLayout {
 
-        QQC2.ButtonGroup {
-            id: iconGroup
+        RowLayout {
+            Kirigami.FormData.label: i18nc("@title:group", "Available chats:")
+
+            QQC2.CheckBox {
+                id: showDuckDuckGoChat
+
+                text: qsTr("DuckDuckGo Chat")
+            }
         }
 
-        QQC2.RadioButton {
-            id: useDefaultIcon
+        RowLayout {
 
-            Kirigami.FormData.label: i18nc("@title:group", "Icon:")
-            text: i18nc("@option:radio", "Default adaptive icon")
+            QQC2.CheckBox {
+                id: showChatGPT
 
-            QQC2.ButtonGroup.group: iconGroup
+                text: qsTr("ChatGPT")
+            }
         }
 
-        QQC2.RadioButton {
-            id: useDefaultDarkIcon
+        RowLayout {
+            QQC2.CheckBox {
+                id: showHugginChat
 
-            text: i18nc("@option:radio", "Default dark icon")
-
-            QQC2.ButtonGroup.group: iconGroup
+                text: qsTr("HugginChat")
+            }
         }
 
-        QQC2.RadioButton {
-            id: useDefaultLightIcon
+        RowLayout {
+            QQC2.CheckBox {
+                id: showGoogleGemini
 
-            text: i18nc("@option:radio", "Default light icon")
-
-            QQC2.ButtonGroup.group: iconGroup
+                text: qsTr("Google Gemini")
+            }
         }
 
-        QQC2.RadioButton {
-            id: useFavIcon
+        RowLayout {
+            QQC2.CheckBox {
+                id: showBlackBox
 
-            text: i18nc("@option:radio", "Website's favicon")
+                text: qsTr("BlackBox AI")
+            }
+        }
 
-            QQC2.ButtonGroup.group: iconGroup
+        RowLayout {
+            QQC2.CheckBox {
+                id: showBingCopilot
+
+                text: qsTr("Bing Copilot")
+            }
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18nc("@title:group", "Header display:")
+
+            QQC2.CheckBox {
+                id: hideHeader
+
+                text: qsTr("Hide header when only one model is selected")
+            }
+        }
+
+        RowLayout {
+            QQC2.CheckBox {
+                id: hideGoToButton
+
+                text: qsTr("Hide \"Go to ...\" button")
+            }
+        }
+
+        RowLayout {
+            QQC2.CheckBox {
+                id: hideKeepOpen
+
+                text: qsTr("Hide \"Keep Open\" button")
+            }
+        }
+
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            text: 'You can still use the "Go back to ..." and "Keep open" actions by right-clicking the widget icon.'
+            visible: hideHeader.checked || hideGoToButton.checked || hideKeepOpen.checked
         }
     }
 }
