@@ -43,6 +43,8 @@ Item {
 
         profile: webProfile
 
+        settings.javascriptCanAccessClipboard: true
+
         onLinkHovered: hoveredUrl => {
             if (hoveredUrl.toString() !== "") {
                 mouseArea.cursorShape = Qt.PointingHandCursor;
