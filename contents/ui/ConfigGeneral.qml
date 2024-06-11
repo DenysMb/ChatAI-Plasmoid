@@ -45,6 +45,22 @@ KCM.SimpleKCM {
 
         RowLayout {
             QQC2.CheckBox {
+                id: showHugginChat
+
+                text: qsTr("Google Gemini")
+            }
+        }
+
+        RowLayout {
+            QQC2.CheckBox {
+                id: showHugginChat
+
+                text: qsTr("BlackBox AI")
+            }
+        }
+
+        RowLayout {
+            QQC2.CheckBox {
                 id: showBingCopilot
 
                 text: qsTr("Bing Copilot")
