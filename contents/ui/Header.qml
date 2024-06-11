@@ -98,6 +98,10 @@ RowLayout {
             plasmoid.configuration.showHugginChat && chatModel.push({ value: "https://huggingface.co/chat", text: "HugginChat" })
 
             plasmoid.configuration.showBingCopilot && chatModel.push({ value: "https://www.bing.com/chat", text: "Bing Copilot" })
+            
+            plasmoid.configuration.showGoogleGemini && chatModel.push({ value: "https://gemini.google.com/app", text: "Google Gemini" })
+
+            plasmoid.configuration.showBlackBox && chatModel.push({ value: "https://www.blackbox.ai", text: "BlackBox AI" })
 
             urlComboBox.model = chatModel
 
