@@ -103,6 +103,10 @@ RowLayout {
 
             plasmoid.configuration.showBlackBox && chatModel.push({ value: "https://www.blackbox.ai", text: "BlackBox AI" })
 
+            plasmoid.configuration.showYou && chatModel.push({ value: "https://you.com/?chatMode=default", text: "You" })
+
+            plasmoid.configuration.showPerplexity && chatModel.push({ value: "https://www.perplexity.ai", text: "Perplexity" })
+
             urlComboBox.model = chatModel
 
             const currentPageIndex = chatModel.findIndex(chat => chat.value === plasmoid.configuration.url)
