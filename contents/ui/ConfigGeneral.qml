@@ -12,7 +12,6 @@ KCM.SimpleKCM {
     property alias cfg_showBingCopilot: showBingCopilot.checked
     property alias cfg_showGoogleGemini: showGoogleGemini.checked
     property alias cfg_showBlackBox: showBlackBox.checked
-    property alias cfg_showDeepAI: showDeepAI.checked
     property alias cfg_showYou: showYou.checked
     property alias cfg_showPerplexity: showPerplexity.checked
     property alias cfg_hideHeader: hideHeader.checked
