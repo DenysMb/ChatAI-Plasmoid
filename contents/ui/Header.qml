@@ -4,11 +4,23 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.12 as QQC2
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.plasmoid 2.0
+import org.kde.kirigami 2.20 as Kirigami
 
 RowLayout {
     Layout.fillWidth: true
 
     signal goBackToHomePage()
+
+    property var models: [
+        { url: "https://duckduckgo.com/chat", text: "DuckDuckGo Chat", prop: "showDuckDuckGoChat" },
+        { url: "https://chat.openai.com/chat", text: "ChatGPT", prop: "showChatGPT" },
+        { url: "https://huggingface.co/chat", text: "HugginChat", prop: "showHugginChat" },
+        { url: "https://www.bing.com/chat", text: "Bing Copilot", prop: "showBingCopilot" },
+        { url: "https://gemini.google.com/app", text: "Google Gemini", prop: "showGoogleGemini" },
+        { url: "https://www.blackbox.ai", text: "BlackBox AI", prop: "showBlackBox" },
+        { url: "https://you.com/?chatMode=default", text: "You", prop: "showYou" },
+        { url: "https://www.perplexity.ai", text: "Perplexity", prop: "showPerplexity" }
+    ]
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
@@ -39,17 +51,14 @@ RowLayout {
         PlasmaComponents3.ToolTip.visible: hovered
     }
 
-    QQC2.ComboBox {
+    PlasmaComponents3.ComboBox {
         id: urlComboBox
 
         Layout.fillWidth: true
 
-        textRole: "text"
-        valueRole: "value"
-        
         model: []
 
-        onActivated: plasmoid.configuration.url = urlComboBox.currentValue
+        onActivated: handleModelSelection()
 
         Component.onCompleted: renderChatModel()
 
@@ -62,6 +71,7 @@ RowLayout {
             onShowBingCopilotChanged: renderChatModel()
         }
     }
+
 
     PlasmaComponents3.Button {
         icon.name: "window-pin"
@@ -90,22 +100,10 @@ RowLayout {
 
     function renderChatModel() {
             const chatModel = [];
-            
-            plasmoid.configuration.showDuckDuckGoChat && chatModel.push({ value: "https://duckduckgo.com/chat", text: "DuckDuckGo Chat" })
 
-            plasmoid.configuration.showChatGPT && chatModel.push({ value: "https://chat.openai.com/chat", text: "ChatGPT" })
-
-            plasmoid.configuration.showHugginChat && chatModel.push({ value: "https://huggingface.co/chat", text: "HugginChat" })
-
-            plasmoid.configuration.showBingCopilot && chatModel.push({ value: "https://www.bing.com/chat", text: "Bing Copilot" })
-            
-            plasmoid.configuration.showGoogleGemini && chatModel.push({ value: "https://gemini.google.com/app", text: "Google Gemini" })
-
-            plasmoid.configuration.showBlackBox && chatModel.push({ value: "https://www.blackbox.ai", text: "BlackBox AI" })
-
-            plasmoid.configuration.showYou && chatModel.push({ value: "https://you.com/?chatMode=default", text: "You" })
-
-            plasmoid.configuration.showPerplexity && chatModel.push({ value: "https://www.perplexity.ai", text: "Perplexity" })
+            models.forEach(model => {
+                plasmoid.configuration[model.prop] && chatModel.push(model.text)
+            });
 
             urlComboBox.model = chatModel
 
@@ -120,4 +118,10 @@ RowLayout {
                 urlComboBox.currentIndex = currentPageIndex
             }
         }
+
+    function handleModelSelection() {
+        const selectedModel = urlComboBox.currentValue
+
+        plasmoid.configuration.url = models.find(model => model.text === selectedModel).url
+    }
 }
