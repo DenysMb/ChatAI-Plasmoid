@@ -21,6 +21,10 @@
       <label>Use the outline chat's icon instead of widget icon</label>
       <default>false</default>
     </entry>
+    <entry name="useColorfulChatIcon" type="Bool">
+      <label>Use the colorful chat's icon instead of widget icon</label>
+      <default>false</default>
+    </entry>
     <entry name="useDefaultIcon" type="Bool">
       <label>Use the widget's default adaptive icon</label>
       <default>true</default>

@@ -13,6 +13,7 @@ KCM.SimpleKCM {
     property string cfg_icon: plasmoid.configuration.icon
     property alias cfg_useFilledChatIcon: useFilledChatIcon.checked
     property alias cfg_useOutlinedChatIcon: useOutlinedChatIcon.checked
+    property alias cfg_useColorfulChatIcon: useColorfulChatIcon.checked
     property alias cfg_useDefaultIcon: useDefaultIcon.checked
     property alias cfg_useDefaultLightIcon: useDefaultLightIcon.checked
     property alias cfg_useDefaultDarkIcon: useDefaultDarkIcon.checked
@@ -49,6 +50,14 @@ KCM.SimpleKCM {
         }
 
         QQC2.RadioButton {
+            id: useOutlinedChatIcon
+
+            text: i18nc("@option:radio", "Outlined chat's icon")
+
+            QQC2.ButtonGroup.group: iconGroup
+        }
+
+        QQC2.RadioButton {
             id: useFilledChatIcon
 
             text: i18nc("@option:radio", "Filled chat's icon")
@@ -57,9 +66,9 @@ KCM.SimpleKCM {
         }
 
         QQC2.RadioButton {
-            id: useOutlinedChatIcon
+            id: useColorfulChatIcon
 
-            text: i18nc("@option:radio", "Outlined chat's icon")
+            text: i18nc("@option:radio", "Colorful chat's icon")
 
             QQC2.ButtonGroup.group: iconGroup
         }

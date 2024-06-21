@@ -21,3 +21,6 @@ A range of chatbots as Plasmoid for your KDE Plasma desktop
 ![Screenshot_20240609_123955](https://github.com/DenysMb/ChatAI-Plasmoid/assets/33737137/8d501fbe-d111-4ba5-a8f8-98e5bc022c30)
 ![Screenshot_20240609_123959](https://github.com/DenysMb/ChatAI-Plasmoid/assets/33737137/e7520a73-57b5-4f62-b3e6-8bd71b5ac752)
 
+Colorful ChatGPT icon by [IconScout](https://iconscout.com/)
+
+All other chat icons by [Icons8](https://icons8.com/)

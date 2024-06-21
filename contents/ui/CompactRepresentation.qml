@@ -24,19 +24,24 @@ Loader {
     }
 
     function getChatModelIcon() {
-        const filledOrOutlined = Plasmoid.configuration.useFilledChatIcon ? "filled" : "outlined";
-        const colorContrast = getBackgroundColorContrast();
         const currentModel = models.find(model => Plasmoid.configuration.url.includes(model.url));
+        const colorContrast = getBackgroundColorContrast();
         
         if (!currentModel || currentModel?.id === "blackbox") {
             return `assets/logo-${colorContrast}.svg`;
         }
 
+        if (Plasmoid.configuration.useColorfulChatIcon) {
+            return `assets/colorful/${currentModel.id}.svg`;
+        }
+
+        const filledOrOutlined = Plasmoid.configuration.useFilledChatIcon ? "filled" : "outlined";
+        
         return `assets/${filledOrOutlined}/${currentModel.id}-${colorContrast}.svg`;
     }
 
     function getIcon() {
-        if (Plasmoid.configuration.useFilledChatIcon || Plasmoid.configuration.useOutlinedChatIcon) {
+        if (Plasmoid.configuration.useFilledChatIcon || Plasmoid.configuration.useOutlinedChatIcon || Plasmoid.configuration.useColorfulChatIcon) {
             return getChatModelIcon();
         } else if (Plasmoid.configuration.useDefaultDarkIcon) {
             return "assets/logo-dark.svg";
