@@ -5,15 +5,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 Loader {
-    id: favIconLoader
-    active: Plasmoid.configuration.useFavIcon
-    asynchronous: true
-    sourceComponent: Image {
-        asynchronous: true
-        cache: false
-        fillMode: Image.PreserveAspectFit
-        source: Plasmoid.configuration.favIcon
-    }
+    property var models;
 
     TapHandler {
         property bool wasExpanded: false
@@ -28,12 +20,25 @@ Loader {
 
     Kirigami.Icon {
         anchors.fill: parent
-        visible: favIconLoader.item?.status !== Image.Ready
         source: Qt.resolvedUrl(getIcon())
     }
 
+    function getChatModelIcon() {
+        const filledOrOutlined = Plasmoid.configuration.useFilledChatIcon ? "filled" : "outlined";
+        const colorContrast = getBackgroundColorContrast();
+        const currentModel = models.find(model => Plasmoid.configuration.url.includes(model.url));
+        
+        if (!currentModel || currentModel?.id === "blackbox") {
+            return `assets/logo-${colorContrast}.svg`;
+        }
+
+        return `assets/${filledOrOutlined}/${currentModel.id}-${colorContrast}.svg`;
+    }
+
     function getIcon() {
-        if (Plasmoid.configuration.useDefaultDarkIcon) {
+        if (Plasmoid.configuration.useFilledChatIcon || Plasmoid.configuration.useOutlinedChatIcon) {
+            return getChatModelIcon();
+        } else if (Plasmoid.configuration.useDefaultDarkIcon) {
             return "assets/logo-dark.svg";
         } else if (Plasmoid.configuration.useDefaultLightIcon) {
             return "assets/logo-light.svg";

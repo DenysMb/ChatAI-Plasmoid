@@ -5,7 +5,20 @@ import org.kde.plasma.plasmoid 2.0
 PlasmoidItem {
     id: root
 
-    compactRepresentation: CompactRepresentation {}
+    property var models: [
+        { id: "duckduckgo", url: "https://duckduckgo.com/chat", text: "DuckDuckGo Chat", prop: "showDuckDuckGoChat" },
+        { id: "chatgpt", url: "https://chat.openai.com/chat", text: "ChatGPT", prop: "showChatGPT" },
+        { id: "huggingface", url: "https://huggingface.co/chat", text: "HugginChat", prop: "showHugginChat" },
+        { id: "copilot", url: "https://www.bing.com/chat", text: "Bing Copilot", prop: "showBingCopilot" },
+        { id: "google", url: "https://gemini.google.com/app", text: "Google Gemini", prop: "showGoogleGemini" },
+        { id: "blackbox", url: "https://www.blackbox.ai", text: "BlackBox AI", prop: "showBlackBox" },
+        { id: "you", url: "https://you.com/?chatMode=default", text: "You", prop: "showYou" },
+        { id: "perplexity", url: "https://www.perplexity.ai", text: "Perplexity", prop: "showPerplexity" }
+    ]
+
+    compactRepresentation: CompactRepresentation {
+            models: root.models
+    }
 
     fullRepresentation: ColumnLayout {
         Layout.minimumWidth: Kirigami.Units.gridUnit * 28
@@ -13,6 +26,7 @@ PlasmoidItem {
 
         Header {
             id: headerRoot
+            models: root.models
             onGoBackToHomePage: webviewRoot.goBackToHomePage()
             visible: plasmoid.configuration.hideHeader ? headerRoot.getModelsLength() > 1 : true
         }

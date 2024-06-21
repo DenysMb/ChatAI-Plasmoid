@@ -13,12 +13,12 @@
       <label>The name of the icon used in the compact representation (e.g. on a small panel).</label>
       <default></default>
     </entry>
-    <entry name="favIcon" type="String">
-      <label>The url of the website's favicon that is saved in the last session.</label>
-      <default></default>
+    <entry name="useFilledChatIcon" type="Bool">
+      <label>Use the filled chat's icon instead of widget icon</label>
+      <default>false</default>
     </entry>
-    <entry name="useFavIcon" type="Bool">
-      <label>Use the website's favicon instead of a system icon</label>
+    <entry name="useOutlinedChatIcon" type="Bool">
+      <label>Use the outline chat's icon instead of widget icon</label>
       <default>false</default>
     </entry>
     <entry name="useDefaultIcon" type="Bool">

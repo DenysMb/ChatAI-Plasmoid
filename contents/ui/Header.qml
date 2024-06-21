@@ -11,16 +11,7 @@ RowLayout {
 
     signal goBackToHomePage()
 
-    property var models: [
-        { url: "https://duckduckgo.com/chat", text: "DuckDuckGo Chat", prop: "showDuckDuckGoChat" },
-        { url: "https://chat.openai.com/chat", text: "ChatGPT", prop: "showChatGPT" },
-        { url: "https://huggingface.co/chat", text: "HugginChat", prop: "showHugginChat" },
-        { url: "https://www.bing.com/chat", text: "Bing Copilot", prop: "showBingCopilot" },
-        { url: "https://gemini.google.com/app", text: "Google Gemini", prop: "showGoogleGemini" },
-        { url: "https://www.blackbox.ai", text: "BlackBox AI", prop: "showBlackBox" },
-        { url: "https://you.com/?chatMode=default", text: "You", prop: "showYou" },
-        { url: "https://www.perplexity.ai", text: "Perplexity", prop: "showPerplexity" }
-    ]
+    property var models;
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
@@ -68,6 +59,10 @@ RowLayout {
             onShowDuckDuckGoChatChanged: renderChatModel()
             onShowChatGPTChanged: renderChatModel()
             onShowHugginChatChanged: renderChatModel()
+            onShowGoogleGeminiChanged: renderChatModel()
+            onShowYouChanged: renderChatModel()
+            onShowPerplexityChanged: renderChatModel()
+            onShowBlackBoxChanged: renderChatModel()
             onShowBingCopilotChanged: renderChatModel()
         }
     }

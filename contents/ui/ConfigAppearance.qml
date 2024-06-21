@@ -11,7 +11,8 @@ import org.kde.plasma.core as PlasmaCore
 
 KCM.SimpleKCM {
     property string cfg_icon: plasmoid.configuration.icon
-    property alias cfg_useFavIcon: useFavIcon.checked
+    property alias cfg_useFilledChatIcon: useFilledChatIcon.checked
+    property alias cfg_useOutlinedChatIcon: useOutlinedChatIcon.checked
     property alias cfg_useDefaultIcon: useDefaultIcon.checked
     property alias cfg_useDefaultLightIcon: useDefaultLightIcon.checked
     property alias cfg_useDefaultDarkIcon: useDefaultDarkIcon.checked
@@ -48,9 +49,17 @@ KCM.SimpleKCM {
         }
 
         QQC2.RadioButton {
-            id: useFavIcon
+            id: useFilledChatIcon
 
-            text: i18nc("@option:radio", "Website's favicon")
+            text: i18nc("@option:radio", "Filled chat's icon")
+
+            QQC2.ButtonGroup.group: iconGroup
+        }
+
+        QQC2.RadioButton {
+            id: useOutlinedChatIcon
+
+            text: i18nc("@option:radio", "Outlined chat's icon")
 
             QQC2.ButtonGroup.group: iconGroup
         }
