@@ -7,7 +7,7 @@ PlasmoidItem {
 
     property var models: [
         { id: "duckduckgo", url: "https://duckduckgo.com/chat", text: "DuckDuckGo Chat", prop: "showDuckDuckGoChat" },
-        { id: "chatgpt", url: "https://chat.openai.com/chat", text: "ChatGPT", prop: "showChatGPT" },
+        { id: "chatgpt", url: "https://chatgpt.com", text: "ChatGPT", prop: "showChatGPT" },
         { id: "huggingface", url: "https://huggingface.co/chat", text: "HugginChat", prop: "showHugginChat" },
         { id: "copilot", url: "https://www.bing.com/chat", text: "Bing Copilot", prop: "showBingCopilot" },
         { id: "google", url: "https://gemini.google.com/app", text: "Google Gemini", prop: "showGoogleGemini" },

@@ -1,5 +1,5 @@
-import QtQuick
-import QtWebEngine
+import QtQuick 2.15
+import QtWebEngine 1.15
 import QtQuick.Layouts 1.1
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.plasmoid 2.0
@@ -78,6 +78,57 @@ Item {
             }
 
             Plasmoid.configuration.favIcon = icon.toString().slice(16);
+        }
+
+        onLoadingChanged: {
+            var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google'].some(site => plasmoid.configuration.url.includes(site));
+
+            if (!webview.loading && isCompatibleModel) {
+                webview.runJavaScript("
+                    document.addEventListener('keydown', function(event) {
+                        if (event.key === 'Enter') {
+                            var duckDuckGoButton = document.querySelector('button[type=submit]');
+                            var chatGPTButton = document.querySelector('button.mb-1');
+                            var googleGeminiButton = document.querySelector('button.send-button');
+                            
+                            if (duckDuckGoButton) {
+                                event.preventDefault();
+                                duckDuckGoButton.click();
+                                waitForTextareaEnabledAndFocus();
+                            }
+
+                            if (chatGPTButton) {
+                                event.preventDefault();
+                                chatGPTButton.click();
+                                waitForTextareaEnabledAndFocus();
+                            }
+
+                            if (googleGeminiButton) {
+                                event.preventDefault();
+                                googleGeminiButton.click();
+                                waitForTextareaEnabledAndFocus();
+                            }
+                        }
+                    });
+
+                    function waitForTextareaEnabledAndFocus() {
+                        var attempts = 0;
+                        var interval = 100;
+
+                        var textareaFocusInterval = setInterval(function() {
+                            var textarea = document.querySelector('textarea');
+                            if (textarea && !textarea.disabled) {
+                                clearInterval(textareaFocusInterval);
+                                setTimeout(function() {
+                                    textarea.focus();
+                                }, 100);
+                            }
+                        }, interval);
+                    }
+
+                    // waitForTextareaEnabledAndFocus();
+                ");
+            }
         }
     }
 
