@@ -126,7 +126,7 @@ Item {
                         }, interval);
                     }
 
-                    // waitForTextareaEnabledAndFocus();
+                    waitForTextareaEnabledAndFocus();
                 ");
             }
         }
