@@ -100,22 +100,15 @@ RowLayout {
                 plasmoid.configuration[model.prop] && chatModel.push(model.text)
             });
 
-            urlComboBox.model = chatModel
+            urlComboBox.model = chatModel;
 
-            const currentPageIndex = chatModel.findIndex(chat => chat.value === plasmoid.configuration.url)
-
-            if (currentPageIndex === -1) {
-                urlComboBox.currentIndex = 0
-                urlComboBox.currentValue = chatModel[0].value
-                urlComboBox.currentText = chatModel[0].text
-                plasmoid.configuration.url = chatModel[0].value
-            } else {
-                urlComboBox.currentIndex = currentPageIndex
-            }
+            urlComboBox.displayText = models.find(model => model.url === plasmoid.configuration.url)?.text || undefined;
         }
 
     function handleModelSelection() {
         const selectedModel = urlComboBox.currentValue
+
+        urlComboBox.displayText = urlComboBox.currentValue;
 
         plasmoid.configuration.url = models.find(model => model.text === selectedModel).url
     }
