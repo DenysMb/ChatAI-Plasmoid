@@ -86,7 +86,7 @@ Item {
             if (!webview.loading && isCompatibleModel) {
                 webview.runJavaScript("
                     document.addEventListener('keydown', function(event) {
-                        if (event.key === 'Enter') {
+                        if (event.key === 'Enter' && !event.shiftKey) {
                             var duckDuckGoButton = document.querySelector('button[type=submit]');
                             var chatGPTButton = document.querySelector('button.mb-1');
                             var googleGeminiButton = document.querySelector('button.send-button');
