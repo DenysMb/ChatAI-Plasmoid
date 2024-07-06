@@ -81,7 +81,7 @@ Item {
         }
 
         onLoadingChanged: {
-            var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google'].some(site => plasmoid.configuration.url.includes(site));
+            var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'you'].some(site => plasmoid.configuration.url.includes(site));
 
             if (!webview.loading && isCompatibleModel) {
                 webview.runJavaScript("
