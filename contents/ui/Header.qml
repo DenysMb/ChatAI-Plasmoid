@@ -62,6 +62,8 @@ RowLayout {
             onShowGoogleGeminiChanged: renderChatModel()
             onShowYouChanged: renderChatModel()
             onShowPerplexityChanged: renderChatModel()
+            onShowLobeChatChanged: renderChatModel()
+            onShowBigAGIChanged: renderChatModel()
             onShowBlackBoxChanged: renderChatModel()
             onShowBingCopilotChanged: renderChatModel()
         }

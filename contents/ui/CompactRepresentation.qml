@@ -26,8 +26,9 @@ Loader {
     function getChatModelIcon() {
         const currentModel = models.find(model => Plasmoid.configuration.url.includes(model.url));
         const colorContrast = getBackgroundColorContrast();
-        
-        if (!currentModel || currentModel?.id === "blackbox") {
+        const isNotColorfulAndIsOneOfChatModelsThatHaveOnlyColorfulIcons = !Plasmoid.configuration.useColorfulChatIcon && ["lobechat", "bigagi"].includes(currentModel?.id);
+
+        if (!currentModel || currentModel?.id === "blackbox" || isNotColorfulAndIsOneOfChatModelsThatHaveOnlyColorfulIcons) {
             return `assets/logo-${colorContrast}.svg`;
         }
 

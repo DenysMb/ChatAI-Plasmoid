@@ -13,7 +13,9 @@ PlasmoidItem {
         { id: "google", url: "https://gemini.google.com/app", text: "Google Gemini", prop: "showGoogleGemini" },
         { id: "blackbox", url: "https://www.blackbox.ai", text: "BlackBox AI", prop: "showBlackBox" },
         { id: "you", url: "https://you.com/?chatMode=default", text: "You", prop: "showYou" },
-        { id: "perplexity", url: "https://www.perplexity.ai", text: "Perplexity", prop: "showPerplexity" }
+        { id: "perplexity", url: "https://www.perplexity.ai", text: "Perplexity", prop: "showPerplexity" },
+        { id: "lobechat", url: "https://lobechat.com/chat", text: "LobeChat", prop: "showLobeChat" },
+        { id: "bigagi", url: "https://get.big-agi.com", text: "Big-AGI", prop: "showBigAGI" }
     ]
 
     compactRepresentation: CompactRepresentation {

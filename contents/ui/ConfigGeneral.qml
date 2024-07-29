@@ -14,6 +14,8 @@ KCM.SimpleKCM {
     property alias cfg_showBlackBox: showBlackBox.checked
     property alias cfg_showYou: showYou.checked
     property alias cfg_showPerplexity: showPerplexity.checked
+    property alias cfg_showLobeChat: showLobeChat.checked
+    property alias cfg_showBigAGI: showBigAGI.checked
     property alias cfg_hideHeader: hideHeader.checked
     property alias cfg_hideGoToButton: hideGoToButton.checked
     property alias cfg_hideKeepOpen: hideKeepOpen.checked
@@ -84,6 +86,22 @@ KCM.SimpleKCM {
                 id: showBingCopilot
 
                 text: qsTr("Bing Copilot")
+            }
+        }
+
+        RowLayout {
+            QQC2.CheckBox {
+                id: showBigAGI
+
+                text: qsTr("Big AGI")
+            }
+        }
+
+        RowLayout {
+            QQC2.CheckBox {
+                id: showLobeChat
+
+                text: qsTr("LobeChat")
             }
         }
 
