@@ -12,6 +12,7 @@ RowLayout {
     signal goBackToHomePage()
 
     property var models;
+    property bool showCustomURLInput: false;
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
@@ -23,7 +24,7 @@ RowLayout {
             onTriggered: plasmoid.configuration.pin = checked
         },
         PlasmaCore.Action {
-            text: "Go back to " + urlComboBox.currentText
+            text: "Go back to " + (showCustomURLInput ? "home" : urlComboBox.currentText)
             icon.name: "go-home-symbolic"
             priority: Plasmoid.LowPriorityAction
             onTriggered: goBackToHomePage()
@@ -32,7 +33,7 @@ RowLayout {
 
     PlasmaComponents3.Button {
         icon.name: "go-home-symbolic"
-        text: "Go back to " + urlComboBox.currentText
+        text: "Go back to " + (showCustomURLInput ? "home" : urlComboBox.currentText)
         display: PlasmaComponents3.AbstractButton.IconOnly
         onClicked: goBackToHomePage()
         visible: !plasmoid.configuration.hideGoToButton
@@ -44,6 +45,7 @@ RowLayout {
 
     PlasmaComponents3.ComboBox {
         id: urlComboBox
+        visible: !showCustomURLInput
 
         Layout.fillWidth: true
 
@@ -70,6 +72,36 @@ RowLayout {
         }
     }
 
+    PlasmaComponents3.TextField {
+        id: customURLInput
+        visible: showCustomURLInput
+        Layout.fillWidth: true
+        text: plasmoid.configuration.url
+        onEditingFinished: {
+            plasmoid.configuration.url = text
+
+            goBackToHomePage()
+        }
+        placeholderText: i18n("Custom chat URL")
+    }
+
+    PlasmaComponents3.Button {
+        icon.name: "kdenlive-custom-effect-symbolic"
+        text: "Use custom URL"
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        onClicked: {
+            showCustomURLInput = !showCustomURLInput
+
+            if (!showCustomURLInput) {
+                handleModelSelection()
+            }
+        }
+        visible: !plasmoid.configuration.hideCustomURL
+
+        PlasmaComponents3.ToolTip.text: text
+        PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+        PlasmaComponents3.ToolTip.visible: hovered
+    }
 
     PlasmaComponents3.Button {
         icon.name: "window-pin"
@@ -83,6 +115,10 @@ RowLayout {
         PlasmaComponents3.ToolTip.text: text
         PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
         PlasmaComponents3.ToolTip.visible: hovered
+    }
+
+    Component.onCompleted: {
+        showCustomURLInput = !Boolean(models.find(model => model.url === plasmoid.configuration.url))
     }
 
     Binding {
@@ -114,5 +150,7 @@ RowLayout {
         urlComboBox.displayText = urlComboBox.currentValue;
 
         plasmoid.configuration.url = models.find(model => model.text === selectedModel).url
+
+        goBackToHomePage()
     }
 }

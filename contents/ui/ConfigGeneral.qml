@@ -20,6 +20,7 @@ KCM.SimpleKCM {
     property alias cfg_hideHeader: hideHeader.checked
     property alias cfg_hideGoToButton: hideGoToButton.checked
     property alias cfg_hideKeepOpen: hideKeepOpen.checked
+    property alias cfg_hideCustomURL: hideCustomURL.checked
 
     Kirigami.FormLayout {
 
@@ -141,6 +142,14 @@ KCM.SimpleKCM {
                 id: hideKeepOpen
 
                 text: qsTr("Hide \"Keep Open\" button")
+            }
+        }
+
+        RowLayout {
+            QQC2.CheckBox {
+                id: hideCustomURL
+
+                text: qsTr("Hide \"Custom URL\" button")
             }
         }
 
