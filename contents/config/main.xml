@@ -67,6 +67,9 @@
     <entry name="showBigAGI" type="Bool">
       <default>false</default>
     </entry>
+    <entry name="showClaude" type="Bool">
+      <default>false</default>
+    </entry>
     <entry name="hideHeader" type="Bool">
       <default>false</default>
     </entry>

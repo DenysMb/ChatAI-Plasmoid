@@ -81,7 +81,7 @@ Item {
         }
 
         onLoadingChanged: {
-            var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'you'].some(site => plasmoid.configuration.url.includes(site));
+            var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'claude', 'you'].some(site => plasmoid.configuration.url.includes(site));
 
             if (!webview.loading && isCompatibleModel) {
                 webview.runJavaScript("
@@ -90,6 +90,7 @@ Item {
                             var duckDuckGoButton = document.querySelector('button[type=submit]');
                             var chatGPTButton = document.querySelector('button.mb-1');
                             var googleGeminiButton = document.querySelector('button.send-button');
+                            var claudeButton = document.querySelector('button[aria-label=\'Send Message\']');
                             
                             if (duckDuckGoButton) {
                                 event.preventDefault();
@@ -106,6 +107,12 @@ Item {
                             if (googleGeminiButton) {
                                 event.preventDefault();
                                 googleGeminiButton.click();
+                                waitForTextareaEnabledAndFocus();
+                            }
+
+                            if (claudeButton) {
+                                event.preventDefault();
+                                claudeButton.click();
                                 waitForTextareaEnabledAndFocus();
                             }
                         }
