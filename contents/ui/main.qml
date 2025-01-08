@@ -1,3 +1,4 @@
+import QtQuick 2.15
 import QtQuick.Layouts 1.1
 import org.kde.kirigami 2.20 as Kirigami
 import org.kde.plasma.plasmoid 2.0
@@ -30,12 +31,31 @@ PlasmoidItem {
         Header {
             id: headerRoot
             models: root.models
-            onGoBackToHomePage: webviewRoot.goBackToHomePage()
+            onGoBackToHomePage: {
+                if (webviewRoot) {
+                    webviewRoot.goBackToHomePage()
+                }
+            }
             visible: plasmoid.configuration.hideHeader ? headerRoot.getModelsLength() > 1 : true
         }
 
-        WebView {
-            id: webviewRoot
+        Loader {
+            id: webviewLoader
+            active: root.expanded || webviewLoader.item !== null
+            source: Qt.resolvedUrl("WebView.qml")
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
+
+        property alias webviewRoot: webviewLoader.item
+    }
+
+    onExpandedChanged: {
+        if (root.expanded) {
+            webviewLoader.visible = true;
+        } else {
+            webviewLoader.visible = false;
+        }
+
     }
 }
