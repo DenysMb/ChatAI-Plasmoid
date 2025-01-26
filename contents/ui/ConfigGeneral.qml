@@ -119,46 +119,46 @@ KCM.SimpleKCM {
 
                     model: [{
                         "id": "showDuckDuckGoChat",
-                        "text": i18nc("@option:check", "DuckDuckGo Chat")
+                        "text": "DuckDuckGo Chat"
                     }, {
                         "id": "showChatGPT",
-                        "text": i18nc("@option:check", "ChatGPT")
+                        "text": "ChatGPT"
                     }, {
                         "id": "showHugginChat",
-                        "text": i18nc("@option:check", "HugginChat")
+                        "text": "HugginChat"
                     }, {
                         "id": "showGoogleGemini",
-                        "text": i18nc("@option:check", "Google Gemini")
+                        "text": "Google Gemini"
                     }, {
                         "id": "showYou",
-                        "text": i18nc("@option:check", "You")
+                        "text": "You"
                     }, {
                         "id": "showPerplexity",
-                        "text": i18nc("@option:check", "Perplexity")
+                        "text": "Perplexity"
                     }, {
                         "id": "showBlackBox",
-                        "text": i18nc("@option:check", "BlackBox AI")
+                        "text": "BlackBox AI"
                     }, {
                         "id": "showBingCopilot",
-                        "text": i18nc("@option:check", "Bing Copilot")
+                        "text": "Bing Copilot"
                     }, {
                         "id": "showBigAGI",
-                        "text": i18nc("@option:check", "Big AGI")
+                        "text": "Big AGI"
                     }, {
                         "id": "showLobeChat",
-                        "text": i18nc("@option:check", "LobeChat")
+                        "text": "LobeChat"
                     }, {
                         "id": "showClaude",
-                        "text": i18nc("@option:check", "Claude")
+                        "text": "Claude"
                     }, {
                         "id": "showDeepSeek",
-                        "text": i18nc("@option:check", "DeepSeek")
+                        "text": "DeepSeek"
                     }, {
                         "id": "showMetaAI",
-                        "text": i18nc("@option:check", "Meta AI")
+                        "text": "Meta AI"
                     }, {
                         "id": "showGrok",
-                        "text": i18nc("@option:check", "Grok")
+                        "text": "Grok"
                     }]
 
                     delegate: ColumnLayout {
@@ -322,15 +322,16 @@ KCM.SimpleKCM {
                 Kirigami.InlineMessage {
                     Layout.fillWidth: true
                     type: Kirigami.MessageType.Information
-                    text: i18nc("@info:tooltip", "If notifications are not working create the file:
-.local/share/knotifications6/chatai_plasmoid.notifyrc with the following content:
+                    text: i18nc("@info:tooltip", "If notifications are not working create the file:") + `
+.local/share/knotifications6/chatai_plasmoid.notifyrc ` + i18nc("@info:tooltip", "with the following content:") + `
 
 [Global]
 IconName=applications-internet
 DesktopEntry=ChatAI
 Comment=ChatAI
 [Event/notification]
-Name=ChatAIAction=Popup")
+Name=ChatAI
+Action=Popup`
                     visible: notificationsEnabled.checked
                 }
 
