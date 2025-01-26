@@ -1,0 +1,325 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "פתח"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "צ'אטאיי"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "חזור"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "קדימה"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "טען מחדש"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "שמור כ-PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "שמור כ-MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "פתח קישור בדפדפן"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "העתק כתובת קישור"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "ההורדה בתהליך"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "הקובץ"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "פתח קובץ"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "פתח תיקייה"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "סגור"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "ביטול"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "חזור לדף הקודם"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "עבור לדף הבא"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "חזור לדף הבית/צ'אט ברירת מחדל"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "טען מחדש את הדף הנוכחי"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "בחר או הזן את כתובת האתר של הצ'אט"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "הכותרת תסתיר את עצמה אוטומטית כאשר אינה בשימוש"
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "הכותרת תישאר גלויה"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "נהל הורדות ותיקיית הורדות"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "פתח את תיקיית ההורדות"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "בחר תיקיית הורדות"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "הווידג'ט יישאר פתוח כאשר לוחצים מחוץ לו."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "הווידג'ט ייסגר כאשר תלחץ מחוץ לו."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "סגור את תצוגת האינטרנט ושחרר זיכרון"
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "אייקון:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "השתמש באייקון האתר"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "אייקון אדפטיבי ברירת מחדל"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "אייקון כהה ברירת מחדל"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "אייקון אור ברירת מחדל"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "שיחה עם קווים מתארים"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "צ'אט מלא"
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "שיחה צבעונית"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "אפשרויות כותרת"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "הסתר כותרת"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "הסתרת כותרת אוטומטית (הצג בעת ריחוף עם העכבר)"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "הסתר"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "הסתר כפתורי ניווט"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "הסתר כפתור רענון"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "אתה עדיין יכול להשתמש ב"
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "אתרים מוגדרים מראש"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai מאפשרת יצירת חשבון או כניסה באמצעות Google רק בדפדפנים מוכרים. כדי להשתמש בזה ב-Plasmoid "
+"הזה, עליך להשתמש בפרטי הכניסה שנוצרו קודם לכן בדפדפן מסורתי."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "אתרים מותאמים אישית"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "שם האתר"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "כתובת אתר"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "עדיין לא נוספו אתרים מותאמים אישית"
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "הרשאות"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "טען אתר בעת הפעלת פלאזמה"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "אפשר התראות"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "אם ההתראות אינן פועלות, צור את הקובץ:"
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "עם התוכן הבא:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "אפשר גישה למיקום גיאוגרפי"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "אפשר להשתמש במיקרופון"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "אפשר להשתמש במצלמת רשת"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "אפשר שיתוף מסך"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "תכונות רשת"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "אפשר ניווט מרחבי"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "מאפשר ניווט בין אלמנטים שניתן למקד בהם באמצעות מקשי החצים"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "אפשר ל-JavaScript להדביק מהלוח."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "אפשר ל-JavaScript לפתוח חלונות חדשים"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "אפשר ל-JavaScript לגשת ללוח."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "אפשר פרוטוקולי URL לא ידועים"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "דרוש מחווה של משתמש להפעלת מדיה"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "אפשר מיקוד על ניווט"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "הגדרות התראות"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "תיקיית הורדות"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "ניהול מטמון"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "פתח תיקיית מטמון"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "פתח תיקיית פרופיל"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"מיקום מטמון: %1  \n"
+"מיקום פרופיל: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "כללי"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "מראה"

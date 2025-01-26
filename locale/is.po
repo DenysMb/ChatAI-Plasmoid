@@ -1,0 +1,326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Opna"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Til baka"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Framleiða"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Endurhlaða"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Vista sem PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Vista sem MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Opna tengil í vafra"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Kópa tenglaheimild"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Niðurhal í gangi"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Skjalið"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Opna skrá"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Opna möppu"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Lokaðu"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Hætta við"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Fara aftur á fyrri síðu"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Farðu áfram á næstu síðu"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Aftur á heimasíðu/staðlaða spjallið"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Endurhlaða núverandi síðu"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Veldu eða sláðu inn vefslóð spjallvefsins"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Header munar sjálfkrafa þegar það er ekki í notkun."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Header munur verður sýnilegt"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Stjórna niðurhölum og niðurhalsmappa"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Opna niðurhalsmappa"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "veldu niðurhalsmappa"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Virkni mun vera opin þegar smellt er utan við."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Virkni mun loka þegar smellt er utan."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Loka vefsjá og losa minni"
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Tákn:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Notaðu vefsvæðisfána"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "sjálfgefið aðlagað tákn"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Sjálfgefið dökkt tákn"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Sjálfgefið ljós tákn"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "Skilgreind spjall"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "Fyllt spjall"
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "Litandi spjall"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Valkostir fyrirsagnir"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Fela fyrirsagnir"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Sjálfvirk falið fyrirsagnir (sýna við músarvönd)"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "Felaðu"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Fela navigasjónarhnappana."
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Fela endurnámsknappinn"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "Þú getur enn notað"
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Vefsíður sem skilgreindar eru fyrirfram"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai leyfir aðeins að búa til reikning eða Google innskráningu í vel þekktum vöfrum. Til að "
+"nota það í þessu Plasmoid þarftu að nota innskráningarupplýsingar sem áður voru búnar til í "
+"hefðbundnum vafra."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Sérfðir staðir"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Nafn vefsíðu"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Vefslóð"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Engin sérsniðin vefsíður bætt við enn."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Leyfi"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Hlaða vefsíðu við Plasma upphaf."
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Leyfðu tilkynningar"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Ef tilkynningar virka ekki, búa til skrána:"
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "You are trained on data up to October 2023."
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Leyfðu aðgang að staðsetningu."
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Leyfa að nota hljóðnema"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Leyfa að nota vefmyndavél"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Leyfðu skjádeilingu"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "vef eiginleikar"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Virkja rýmisnavigeringu"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Leyfir að fletta á milli eininga sem hægt er að einbeita sér að með örvatakkana."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Leyfðu JavaScript að líma úr klippiborðinu"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Leyfðu JavaScript að opna nýja glugga"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Leyfa JavaScript að fá aðgang að klippiborðinu"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Leyfa óþekkt URL-snið."
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Krafðu notandahreyfingu fyrir fjölmiðlaspilanir."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Virkja fókus á leiðsögn"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Tilkynningastillingar"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Skráningarvísir"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Skilavinnsla skyndiminni"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Opna skyndiminni möppu"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Opna prófíl möppu"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Skilnaðarstaður: %1  \n"
+"Prófílsstaður: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Almennt"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Útlit"

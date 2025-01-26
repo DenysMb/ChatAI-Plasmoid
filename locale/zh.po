@@ -1,0 +1,323 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "打开"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "聊天人工智能"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "返回"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "转发"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "重新加载"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "另存为PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "另存为 MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "在浏览器中打开链接"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "复制链接地址"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "下载中"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "文件"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "打开文件"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "打开文件夹"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "关闭"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "取消"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "返回上一页"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "前往下一页"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "返回主页/默认聊天"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "重新加载当前页面"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "选择或输入聊天网站的 URL"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "标题在未使用时会自动隐藏"
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "标题将保持可见"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "管理下载和下载文件夹"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "打开下载文件夹"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "选择下载文件夹"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "小部件在点击外部时将保持打开状态"
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "点击外部时小部件将关闭"
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "关闭网页视图并释放内存"
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "图标："
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "使用网站图标"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "默认自适应图标"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "默认深色图标"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "默认光标图标"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "轮廓聊天"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "已填充的聊天"
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "多彩聊天"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "标题选项"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "隐藏标题"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "自动隐藏标题（鼠标悬停时显示）"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "隐藏"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "隐藏导航按钮"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "隐藏刷新按钮"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "您仍然可以使用"
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "预定义站点"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr "Claude.ai 仅允许在知名浏览器中创建帐户或使用 Google 登录。要在此 Plasmoid 中使用它，您需要使用在传统浏览器中先前创建的登录凭据。"
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "自定义站点"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "网站名称"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "网站网址"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "尚未添加自定义站点"
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "权限"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "在 Plasma 启动时加载网站"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "允许通知"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "如果通知无法正常工作，请创建文件："
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "请提供要翻译的内容。"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "允许地理位置访问"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "允许使用麦克风"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "允许使用网络摄像头"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "允许屏幕共享"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "网页功能"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "启用空间导航"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "允许使用箭头键在可聚焦元素之间导航"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "允许JavaScript从剪贴板粘贴"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "允许JavaScript打开新窗口"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "允许JavaScript访问剪贴板"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "允许未知的 URL 方案"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "需要用户手势以进行媒体播放"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "启用导航焦点"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "通知设置"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "下载文件夹"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "缓存管理"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "打开缓存文件夹"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "打开个人资料文件夹"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"缓存位置：%1  \n"
+"配置文件位置：%2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "一般"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "外观"

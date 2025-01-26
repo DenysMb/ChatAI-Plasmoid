@@ -1,0 +1,326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Åbn"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Tilbage"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Fremad"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Genindlæs"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Gem som PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Gem som MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Åbn link i browser"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Kopier linkadresse"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Download er i gang"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Filen"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Åbn fil"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Åbn mappe"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Luk"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Annuller"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Gå tilbage til forrige side"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Gå frem til næste side"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Returner til startside/standard chat"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Genindlæs nuværende side"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Vælg eller indtast chat-webstedets URL"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Header vil automatisk skjule sig, når den ikke er i brug."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Overskriften vil forblive synlig"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Administrer downloads og download-mappe"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Åbn Download-mappe"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Vælg Download-mappe"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget vil forblive åben, når der klikkes udenfor."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widget vil lukke, når der klikkes udenfor."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Luk webview'en og frigiv hukommelse"
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Ikon:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Brug webstedets favicon"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Standard tilpasset ikon"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Standard mørk ikon"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Standard lysikon"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "Skitseret chat"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "Udfyldt chat"
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "Farverig chat"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Headerindstillinger"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Skjul header"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Auto-skjul header (vis ved museover)"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "Skjul"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Skjul navigationsknapper"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Skjul opdateringsknap"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "Du kan stadig bruge den"
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Forudefinerede websteder"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai tillader kun oprettelse af konto eller Google-login i velkendte browsere. For at bruge "
+"det i denne Plasmoid skal du bruge loginoplysninger, der tidligere er oprettet i en traditionel "
+"browser."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Brugerdefinerede websteder"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Webstednavn"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Websted URL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Ingen brugerdefinerede sider tilføjet endnu"
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Tilladelser"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Indlæs hjemmeside ved Plasma-opstart"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Tillad meddelelser"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Hvis meddelelser ikke fungerer, skal du oprette filen:"
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "med følgende indhold:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Tillad geolokaliseringsadgang"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Tillad brug af mikrofon"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Tillad brug af webcam"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Tillad skærmdeling"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Webfunktioner"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Aktivér rumlig navigation"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Tillader navigation mellem fokuserbare elementer ved hjælp af piletasterne"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Tillad JavaScript at indsætte fra udklipsholderen"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Tillad JavaScript at åbne nye vinduer"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Tillad JavaScript at få adgang til udklipsholderen."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Tillad ukendte URL-skemaer"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Kræv brugerhandling for medieafspilning"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Aktiver fokus på navigation"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Notifikationsindstillinger"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Download-mappe"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Cachehåndtering"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Åbn cache-mappe"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Åbn profilmappe"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Cache placering: %1  \n"
+"Profil placering: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Generelt"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Udseende"

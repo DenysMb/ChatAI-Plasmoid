@@ -1,0 +1,326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Deschide"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Înapoi"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Înaintați"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Reîncarcă"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Salvează ca PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Salvează ca MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Deschide linkul în browser"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Copiați adresa linkului"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Descărcare în curs"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Fișierul"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Deschide fișierul"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Deschide folderul"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Închide"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Anulează"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Întoarce-te la pagina anterioară"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Mergi înainte la pagina următoare"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Întoarceți-vă la pagina principală/chatul implicit"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Reîncarcă pagina curentă"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Selectați sau introduceți URL-ul site-ului de chat"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Antetul se va ascunde automat când nu este utilizat."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Antetul va rămâne vizibil"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Gestionează descărcările și folderul de descărcări"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Deschide folderul de descărcări"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Alegeți folderul de descărcare"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widgetul va rămâne deschis când se face clic în afara acestuia."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widgetul se va închide când se face clic în afara acestuia."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Închideți webview-ul și eliberați memoria."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Pictogramă:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Utilizați favicon-ul site-ului web"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Icon adaptiv implicit."
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Iconă întunecată implicită"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Iconă implicită de lumină"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "Chat conturat"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "Chat complet"
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "Chat colorat"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Opțiuni antet"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Ascunde antetul"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Ascunde automat antetul (afișează la trecerea mouse-ului)"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "Ascunde"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Ascunde butoanele de navigare"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Ascunde butonul de reîmprospătare"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "Încă poți folosi"
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Site predefinite"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai permite crearea contului sau autentificarea cu Google doar în browsere cunoscute. Pentru "
+"a-l folosi în acest Plasmoid, trebuie să folosești acreditivele de autentificare create anterior "
+"într-un browser tradițional."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Site personalizate"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Numele site-ului"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "URL-ul site-ului"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Nu au fost adăugate site-uri personalizate încă."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Permisiuni"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Încărcați site-ul web la pornirea Plasma"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Permite notificările"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Dacă notificările nu funcționează, creați fișierul:"
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "Cu următorul conținut:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Permite accesul la geolocalizare"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Permite utilizarea microfonului"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Permite utilizarea camerei web"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Permite partajarea ecranului"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Funcții web"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Activează navigarea spațială"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Permite navigarea între elementele focusabile folosind tastele săgeată."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Permite JavaScript să lipească din clipboard"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Permite JavaScript să deschidă feronete noi."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Permite JavaScript-ului să acceseze clipboard-ul."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Permite scheme-uri URL necunoscute"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Solicită gestul utilizatorului pentru redarea media"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Activează focalizarea pe navigare"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Setări de notificare"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Folder de descărcări"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Gestionarea cache-ului"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Deschide folderul cache"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Deschide folderul profilului"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Locația cache-ului: %1  \n"
+"Locația profilului: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "General"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Aspect."

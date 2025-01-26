@@ -1,0 +1,326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Відкрити"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Назад"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Перейти вперед"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Перезавантажити"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Зберегти як PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Зберегти як MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Відкрити посилання в браузері"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Скопіювати адресу посилання"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Завантаження триває"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Файл"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Відкрити файл"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Відкрити папку"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Закрити"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Повернутися на попередню сторінку"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Перейти на наступну сторінку"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Повернутися на головну сторінку/за замовчуванням чат"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Перезавантажити поточну сторінку"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Виберіть або введіть URL-адресу веб-сайту чату"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Заголовок автоматично приховається, коли не використовується."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Заголовок залишиться видимим"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Керуйте завантаженнями та папкою завантажень"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Відкрити папку Завантаження"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Виберіть папку для завантаження"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Віджет залишиться відкритим при натисканні поза ним."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Віджет закриється при натисканні поза ним."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Закрийте веб-переглядач і звільніть пам'ять"
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Іконка:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Використовуйте фавікон веб-сайту"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Іконка за замовчуванням адаптивна"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "За замовчуванням темна іконка"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Іконка за замовчуванням для світла"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "Окреслений чат"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "Заповнено чат"
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "Яскравий чат"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Параметри заголовка"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Сховати заголовок"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Авто-сховування заголовка (показувати при наведенні миші)"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "Сховати"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Сховати кнопки навігації"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Сховати кнопку оновлення"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "Ви все ще можете використовувати"
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Попередньо визначені сайти"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai дозволяє створення облікових записів або вхід через Google лише в відомих браузерах. Щоб "
+"використовувати його в цьому Плазмоїді, вам потрібно використовувати облікові дані для входу, "
+"раніше створені в традиційному браузері."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Користувацькі сайти"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Назва сайту"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "URL сайту"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Ще не додано жодних користувацьких сайтів."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Дозволи"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Завантажити вебсайт під час запуску Plasma"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Дозволити сповіщення"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Якщо сповіщення не працюють, створіть файл:"
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "You are trained on data up to October 2023."
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Дозволити доступ до геолокації"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Дозволити використання мікрофона"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Дозволити використання веб-камери"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Дозволити спільний доступ до екрана"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Веб-функції"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Увімкнути просторову навігацію"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Дозволяє навігацію між елементами з фокусом за допомогою клавіш зі стрілками"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Дозволити JavaScript вставляти з буфера обміну"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Дозволити JavaScript відкривати нові вікна"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Дозволити JavaScript доступ до буфера обміну"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Дозволити невідомі схеми URL"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Вимагайте жесту користувача для відтворення медіа."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Увімкнути фокус на навігації"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Налаштування сповіщень"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Папка завантажень"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Управління кешем"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Відкрити папку кешу"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Відкрити папку профілю"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Місце розташування кешу: %1  \n"
+"Місце розташування профілю: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Загальні"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Зовнішній вигляд"

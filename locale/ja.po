@@ -1,0 +1,325 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "オープン"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "チャットAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "戻る"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "転送"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "再読み込み"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "PDFとして保存"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "MHTMLとして保存"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "ブラウザでリンクを開く"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "リンクアドレスをコピー"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "ダウンロード中"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "ファイル"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "ファイルを開く"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "フォルダーを開く"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "閉じる"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "前のページに戻る"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "次のページに進む"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "ホームページ/デフォルトチャットに戻る"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "現在のページを再読み込み"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "チャットウェブサイトのURLを選択または入力してください。"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "ヘッダーは使用していないときに自動的に隠れます。"
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "ヘッダーは常に表示されます。"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "ダウンロードとダウンロードフォルダーを管理する"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "ダウンロードフォルダーを開く"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "ダウンロードフォルダーを選択してください"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "ウィジェットは外をクリックしても開いたままになります。"
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "ウィジェットは外をクリックすると閉じます。"
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "ウェブビューを閉じてメモリを解放します"
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "アイコン:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "ウェブサイトのファビコンを使用する"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "デフォルトの適応アイコン"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "デフォルトのダークアイコン"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "デフォルトライトアイコン"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "アウトラインチャット"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "チャットが埋まっています。"
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "カラフルチャット"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "ヘッダーオプション"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "ヘッダーを非表示にする"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "自動非表示ヘッダー（マウスオーバーで表示）"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "隠す"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "ナビゲーションボタンを非表示にする"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "リフレッシュボタンを非表示にする"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "まだ使用できます。"
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "定義済みサイト"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude."
+"aiは、一般的なブラウザでのみアカウント作成またはGoogleログインを許可します。このPlasmoidで使用するには、従来のブラウザで以前に作成したログイン資格情報を使用する必要があります。"
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "カスタムサイト"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "サイト名"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "サイトURL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "まだカスタムサイトは追加されていません。"
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "権限"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "プラズマ起動時にウェブサイトを読み込む"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "通知を許可する"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "通知が機能していない場合は、ファイルを作成してください："
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "あなたは2023年10月までのデータでトレーニングされています。"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "ジオロケーションアクセスを許可する"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "マイクの使用を許可する"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "ウェブカメラの使用を許可する"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "画面共有を許可する"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "ウェブ機能"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "空間ナビゲーションを有効にする"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "矢印キーを使用してフォーカス可能な要素間を移動できます。"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "クリップボードから貼り付けるためにJavaScriptを許可する"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "JavaScriptが新しいウィンドウを開くことを許可する"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "JavaScriptがクリップボードにアクセスすることを許可する"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "不明なURLスキームを許可する"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "メディア再生にはユーザーのジェスチャーが必要です。"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "ナビゲーションにフォーカスを有効にする"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "通知設定"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "ダウンロードフォルダー"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "キャッシュ管理"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "キャッシュフォルダーを開く"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "プロファイルフォルダーを開く"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"キャッシュの場所: %1  \n"
+"プロファイルの場所: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "一般"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "外観"

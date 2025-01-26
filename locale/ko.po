@@ -1,0 +1,325 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "열기"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "챗AI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "뒤로"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "전송"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "다시 로드"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "PDF로 저장"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "MHTML로 저장"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "브라우저에서 링크 열기"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "링크 주소 복사"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "다운로드 진행 중"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "파일"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "파일 열기"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "폴더 열기"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "닫기"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "취소"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "이전 페이지로 돌아가기"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "다음 페이지로 이동하십시오."
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "홈페이지/기본 채팅으로 돌아가기"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "현재 페이지 새로 고침"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "채팅 웹사이트 URL을 선택하거나 입력하세요."
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "헤더는 사용하지 않을 때 자동으로 숨겨집니다."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "헤더는 항상 표시됩니다."
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "다운로드 및 다운로드 폴더 관리"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "다운로드 폴더 열기"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "다운로드 폴더 선택"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "위젯은 외부를 클릭할 때 열려 있습니다."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "위젯은 외부를 클릭할 때 닫힙니다."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "웹뷰를 닫고 메모리를 해제합니다."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "아이콘:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "웹사이트 파비콘 사용"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "기본 적응형 아이콘"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "기본 어두운 아이콘"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "기본 라이트 아이콘"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "윤곽이 있는 채팅"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "채팅이 가득 찼습니다."
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "다채로운 채팅"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "헤더 옵션"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "헤더 숨기기"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "자동 숨김 헤더 (마우스 오버 시 표시)"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "숨기기"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "탐색 버튼 숨기기"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "새로 고침 버튼 숨기기"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "여전히 사용할 수 있습니다."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "미리 정의된 사이트"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai는 잘 알려진 브라우저에서만 계정 생성 또는 Google 로그인을 허용합니다. 이 플라스모이드에서 사용하려면 기존의 전통적인 브라우저에서 생성한 로그인 자격 "
+"증명을 사용해야 합니다."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "사용자 정의 사이트"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "사이트 이름"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "사이트 URL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "아직 추가된 사용자 정의 사이트가 없습니다."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "권한"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "플라즈마 시작 시 웹사이트 로드"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "알림 허용"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "알림이 작동하지 않으면 파일을 생성하십시오:"
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "다음 내용과 함께:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "지리 위치 접근 허용"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "마이크 사용 허용"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "웹캠 사용 허용"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "화면 공유 허용"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "웹 기능"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "공간 탐색 활성화"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "화살표 키를 사용하여 포커스 가능한 요소 간 탐색을 허용합니다."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "클립보드에서 붙여넣기를 위해 JavaScript 허용"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "JavaScript가 새 창을 열 수 있도록 허용하십시오."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "JavaScript가 클립보드에 접근할 수 있도록 허용합니다."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "알 수 없는 URL 스킴 허용"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "미디어 재생을 위한 사용자 제스처가 필요합니다."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "탐색에 포커스 활성화"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "알림 설정"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "다운로드 폴더"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "캐시 관리"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "캐시 폴더 열기"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "프로필 폴더 열기"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"캐시 위치: %1  \n"
+"프로필 위치: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "일반"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "모양"

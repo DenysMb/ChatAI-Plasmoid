@@ -1,0 +1,326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Megnyitás"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Vissza"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Tovább"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Újratöltés"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Mentés PDF-ként"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Mentés MHTML-ként"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Link megnyitása a böngészőben"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Link cím másolása"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Letöltés folyamatban"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "A fájl"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Fájl megnyitása"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Mappa megnyitása"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Bezárás"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Mégse"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Térj vissza az előző oldalra"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Tovább a következő oldalra"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Térj vissza a kezdőlapra/ alapértelmezett csevegéshez"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Az aktuális oldal újratöltése"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Válassza ki vagy adja meg a csevegő webhely URL-jét"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "A fejléc automatikusan elrejti magát, amikor nincs használatban."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "A fejléc látható marad."
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Letöltések és letöltési mappa kezelése"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Letöltési mappa megnyitása"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Válassza a Letöltési mappát"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "A widget nyitva marad, ha a külső területre kattint."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "A widget bezárul, ha a külső területre kattint."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Zárja be a webnézetet és szabadítson fel memóriát."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Ikon:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Használja a weboldal faviconját"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Alapértelmezett adaptív ikon"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Alapértelmezett sötét ikon"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Alapértelmezett világos ikon"
+
+#: NEEDS WORK
+msgid "Outlined chat"
+msgstr "Kiemelt csevegés"
+
+#: NEEDS WORK
+msgid "Filled chat"
+msgstr "Töltött csevegés"
+
+#: NEEDS WORK
+msgid "Colorful chat"
+msgstr "Színes csevegés"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Fejléc lehetőségek"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Fejléc elrejtése"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Automatikus elrejtés fejléc (megmutatás egérmutatóra)"
+
+#: NEEDS WORK
+msgid "Hide "
+msgstr "Elrejtés"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Navigációs gombok elrejtése"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Frissítés gomb elrejtése"
+
+#: NEEDS WORK
+msgid "You can still use the "
+msgstr "Még mindig használhatod a"
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Előre definiált webhelyek"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"A Claude.ai csak a fiók létrehozását vagy a Google bejelentkezést engedélyezi jól ismert "
+"böngészőkben. Ennek a Plasmoidnak a használatához a korábban egy hagyományos böngészőben "
+"létrehozott bejelentkezési adatokat kell használnia."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Egyedi webhelyek"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Webhely neve"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Webhely URL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Még nincs hozzáadva egyedi webhely."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Engedélyek"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Weboldal betöltése a Plasma indításakor"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Engedélyezze az értesítéseket"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Ha az értesítések nem működnek, hozd létre a fájlt:"
+
+#: NEEDS WORK
+msgid "with the following content:"
+msgstr "a következő tartalommal:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Engedélyezze a geolokációs hozzáférést"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Mikrofon használatának engedélyezése"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Webkamera használatának engedélyezése"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Képernyőmegosztás engedélyezése"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Webfunkciók"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Engedélyezze a térbeli navigációt"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Lehetővé teszi a fókuszálható elemek közötti navigálást a nyílbillentyűk segítségével."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Engedélyezze a JavaScript számára a vágólapról való beillesztést."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Engedélyezze a JavaScript számára új ablakok megnyitását."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Engedélyezze a JavaScript számára a vágólap elérését."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Ismeretlen URL séma engedélyezése"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "A média lejátszásához felhasználói gesztus szükséges."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Engedélyezze a fókuszt a navigáción."
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Értesítési beállítások"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Letöltési mappa"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Gyorsítótár-kezelés"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Cache mappa megnyitása"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Profilmappa megnyitása"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Cache hely: %1\n"
+"Profil hely: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Általános"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Megjelenés"
