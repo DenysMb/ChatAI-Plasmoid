@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
-      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
-  <kcfgfile name=""/>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name="" />
 
   <group name="General">
     <entry name="url" type="String">
-        <default>https://duckduckgo.com/chat</default>
+      <default>https://duckduckgo.com/chat</default>
     </entry>
     <entry name="icon" type="String">
-      <label>The name of the icon used in the compact representation (e.g. on a small panel).</label>
+      <label>i18n("The name of the icon used in the compact representation (e.g. on a small panel).")</label>
       <default></default>
     </entry>
     <entry name="useFilledChatIcon" type="Bool">
-      <label>Use the filled chat's icon instead of widget icon</label>
+      <label>i18n("Use the filled chat's icon instead of widget icon")</label>
       <default>false</default>
     </entry>
     <entry name="useOutlinedChatIcon" type="Bool">
@@ -33,9 +32,21 @@
       <label>Use the widget's default light icon</label>
       <default>false</default>
     </entry>
-    <entry name="useDefaultDarktIcon" type="Bool">
+    <entry name="useDefaultDarkIcon" type="Bool">
       <label>Use the widget's default dark icon</label>
       <default>false</default>
+    </entry>
+    <entry name="useFavicon" type="Bool">
+      <label>Use website favicon as widget icon</label>
+      <default>false</default>
+    </entry>
+    <entry name="favIcon" type="String">
+      <label>Base64 encoded favicon from website</label>
+      <default></default>
+    </entry>
+    <entry name="lastFavIcon" type="String">
+      <label>Last successfully loaded favicon URL</label>
+      <default></default>
     </entry>
     <entry name="showDuckDuckGoChat" type="Bool">
       <default>true</default>
@@ -48,6 +59,9 @@
     </entry>
     <entry name="showGoogleGemini" type="Bool">
       <default>true</default>
+    </entry>
+    <entry name="showClaude" type="Bool">
+      <default>false</default>
     </entry>
     <entry name="showYou" type="Bool">
       <default>false</default>
@@ -67,7 +81,13 @@
     <entry name="showBigAGI" type="Bool">
       <default>false</default>
     </entry>
-    <entry name="showClaude" type="Bool">
+    <entry name="showDeepSeek" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="showMetaAI" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="showGrok" type="Bool">
       <default>false</default>
     </entry>
     <entry name="hideHeader" type="Bool">
@@ -80,6 +100,122 @@
       <default>false</default>
     </entry>
     <entry name="hideCustomURL" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="hidePrintButton" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="hideCloseButton" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="hideHomeButton" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="hideNavigationButtons" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="hideRefreshButton" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="hideDownloadButton" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="microphoneEnabled" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="webcamEnabled" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="screenShareEnabled" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="downloadPath" type="String">
+      <default></default>
+    </entry>
+    <entry name="customSites" type="String">
+      <label>i18n("List of custom sites")</label>
+      <default></default>
+    </entry>
+    <entry name="keepOpen" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="pin" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="loadOnStartup" type="Bool">
+      <label>i18n("Load website on Plasma startup")</label>
+      <default>false</default>
+    </entry>
+    <entry name="spatialNavigationEnabled" type="Bool">
+      <label>Enable spatial navigation for keyboard-based browsing</label>
+      <default>false</default>
+    </entry>
+    <entry name="javascriptCanPaste" type="Bool">
+      <label>Allow JavaScript to paste from clipboard</label>
+      <default>true</default>
+    </entry>
+    <entry name="javascriptCanOpenWindows" type="Bool">
+      <label>Allow JavaScript to open new windows</label>
+      <default>true</default>
+    </entry>
+    <entry name="javascriptCanAccessClipboard" type="Bool">
+      <label>Allow JavaScript to access clipboard</label>
+      <default>true</default>
+    </entry>
+    <entry name="allowUnknownUrlSchemes" type="Bool">
+      <label>Allow unknown URL schemes</label>
+      <default>true</default>
+    </entry>
+    <entry name="playbackRequiresUserGesture" type="Bool">
+      <label>Require user gesture for media playback</label>
+      <default>false</default>
+    </entry>
+    <entry name="focusOnNavigationEnabled" type="Bool">
+      <label>Enable focus on navigation</label>
+      <default>true</default>
+    </entry>
+    <entry name="centerOnScreen" type="Bool">
+      <label>Center window on screen when opened</label>
+      <default>false</default>
+    </entry>
+    <entry name="dialogWidth" type="Int">
+      <label>Last saved dialog width</label>
+      <default>0</default>
+    </entry>
+    <entry name="dialogHeight" type="Int">
+      <label>Last saved dialog height</label>
+      <default>0</default>
+    </entry>
+    <entry name="notificationsEnabled" type="Bool">
+      <label>Allow notifications from websites</label>
+      <default>true</default>
+    </entry>
+    <entry name="notificationFlags" type="Int">
+      <label>Notification display flags</label>
+      <default>0</default>
+    </entry>
+    <entry name="notificationUrgency" type="Int">
+      <label>Notification urgency level</label>
+      <default>1</default>
+    </entry>
+    <entry name="notificationTimeout" type="Int">
+      <label>Notification timeout in milliseconds (0 for no timeout)</label>
+      <default>5000</default>
+    </entry>
+    <entry name="geolocationEnabled" type="Bool">
+      <label>Allow websites to access geolocation</label>
+      <default>false</default>
+    </entry>
+    <entry name="autoHideHeader" type="Bool">
+      <label>Auto-hide header and show on mouse hover</label>
+      <default>false</default>
+    </entry>
+    <entry name="cachePath" type="String">
+      <label>Cache directory path</label>
+      <default></default>
+    </entry>
+    <entry name="clearCacheOnExit" type="Bool">
+      <label>Clear cache when closing</label>
       <default>false</default>
     </entry>
   </group>
