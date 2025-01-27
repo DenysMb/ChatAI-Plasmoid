@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "默认光标图标"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "轮廓聊天"
+msgid "Outlined icon"
+msgstr "轮廓图标"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "已填充的聊天"
+msgid "Filled icon"
+msgstr "填充图标"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "多彩聊天"
+msgid "Colorful icon"
+msgstr "彩色图标"
 
 #: NEEDS WORK
 msgid "Header Options"

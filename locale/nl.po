@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "Standaard lichtpictogram"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "Omlijnde chat"
+msgid "Outlined icon"
+msgstr "Omlijnd pictogram"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "Vervulde chat"
+msgid "Filled icon"
+msgstr "Vervuld pictogram"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "Kleurrijke chat"
+msgid "Colorful icon"
+msgstr "Kleurrijk pictogram"
 
 #: NEEDS WORK
 msgid "Header Options"

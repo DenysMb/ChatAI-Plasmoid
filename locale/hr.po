@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "Zadana ikona svjetla"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "Obrisani razgovor"
+msgid "Outlined icon"
+msgstr "Ikona s obrubom"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "Ispunjeni chat"
+msgid "Filled icon"
+msgstr "Ispunjena ikona"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "Šareni chat"
+msgid "Colorful icon"
+msgstr "Šareni ikona"
 
 #: NEEDS WORK
 msgid "Header Options"

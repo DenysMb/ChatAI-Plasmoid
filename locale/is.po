@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "Sjálfgefið ljós tákn"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "Skilgreind spjall"
+msgid "Outlined icon"
+msgstr "Umfjölluð tákn"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "Fyllt spjall"
+msgid "Filled icon"
+msgstr "Fyllt tákn"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "Litandi spjall"
+msgid "Colorful icon"
+msgstr "Litfagur tákn"
 
 #: NEEDS WORK
 msgid "Header Options"

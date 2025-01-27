@@ -116,13 +116,13 @@ msgstr  ""
 msgid   "Default light icon"
 msgstr  ""
 
-msgid   "Outlined chat"
+msgid   "Outlined icon"
 msgstr  ""
 
-msgid   "Filled chat"
+msgid   "Filled icon"
 msgstr  ""
 
-msgid   "Colorful chat"
+msgid   "Colorful icon"
 msgstr  ""
 
 msgid   "Header Options"

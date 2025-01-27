@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "Standard lysikon"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "Skitseret chat"
+msgid "Outlined icon"
+msgstr "Omridsikon"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "Udfyldt chat"
+msgid "Filled icon"
+msgstr "Udfyldt ikon"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "Farverig chat"
+msgid "Colorful icon"
+msgstr "Farverig ikon"
 
 #: NEEDS WORK
 msgid "Header Options"

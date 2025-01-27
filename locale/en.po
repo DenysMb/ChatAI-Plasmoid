@@ -117,14 +117,14 @@ msgstr "Default dark icon"
 msgid "Default light icon"
 msgstr "Default light icon"
 
-msgid "Outlined chat"
-msgstr "Outlined chat"
+msgid "Outlined icon"
+msgstr "Outlined icon"
 
-msgid "Filled chat"
-msgstr "Filled chat"
+msgid "Filled icon"
+msgstr "Filled icon"
 
-msgid "Colorful chat"
-msgstr "Colorful chat"
+msgid "Colorful icon"
+msgstr "Colorful icon"
 
 msgid "Header Options"
 msgstr "Header Options"

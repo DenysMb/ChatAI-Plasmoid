@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "Икона по подразбиране за светлина"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "Очертана беседа"
+msgid "Outlined icon"
+msgstr "Икона с контур"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "Запълнен чат"
+msgid "Filled icon"
+msgstr "Запълнена икона"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "Цветен чат"
+msgid "Colorful icon"
+msgstr "Цветна икона"
 
 #: NEEDS WORK
 msgid "Header Options"

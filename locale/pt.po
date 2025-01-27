@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "Ícone de luz padrão"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "Chat destacado"
+msgid "Outlined icon"
+msgstr "Ícone contornado"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "Chat preenchido"
+msgid "Filled icon"
+msgstr "Ícone preenchido"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "Bate-papo colorido"
+msgid "Colorful icon"
+msgstr "Ícone colorido"
 
 #: NEEDS WORK
 msgid "Header Options"

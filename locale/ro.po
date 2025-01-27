@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "Iconă implicită de lumină"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "Chat conturat"
+msgid "Outlined icon"
+msgstr "Iconă conturată"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "Chat complet"
+msgid "Filled icon"
+msgstr "Iconă umplută"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "Chat colorat"
+msgid "Colorful icon"
+msgstr "Icon colorat"
 
 #: NEEDS WORK
 msgid "Header Options"

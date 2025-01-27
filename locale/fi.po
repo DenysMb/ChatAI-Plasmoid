@@ -153,16 +153,16 @@ msgid "Default light icon"
 msgstr "Oletusvalon kuvake"
 
 #: NEEDS WORK
-msgid "Outlined chat"
-msgstr "Rajaustettu keskustelu"
+msgid "Outlined icon"
+msgstr "Kuvake, jossa on ääriviivat"
 
 #: NEEDS WORK
-msgid "Filled chat"
-msgstr "Täytetty keskustelu"
+msgid "Filled icon"
+msgstr "Täytetty kuvake"
 
 #: NEEDS WORK
-msgid "Colorful chat"
-msgstr "Värikäs keskustelu"
+msgid "Colorful icon"
+msgstr "Värikäs kuvake"
 
 #: NEEDS WORK
 msgid "Header Options"
