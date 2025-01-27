@@ -260,6 +260,10 @@ msgid "If notifications are not working create the file:"
 msgstr "Jos ilmoitukset eivät toimi, luo tiedosto:"
 
 #: NEEDS WORK
+msgid "containing the following text:"
+msgstr "sisältäen seuraavan tekstin:"
+
+#: NEEDS WORK
 msgid "Allow geolocation access"
 msgstr "Salli geolokaatio-oikeudet"
 
