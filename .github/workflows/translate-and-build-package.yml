@@ -64,7 +64,7 @@ jobs:
           rm -Rf $gitfolder/contents/locale
           cp -R $gitfolder/usr/share/locale $gitfolder/contents/locale
           # Remove json translations in plasmoid folder
-          rm rm $gitfolder/contents/locale/*/LC_MESSAGES/*.json
+          rm $gitfolder/contents/locale/*/LC_MESSAGES/*.json
 
       - name: Update github
         run: |
