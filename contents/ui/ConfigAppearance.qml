@@ -62,21 +62,21 @@ KCM.SimpleKCM {
         QQC2.RadioButton {
             id: useOutlinedChatIcon
 
-            text: i18n("Outlined chat's icon")
+            text: i18n("Outlined icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
         QQC2.RadioButton {
             id: useFilledChatIcon
 
-            text: i18n("Filled chat's icon")
+            text: i18n("Filled icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
         QQC2.RadioButton {
             id: useColorfulChatIcon
 
-            text: i18n("Colorful chat's icon")
+            text: i18n("Colorful icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
