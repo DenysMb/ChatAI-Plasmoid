@@ -82,10 +82,10 @@
       <default>false</default>
     </entry>
     <entry name="showDeepSeek" type="Bool">
-      <default>false</default>
+      <default>true</default>
     </entry>
     <entry name="showMetaAI" type="Bool">
-      <default>false</default>
+      <default>true</default>
     </entry>
     <entry name="showGrok" type="Bool">
       <default>false</default>
