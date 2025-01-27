@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Feche a visualização da web e libere a memória."
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "URL personalizado..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ícone:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Ocultar cabeçalho automaticamente (mostrar ao passar o mouse)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Ocultar"
+msgid "Hide Keep Open button"
+msgstr "Ocultar botão Manter Aberto"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Ocultar botão de URL personalizado"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Ocultar botão de Auto-Ocultar"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Ocultar botão Fechar"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Ocultar botão Início"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Ocultar botão de download"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Ocultar botão de atualizar"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Você ainda pode usar o"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Você ainda pode usar as ações Voltar para... e Manter aberto clicando com o botão direito no ícone "
+"do widget."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -232,6 +258,10 @@ msgstr "Permitir notificações"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "Se as notificações não estiverem funcionando, crie o arquivo:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "contendo o seguinte texto:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

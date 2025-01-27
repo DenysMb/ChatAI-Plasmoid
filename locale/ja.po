@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "ウェブビューを閉じてメモリを解放します"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "カスタムURL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "アイコン:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "自動非表示ヘッダー（マウスオーバーで表示）"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "隠す"
+msgid "Hide Keep Open button"
+msgstr "開くボタンを隠す"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "カスタムURLボタンを非表示にする"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "自動非表示ボタンを隠す"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "閉じるボタンを非表示にする"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "ホームボタンを隠す"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "ダウンロードボタンを非表示にする"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,8 @@ msgid "Hide refresh button"
 msgstr "リフレッシュボタンを非表示にする"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "まだ使用できます。"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr "ウィジェットアイコンを右クリックすることで、「戻る...」および「開いたままにする」アクションを引き続き使用できます。"
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -231,6 +255,10 @@ msgstr "通知を許可する"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "通知が機能していない場合は、ファイルを作成してください："
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "含まれているテキスト："
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

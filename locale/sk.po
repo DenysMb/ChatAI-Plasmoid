@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Zavrite webview a uvoľnite pamäť."
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Vlastná URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ikona:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automaticky skryť hlavičku (zobraziť pri prechode myšou)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Skryť"
+msgid "Hide Keep Open button"
+msgstr "Skryť tlačidlo Udržať otvorené"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Skryť tlačidlo vlastnej URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Skryť tlačidlo automatického skrytia"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Skryť tlačidlo Zatvoriť"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Skryť tlačidlo Domov"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Skryť tlačidlo na stiahnutie"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Skryť tlačidlo obnovenia"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Môžete stále používať"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Môžete stále použiť akcie Vrátiť sa na... a Udržať otvorené kliknutím pravým tlačidlom myši na "
+"ikonu widgetu."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -234,8 +260,8 @@ msgid "If notifications are not working create the file:"
 msgstr "Ak notifikácie nefungujú, vytvorte súbor:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "s nasledujúcim obsahom:"
+msgid "containing the following text:"
+msgstr "obsahujúci nasledujúci text:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

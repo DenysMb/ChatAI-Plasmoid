@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Zatvorite webview i oslobodite memoriju"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Prilagođeni URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ikona:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automatsko sakrivanje zaglavlja (prikaži pri prelasku miša)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Sakrij"
+msgid "Hide Keep Open button"
+msgstr "Sakrij gumb \"Zadrži otvoreno\""
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Sakrij gumb za prilagođeni URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Sakrij gumb za automatsko skrivanje"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Sakrij gumb Zatvori"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Sakrij gumb Početna"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Sakrij gumb za preuzimanje"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Sakrij gumb za osvježavanje"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Još uvijek možete koristiti"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Još uvijek možete koristiti radnje Vratite se na... i Zadrži otvoreno desnim klikom na ikonu "
+"widgeta."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -234,8 +260,8 @@ msgid "If notifications are not working create the file:"
 msgstr "Ako obavijesti ne rade, kreirajte datoteku:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "s sljedećim sadržajem:"
+msgid "containing the following text:"
+msgstr "sadrži sljedeći tekst:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

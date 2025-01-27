@@ -98,6 +98,9 @@ msgstr  ""
 msgid   "Close the webview and release memory"
 msgstr  ""
 
+msgid   "Custom URL..."
+msgstr  ""
+
 msgid   "Icon:"
 msgstr  ""
 
@@ -131,7 +134,22 @@ msgstr  ""
 msgid   "Auto-hide header (show on mouse hover)"
 msgstr  ""
 
-msgid   "Hide "
+msgid   "Hide Keep Open button"
+msgstr  ""
+
+msgid   "Hide Custom URL button"
+msgstr  ""
+
+msgid   "Hide Auto-Hide button"
+msgstr  ""
+
+msgid   "Hide Close button"
+msgstr  ""
+
+msgid   "Hide Home button"
+msgstr  ""
+
+msgid   "Hide Download button"
 msgstr  ""
 
 msgid   "Hide navigation buttons"
@@ -140,7 +158,8 @@ msgstr  ""
 msgid   "Hide refresh button"
 msgstr  ""
 
-msgid   "You can still use the "
+msgid   "You can still use the Go back to... and Keep open actions by right-"
+        "clicking the widget icon."
 msgstr  ""
 
 msgid   "Predefined Sites"
@@ -175,7 +194,7 @@ msgstr  ""
 msgid   "If notifications are not working create the file:"
 msgstr  ""
 
-msgid   "with the following content:"
+msgid   "containing the following text:"
 msgstr  ""
 
 msgid   "Allow geolocation access"

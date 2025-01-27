@@ -99,6 +99,9 @@ msgstr "Widget will close when clicking outside"
 msgid "Close the webview and release memory"
 msgstr "Close the webview and release memory"
 
+msgid "Custom URL..."
+msgstr "Custom URL..."
+
 msgid "Icon:"
 msgstr "Icon:"
 
@@ -132,8 +135,23 @@ msgstr "Hide header"
 msgid "Auto-hide header (show on mouse hover)"
 msgstr "Auto-hide header (show on mouse hover)"
 
-msgid "Hide "
-msgstr "Hide "
+msgid "Hide Keep Open button"
+msgstr "Hide Keep Open button"
+
+msgid "Hide Custom URL button"
+msgstr "Hide Custom URL button"
+
+msgid "Hide Auto-Hide button"
+msgstr "Hide Auto-Hide button"
+
+msgid "Hide Close button"
+msgstr "Hide Close button"
+
+msgid "Hide Home button"
+msgstr "Hide Home button"
+
+msgid "Hide Download button"
+msgstr "Hide Download button"
 
 msgid "Hide navigation buttons"
 msgstr "Hide navigation buttons"
@@ -141,8 +159,12 @@ msgstr "Hide navigation buttons"
 msgid "Hide refresh button"
 msgstr "Hide refresh button"
 
-msgid "You can still use the "
-msgstr "You can still use the "
+msgid ""
+"You can still use the Go back to... and Keep open actions by right-clicking "
+"the widget icon."
+msgstr ""
+"You can still use the Go back to... and Keep open actions by right-clicking "
+"the widget icon."
 
 msgid "Predefined Sites"
 msgstr "Predefined Sites"
@@ -180,8 +202,8 @@ msgstr "Allow notifications"
 msgid "If notifications are not working create the file:"
 msgstr "If notifications are not working create the file:"
 
-msgid "with the following content:"
-msgstr "with the following content:"
+msgid "containing the following text:"
+msgstr "containing the following text:"
 
 msgid "Allow geolocation access"
 msgstr "Allow geolocation access"

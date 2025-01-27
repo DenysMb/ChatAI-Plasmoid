@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Κλείστε την προβολή ιστού και απελευθερώστε τη μνήμη"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Προσαρμοσμένο URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Εικονίδιο:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Αυτόματη απόκρυψη κεφαλίδας (εμφάνιση με την κίνηση του ποντικιού)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Κρύψε"
+msgid "Hide Keep Open button"
+msgstr "Απόκρυψη κουμπιού Διατήρησης Ανοιχτού"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Απόκρυψη κουμπιού προσαρμοσμένου URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Απόκρυψη κουμπιού Αυτόματης Απόκρυψης"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Απόκρυψη κουμπιού Κλεισίματος"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Απόκρυψη κουμπιού Αρχικής σελίδας"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Απόκρυψη κουμπιού λήψης"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Απόκρυψη κουμπιού ανανέωσης"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Μπορείτε ακόμα να χρησιμοποιήσετε το"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Μπορείτε ακόμα να χρησιμοποιήσετε τις ενέργειες Επιστροφή σε... και Διατήρηση ανοιχτού κάνοντας "
+"δεξί κλικ στο εικονίδιο του widget."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -234,8 +260,8 @@ msgid "If notifications are not working create the file:"
 msgstr "Εάν οι ειδοποιήσεις δεν λειτουργούν, δημιουργήστε το αρχείο:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "Δεν υπάρχει περιεχόμενο προς μετάφραση."
+msgid "containing the following text:"
+msgstr "περιέχοντας το ακόλουθο κείμενο:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

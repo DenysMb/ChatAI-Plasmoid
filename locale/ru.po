@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Закройте веб-просмотр и освободите память"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Пользовательский URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Иконка:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Автоскрытие заголовка (показать при наведении мыши)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Скрыть"
+msgid "Hide Keep Open button"
+msgstr "Скрыть кнопку \"Держать открытым\""
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Скрыть кнопку пользовательского URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Скрыть кнопку Авто-скрытия"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Скрыть кнопку Закрыть"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Скрыть кнопку \"Домой\""
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Скрыть кнопку загрузки"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Скрыть кнопку обновления"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Вы все еще можете использовать"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Вы все еще можете использовать действия Вернуться к... и Держать открытым, щелкнув правой кнопкой "
+"мыши по значку виджета."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -234,8 +260,8 @@ msgid "If notifications are not working create the file:"
 msgstr "Если уведомления не работают, создайте файл:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "с учетом следующего содержания:"
+msgid "containing the following text:"
+msgstr "содержащий следующий текст:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

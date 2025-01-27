@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "关闭网页视图并释放内存"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "自定义网址..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "图标："
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "自动隐藏标题（鼠标悬停时显示）"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "隐藏"
+msgid "Hide Keep Open button"
+msgstr "隐藏保持打开按钮"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "隐藏自定义网址按钮"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "隐藏自动隐藏按钮"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "隐藏关闭按钮"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "隐藏主页按钮"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "隐藏下载按钮"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,8 @@ msgid "Hide refresh button"
 msgstr "隐藏刷新按钮"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "您仍然可以使用"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr "您仍然可以通过右键单击小部件图标来使用“返回到...”和“保持打开”操作。"
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -231,8 +255,8 @@ msgid "If notifications are not working create the file:"
 msgstr "如果通知无法正常工作，请创建文件："
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "请提供要翻译的内容。"
+msgid "containing the following text:"
+msgstr "包含以下文本："
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

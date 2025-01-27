@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Zárja be a webnézetet és szabadítson fel memóriát."
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Egyedi URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ikon:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automatikus elrejtés fejléc (megmutatás egérmutatóra)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Elrejtés"
+msgid "Hide Keep Open button"
+msgstr "Rejtse el a Megnyitva tartás gombot"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Egyedi URL gomb elrejtése"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Automatikus elrejtés gomb elrejtése"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Bezárás gomb elrejtése"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Otthon gomb elrejtése"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Letöltés gomb elrejtése"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Frissítés gomb elrejtése"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Még mindig használhatod a"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Még mindig használhatja a Vissza a... és a Nyitva tartás műveleteket a widget ikonra jobb gombbal "
+"kattintva."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -234,8 +260,8 @@ msgid "If notifications are not working create the file:"
 msgstr "Ha az értesítések nem működnek, hozd létre a fájlt:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "a következő tartalommal:"
+msgid "containing the following text:"
+msgstr "tartalmazza a következő szöveget:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

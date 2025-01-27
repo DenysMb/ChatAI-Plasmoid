@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Zamknij widok sieciowy i zwolnij pamięć"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Niestandardowy URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ikona:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automatyczne ukrywanie nagłówka (pokazuj przy najechaniu myszką)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Ukryj"
+msgid "Hide Keep Open button"
+msgstr "Ukryj przycisk Zachowaj otwarte"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Ukryj przycisk niestandardowego URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Ukryj przycisk automatycznego ukrywania"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Ukryj przycisk Zamknij"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Ukryj przycisk Strona główna"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Ukryj przycisk pobierania"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Ukryj przycisk odświeżania"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Możesz nadal używać"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Możesz nadal używać akcji Wróć do... i Zachowaj otwarte, klikając prawym przyciskiem myszy ikonę "
+"widżetu."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -232,6 +258,10 @@ msgstr "Zezwól na powiadomienia"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "Jeśli powiadomienia nie działają, utwórz plik:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "zawierający następujący tekst:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

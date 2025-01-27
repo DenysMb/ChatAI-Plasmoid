@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Lukk nettvisningen og frigjør minne"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Egendefinert URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ikon:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automatisk skjul header (vis ved musepeker)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Skjul"
+msgid "Hide Keep Open button"
+msgstr "Skjul Hold Åpen-knappen"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Skjul tilpasset URL-knapp"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Skjul Auto-Skjul-knappen"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Skjul Lukk-knappen"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Skjul Hjem-knappen"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Skjul nedlastingsknappen"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,8 @@ msgid "Hide refresh button"
 msgstr "Skjul oppdateringsknappen"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Du kan fortsatt bruke den"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr "Du kan fortsatt bruke Gå tilbake til... og Hold åpen handlinger ved å høyreklikke på widgetikonet."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -234,8 +258,8 @@ msgid "If notifications are not working create the file:"
 msgstr "Hvis varsler ikke fungerer, opprett filen:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "med følgende innhold:"
+msgid "containing the following text:"
+msgstr "inneholder følgende tekst:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

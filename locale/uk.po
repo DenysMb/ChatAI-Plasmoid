@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Закрийте веб-переглядач і звільніть пам'ять"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Користувацька URL-адреса..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Іконка:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Авто-сховування заголовка (показувати при наведенні миші)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Сховати"
+msgid "Hide Keep Open button"
+msgstr "Сховати кнопку \"Залишити відкритою\""
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Сховати кнопку користувацького URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Сховати кнопку автоматичного приховування"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Сховати кнопку Закрити"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Сховати кнопку Головна"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Сховати кнопку завантаження"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Сховати кнопку оновлення"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Ви все ще можете використовувати"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Ви все ще можете використовувати дії Повернутися до... та Залишити відкритим, клацнувши правою "
+"кнопкою миші на значку віджета."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -232,6 +258,10 @@ msgstr "Дозволити сповіщення"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "Якщо сповіщення не працюють, створіть файл:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "містить наступний текст:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

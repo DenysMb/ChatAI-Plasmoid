@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "סגור את תצוגת האינטרנט ושחרר זיכרון"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "כתובת URL מותאמת אישית..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "אייקון:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "הסתרת כותרת אוטומטית (הצג בעת ריחוף עם העכבר)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "הסתר"
+msgid "Hide Keep Open button"
+msgstr "הסתר כפתור שמירה פתוח"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "הסתר כפתור כתובת URL מותאמת אישית"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "הסתר כפתור הסתרה אוטומטית"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "הסתר כפתור סגירה"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "הסתר כפתור בית"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "הסתר כפתור הורדה"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,8 @@ msgid "Hide refresh button"
 msgstr "הסתר כפתור רענון"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "אתה עדיין יכול להשתמש ב"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr "אתה עדיין יכול להשתמש בפעולות חזור ל... ושמור פתוח על ידי לחיצה ימנית על סמל הווידג'ט."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -233,8 +257,8 @@ msgid "If notifications are not working create the file:"
 msgstr "אם ההתראות אינן פועלות, צור את הקובץ:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "עם התוכן הבא:"
+msgid "containing the following text:"
+msgstr "מכיל את הטקסט הבא:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

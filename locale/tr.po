@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Web görünümünü kapatın ve belleği serbest bırakın."
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Özel URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Simge:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Otomatik gizli başlık (fareyle üzerine gelindiğinde göster)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Gizle"
+msgid "Hide Keep Open button"
+msgstr "Açık Tut butonunu Gizle"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Özel URL düğmesini gizle"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Otomatik Gizle düğmesini gizle"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Kapat düğmesini gizle"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Ana Sayfa düğmesini gizle"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "İndir butonunu gizle"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,8 @@ msgid "Hide refresh button"
 msgstr "Yenile butonunu gizle"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Hala kullanabilirsiniz."
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr "Widget simgesine sağ tıklayarak Geri dön... ve Açık tut eylemlerini hala kullanabilirsiniz."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -232,6 +256,10 @@ msgstr "Bildirimlere izin ver"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "Bildirimler çalışmıyorsa dosyayı oluşturun:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "içeren metin:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

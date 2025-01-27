@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Închideți webview-ul și eliberați memoria."
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "URL personalizat..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Pictogramă:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Ascunde automat antetul (afișează la trecerea mouse-ului)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Ascunde"
+msgid "Hide Keep Open button"
+msgstr "Ascunde butonul Păstrează deschis"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Ascunde butonul URL personalizat"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Ascunde butonul Auto-Ascundere"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Ascunde butonul Închidere"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Ascunde butonul Acasă"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Ascunde butonul de descărcare"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Ascunde butonul de reîmprospătare"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Încă poți folosi"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Puteți utiliza în continuare acțiunile Mergi înapoi la... și Păstrează deschis făcând clic dreapta "
+"pe pictograma widget-ului."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -234,8 +260,8 @@ msgid "If notifications are not working create the file:"
 msgstr "Dacă notificările nu funcționează, creați fișierul:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "Cu următorul conținut:"
+msgid "containing the following text:"
+msgstr "conținând următorul text:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Sulge veebivaade ja vabasta mälu"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Kohandatud URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ikon:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automaatne peitmine päisest (kuvatakse hiire üle viimisega)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Peida"
+msgid "Hide Keep Open button"
+msgstr "Peida Hoia nuppu"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Peida kohandatud URL nupp"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Peida Auto-Hide nupp"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Peida Sulge nupp"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Peida Kodu nupp"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Peida allalaadimise nupp"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Peida värskendamise nupp"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Saate endiselt kasutada"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Saate endiselt kasutada Tegele tagasi... ja Hoia avatud toiminguid, kui paremklõpsate vidina "
+"ikoonil."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -232,6 +258,10 @@ msgstr "Luba teavitusi"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "Kui teavitused ei tööta, looge fail:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "sisaldab järgmist teksti:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

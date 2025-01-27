@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "웹뷰를 닫고 메모리를 해제합니다."
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "사용자 정의 URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "아이콘:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "자동 숨김 헤더 (마우스 오버 시 표시)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "숨기기"
+msgid "Hide Keep Open button"
+msgstr "열기 유지 버튼 숨기기"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "사용자 정의 URL 버튼 숨기기"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "자동 숨기기 버튼 숨기기"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "닫기 버튼 숨기기"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "홈 버튼 숨기기"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "다운로드 버튼 숨기기"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,8 @@ msgid "Hide refresh button"
 msgstr "새로 고침 버튼 숨기기"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "여전히 사용할 수 있습니다."
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr "위젯 아이콘을 마우스 오른쪽 버튼으로 클릭하여 돌아가기... 및 계속 열기 작업을 여전히 사용할 수 있습니다."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -233,8 +257,8 @@ msgid "If notifications are not working create the file:"
 msgstr "알림이 작동하지 않으면 파일을 생성하십시오:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "다음 내용과 함께:"
+msgid "containing the following text:"
+msgstr "다음 텍스트를 포함하고 있습니다:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

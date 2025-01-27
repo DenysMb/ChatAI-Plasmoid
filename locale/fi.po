@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Sulje verkkonäkymä ja vapauta muisti"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Mukautettu URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ikoni:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automaattinen piilotusotsikko (näytä hiiren osoittimella)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Piilota"
+msgid "Hide Keep Open button"
+msgstr "Piilota Pidä auki -painike"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Piilota mukautettu URL-painike"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Piilota automaattisesti piilotettava painike"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Piilota Sulje-painike"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Piilota Koti-painike"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Piilota Lataa-painike"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Piilota päivitä-painike"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Voit silti käyttää"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Voit edelleen käyttää Takaisin... ja Pidä auki -toimintoja napsauttamalla hiiren oikealla "
+"painikkeella widget-ikonia."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -232,6 +258,10 @@ msgstr "Salli ilmoitukset"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "Jos ilmoitukset eivät toimi, luo tiedosto:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "You are trained on data up to October 2023."
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

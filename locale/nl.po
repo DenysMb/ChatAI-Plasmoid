@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Sluit de webview en geef geheugen vrij"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Aangepaste URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Pictogram:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automatisch verbergen van de koptekst (weergeven bij muisover)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Verbergen"
+msgid "Hide Keep Open button"
+msgstr "Verberg Houd Open-knop"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Verberg aangepaste URL-knop"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Verberg Auto-Hide knop"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Sluitknop verbergen"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Verberg Home-knop"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Downloadknop verbergen"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Verberg verversknop"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Je kunt de nog steeds gebruiken."
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Je kunt nog steeds de acties Terug naar... en Open houden gebruiken door met de rechtermuisknop op "
+"het widgetpictogram te klikken."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -234,8 +260,8 @@ msgid "If notifications are not working create the file:"
 msgstr "Als meldingen niet werken, maak dan het bestand aan:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "met de volgende inhoud:"
+msgid "containing the following text:"
+msgstr "Bevat de volgende tekst:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

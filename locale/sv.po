@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Stäng webbläsaren och frigör minnet"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Anpassad URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Ikon:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Automatiskt dölja rubrik (visa vid musöver)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Dölj"
+msgid "Hide Keep Open button"
+msgstr "Dölj Håll Öppen-knappen"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Dölj anpassad URL-knapp"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Dölj Auto-Dölj-knappen"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Dölj Stäng-knappen"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Dölj Hem-knappen"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Dölj nedladdningsknappen"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Dölj uppdatera-knappen"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Du kan fortfarande använda"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Du kan fortfarande använda åtgärderna Gå tillbaka till... och Håll öppen genom att högerklicka på "
+"widgetikonen."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -232,6 +258,10 @@ msgstr "Tillåt aviseringar"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "Om aviseringar inte fungerar, skapa filen:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "Innehåller följande text:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"

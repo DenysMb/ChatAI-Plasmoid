@@ -129,6 +129,10 @@ msgid "Close the webview and release memory"
 msgstr "Loka vefsjá og losa minni"
 
 #: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Sérfð URL..."
+
+#: NEEDS WORK
 msgid "Icon:"
 msgstr "Tákn:"
 
@@ -173,8 +177,28 @@ msgid "Auto-hide header (show on mouse hover)"
 msgstr "Sjálfvirk falið fyrirsagnir (sýna við músarvönd)"
 
 #: NEEDS WORK
-msgid "Hide "
-msgstr "Felaðu"
+msgid "Hide Keep Open button"
+msgstr "Felaðu \"Halda opið\" hnappinn"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Fela sérsniðin vefslóðarhnappinn"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Fela Auto-Hide."
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Fela Loka hn."
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Fela Heimahnappinn"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Fela niðurhal hnappinn"
 
 #: NEEDS WORK
 msgid "Hide navigation buttons"
@@ -185,8 +209,10 @@ msgid "Hide refresh button"
 msgstr "Fela endurnámsknappinn"
 
 #: NEEDS WORK
-msgid "You can still use the "
-msgstr "Þú getur enn notað"
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Þú getur enn notað „Farðu aftur í...“ og „Haltu opnu“ aðgerðirnar með því að hægri-smella á "
+"vöruvísirinn."
 
 #: NEEDS WORK
 msgid "Predefined Sites"
@@ -232,6 +258,10 @@ msgstr "Leyfðu tilkynningar"
 #: NEEDS WORK
 msgid "If notifications are not working create the file:"
 msgstr "Ef tilkynningar virka ekki, búa til skrána:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "Innihalda eftirfarandi texta:"
 
 #: NEEDS WORK
 msgid "Allow geolocation access"
