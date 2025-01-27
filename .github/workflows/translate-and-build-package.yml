@@ -60,6 +60,9 @@ jobs:
           gitfolder=$(echo ${{ github.repository }} | rev | cut -d "/" -f1 | rev)
           # export OriginalLang=en-US
           bash gettext_po_generator_github.sh $gitfolder
+          # copy folder for plasmoid
+          rm -Rf /contents/locale
+          cp -R $gitfolder/usr/share/locale /contents/locale
 
       - name: Update github
         run: |
