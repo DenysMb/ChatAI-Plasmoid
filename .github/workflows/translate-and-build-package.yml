@@ -61,8 +61,8 @@ jobs:
           # export OriginalLang=en-US
           bash gettext_po_generator_github.sh $gitfolder
           # copy folder for plasmoid
-          rm -Rf /contents/locale
-          cp -R $gitfolder/usr/share/locale /contents/locale
+          rm -Rf $gitfolder/contents/locale
+          cp -R $gitfolder/usr/share/locale $gitfolder/contents/locale
 
       - name: Update github
         run: |
