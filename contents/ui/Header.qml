@@ -231,7 +231,7 @@ RowLayout {
                 .split(',')
                 .filter(site => site?.includes('|'))
                 .map(site => site.split('|')[0]))
-            .concat(["Custom URL..."]);
+            .concat([i18n("Custom URL...")]);
 
         // Update ComboBox model and select current item
         urlComboBox.model = chatModel;

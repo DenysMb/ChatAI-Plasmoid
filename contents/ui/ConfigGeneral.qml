@@ -108,7 +108,7 @@ KCM.SimpleKCM {
                 // Predefined Sites Section
                 // List of built-in chat services that can be enabled/disabled
                 QQC2.Label {
-                    text: i18nc("@title:group", "Predefined Sites")
+                    text: i18n("Predefined Sites")
                     font.bold: true
                     Layout.fillWidth: true
                 }
@@ -175,7 +175,7 @@ KCM.SimpleKCM {
                         Kirigami.InlineMessage {
                             Layout.fillWidth: true
                             type: Kirigami.MessageType.Information
-                            text: i18nc("@info:tooltip", "Claude.ai only allows account creation or Google login in well-known browsers. To use it in this Plasmoid, you need to use login credentials previously created in a traditional browser.")
+                            text: i18n("Claude.ai only allows account creation or Google login in well-known browsers. To use it in this Plasmoid, you need to use login credentials previously created in a traditional browser.")
                             visible: modelData.id === "showClaude" && plasmoid.configuration.showClaude
                         }
                     }
@@ -188,7 +188,7 @@ KCM.SimpleKCM {
 
                 // Allows users to add their own chat services
                 QQC2.Label {
-                    text: i18nc("@title:group", "Custom Sites")
+                    text: i18n("Custom Sites")
                     font.bold: true
                     Layout.fillWidth: true
                 }
@@ -206,7 +206,7 @@ KCM.SimpleKCM {
                         QQC2.TextField {
                             id: customSiteNameField
 
-                            placeholderText: i18nc("@info:placeholder", "Site Name")
+                            placeholderText: i18n("Site Name")
                             Layout.fillWidth: false
                             onAccepted: configRoot.addCustomSite()
                         }
@@ -214,7 +214,7 @@ KCM.SimpleKCM {
                         QQC2.TextField {
                             id: customSiteUrlField
 
-                            placeholderText: i18nc("@info:placeholder", "Site URL")
+                            placeholderText: i18n("Site URL")
                             Layout.fillWidth: true
                             onAccepted: configRoot.addCustomSite()
                         }
@@ -281,7 +281,7 @@ KCM.SimpleKCM {
                         Kirigami.PlaceholderMessage {
                             width: parent.width
                             visible: customSitesModel.count === 0
-                            text: i18nc("@info:placeholder", "No custom sites added yet")
+                            text: i18n("No custom sites added yet")
                         }
 
                     }
@@ -295,7 +295,7 @@ KCM.SimpleKCM {
 
                 // Permissions Section
                 QQC2.Label {
-                    text: i18nc("@title:group", "Permissions")
+                    text: i18n("Permissions")
                     font.bold: true
                     Layout.fillWidth: true
                 }
@@ -304,7 +304,7 @@ KCM.SimpleKCM {
                 QQC2.CheckBox {
                     id: loadOnStartup
 
-                    text: i18nc("@option:check", "Load website on Plasma startup")
+                    text: i18n("Load website on Plasma startup")
                     checked: plasmoid.configuration.loadOnStartup
                     onCheckedChanged: plasmoid.configuration.loadOnStartup = checked
                     Layout.fillWidth: true
@@ -313,7 +313,7 @@ KCM.SimpleKCM {
                 // Media permissions options
                 QQC2.CheckBox {
                     id: notificationsEnabled
-                    text: i18nc("@option:check", "Allow notifications")
+                    text: i18n("Allow notifications")
                     checked: plasmoid.configuration.notificationsEnabled
                     onCheckedChanged: plasmoid.configuration.notificationsEnabled = checked
                     Layout.fillWidth: true
@@ -322,8 +322,8 @@ KCM.SimpleKCM {
                 Kirigami.InlineMessage {
                     Layout.fillWidth: true
                     type: Kirigami.MessageType.Information
-                    text: i18nc("@info:tooltip", "If notifications are not working create the file:") + `
-.local/share/knotifications6/chatai_plasmoid.notifyrc ` + i18nc("@info:tooltip", "with the following content:") + `
+                    text: i18n("If notifications are not working create the file:") + `
+~/.local/share/knotifications6/chatai_plasmoid.notifyrc ` + i18n("containing the following text:") + `
 
 [Global]
 IconName=applications-internet
@@ -337,7 +337,7 @@ Action=Popup`
 
                 QQC2.CheckBox {
                     id: geolocationEnabled
-                    text: i18nc("@option:check", "Allow geolocation access")
+                    text: i18n("Allow geolocation access")
                     checked: plasmoid.configuration.geolocationEnabled
                     onCheckedChanged: plasmoid.configuration.geolocationEnabled = checked
                     Layout.fillWidth: true
@@ -346,7 +346,7 @@ Action=Popup`
                 QQC2.CheckBox {
                     id: microphoneEnabled
 
-                    text: i18nc("@option:check", "Allow using microphone")
+                    text: i18n("Allow using microphone")
                     checked: plasmoid.configuration.microphoneEnabled
                     onCheckedChanged: plasmoid.configuration.microphoneEnabled = checked
                     Layout.fillWidth: true
@@ -355,7 +355,7 @@ Action=Popup`
                 QQC2.CheckBox {
                     id: webcamEnabled
 
-                    text: i18nc("@option:check", "Allow using webcam")
+                    text: i18n("Allow using webcam")
                     checked: plasmoid.configuration.webcamEnabled
                     onCheckedChanged: plasmoid.configuration.webcamEnabled = checked
                     Layout.fillWidth: true
@@ -364,7 +364,7 @@ Action=Popup`
                 QQC2.CheckBox {
                     id: screenShareEnabled
 
-                    text: i18nc("@option:check", "Allow screen sharing")
+                    text: i18n("Allow screen sharing")
                     checked: plasmoid.configuration.screenShareEnabled
                     onCheckedChanged: plasmoid.configuration.screenShareEnabled = checked
                     Layout.fillWidth: true
@@ -377,14 +377,14 @@ Action=Popup`
 
                 // Web Features Section
                 QQC2.Label {
-                    text: i18nc("@title:group", "Web Features")
+                    text: i18n("Web Features")
                     font.bold: true
                     Layout.fillWidth: true
                 }
 
                 QQC2.CheckBox {
                     id: spatialNavigationEnabled
-                    text: i18nc("@option:check", "Enable spatial navigation")
+                    text: i18n("Enable spatial navigation")
                     checked: plasmoid.configuration.spatialNavigationEnabled
                     onCheckedChanged: plasmoid.configuration.spatialNavigationEnabled = checked
                     Layout.fillWidth: true
@@ -393,13 +393,13 @@ Action=Popup`
                 Kirigami.InlineMessage {
                     Layout.fillWidth: true
                     type: Kirigami.MessageType.Information
-                    text: i18nc("@info:tooltip", "Allows navigation between focusable elements using arrow keys")
+                    text: i18n("Allows navigation between focusable elements using arrow keys")
                     visible: spatialNavigationEnabled.checked
                 }
 
                 QQC2.CheckBox {
                     id: javascriptCanPaste
-                    text: i18nc("@option:check", "Allow JavaScript to paste from clipboard")
+                    text: i18n("Allow JavaScript to paste from clipboard")
                     checked: plasmoid.configuration.javascriptCanPaste
                     onCheckedChanged: plasmoid.configuration.javascriptCanPaste = checked
                     Layout.fillWidth: true
@@ -407,7 +407,7 @@ Action=Popup`
 
                 QQC2.CheckBox {
                     id: javascriptCanOpenWindows
-                    text: i18nc("@option:check", "Allow JavaScript to open new windows")
+                    text: i18n("Allow JavaScript to open new windows")
                     checked: plasmoid.configuration.javascriptCanOpenWindows
                     onCheckedChanged: plasmoid.configuration.javascriptCanOpenWindows = checked
                     Layout.fillWidth: true
@@ -415,7 +415,7 @@ Action=Popup`
 
                 QQC2.CheckBox {
                     id: javascriptCanAccessClipboard
-                    text: i18nc("@option:check", "Allow JavaScript to access clipboard")
+                    text: i18n("Allow JavaScript to access clipboard")
                     checked: plasmoid.configuration.javascriptCanAccessClipboard
                     onCheckedChanged: plasmoid.configuration.javascriptCanAccessClipboard = checked
                     Layout.fillWidth: true
@@ -423,7 +423,7 @@ Action=Popup`
 
                 QQC2.CheckBox {
                     id: allowUnknownUrlSchemes
-                    text: i18nc("@option:check", "Allow unknown URL schemes")
+                    text: i18n("Allow unknown URL schemes")
                     checked: plasmoid.configuration.allowUnknownUrlSchemes
                     onCheckedChanged: plasmoid.configuration.allowUnknownUrlSchemes = checked
                     Layout.fillWidth: true
@@ -431,7 +431,7 @@ Action=Popup`
 
                 QQC2.CheckBox {
                     id: playbackRequiresUserGesture
-                    text: i18nc("@option:check", "Require user gesture for media playback")
+                    text: i18n("Require user gesture for media playback")
                     checked: plasmoid.configuration.playbackRequiresUserGesture
                     onCheckedChanged: plasmoid.configuration.playbackRequiresUserGesture = checked
                     Layout.fillWidth: true
@@ -439,7 +439,7 @@ Action=Popup`
 
                 QQC2.CheckBox {
                     id: focusOnNavigationEnabled
-                    text: i18nc("@option:check", "Enable focus on navigation")
+                    text: i18n("Enable focus on navigation")
                     checked: plasmoid.configuration.focusOnNavigationEnabled
                     onCheckedChanged: plasmoid.configuration.focusOnNavigationEnabled = checked
                     Layout.fillWidth: true
@@ -447,7 +447,7 @@ Action=Popup`
 
                 // Notifications Section
                 QQC2.Label {
-                    text: i18nc("@title:group", "Notification Settings")
+                    text: i18n("Notification Settings")
                     font.bold: true
                     Layout.fillWidth: true
                 }
@@ -455,7 +455,7 @@ Action=Popup`
                 // Downloads Section
                 // Configuration for download location and behavior
                 QQC2.Label {
-                    text: i18nc("@title:group", "Download Folder")
+                    text: i18n("Download Folder")
                     font.bold: true
                     Layout.fillWidth: true
                 }
@@ -502,7 +502,7 @@ Action=Popup`
 
                 // Cache Management Section
                 QQC2.Label {
-                    text: i18nc("@title:group", "Cache Management")
+                    text: i18n("Cache Management")
                     font.bold: true
                     Layout.fillWidth: true
                 }

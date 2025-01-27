@@ -234,10 +234,6 @@ msgid "If notifications are not working create the file:"
 msgstr "Bildirimler çalışmıyorsa dosyayı oluşturun:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "Ekim 2023'e kadar verilerle eğitildiniz."
-
-#: NEEDS WORK
 msgid "Allow geolocation access"
 msgstr "Coğrafi konum erişimine izin ver"
 

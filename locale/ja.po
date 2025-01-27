@@ -233,10 +233,6 @@ msgid "If notifications are not working create the file:"
 msgstr "通知が機能していない場合は、ファイルを作成してください："
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "あなたは2023年10月までのデータでトレーニングされています。"
-
-#: NEEDS WORK
 msgid "Allow geolocation access"
 msgstr "ジオロケーションアクセスを許可する"
 

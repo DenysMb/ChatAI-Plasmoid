@@ -121,48 +121,48 @@ Item {
         visualParent: webview
 
         PlasmaExtras.MenuItem {
-            text: i18nc("@action:inmenu", "Back")
+            text: i18n("Back")
             icon: "go-previous"
             enabled: webview.canGoBack
             onClicked: webview.goBack()
         }
 
         PlasmaExtras.MenuItem {
-            text: i18nc("@action:inmenu", "Forward")
+            text: i18n("Forward")
             icon: "go-next"
             enabled: webview.canGoForward
             onClicked: webview.goForward()
         }
 
         PlasmaExtras.MenuItem {
-            text: i18nc("@action:inmenu", "Reload")
+            text: i18n("Reload")
             icon: "view-refresh"
             onClicked: reloadPage()
         }
 
         PlasmaExtras.MenuItem {
-            text: i18nc("@action:inmenu", "Save as PDF")
+            text: i18n("Save as PDF")
             icon: "document-save-as"
             visible: !linkContextMenu.link
             onClicked: printPage()
         }
 
         PlasmaExtras.MenuItem {
-            text: i18nc("@action:inmenu", "Save as MHTML")
+            text: i18n("Save as MHTML")
             icon: "document-save"
             visible: !linkContextMenu.link
             onClicked: saveMHTML()
         }
 
         PlasmaExtras.MenuItem {
-            text: i18nc("@action:inmenu", "Open Link in Browser")
+            text: i18n("Open Link in Browser")
             icon: "internet-web-browser"
             visible: linkContextMenu.link !== ""
             onClicked: Qt.openUrlExternally(linkContextMenu.link)
         }
 
         PlasmaExtras.MenuItem {
-            text: i18nc("@action:inmenu", "Copy Link Address")
+            text: i18n("Copy Link Address")
             icon: "edit-copy"
             visible: linkContextMenu.link !== ""
             onClicked: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)

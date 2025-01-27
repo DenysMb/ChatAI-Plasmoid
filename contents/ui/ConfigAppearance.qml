@@ -32,8 +32,8 @@ KCM.SimpleKCM {
         QQC2.RadioButton {
             id: useFavicon
 
-            Kirigami.FormData.label: i18nc("@title:group", "Icon:")
-            text: i18nc("@option:radio", "Use website favicon")
+            Kirigami.FormData.label: i18n("Icon:")
+            text: i18n("Use website favicon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
@@ -41,42 +41,42 @@ KCM.SimpleKCM {
         QQC2.RadioButton {
             id: useDefaultIcon
 
-            text: i18nc("@option:radio", "Default adaptive icon")
+            text: i18n("Default adaptive icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
         QQC2.RadioButton {
             id: useDefaultDarkIcon
 
-            text: i18nc("@option:radio", "Default dark icon")
+            text: i18n("Default dark icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
         QQC2.RadioButton {
             id: useDefaultLightIcon
 
-            text: i18nc("@option:radio", "Default light icon")
+            text: i18n("Default light icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
         QQC2.RadioButton {
             id: useOutlinedChatIcon
 
-            text: i18nc("@option:radio", "Outlined chat's icon")
+            text: i18n("Outlined chat's icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
         QQC2.RadioButton {
             id: useFilledChatIcon
 
-            text: i18nc("@option:radio", "Filled chat's icon")
+            text: i18n("Filled chat's icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
         QQC2.RadioButton {
             id: useColorfulChatIcon
 
-            text: i18nc("@option:radio", "Colorful chat's icon")
+            text: i18n("Colorful chat's icon")
             QQC2.ButtonGroup.group: iconGroup
         }
 
@@ -88,7 +88,7 @@ KCM.SimpleKCM {
 
         // Header Options section
         QQC2.Label {
-            Kirigami.FormData.label: i18nc("@title:group", "Header Options")
+            Kirigami.FormData.label: i18n("Header Options")
             font.bold: true
             Layout.fillWidth: true
         }
@@ -97,7 +97,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideHeader
 
-            text: i18nc("@option:check", "Hide header")
+            text: i18n("Hide header")
             checked: plasmoid.configuration.hideHeader
             onCheckedChanged: plasmoid.configuration.hideHeader = checked
             Layout.fillWidth: true
@@ -105,7 +105,7 @@ KCM.SimpleKCM {
 
         QQC2.CheckBox {
             id: autoHideHeader
-            text: i18nc("@option:check", "Auto-hide header (show on mouse hover)")
+            text: i18n("Auto-hide header (show on mouse hover)")
             checked: plasmoid.configuration.autoHideHeader
             onCheckedChanged: plasmoid.configuration.autoHideHeader = checked
             enabled: !hideHeader.checked
@@ -116,7 +116,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideKeepOpen
 
-            text: i18nc("@option:check", 'Hide "Keep Open" button')
+            text: i18n("Hide Keep Open button")
             checked: plasmoid.configuration.hideKeepOpen
             onCheckedChanged: plasmoid.configuration.hideKeepOpen = checked
             Layout.fillWidth: true
@@ -125,7 +125,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideCustomURL
 
-            text: i18nc("@option:check", 'Hide "Custom URL" button')
+            text: i18n("Hide Custom URL button")
             checked: plasmoid.configuration.hideCustomURL
             onCheckedChanged: plasmoid.configuration.hideCustomURL = checked
             Layout.fillWidth: true
@@ -134,7 +134,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hidePrintButton
 
-            text: i18nc("@option:check", 'Hide "Auto-Hide" button')
+            text: i18n("Hide Auto-Hide button")
             checked: plasmoid.configuration.hidePrintButton
             onCheckedChanged: plasmoid.configuration.hidePrintButton = checked
             Layout.fillWidth: true
@@ -143,7 +143,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideCloseButton
 
-            text: i18nc("@option:check", 'Hide "Close" button')
+            text: i18n("Hide Close button")
             checked: plasmoid.configuration.hideCloseButton
             onCheckedChanged: plasmoid.configuration.hideCloseButton = checked
             Layout.fillWidth: true
@@ -152,7 +152,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideHomeButton
 
-            text: i18nc("@option:check", 'Hide "Home" button')
+            text: i18n("Hide Home button")
             checked: plasmoid.configuration.hideHomeButton
             onCheckedChanged: plasmoid.configuration.hideHomeButton = checked
             Layout.fillWidth: true
@@ -161,7 +161,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideDownloadButton
 
-            text: i18nc("@option:check", 'Hide "Download" button')
+            text: i18n("Hide Download button")
             checked: plasmoid.configuration.hideDownloadButton
             onCheckedChanged: plasmoid.configuration.hideDownloadButton = checked
             Layout.fillWidth: true
@@ -170,7 +170,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideNavigationButtons
 
-            text: i18nc("@option:check", 'Hide navigation buttons')
+            text: i18n("Hide navigation buttons")
             checked: plasmoid.configuration.hideNavigationButtons
             onCheckedChanged: plasmoid.configuration.hideNavigationButtons = checked
             Layout.fillWidth: true
@@ -179,7 +179,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideRefreshButton
 
-            text: i18nc("@option:check", 'Hide refresh button')
+            text: i18n("Hide refresh button")
             checked: plasmoid.configuration.hideRefreshButton
             onCheckedChanged: plasmoid.configuration.hideRefreshButton = checked
             Layout.fillWidth: true
@@ -188,7 +188,7 @@ KCM.SimpleKCM {
         // Information message about hidden functionality
         Kirigami.InlineMessage {
             Layout.fillWidth: true
-            text: i18nc("@info:tooltip", 'You can still use the "Go back to ..." and "Keep open" actions by right-clicking the widget icon.')
+            text: i18n("You can still use the Go back to... and Keep open actions by right-clicking the widget icon.")
             visible: hideHeader.checked || hideGoToButton.checked || hideKeepOpen.checked
         }
 

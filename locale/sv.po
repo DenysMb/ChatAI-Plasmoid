@@ -234,10 +234,6 @@ msgid "If notifications are not working create the file:"
 msgstr "Om aviseringar inte fungerar, skapa filen:"
 
 #: NEEDS WORK
-msgid "with the following content:"
-msgstr "Du är tränad på data fram till oktober 2023."
-
-#: NEEDS WORK
 msgid "Allow geolocation access"
 msgstr "Tillåt åtkomst till geolokalisering"
 
