@@ -17,7 +17,7 @@
         "Id": "ChatAI-Plasmoid",
         "License": "GPL-2.0+",
         "Name": "ChatAI",
-        "Website": "https://kde.org/plasma-desktop"
+        "Website": "https://github.com/DenysMb/ChatAI-Plasmoid"
     },
     "X-Plasma-API-Minimum-Version": "6.0"
 }

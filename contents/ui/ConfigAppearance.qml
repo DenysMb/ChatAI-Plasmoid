@@ -97,7 +97,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideHeader
 
-            text: i18n("Hide header")
+            text: i18n("Hide Header")
             checked: plasmoid.configuration.hideHeader
             onCheckedChanged: plasmoid.configuration.hideHeader = checked
             Layout.fillWidth: true
@@ -105,7 +105,7 @@ KCM.SimpleKCM {
 
         QQC2.CheckBox {
             id: autoHideHeader
-            text: i18n("Auto-hide header (show on mouse hover)")
+            text: i18n("Auto-hide Header (show on mouse hover)")
             checked: plasmoid.configuration.autoHideHeader
             onCheckedChanged: plasmoid.configuration.autoHideHeader = checked
             enabled: !hideHeader.checked
@@ -170,7 +170,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideNavigationButtons
 
-            text: i18n("Hide navigation buttons")
+            text: i18n("Hide Navigation buttons")
             checked: plasmoid.configuration.hideNavigationButtons
             onCheckedChanged: plasmoid.configuration.hideNavigationButtons = checked
             Layout.fillWidth: true
@@ -179,7 +179,7 @@ KCM.SimpleKCM {
         QQC2.CheckBox {
             id: hideRefreshButton
 
-            text: i18n("Hide refresh button")
+            text: i18n("Hide Refresh button")
             checked: plasmoid.configuration.hideRefreshButton
             onCheckedChanged: plasmoid.configuration.hideRefreshButton = checked
             Layout.fillWidth: true

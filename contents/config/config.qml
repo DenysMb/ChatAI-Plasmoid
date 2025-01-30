@@ -1,5 +1,6 @@
 /*
  *  SPDX-FileCopyrightText: 2020 Sora Steenvoort <sora@dillbox.me>
+ *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
  *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
  *
  *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
