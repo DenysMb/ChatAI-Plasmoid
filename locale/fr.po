@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Ouvrir"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Retour"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Transférer"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Recharger"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Enregistrer sous PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Enregistrer sous MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Ouvrir le lien dans le navigateur"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Copier l'adresse du lien"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Téléchargement en cours"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Le fichier"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Ouvrir le fichier"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Ouvrir le dossier"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Fermer"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Annuler"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Retourner à la page précédente"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Aller à la page suivante"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Retour à la page d'accueil/chat par défaut"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Recharger la page actuelle"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Sélectionnez ou saisissez l'URL du site Web de chat."
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "L'en-tête se masquera automatiquement lorsqu'il n'est pas utilisé."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "L'en-tête restera visible"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Gérer les téléchargements et le dossier de téléchargements"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Ouvrir le dossier de téléchargement"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Choisir le dossier de téléchargement"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Le widget restera ouvert lorsque vous cliquerez à l'extérieur."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Le widget se fermera en cliquant à l'extérieur."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Fermez la vue web et libérez la mémoire."
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "URL personnalisé..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Icône :"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Utiliser le favicon du site web"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Icône adaptative par défaut"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Icône sombre par défaut"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Icône de lumière par défaut"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Icône contourée"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Icône remplie"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Icône colorée"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Options d'en-tête"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Masquer le header"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Masque automatique de l'en-tête (afficher au survol de la souris)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Masquer le bouton Garder ouvert"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Masquer le bouton URL personnalisé"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Masquer le bouton Masquer automatiquement"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Masquer le bouton Fermer"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Masquer le bouton Accueil"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Masquer le bouton de téléchargement"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Masquer les boutons de navigation"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Masquer le bouton de rafraîchissement"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Vous pouvez toujours utiliser les actions Revenir à... et Garder ouvert en cliquant avec le bouton "
+"droit sur l'icône du widget."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Sites prédéfinis"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai n'autorise la création de compte ou la connexion Google que dans des navigateurs bien "
+"connus. Pour l'utiliser dans ce Plasmoid, vous devez utiliser des identifiants de connexion créés "
+"au préalable dans un navigateur traditionnel."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Sites personnalisés"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Nom du site"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "URL du site"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Aucun site personnalisé ajouté pour le moment."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Autorisations"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Charger le site Web au démarrage de Plasma"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Autoriser les notifications"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Si les notifications ne fonctionnent pas, créez le fichier :"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "contenant le texte suivant :"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Autoriser l'accès à la géolocalisation"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Autoriser l'utilisation du microphone"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Autoriser l'utilisation de la webcam"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Autoriser le partage d'écran"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Fonctionnalités Web"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Activer la navigation spatiale"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Permet la navigation entre les éléments focusables à l'aide des touches fléchées."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Autoriser JavaScript à coller depuis le presse-papiers"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Autoriser JavaScript à ouvrir de nouvelles fenêtres"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Autoriser JavaScript à accéder au presse-papiers"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Autoriser les schémas d'URL inconnus"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Exiger un geste de l'utilisateur pour la lecture multimédia"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Activer le focus sur la navigation"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Paramètres de notification"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Dossier de téléchargement"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Gestion du cache"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Ouvrir le dossier de cache"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Ouvrir le dossier de profil"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Emplacement du cache : %1  \n"
+"Emplacement du profil : %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Général"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Apparence"

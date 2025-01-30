@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Otevřít"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Zpět"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Dále"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Načíst znovu"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Uložit jako PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Uložit jako MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Otevřít odkaz v prohlížeči"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Kopírovat adresu odkazu"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Stahování probíhá"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Soubor"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Otevřít soubor"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Otevřít složku"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Zavřít"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Vraťte se na předchozí stránku"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Přejít na další stránku"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Návrat na domovskou stránku/ výchozí chat"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Načíst aktuální stránku"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Vyberte nebo zadejte URL webové stránky chatu"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Hlava se automaticky skryje, když se nepoužívá."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Hlava zůstane viditelná"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Spravovat stahování a složku pro stahování"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Otevřít složku Stahování"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Vyberte složku pro stažení"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget zůstane otevřený při kliknutí mimo něj."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widget se zavře při kliknutí mimo něj."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Zavřete webový pohled a uvolněte paměť."
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Vlastní URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Ikona:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Použijte favicon webové stránky"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Výchozí adaptivní ikona"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Výchozí tmavá ikona"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Výchozí ikona světla"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Ikona s obrysem"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Vyplněná ikona"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Barevná ikona"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Možnosti hlavičky"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Skrýt hlavičku"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Automatické skrytí hlavičky (zobrazit při najetí myší)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Skrýt tlačítko Udržet otevřené"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Skrýt tlačítko vlastního URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Skrýt tlačítko automatického skrytí"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Skrýt tlačítko Zavřít"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Skrýt tlačítko Domů"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Skrýt tlačítko pro stažení"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Skrýt navigační tlačítka"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Skrýt tlačítko pro obnovení"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Stále můžete použít akce Vrátit se na... a Udržet otevřené kliknutím pravým tlačítkem na ikonu "
+"widgetu."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Předdefinované stránky"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai umožňuje vytvoření účtu nebo přihlášení pomocí Google pouze v dobře známých prohlížečích. "
+"Chcete-li jej použít v tomto Plasmoidu, musíte použít přihlašovací údaje, které byly dříve "
+"vytvořeny v tradičním prohlížeči."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Vlastní stránky"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Název webu"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "URL stránky"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Zatím nebyly přidány žádné vlastní stránky."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Oprávnění"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Načíst webovou stránku při spuštění Plasma"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Povolit oznámení"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Pokud oznámení nefungují, vytvořte soubor:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "obsahující následující text:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Povolit přístup k geolokaci"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Povolit použití mikrofonu"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Povolit použití webkamery"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Povolit sdílení obrazovky"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Webové funkce"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Povolit prostorovou navigaci"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Umožňuje navigaci mezi zaostřitelnými prvky pomocí šipek."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Povolit JavaScriptu vkládat z clipboardu"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Povolit JavaScriptu otevírat nová okna"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Povolit JavaScriptu přístup k schránce"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Povolit neznámé URL schémata"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Vyžaduje uživatelské gesto pro přehrávání médií."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Povolit zaměření na navigaci"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Nastavení oznámení"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Složka ke stažení"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Správa mezipaměti"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Otevřít složku mezipaměti"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Otevřít složku profilu"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Umístění cache: %1  \n"
+"Umístění profilu: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Obecné"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Vzhled"

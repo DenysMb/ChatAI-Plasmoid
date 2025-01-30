@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Öffnen"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Zurück"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Weiter"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Neu laden"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Als PDF speichern"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Als MHTML speichern"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Link im Browser öffnen"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Link-Adresse kopieren"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Download wird durchgeführt"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Die Datei"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Datei öffnen"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Ordner öffnen"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Schließen"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Gehe zurück zur vorherigen Seite"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Gehe zur nächsten Seite"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Zurück zur Startseite/Standard-Chat"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Aktuelle Seite neu laden"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Wählen Sie die URL der Chat-Website aus oder geben Sie sie ein."
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Der Header wird automatisch ausgeblendet, wenn er nicht verwendet wird."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Der Header bleibt sichtbar."
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Downloads und Download-Ordner verwalten"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Download-Ordner öffnen"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Wählen Sie den Download-Ordner"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Das Widget bleibt geöffnet, wenn außerhalb geklickt wird."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Das Widget wird geschlossen, wenn außerhalb geklickt wird."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Schließen Sie die Webansicht und geben Sie den Speicher frei."
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Benutzerdefinierte URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Symbol:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Verwenden Sie das Website-Favicon"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Standardadaptive-Icon"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Standard dunkles Symbol"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Standardlichtsymbol"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Umrisssymbol"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Ausgefülltes Symbol"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Farbige Ikone"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Header-Optionen"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Header ausblenden"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Auto-Ausblenden der Kopfzeile (bei Mouseover anzeigen)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Schaltfläche \"Offen halten\" ausblenden"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Benutzerdefinierte URL-Schaltfläche ausblenden"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Auto-Hide-Schaltfläche ausblenden"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Schließen-Schaltfläche ausblenden"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Home-Button ausblenden"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Download-Button ausblenden"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Navigationsschaltflächen ausblenden"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Aktualisierungsbutton ausblenden"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Sie können die Aktionen \"Zurück zu...\" und \"Offen halten\" weiterhin verwenden, indem Sie mit "
+"der rechten Maustaste auf das Widget-Symbol klicken."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Vordefinierte Sites"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai erlaubt die Kontoerstellung oder Google-Anmeldung nur in bekannten Browsern. Um es in "
+"diesem Plasmoid zu verwenden, müssen Sie Anmeldeinformationen verwenden, die zuvor in einem "
+"traditionellen Browser erstellt wurden."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Benutzerdefinierte Seiten"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Seitenname"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Website-URL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Noch keine benutzerdefinierten Seiten hinzugefügt."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Berechtigungen"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Website beim Plasma-Start laden"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Benachrichtigungen zulassen"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Wenn Benachrichtigungen nicht funktionieren, erstellen Sie die Datei:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "enthaltend den folgenden Text:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Geolokalisierung zugreifen erlauben"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Mikrofon verwenden erlauben"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Webcam verwenden erlauben"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Bildschirmfreigabe erlauben"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Webfunktionen"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Aktivieren Sie die räumliche Navigation"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Ermöglicht die Navigation zwischen fokussierbaren Elementen mit den Pfeiltasten."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Erlaube JavaScript, aus der Zwischenablage einzufügen."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Erlaube JavaScript, neue Fenster zu öffnen."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Erlaube JavaScript den Zugriff auf die Zwischenablage."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Unbekannte URL-Schemata zulassen"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Benutzerinteraktion für die Medienwiedergabe erforderlich"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Fokus auf Navigation aktivieren"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Benachrichtigungseinstellungen"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Download-Ordner"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Cache-Verwaltung"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Cache-Ordner öffnen"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Profilordner öffnen"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Cache-Speicherort: %1  \n"
+"Profil-Speicherort: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Allgemein"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Erscheinungsbild"

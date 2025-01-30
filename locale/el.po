@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Πίσω"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Προώθηση"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Ανανέωση"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Αποθήκευση ως PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Αποθήκευση ως MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Άνοιγμα Συνδέσμου στον Περιηγητή"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Αντιγραφή Διεύθυνσης Συνδέσμου"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Η λήψη είναι σε εξέλιξη"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Το αρχείο"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Άνοιγμα αρχείου"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Άνοιγμα φακέλου"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Πήγαινε πίσω στην προηγούμενη σελίδα"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Προχώρα στην επόμενη σελίδα"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Επιστροφή στην αρχική σελίδα/προεπιλεγμένη συνομιλία"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Επαναφόρτωση τρέχουσας σελίδας"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Επιλέξτε ή εισάγετε τη διεύθυνση URL της ιστοσελίδας συνομιλίας."
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Η κεφαλίδα θα κρύβεται αυτόματα όταν δεν χρησιμοποιείται."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Η κεφαλίδα θα παραμείνει ορατή."
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Διαχείριση λήψεων και φακέλου λήψεων"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Άνοιγμα Φακέλου Λήψης"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Επιλέξτε Φάκελο Λήψης"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Το widget θα παραμείνει ανοιχτό όταν κάνετε κλικ έξω."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Το widget θα κλείσει όταν κάνετε κλικ έξω από αυτό."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Κλείστε την προβολή ιστού και απελευθερώστε τη μνήμη"
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Προσαρμοσμένο URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Εικονίδιο:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Χρησιμοποιήστε το favicon της ιστοσελίδας"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Προεπιλεγμένο προσαρμοσμένο εικονίδιο"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Προεπιλεγμένο σκοτεινό εικονίδιο"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Εικονίδιο προεπιλεγμένου φωτός"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Εικονίδιο με περίγραμμα"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Γεμάτο εικονίδιο"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Χρωματιστό εικονίδιο"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Επιλογές Κεφαλίδας"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Απόκρυψη κεφαλίδας"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Αυτόματη απόκρυψη κεφαλίδας (εμφάνιση με την κίνηση του ποντικιού)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Απόκρυψη κουμπιού Διατήρησης Ανοιχτού"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Απόκρυψη κουμπιού προσαρμοσμένου URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Απόκρυψη κουμπιού Αυτόματης Απόκρυψης"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Απόκρυψη κουμπιού Κλεισίματος"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Απόκρυψη κουμπιού Αρχικής σελίδας"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Απόκρυψη κουμπιού λήψης"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Απόκρυψη κουμπιών πλοήγησης"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Απόκρυψη κουμπιού ανανέωσης"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Μπορείτε ακόμα να χρησιμοποιήσετε τις ενέργειες Επιστροφή σε... και Διατήρηση ανοιχτού κάνοντας "
+"δεξί κλικ στο εικονίδιο του widget."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Προκαθορισμένες Ιστοσελίδες"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Το Claude.ai επιτρέπει τη δημιουργία λογαριασμού ή σύνδεση μέσω Google μόνο σε γνωστούς περιηγητές. "
+"Για να το χρησιμοποιήσετε σε αυτό το Plasmoid, πρέπει να χρησιμοποιήσετε τα διαπιστευτήρια σύνδεσης "
+"που έχουν δημιουργηθεί προηγουμένως σε έναν παραδοσιακό περιηγητή."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Προσαρμοσμένες Ιστοσελίδες"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Όνομα Ιστοσελίδας"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Διεύθυνση URL ιστότοπου"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Δεν έχουν προστεθεί προσαρμοσμένες τοποθεσίες ακόμα."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Άδειες"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Φόρτωση ιστοσελίδας κατά την εκκίνηση του Plasma"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Επιτρέψτε ειδοποιήσεις"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Εάν οι ειδοποιήσεις δεν λειτουργούν, δημιουργήστε το αρχείο:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "περιέχοντας το ακόλουθο κείμενο:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Επιτρέψτε την πρόσβαση γεωεντοπισμού"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Επιτρέψτε τη χρήση μικροφώνου"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Επιτρέψτε τη χρήση της κάμερας."
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Επιτρέψτε την κοινή χρήση οθόνης"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Δυνατότητες Ιστού"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Ενεργοποιήστε την χωρική πλοήγηση"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Επιτρέπει την πλοήγηση μεταξύ στοιχείων που μπορούν να εστιάσουν χρησιμοποιώντας τα πλήκτρα βέλους."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Επιτρέψτε στο JavaScript να επικολλήσει από το πρόχειρο."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Επιτρέψτε στο JavaScript να ανοίγει νέα παράθυρα"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Επιτρέψτε στο JavaScript να έχει πρόσβαση στο πρόχειρο."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Επιτρέψτε άγνωστα σχήματα URL"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Απαιτείται χειρονομία χρήστη για την αναπαραγωγή πολυμέσων."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Ενεργοποίηση εστίασης στη ναυσιπλοΐα"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Ρυθμίσεις Ειδοποιήσεων"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Φάκελος Λήψης"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Διαχείριση Cache"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Άνοιγμα φακέλου προσωρινής μνήμης"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Άνοιγμα φακέλου προφίλ"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Τοποθεσία cache: %1  \n"
+"Τοποθεσία προφίλ: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Γενικά"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Εμφάνιση"

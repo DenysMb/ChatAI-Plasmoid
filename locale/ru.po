@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Открыть"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ЧатИИ"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Назад"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Вперёд"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Перезагрузить"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Сохранить как PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Сохранить как MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Открыть ссылку в браузере"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Скопировать адрес ссылки"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Загрузка в процессе"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Файл"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Открыть файл"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Открыть папку"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Закрыть"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Отмена"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Вернуться на предыдущую страницу"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Перейти на следующую страницу"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Вернуться на главную страницу/по умолчанию чат"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Перезагрузить текущую страницу"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Выберите или введите URL-адрес веб-сайта чата"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Заголовок будет автоматически скрыт, когда не используется."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Заголовок останется видимым"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Управление загрузками и папкой загрузок"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Открыть папку загрузок"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Выберите папку для загрузки"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Виджет останется открытым при клике вне его области."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Виджет закроется при клике вне его области."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Закройте веб-просмотр и освободите память"
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Пользовательский URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Иконка:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Использовать фавикон сайта"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Иконка по умолчанию для адаптивного интерфейса"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Иконка по умолчанию темного цвета"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Иконка по умолчанию для света"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Контурный значок"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Заполненный значок"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Цветной значок"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Параметры заголовка"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Скрыть заголовок"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Автоскрытие заголовка (показать при наведении мыши)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Скрыть кнопку \"Держать открытым\""
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Скрыть кнопку пользовательского URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Скрыть кнопку Авто-скрытия"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Скрыть кнопку Закрыть"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Скрыть кнопку \"Домой\""
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Скрыть кнопку загрузки"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Скрыть кнопки навигации"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Скрыть кнопку обновления"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Вы все еще можете использовать действия Вернуться к... и Держать открытым, щелкнув правой кнопкой "
+"мыши по значку виджета."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Предопределённые сайты"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai позволяет создавать учетные записи или входить через Google только в известных браузерах. "
+"Чтобы использовать его в этом Плазмоиде, вам необходимо использовать учетные данные для входа, "
+"ранее созданные в традиционном браузере."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Пользовательские сайты"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Название сайта"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "URL сайта"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Пока нет добавленных пользовательских сайтов."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Разрешения"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Загрузить веб-сайт при запуске Plasma"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Разрешить уведомления"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Если уведомления не работают, создайте файл:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "содержащий следующий текст:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Разрешить доступ к геолокации"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Разрешить использование микрофона"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Разрешить использование веб-камеры"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Разрешить совместное использование экрана"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Веб-функции"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Включить пространственную навигацию"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Позволяет навигацию между элементами с фокусом с помощью стрелок."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Разрешить JavaScript вставлять из буфера обмена"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Разрешить JavaScript открывать новые окна"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Разрешить JavaScript доступ к буферу обмена"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Разрешить неизвестные схемы URL"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Требуется действие пользователя для воспроизведения медиа."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Включить фокус на навигации"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Настройки уведомлений"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Папка загрузок"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Управление кэшем"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Открыть папку кэша"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Открыть папку профиля"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Место хранения кэша: %1  \n"
+"Место хранения профиля: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Общий"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Внешний вид"

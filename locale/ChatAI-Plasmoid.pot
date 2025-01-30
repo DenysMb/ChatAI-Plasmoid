@@ -1,0 +1,262 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid   ""
+msgstr  "Project-Id-Version: ChatAI-Plasmoid\n"
+        "Report-Msgid-Bugs-To: \n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "Language: \n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=CHARSET\n"
+        "Content-Transfer-Encoding: 8bit\n"
+
+msgid   "Open"
+msgstr  ""
+
+msgid   "ChatAI"
+msgstr  ""
+
+msgid   "Back"
+msgstr  ""
+
+msgid   "Forward"
+msgstr  ""
+
+msgid   "Reload"
+msgstr  ""
+
+msgid   "Save as PDF"
+msgstr  ""
+
+msgid   "Save as MHTML"
+msgstr  ""
+
+msgid   "Open Link in Browser"
+msgstr  ""
+
+msgid   "Copy Link Address"
+msgstr  ""
+
+msgid   "Download in progress"
+msgstr  ""
+
+msgid   "The file "
+msgstr  ""
+
+msgid   "Open file"
+msgstr  ""
+
+msgid   "Open folder"
+msgstr  ""
+
+msgid   "Close"
+msgstr  ""
+
+msgid   "Cancel"
+msgstr  ""
+
+msgid   "Go back to previous page"
+msgstr  ""
+
+msgid   "Go forward to next page"
+msgstr  ""
+
+msgid   "Return to homepage/default chat"
+msgstr  ""
+
+msgid   "Reload current page"
+msgstr  ""
+
+msgid   "Select or enter chat website URL"
+msgstr  ""
+
+msgid   "Header will hide automatically when not in use"
+msgstr  ""
+
+msgid   "Header will stay visible"
+msgstr  ""
+
+msgid   "Manage downloads and download folder"
+msgstr  ""
+
+msgid   "Open Download Folder"
+msgstr  ""
+
+msgid   "Choose Download Folder"
+msgstr  ""
+
+msgid   "Widget will stay open when clicking outside"
+msgstr  ""
+
+msgid   "Widget will close when clicking outside"
+msgstr  ""
+
+msgid   "Close the webview and release memory"
+msgstr  ""
+
+msgid   "Custom URL..."
+msgstr  ""
+
+msgid   "Icon:"
+msgstr  ""
+
+msgid   "Use website favicon"
+msgstr  ""
+
+msgid   "Default adaptive icon"
+msgstr  ""
+
+msgid   "Default dark icon"
+msgstr  ""
+
+msgid   "Default light icon"
+msgstr  ""
+
+msgid   "Outlined icon"
+msgstr  ""
+
+msgid   "Filled icon"
+msgstr  ""
+
+msgid   "Colorful icon"
+msgstr  ""
+
+msgid   "Header Options"
+msgstr  ""
+
+msgid   "Hide header"
+msgstr  ""
+
+msgid   "Auto-hide header (show on mouse hover)"
+msgstr  ""
+
+msgid   "Hide Keep Open button"
+msgstr  ""
+
+msgid   "Hide Custom URL button"
+msgstr  ""
+
+msgid   "Hide Auto-Hide button"
+msgstr  ""
+
+msgid   "Hide Close button"
+msgstr  ""
+
+msgid   "Hide Home button"
+msgstr  ""
+
+msgid   "Hide Download button"
+msgstr  ""
+
+msgid   "Hide navigation buttons"
+msgstr  ""
+
+msgid   "Hide refresh button"
+msgstr  ""
+
+msgid   "You can still use the Go back to... and Keep open actions by right-"
+        "clicking the widget icon."
+msgstr  ""
+
+msgid   "Predefined Sites"
+msgstr  ""
+
+msgid   "Claude.ai only allows account creation or Google login in well-known "
+        "browsers. To use it in this Plasmoid, you need to use login "
+        "credentials previously created in a traditional browser."
+msgstr  ""
+
+msgid   "Custom Sites"
+msgstr  ""
+
+msgid   "Site Name"
+msgstr  ""
+
+msgid   "Site URL"
+msgstr  ""
+
+msgid   "No custom sites added yet"
+msgstr  ""
+
+msgid   "Permissions"
+msgstr  ""
+
+msgid   "Load website on Plasma startup"
+msgstr  ""
+
+msgid   "Allow notifications"
+msgstr  ""
+
+msgid   "If notifications are not working create the file:"
+msgstr  ""
+
+msgid   "containing the following text:"
+msgstr  ""
+
+msgid   "Allow geolocation access"
+msgstr  ""
+
+msgid   "Allow using microphone"
+msgstr  ""
+
+msgid   "Allow using webcam"
+msgstr  ""
+
+msgid   "Allow screen sharing"
+msgstr  ""
+
+msgid   "Web Features"
+msgstr  ""
+
+msgid   "Enable spatial navigation"
+msgstr  ""
+
+msgid   "Allows navigation between focusable elements using arrow keys"
+msgstr  ""
+
+msgid   "Allow JavaScript to paste from clipboard"
+msgstr  ""
+
+msgid   "Allow JavaScript to open new windows"
+msgstr  ""
+
+msgid   "Allow JavaScript to access clipboard"
+msgstr  ""
+
+msgid   "Allow unknown URL schemes"
+msgstr  ""
+
+msgid   "Require user gesture for media playback"
+msgstr  ""
+
+msgid   "Enable focus on navigation"
+msgstr  ""
+
+msgid   "Notification Settings"
+msgstr  ""
+
+msgid   "Download Folder"
+msgstr  ""
+
+msgid   "Cache Management"
+msgstr  ""
+
+msgid   "Open Cache Folder"
+msgstr  ""
+
+msgid   "Open Profile Folder"
+msgstr  ""
+
+msgid   "Cache location: %1\n"
+        "Profile location: %2"
+msgstr  ""
+
+msgid   "General"
+msgstr  ""
+
+msgid   "Appearance"
+msgstr  ""

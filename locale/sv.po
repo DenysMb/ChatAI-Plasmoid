@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Öppna"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Tillbaka"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Framåt"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Ladda om"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Spara som PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Spara som MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Öppna länk i webbläsare"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Kopiera länkadress"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Nedladdning pågår"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Filen"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Öppna fil"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Öppna mapp"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Stäng"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Gå tillbaka till föregående sida"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Gå framåt till nästa sida"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Återgå till startsidan/standardchatt"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Ladda om aktuell sida"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Välj eller ange chattwebbplatsens URL"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Rubriken döljs automatiskt när den inte används."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Rubriken kommer att förbli synlig"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Hantera nedladdningar och nedladdningsmapp"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Öppna nedladdningsmappen"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Välj nedladdningsmapp"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget kommer att förbli öppen när du klickar utanför."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widget stängs när du klickar utanför."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Stäng webbläsaren och frigör minnet"
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Anpassad URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Ikon:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Använd webbplatsens favicon"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Standard anpassningsbar ikon"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Standard mörk ikon"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Standard ljusikon"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Utritad ikon"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Fylld ikon"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Färggik ikon"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Rubrikalternativ"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Dölj rubrik"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Automatiskt dölja rubrik (visa vid musöver)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Dölj Håll Öppen-knappen"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Dölj anpassad URL-knapp"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Dölj Auto-Dölj-knappen"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Dölj Stäng-knappen"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Dölj Hem-knappen"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Dölj nedladdningsknappen"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Dölj navigeringsknappar"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Dölj uppdatera-knappen"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Du kan fortfarande använda åtgärderna Gå tillbaka till... och Håll öppen genom att högerklicka på "
+"widgetikonen."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Fördefinierade webbplatser"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai tillåter endast kontoskapande eller Google-inloggning i välkända webbläsare. För att "
+"använda det i denna Plasmoid måste du använda inloggningsuppgifter som tidigare skapats i en "
+"traditionell webbläsare."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Anpassade webbplatser"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Webbplatsnamn"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Webbplatsens URL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Inga anpassade webbplatser har lagts till än."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Behörigheter"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Ladda webbplats vid Plasma-start."
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Tillåt aviseringar"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Om aviseringar inte fungerar, skapa filen:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "Innehåller följande text:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Tillåt åtkomst till geolokalisering"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Tillåt att använda mikrofonen"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Tillåt användning av webbkameran"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Tillåt skärmdelning"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Webfunktioner"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Aktivera rumslig navigering"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Möjliggör navigering mellan fokuserbara element med hjälp av piltangenterna."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Tillåt JavaScript att klistra in från urklipp."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Tillåt JavaScript att öppna nya fönster"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Tillåt JavaScript att få åtkomst till urklipp."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Tillåt okända URL-scheman"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Kräv användargest för medieuppspelning"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Aktivera fokus på navigering"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Notifikationsinställningar"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Nedladdningsmapp"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Cachehantering"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Öppna cache-mapp"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Öppna profilmapp"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Cacheplats: %1  \n"
+"Profilplats: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Allmänt"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Utseende"

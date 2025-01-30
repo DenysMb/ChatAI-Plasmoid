@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Otwórz"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Wstecz"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Dalej"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Przeładuj"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Zapisz jako PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Zapisz jako MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Otwórz link w przeglądarce"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Skopiuj adres linku"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Pobieranie w toku"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Plik"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Otwórz plik"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Otwórz folder"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Zamknij"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Wróć do poprzedniej strony"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Przejdź do następnej strony"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Powrót do strony głównej/domowego czatu"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Przeładuj bieżącą stronę"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Wybierz lub wprowadź adres URL strony czatu"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Nagłówek zostanie automatycznie ukryty, gdy nie będzie używany."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Nagłówek pozostanie widoczny"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Zarządzaj pobraniami i folderem pobrań"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Otwórz folder pobierania"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Wybierz folder pobierania"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget pozostanie otwarty po kliknięciu na zewnątrz."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widget zamknie się po kliknięciu poza nim."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Zamknij widok sieciowy i zwolnij pamięć"
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Niestandardowy URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Ikona:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Użyj faviconu strony internetowej"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Domyślna ikona adaptacyjna"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Domyślny ciemny ikonka"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Domyślny ikona jasności"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Ikona z konturem"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Ikona wypełniona"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Kolorowa ikona"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Opcje nagłówka"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Ukryj nagłówek"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Automatyczne ukrywanie nagłówka (pokazuj przy najechaniu myszką)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Ukryj przycisk Zachowaj otwarte"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Ukryj przycisk niestandardowego URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Ukryj przycisk automatycznego ukrywania"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Ukryj przycisk Zamknij"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Ukryj przycisk Strona główna"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Ukryj przycisk pobierania"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Ukryj przyciski nawigacji"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Ukryj przycisk odświeżania"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Możesz nadal używać akcji Wróć do... i Zachowaj otwarte, klikając prawym przyciskiem myszy ikonę "
+"widżetu."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Zdefiniowane witryny"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai pozwala na tworzenie konta lub logowanie za pomocą Google tylko w znanych przeglądarkach. "
+"Aby używać go w tym Plasmoidzie, musisz użyć danych logowania utworzonych wcześniej w tradycyjnej "
+"przeglądarce."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Strony niestandardowe"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Nazwa witryny"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Adres URL witryny"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Nie dodano jeszcze żadnych niestandardowych witryn."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Uprawnienia"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Załaduj stronę internetową przy uruchamianiu Plasma."
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Zezwól na powiadomienia"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Jeśli powiadomienia nie działają, utwórz plik:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "zawierający następujący tekst:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Zezwól na dostęp do geolokalizacji"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Zezwól na użycie mikrofonu"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Zezwól na użycie kamery internetowej"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Zezwól na udostępnianie ekranu"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Funkcje internetowe"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Włącz nawigację przestrzenną"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Pozwala na nawigację między elementami, które można ustawić w fokusie, za pomocą klawiszy strzałek."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Zezwól JavaScript na wklejanie z schowka"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Zezwól JavaScript na otwieranie nowych okien."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Zezwól JavaScript na dostęp do schowka"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Zezwól na nieznane schematy URL"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Wymagana interakcja użytkownika do odtwarzania mediów"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Włącz fokus na nawigacji"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Ustawienia powiadomień"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Folder pobierania"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Zarządzanie pamięcią podręczną"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Otwórz folder pamięci podręcznej"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Otwórz folder profilu"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Lokalizacja pamięci podręcznej: %1  \n"
+"Lokalizacja profilu: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Ogólne"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Wygląd"

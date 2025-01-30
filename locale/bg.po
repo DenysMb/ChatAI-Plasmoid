@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Отвори"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ЧатAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Назад"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Напред"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Презареди"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Запази като PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Запази като MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Отворете връзката в браузъра"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Копирай адрес на връзката"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Изтеглянето е в ход"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Файлът"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Отвори файл"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Отвори папка"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Затвори"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Отмени"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Върнете се на предишната страница"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Отидете напред на следващата страница"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Върнете се на началната страница/по подразбиране чат"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Презареди текущата страница"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Изберете или въведете URL адрес на чат уебсайт"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Заглавието ще се скрие автоматично, когато не се използва."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Заглавието ще остане видимо"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Управлявайте изтеглянията и папката за изтегляния"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Отвори папката за изтегляния"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Изберете папка за изтегляне"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Уиджетът ще остане отворен при кликване извън него."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Уиджетът ще се затвори при кликване извън него."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Затворете уеб изгледа и освободете паметта"
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Персонализиран URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Икона:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Използвайте иконата на уебсайта"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Икона по подразбиране с адаптивен дизайн"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Икона по подразбиране в тъмен режим"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Икона по подразбиране за светлина"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Икона с контур"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Запълнена икона"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Цветна икона"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Опции на заглавието"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Скрий заглавието"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Автоматично скриване на заглавката (показване при задържане на мишката)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Скрий бутона \"Дръж отворен\""
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Скрий бутона за персонализиран URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Скрий бутона за автоматично скриване"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Скрий бутона Затвори"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Скрий бутона Начало"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Скрий бутона за изтегляне"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Скрийте навигационните бутони"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Скрий бутона за опресняване"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Все още можете да използвате действията Върни се към... и Запази отворено, като щракнете с десния "
+"бутон на мишката върху иконата на виджета."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Предефинирани сайтове"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai позволява създаване на акаунт или вход с Google само в известни браузъри. За да го "
+"използвате в този Plasmoid, трябва да използвате данни за вход, създадени предварително в "
+"традиционен браузър."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Персонализирани сайтове"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Име на сайта"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "URL на сайта"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Все още не са добавени персонализирани сайтове."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Разрешения"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Заредете уебсайт при стартиране на Plasma"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Разреши известията"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Ако известията не работят, създайте файла:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "съдържащ следния текст:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Позволете достъп до геолокация"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Позволете използването на микрофон."
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Позволете използването на уебкамера."
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Разрешете споделяне на екран"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Уеб функции"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Активирайте пространствена навигация"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Позволява навигация между фокусируеми елементи с помощта на стрелковите клавиши"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Позволете на JavaScript да поставя от клипборда."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Позволете на JavaScript да отваря нови прозорци"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Позволете на JavaScript да получава достъп до клипборда."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Позволете неизвестни URL схеми"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Изисква се потребителски жест за възпроизвеждане на медия."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Активирайте фокус върху навигацията"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Настройки за известия"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Папка за изтегляне"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Управление на кеша"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Отворете папката с кеша"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Отвори папката с профила"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Местоположение на кеша: %1  \n"
+"Местоположение на профила: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Общо"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Външен вид"

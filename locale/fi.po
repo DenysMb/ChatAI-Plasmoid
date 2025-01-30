@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Avaa"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Takaisin"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Eteenpäin"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Lataa uudelleen"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Tallenna PDF-muodossa"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Tallenna MHTML-muodossa"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Avaa linkki selaimessa"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Kopioi linkin osoite"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Lataus käynnissä"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Tiedosto"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Avaa tiedosto"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Avaa kansio"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Sulje"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Palaa edelliselle sivulle"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Siirry seuraavalle sivulle"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Palaa etusivulle/oletuschatille"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Lataa nykyinen sivu"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Valitse tai syötä keskustelusivuston URL-osoite"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Otsikko piiloutuu automaattisesti, kun sitä ei käytetä."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Otsikko pysyy näkyvissä"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Hallitse latauksia ja latauskansiota"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Avaa Latauskansio"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Valitse Latauskansio"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget pysyy auki, kun klikkaat ulkopuolelle."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widget sulkeutuu, kun napsautat ulkopuolella."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Sulje verkkonäkymä ja vapauta muisti"
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Mukautettu URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Ikoni:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Käytä verkkosivuston faviconia"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Oletusarvoinen mukautuva kuvake"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Oletusarvoinen tumma kuvake"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Oletusvalon kuvake"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Kuvake, jossa on ääriviivat"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Täytetty kuvake"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Värikäs kuvake"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Otsikkovaihtoehdot"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Piilota otsikko"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Automaattinen piilotusotsikko (näytä hiiren osoittimella)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Piilota Pidä auki -painike"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Piilota mukautettu URL-painike"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Piilota automaattisesti piilotettava painike"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Piilota Sulje-painike"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Piilota Koti-painike"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Piilota Lataa-painike"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Piilota navigointipainikkeet"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Piilota päivitä-painike"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Voit edelleen käyttää Takaisin... ja Pidä auki -toimintoja napsauttamalla hiiren oikealla "
+"painikkeella widget-ikonia."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Esiasetetut sivustot"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai sallii tilin luomisen tai Google-kirjautumisen vain tunnetuissa selaimissa. Käyttääksesi "
+"sitä tässä Plasmoidissa, sinun on käytettävä aiemmin perinteisessä selaimessa luotuja "
+"kirjautumistietoja."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Mukautetut sivustot"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Sivuston nimi"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Sivuston URL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Ei mukautettuja sivustoja ole vielä lisätty."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Oikeudet"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Lataa verkkosivusto Plasma-käynnistyksessä"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Salli ilmoitukset"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Jos ilmoitukset eivät toimi, luo tiedosto:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "sisältäen seuraavan tekstin:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Salli geolokaatio-oikeudet"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Salli mikrofonin käyttö."
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Salli käyttämään verkkokameraa"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Salli näytön jakaminen"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Verkkotoiminnot"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Ota käyttöön avaruusnavigointi"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Sallii navigoinnin keskitettävien elementtien välillä nuolinäppäimillä."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Salli JavaScriptin liittää leikepöydältä."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Salli JavaScriptin avata uusia ikkunoita"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Salli JavaScriptin käyttää leikepöytää."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Salli tuntemattomat URL-skeemat"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Vaaditaan käyttäjän ele media toistoon"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Ota navigoinnissa fokus käyttöön"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Ilmoitusasetukset"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Latauskansio"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Välimuistin hallinta"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Avaa välimuistikansio"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Avaa profiilikansio"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Välimuistin sijainti: %1  \n"
+"Profiilin sijainti: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Yleinen"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Ulkoasu"

@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Open"
+msgstr "Open"
+
+msgid "ChatAI"
+msgstr "ChatAI"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Forward"
+msgstr "Forward"
+
+msgid "Reload"
+msgstr "Reload"
+
+msgid "Save as PDF"
+msgstr "Save as PDF"
+
+msgid "Save as MHTML"
+msgstr "Save as MHTML"
+
+msgid "Open Link in Browser"
+msgstr "Open Link in Browser"
+
+msgid "Copy Link Address"
+msgstr "Copy Link Address"
+
+msgid "Download in progress"
+msgstr "Download in progress"
+
+msgid "The file "
+msgstr "The file "
+
+msgid "Open file"
+msgstr "Open file"
+
+msgid "Open folder"
+msgstr "Open folder"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Go back to previous page"
+msgstr "Go back to previous page"
+
+msgid "Go forward to next page"
+msgstr "Go forward to next page"
+
+msgid "Return to homepage/default chat"
+msgstr "Return to homepage/default chat"
+
+msgid "Reload current page"
+msgstr "Reload current page"
+
+msgid "Select or enter chat website URL"
+msgstr "Select or enter chat website URL"
+
+msgid "Header will hide automatically when not in use"
+msgstr "Header will hide automatically when not in use"
+
+msgid "Header will stay visible"
+msgstr "Header will stay visible"
+
+msgid "Manage downloads and download folder"
+msgstr "Manage downloads and download folder"
+
+msgid "Open Download Folder"
+msgstr "Open Download Folder"
+
+msgid "Choose Download Folder"
+msgstr "Choose Download Folder"
+
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget will stay open when clicking outside"
+
+msgid "Widget will close when clicking outside"
+msgstr "Widget will close when clicking outside"
+
+msgid "Close the webview and release memory"
+msgstr "Close the webview and release memory"
+
+msgid "Custom URL..."
+msgstr "Custom URL..."
+
+msgid "Icon:"
+msgstr "Icon:"
+
+msgid "Use website favicon"
+msgstr "Use website favicon"
+
+msgid "Default adaptive icon"
+msgstr "Default adaptive icon"
+
+msgid "Default dark icon"
+msgstr "Default dark icon"
+
+msgid "Default light icon"
+msgstr "Default light icon"
+
+msgid "Outlined icon"
+msgstr "Outlined icon"
+
+msgid "Filled icon"
+msgstr "Filled icon"
+
+msgid "Colorful icon"
+msgstr "Colorful icon"
+
+msgid "Header Options"
+msgstr "Header Options"
+
+msgid "Hide header"
+msgstr "Hide header"
+
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Auto-hide header (show on mouse hover)"
+
+msgid "Hide Keep Open button"
+msgstr "Hide Keep Open button"
+
+msgid "Hide Custom URL button"
+msgstr "Hide Custom URL button"
+
+msgid "Hide Auto-Hide button"
+msgstr "Hide Auto-Hide button"
+
+msgid "Hide Close button"
+msgstr "Hide Close button"
+
+msgid "Hide Home button"
+msgstr "Hide Home button"
+
+msgid "Hide Download button"
+msgstr "Hide Download button"
+
+msgid "Hide navigation buttons"
+msgstr "Hide navigation buttons"
+
+msgid "Hide refresh button"
+msgstr "Hide refresh button"
+
+msgid ""
+"You can still use the Go back to... and Keep open actions by right-clicking "
+"the widget icon."
+msgstr ""
+"You can still use the Go back to... and Keep open actions by right-clicking "
+"the widget icon."
+
+msgid "Predefined Sites"
+msgstr "Predefined Sites"
+
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known "
+"browsers. To use it in this Plasmoid, you need to use login credentials "
+"previously created in a traditional browser."
+msgstr ""
+"Claude.ai only allows account creation or Google login in well-known "
+"browsers. To use it in this Plasmoid, you need to use login credentials "
+"previously created in a traditional browser."
+
+msgid "Custom Sites"
+msgstr "Custom Sites"
+
+msgid "Site Name"
+msgstr "Site Name"
+
+msgid "Site URL"
+msgstr "Site URL"
+
+msgid "No custom sites added yet"
+msgstr "No custom sites added yet"
+
+msgid "Permissions"
+msgstr "Permissions"
+
+msgid "Load website on Plasma startup"
+msgstr "Load website on Plasma startup"
+
+msgid "Allow notifications"
+msgstr "Allow notifications"
+
+msgid "If notifications are not working create the file:"
+msgstr "If notifications are not working create the file:"
+
+msgid "containing the following text:"
+msgstr "containing the following text:"
+
+msgid "Allow geolocation access"
+msgstr "Allow geolocation access"
+
+msgid "Allow using microphone"
+msgstr "Allow using microphone"
+
+msgid "Allow using webcam"
+msgstr "Allow using webcam"
+
+msgid "Allow screen sharing"
+msgstr "Allow screen sharing"
+
+msgid "Web Features"
+msgstr "Web Features"
+
+msgid "Enable spatial navigation"
+msgstr "Enable spatial navigation"
+
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Allows navigation between focusable elements using arrow keys"
+
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Allow JavaScript to paste from clipboard"
+
+msgid "Allow JavaScript to open new windows"
+msgstr "Allow JavaScript to open new windows"
+
+msgid "Allow JavaScript to access clipboard"
+msgstr "Allow JavaScript to access clipboard"
+
+msgid "Allow unknown URL schemes"
+msgstr "Allow unknown URL schemes"
+
+msgid "Require user gesture for media playback"
+msgstr "Require user gesture for media playback"
+
+msgid "Enable focus on navigation"
+msgstr "Enable focus on navigation"
+
+msgid "Notification Settings"
+msgstr "Notification Settings"
+
+msgid "Download Folder"
+msgstr "Download Folder"
+
+msgid "Cache Management"
+msgstr "Cache Management"
+
+msgid "Open Cache Folder"
+msgstr "Open Cache Folder"
+
+msgid "Open Profile Folder"
+msgstr "Open Profile Folder"
+
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Cache location: %1\n"
+"Profile location: %2"
+
+msgid "General"
+msgstr "General"
+
+msgid "Appearance"
+msgstr "Appearance"

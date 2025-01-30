@@ -1,0 +1,350 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Açık"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Geri dön"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "İleri"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Yenileştir"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "PDF olarak kaydet"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "MHTML olarak kaydet"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Tarayıcıda Bağlantıyı Aç"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Bağlantı Adresini Kopyala"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "İndirme devam ediyor"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Dosya"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Dosya aç"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Klasörü aç"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Kapat"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "İptal et"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Önceki sayfaya dön"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Sonraki sayfaya geçin"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Ana sayfaya/varsayılan sohbete dön"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Mevcut sayfayı yenile"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Sohbet web sitesi URL'sini seçin veya girin."
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Başlık kullanılmadığında otomatik olarak gizlenecektir."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Başlık görünür kalacak."
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "İndirmeleri ve indirme klasörünü yönetin."
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "İndirilenler Klasörünü Aç"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "İndirilenler Klasörünü Seçin"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget dışarıya tıklanıldığında açık kalacak."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widget dışına tıkladığınızda kapanacaktır."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Web görünümünü kapatın ve belleği serbest bırakın."
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Özel URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Simge:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Web sitesi favicon'unu kullanın."
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Varsayılan uyumlu simge"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Varsayılan karanlık simge"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Varsayılan aydınlık simgesi"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Çizgili simge"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Dolu simge"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Renkli simge"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Başlık Seçenekleri"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Başlığı gizle"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Otomatik gizli başlık (fareyle üzerine gelindiğinde göster)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Açık Tut butonunu Gizle"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Özel URL düğmesini gizle"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Otomatik Gizle düğmesini gizle"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Kapat düğmesini gizle"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Ana Sayfa düğmesini gizle"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "İndir butonunu gizle"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Navigasyon düğmelerini gizle"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Yenile butonunu gizle"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr "Widget simgesine sağ tıklayarak Geri dön... ve Açık tut eylemlerini hala kullanabilirsiniz."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Önceden Tanımlı Siteler"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai, yalnızca tanınmış tarayıcılarda hesap oluşturma veya Google ile giriş yapma izni verir. "
+"Bunu bu Plasmoid'te kullanmak için, daha önce geleneksel bir tarayıcıda oluşturulmuş giriş "
+"bilgilerini kullanmanız gerekir."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Özel Siteler"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Site Adı"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Site URL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Henüz özel site eklenmedi."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "İzinler"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Plasma başlangıcında web sitesini yükle"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Bildirimlere izin ver"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Bildirimler çalışmıyorsa dosyayı oluşturun:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "içeren metin:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Coğrafi konum erişimine izin ver"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Mikrofon kullanımına izin ver"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Web kamerasını kullanmaya izin ver"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Ekran paylaşımına izin ver"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Web Özellikleri"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Mekansal navigasyonu etkinleştir"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Ok tuşları kullanarak odaklanabilir öğeler arasında gezinmeyi sağlar."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "JavaScript'in panodan yapıştırmasına izin ver"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "JavaScript'in yeni pencereler açmasına izin verin."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "JavaScript'in panoya erişmesine izin ver"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Bilinmeyen URL şemalarına izin ver"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Medya oynatımı için kullanıcı hareketi gereklidir."
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Navigasyona odaklanmayı etkinleştir"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Bildirim Ayarları"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "İndirilenler Klasörü"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Önbellek Yönetimi"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Önbellek Klasörünü Açın"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Profil Klasörünü Aç"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Önbellek konumu: %1  \n"
+"Profil konumu: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Genel"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Görünüm"

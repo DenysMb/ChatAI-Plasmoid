@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Otvoreno"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Natrag"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Naprijed"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Ponovno učitaj"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Spremi kao PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Spremi kao MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Otvorite poveznicu u pregledniku"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Kopiraj adresu veze"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Preuzimanje u tijeku"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Datoteka"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Otvorite datoteku"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Otvorite mapu"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Zatvori"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Otkaži"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Vratite se na prethodnu stranicu"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Idite naprijed na sljedeću stranicu"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Vrati se na početnu stranicu/izvorni chat"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Ponovno učitaj trenutnu stranicu"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Odaberite ili unesite URL web stranice za chat"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "Zaglavlje će se automatski sakriti kada se ne koristi."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "Zaglavlje će ostati vidljivo"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Upravljajte preuzimanjima i mapom za preuzimanja"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Otvorite mapu za preuzimanje"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Odaberite mapu za preuzimanje"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget će ostati otvoren kada kliknete izvan njega."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widget će se zatvoriti kada kliknete izvan njega."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Zatvorite webview i oslobodite memoriju"
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Prilagođeni URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Ikona:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Koristite favicon web stranice"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Zadana prilagodljiva ikona"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Zadana tamna ikona"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Zadana ikona svjetla"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Ikona s obrubom"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Ispunjena ikona"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Šareni ikona"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Opcije zaglavlja"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Sakrij zaglavlje"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Automatsko sakrivanje zaglavlja (prikaži pri prelasku miša)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Sakrij gumb \"Zadrži otvoreno\""
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Sakrij gumb za prilagođeni URL"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Sakrij gumb za automatsko skrivanje"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Sakrij gumb Zatvori"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Sakrij gumb Početna"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Sakrij gumb za preuzimanje"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Sakrij gumbe za navigaciju"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Sakrij gumb za osvježavanje"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Još uvijek možete koristiti radnje Vratite se na... i Zadrži otvoreno desnim klikom na ikonu "
+"widgeta."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Predefinirani web-mjesta"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai dopušta kreiranje računa ili prijavu putem Googlea samo u poznatim preglednicima. Da "
+"biste ga koristili u ovom Plasmoidu, trebate koristiti vjerodajnice za prijavu koje su prethodno "
+"kreirane u tradicionalnom pregledniku."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Prilagođene stranice"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Naziv stranice"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "URL stranice"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Još nisu dodani prilagođeni web-lokacije."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Dozvole"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Učitaj web stranicu pri pokretanju Plasme"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Dopusti obavijesti"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Ako obavijesti ne rade, kreirajte datoteku:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "sadrži sljedeći tekst:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Dopusti pristup geolokaciji"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Dopusti korištenje mikrofona"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Dopusti korištenje web kamere"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Dopusti dijeljenje ekrana"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Web značajke"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Omogući prostornu navigaciju"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Omogućuje navigaciju između fokusabilnih elemenata pomoću strelica."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Dopusti JavaScriptu da zalijepi iz međuspremnika"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Dopustite JavaScriptu da otvara nove prozore"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Dopustite JavaScriptu pristup međuspremniku"
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Dopusti nepoznate URL sheme"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Zatražite korisnički gest za reprodukciju medija"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Omogući fokus na navigaciji"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Postavke obavijesti"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Mapa za preuzimanje"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Upravljanje predmemorijom"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Otvorite mapu predmemorije"
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Otvorite mapu profila"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Lokacija predmemorije: %1  \n"
+"Lokacija profila: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Općenito"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Izgled"

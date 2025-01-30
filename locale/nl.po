@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Openen"
+
+#: NEEDS WORK
+msgid "ChatAI"
+msgstr "ChatAI"
+
+#: NEEDS WORK
+msgid "Back"
+msgstr "Terug"
+
+#: NEEDS WORK
+msgid "Forward"
+msgstr "Doorsturen"
+
+#: NEEDS WORK
+msgid "Reload"
+msgstr "Herlaad"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Opslaan als PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Opslaan als MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Open Link in Browser"
+
+#: NEEDS WORK
+msgid "Copy Link Address"
+msgstr "Kopieer linkadres"
+
+#: NEEDS WORK
+msgid "Download in progress"
+msgstr "Download bezig"
+
+#: NEEDS WORK
+msgid "The file "
+msgstr "Het bestand"
+
+#: NEEDS WORK
+msgid "Open file"
+msgstr "Bestand openen"
+
+#: NEEDS WORK
+msgid "Open folder"
+msgstr "Open map"
+
+#: NEEDS WORK
+msgid "Close"
+msgstr "Sluiten"
+
+#: NEEDS WORK
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: NEEDS WORK
+msgid "Go back to previous page"
+msgstr "Ga terug naar de vorige pagina"
+
+#: NEEDS WORK
+msgid "Go forward to next page"
+msgstr "Ga naar de volgende pagina"
+
+#: NEEDS WORK
+msgid "Return to homepage/default chat"
+msgstr "Terug naar startpagina/standaard chat"
+
+#: NEEDS WORK
+msgid "Reload current page"
+msgstr "Hernieuw huidige pagina"
+
+#: NEEDS WORK
+msgid "Select or enter chat website URL"
+msgstr "Selecteer of voer de URL van de chatwebsite in"
+
+#: NEEDS WORK
+msgid "Header will hide automatically when not in use"
+msgstr "De koptekst verbergt automatisch wanneer deze niet in gebruik is."
+
+#: NEEDS WORK
+msgid "Header will stay visible"
+msgstr "De koptekst blijft zichtbaar"
+
+#: NEEDS WORK
+msgid "Manage downloads and download folder"
+msgstr "Beheer downloads en downloadmap"
+
+#: NEEDS WORK
+msgid "Open Download Folder"
+msgstr "Open Downloadmap"
+
+#: NEEDS WORK
+msgid "Choose Download Folder"
+msgstr "Kies Downloadmap"
+
+#: NEEDS WORK
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget blijft open wanneer je buiten klikt."
+
+#: NEEDS WORK
+msgid "Widget will close when clicking outside"
+msgstr "Widget sluit wanneer er buiten wordt geklikt."
+
+#: NEEDS WORK
+msgid "Close the webview and release memory"
+msgstr "Sluit de webview en geef geheugen vrij"
+
+#: NEEDS WORK
+msgid "Custom URL..."
+msgstr "Aangepaste URL..."
+
+#: NEEDS WORK
+msgid "Icon:"
+msgstr "Pictogram:"
+
+#: NEEDS WORK
+msgid "Use website favicon"
+msgstr "Gebruik website favicon"
+
+#: NEEDS WORK
+msgid "Default adaptive icon"
+msgstr "Standaard adaptief pictogram"
+
+#: NEEDS WORK
+msgid "Default dark icon"
+msgstr "Standaard donkere pictogram"
+
+#: NEEDS WORK
+msgid "Default light icon"
+msgstr "Standaard lichtpictogram"
+
+#: NEEDS WORK
+msgid "Outlined icon"
+msgstr "Omlijnd pictogram"
+
+#: NEEDS WORK
+msgid "Filled icon"
+msgstr "Vervuld pictogram"
+
+#: NEEDS WORK
+msgid "Colorful icon"
+msgstr "Kleurrijk pictogram"
+
+#: NEEDS WORK
+msgid "Header Options"
+msgstr "Koptekstopties"
+
+#: NEEDS WORK
+msgid "Hide header"
+msgstr "Verberg koptekst"
+
+#: NEEDS WORK
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Automatisch verbergen van de koptekst (weergeven bij muisover)"
+
+#: NEEDS WORK
+msgid "Hide Keep Open button"
+msgstr "Verberg Houd Open-knop"
+
+#: NEEDS WORK
+msgid "Hide Custom URL button"
+msgstr "Verberg aangepaste URL-knop"
+
+#: NEEDS WORK
+msgid "Hide Auto-Hide button"
+msgstr "Verberg Auto-Hide knop"
+
+#: NEEDS WORK
+msgid "Hide Close button"
+msgstr "Sluitknop verbergen"
+
+#: NEEDS WORK
+msgid "Hide Home button"
+msgstr "Verberg Home-knop"
+
+#: NEEDS WORK
+msgid "Hide Download button"
+msgstr "Downloadknop verbergen"
+
+#: NEEDS WORK
+msgid "Hide navigation buttons"
+msgstr "Verberg navigatieknoppen"
+
+#: NEEDS WORK
+msgid "Hide refresh button"
+msgstr "Verberg verversknop"
+
+#: NEEDS WORK
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Je kunt nog steeds de acties Terug naar... en Open houden gebruiken door met de rechtermuisknop op "
+"het widgetpictogram te klikken."
+
+#: NEEDS WORK
+msgid "Predefined Sites"
+msgstr "Vooraf gedefinieerde sites"
+
+#: NEEDS WORK
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai staat alleen accountcreatie of Google-inloggen toe in bekende browsers. Om het in deze "
+"Plasmoid te gebruiken, moet je inloggegevens gebruiken die eerder in een traditionele browser zijn "
+"aangemaakt."
+
+#: NEEDS WORK
+msgid "Custom Sites"
+msgstr "Aangepaste sites"
+
+#: NEEDS WORK
+msgid "Site Name"
+msgstr "Site naam"
+
+#: NEEDS WORK
+msgid "Site URL"
+msgstr "Site-URL"
+
+#: NEEDS WORK
+msgid "No custom sites added yet"
+msgstr "Er zijn nog geen aangepaste sites toegevoegd."
+
+#: NEEDS WORK
+msgid "Permissions"
+msgstr "Machtigingen"
+
+#: NEEDS WORK
+msgid "Load website on Plasma startup"
+msgstr "Laad website bij Plasma-opstart"
+
+#: NEEDS WORK
+msgid "Allow notifications"
+msgstr "Sta meldingen toe"
+
+#: NEEDS WORK
+msgid "If notifications are not working create the file:"
+msgstr "Als meldingen niet werken, maak dan het bestand aan:"
+
+#: NEEDS WORK
+msgid "containing the following text:"
+msgstr "Bevat de volgende tekst:"
+
+#: NEEDS WORK
+msgid "Allow geolocation access"
+msgstr "Sta geolocatie-toegang toe"
+
+#: NEEDS WORK
+msgid "Allow using microphone"
+msgstr "Microfoon gebruiken toestaan"
+
+#: NEEDS WORK
+msgid "Allow using webcam"
+msgstr "Toestaan dat de webcam wordt gebruikt"
+
+#: NEEDS WORK
+msgid "Allow screen sharing"
+msgstr "Scherm delen toestaan"
+
+#: NEEDS WORK
+msgid "Web Features"
+msgstr "Webfuncties"
+
+#: NEEDS WORK
+msgid "Enable spatial navigation"
+msgstr "Ruimtelijke navigatie inschakelen"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Stelt navigatie tussen focusbare elementen mogelijk met de pijltoetsen."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Sta JavaScript toe om van het klembord te plakken."
+
+#: NEEDS WORK
+msgid "Allow JavaScript to open new windows"
+msgstr "Sta JavaScript toe om nieuwe vensters te openen"
+
+#: NEEDS WORK
+msgid "Allow JavaScript to access clipboard"
+msgstr "Sta JavaScript toe om toegang te krijgen tot het klembord."
+
+#: NEEDS WORK
+msgid "Allow unknown URL schemes"
+msgstr "Sta onbekende URL-schema's toe"
+
+#: NEEDS WORK
+msgid "Require user gesture for media playback"
+msgstr "Vereiste gebruikersactie voor media-afspelen"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Focus op navigatie inschakelen"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Meldingsinstellingen"
+
+#: NEEDS WORK
+msgid "Download Folder"
+msgstr "Downloadmap"
+
+#: NEEDS WORK
+msgid "Cache Management"
+msgstr "Cachebeheer"
+
+#: NEEDS WORK
+msgid "Open Cache Folder"
+msgstr "Open Cache-map."
+
+#: NEEDS WORK
+msgid "Open Profile Folder"
+msgstr "Open Profielmap"
+
+#: NEEDS WORK
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Cachelocatie: %1  \n"
+"Profiellocatie: %2"
+
+#: NEEDS WORK
+msgid "General"
+msgstr "Algemeen"
+
+#: NEEDS WORK
+msgid "Appearance"
+msgstr "Uiterlijk"
