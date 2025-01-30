@@ -3,9 +3,9 @@ A range of chatbots as Plasmoid for your KDE Plasma desktop
 
 ![Screenshot_20240609_125938](https://github.com/DenysMb/ChatAI-Plasmoid/assets/33737137/348ec984-0254-4136-8fc8-08075d2a9b9a)
 
-## Planned features
-- [ ] Ability to let the user add a custom chatbot to the list
-- [X] Send messages when pressing Enter
+## Contributors
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
 
 ## DuckDuckGo Chat
 ![Screenshot_20240609_125541](https://github.com/DenysMb/ChatAI-Plasmoid/assets/33737137/240ee703-ec9f-4605-86fe-f8ba507c90ff)
