@@ -13,6 +13,11 @@ PlasmoidItem {
     property var models: {
         // Define base models with their default properties
         let baseModels = [{
+            "id": "t3",
+            "url": "https://t3.chat",
+            "text": "T3 Chat",
+            "prop": "showT3Chat"
+        }, {
             "id": "duckduckgo",
             "url": "https://duckduckgo.com/chat",
             "text": "DuckDuckGo Chat",
@@ -347,12 +352,20 @@ PlasmoidItem {
         Loader {
             id: webviewLoader
 
-            // Keep WebView active if expanded, already loaded, or configured to load on startup
-            active: root.expanded || webviewLoader.item !== null || plasmoid.configuration.loadOnStartup
+            // Improved the loading of the WebView & Added Error Handling
+            active: root.expanded || item !== null || plasmoid.configuration.loadOnStartup
+            asynchronous: true
             source: "WebView.qml"
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.topMargin: 0
+
+            // Add status handling
+            onStatusChanged: {
+                if (status === Loader.Error) {
+                    console.error("Failed to load WebView.qml")
+                }
+            }
         }
 
         // Monitor plasmoid expansion state

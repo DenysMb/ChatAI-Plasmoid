@@ -617,7 +617,7 @@ Item {
             
             }
         }
-    }
+}
 
     MouseArea {
         id: mouseArea
