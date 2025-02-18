@@ -308,6 +308,7 @@ RowLayout {
     Connections {
         target: plasmoid.configuration
         function onCustomSitesChanged() { renderChatModel() }
+        function onShowT3ChatChanged() { renderChatModel() }
         function onShowDuckDuckGoChatChanged() { renderChatModel() }
         function onShowChatGPTChanged() { renderChatModel() }
         function onShowHugginChatChanged() { renderChatModel() }

@@ -118,6 +118,9 @@ KCM.SimpleKCM {
                     // List of supported chat services with their configuration properties
 
                     model: [{
+                        "id": "showT3Chat",
+                        "text": "T3 Chat"
+                    }, {
                         "id": "showDuckDuckGoChat",
                         "text": "DuckDuckGo Chat"
                     }, {
@@ -164,7 +167,7 @@ KCM.SimpleKCM {
                     delegate: ColumnLayout {
                         Layout.fillWidth: true
                         spacing: 0
-                        
+
                         QQC2.CheckBox {
                             text: modelData.text
                             checked: plasmoid.configuration[modelData.id]
@@ -323,15 +326,15 @@ KCM.SimpleKCM {
                     Layout.fillWidth: true
                     type: Kirigami.MessageType.Information
                     text: i18n("If notifications are not working create the file:") + `
-~/.local/share/knotifications6/chatai_plasmoid.notifyrc ` + i18n("containing the following text:") + `
+                    ~/.local/share/knotifications6/chatai_plasmoid.notifyrc ` + i18n("containing the following text:") + `
 
-[Global]
+                    [Global]
 IconName=applications-internet
 DesktopEntry=ChatAI
 Comment=ChatAI
 [Event/notification]
 Name=ChatAI
-Action=Popup`
+                    Action=Popup`
                     visible: notificationsEnabled.checked
                 }
 
@@ -533,7 +536,7 @@ Action=Popup`
                                 icon.name: "folder"
                                 onClicked: {
                                     let cachePath = Qt.resolvedUrl(cacheProfile.cachePath).toString()
-                                        .replace("file://", "");
+                                    .replace("file://", "");
                                     Qt.openUrlExternally("file://" + cachePath);
                                 }
                             }
@@ -542,25 +545,25 @@ Action=Popup`
                                 text: i18n("Open Profile Folder")
                                 icon.name: "folder"
                                 onClicked: {
-                                    let profilePath = StandardPaths.writableLocation(StandardPaths.HomeLocation) + 
-                                        "/.local/share/plasmashell/QtWebEngine/chat-ai";
-                                    Qt.openUrlExternally(profilePath);
+                                    let profilePath = StandardPaths.writableLocation(StandardPaths.HomeLocation) +
+                                    "/.local/share/plasmashell/QtWebEngine/chat-ai";
+                                Qt.openUrlExternally(profilePath);
                                 }
                             }
 
 
                         }
                     }
-                
+
 
                 }
 
                 Kirigami.InlineMessage {
                     Layout.fillWidth: true
                     type: Kirigami.MessageType.Information
-                    text: i18n("Cache location: %1\nProfile location: %2", 
-                        Qt.resolvedUrl(cacheProfile.cachePath).toString().replace("file://", ""),
-                        StandardPaths.writableLocation(StandardPaths.HomeLocation) + "/.local/share/plasmashell/QtWebEngine/chat-ai")
+                    text: i18n("Cache location: %1\nProfile location: %2",
+                               Qt.resolvedUrl(cacheProfile.cachePath).toString().replace("file://", ""),
+                               StandardPaths.writableLocation(StandardPaths.HomeLocation) + "/.local/share/plasmashell/QtWebEngine/chat-ai")
                     visible: true
                 }
 

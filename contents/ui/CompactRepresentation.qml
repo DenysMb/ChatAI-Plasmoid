@@ -57,6 +57,12 @@ Item {
             return `assets/logo-${colorContrast}.svg`
         }
 
+        // Add custom icon mapping, For CustomModels & New Models when added
+        if (currentModel.useIcon) {
+            const style = Plasmoid.configuration.useFilledChatIcon ? "filled" : "outlined"
+            return `assets/${style}/${currentModel.useIcon}-${colorContrast}.svg`
+        }
+
         if (Plasmoid.configuration.useColorfulChatIcon) {
             return `assets/colorful/${currentModel.id}.svg`
         }
