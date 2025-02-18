@@ -118,9 +118,6 @@ KCM.SimpleKCM {
                     // List of supported chat services with their configuration properties
 
                     model: [{
-                        "id": "showT3Chat",
-                        "text": "T3 Chat"
-                    }, {
                         "id": "showDuckDuckGoChat",
                         "text": "DuckDuckGo Chat"
                     }, {
@@ -162,6 +159,9 @@ KCM.SimpleKCM {
                     }, {
                         "id": "showGrok",
                         "text": "Grok"
+                    }, {
+                        "id": "showT3Chat",
+                        "text": "T3 Chat"
                     }]
 
                     delegate: ColumnLayout {
@@ -326,15 +326,15 @@ KCM.SimpleKCM {
                     Layout.fillWidth: true
                     type: Kirigami.MessageType.Information
                     text: i18n("If notifications are not working create the file:") + `
-                    ~/.local/share/knotifications6/chatai_plasmoid.notifyrc ` + i18n("containing the following text:") + `
+~/.local/share/knotifications6/chatai_plasmoid.notifyrc ` + i18n("containing the following text:") + `
 
-                    [Global]
+[Global]
 IconName=applications-internet
 DesktopEntry=ChatAI
 Comment=ChatAI
 [Event/notification]
 Name=ChatAI
-                    Action=Popup`
+Action=Popup`
                     visible: notificationsEnabled.checked
                 }
 
