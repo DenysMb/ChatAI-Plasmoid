@@ -207,6 +207,7 @@ PlasmoidItem {
             Layout.preferredHeight: shouldBeVisible ? implicitHeight : 0
             Layout.maximumHeight: Layout.preferredHeight
             Layout.minimumHeight: 0
+            Layout.bottomMargin: shouldBeVisible ? Kirigami.Units.smallSpacing : 0
             visible: Layout.preferredHeight > 0
             opacity: Layout.preferredHeight > 0 ? 1 : 0
             clip: true
