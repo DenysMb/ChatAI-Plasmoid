@@ -17,6 +17,7 @@ RowLayout {
     signal navigateBackRequested()
     signal navigateForwardRequested()
     signal printPageRequested()
+    signal toggleSearchRequested()
 
     // Properties for managing component state
     property var closeWebViewCallback: undefined    // Callback function for closing webview
@@ -180,6 +181,17 @@ RowLayout {
         id: folderDialog
         currentFolder: plasmoid.configuration.downloadPath || StandardPaths.writableLocation(StandardPaths.DownloadLocation)
         onAccepted: plasmoid.configuration.downloadPath = selectedFolder
+    }
+
+    // Search button - Toggles the find bar
+    PlasmaComponents3.Button {
+        icon.name: "search"
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        onClicked: toggleSearchRequested()
+        z: 3
+        PlasmaComponents3.ToolTip.text: i18n("Find in page (Ctrl+F)")
+        PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+        PlasmaComponents3.ToolTip.visible: hovered
     }
 
     // Pin button - Keeps the widget open when focused is lost

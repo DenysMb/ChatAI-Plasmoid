@@ -204,6 +204,11 @@ PlasmoidItem {
             onNavigateBackRequested: webviewRoot.goBack()
             onNavigateForwardRequested: webviewRoot.goForward()
             onPrintPageRequested: webviewRoot.printPage()
+            onToggleSearchRequested: {
+                if (webviewRoot && webviewRoot.findBarVisible !== undefined) {
+                    webviewRoot.findBarVisible = !webviewRoot.findBarVisible;
+                }
+            }
             Layout.preferredHeight: shouldBeVisible ? implicitHeight : 0
             Layout.maximumHeight: Layout.preferredHeight
             Layout.minimumHeight: 0

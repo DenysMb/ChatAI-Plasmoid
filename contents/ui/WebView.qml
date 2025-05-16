@@ -11,8 +11,11 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
 import org.kde.notification 1.0
+import org.kde.kirigami 2.19 as Kirigami
 
 Item {
+    id: webViewRoot
+
     function goBackToHomePage() {
         webview.url = plasmoid.configuration.url;
     }
@@ -112,6 +115,22 @@ Item {
 
     Layout.fillWidth: true
     Layout.fillHeight: true
+
+    property bool findBarVisible: false
+
+    onFindBarVisibleChanged: {
+        if (findBarVisible) {
+            findField.forceActiveFocus();
+            findField.selectAll();
+        } else {
+            webview.findText(""); // Clear any existing search
+        }
+    }
+
+    Shortcut {
+        sequence: StandardKey.Find
+        onActivated: findBarVisible = true
+    }
 
     PlasmaExtras.Menu {
         id: linkContextMenu
@@ -792,6 +811,86 @@ Item {
 
         }
 
+    }
+
+    Rectangle {
+        id: findBar
+        visible: findBarVisible
+        height: visible ? findBarRow.height + Kirigami.Units.smallSpacing * 2 : 0
+        color: PlasmaCore.Theme.backgroundColor
+        z: 5
+
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+
+        RowLayout {
+            id: findBarRow
+
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                margins: Kirigami.Units.smallSpacing
+            }
+            
+            spacing: Kirigami.Units.smallSpacing
+
+            PlasmaComponents3.TextField {
+                id: findField
+                
+                Layout.fillWidth: true
+                
+                placeholderText: i18n("Find in page...")
+                onTextChanged: if (text) webview.findText(text)
+                onAccepted: webview.findText(text)
+                Keys.onEscapePressed: findBarVisible = false
+
+                Component.onCompleted: {
+                    if (findBarVisible) {
+                        forceActiveFocus()
+                    }
+                }
+            }
+
+            PlasmaComponents3.Button {
+                icon.name: "go-up"
+                display: PlasmaComponents3.AbstractButton.IconOnly
+                onClicked: webview.findText(findField.text, WebEngineView.FindBackward)
+                PlasmaComponents3.ToolTip.text: i18n("Find previous")
+                PlasmaComponents3.ToolTip.visible: hovered
+                enabled: findField.text !== ""
+            }
+
+            PlasmaComponents3.Button {
+                icon.name: "go-down"
+                display: PlasmaComponents3.AbstractButton.IconOnly
+                onClicked: webview.findText(findField.text)
+                PlasmaComponents3.ToolTip.text: i18n("Find next")
+                PlasmaComponents3.ToolTip.visible: hovered
+                enabled: findField.text !== ""
+            }
+
+            PlasmaComponents3.Button {
+                icon.name: "dialog-close"
+                display: PlasmaComponents3.AbstractButton.IconOnly
+                PlasmaComponents3.ToolTip.text: i18n("Close")
+                PlasmaComponents3.ToolTip.visible: hovered
+                onClicked: {
+                    findBarVisible = false
+                    webview.findText("")
+                }
+            }
+        }
+
+        Behavior on height {
+            NumberAnimation {
+                duration: Kirigami.Units.shortDuration
+                easing.type: Easing.InOutQuad
+            }
+        }
     }
 
 }
