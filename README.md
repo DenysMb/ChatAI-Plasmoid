@@ -23,6 +23,13 @@ A range of chatbots as Plasmoid for your KDE Plasma desktop
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/JulWas797">
+                    <img src="https://avatars.githubusercontent.com/u/51297298?v=4" width="100;" alt="JulWas797"/>
+                    <br />
+                    <sub><b>J797</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/meowarex">
                     <img src="https://avatars.githubusercontent.com/u/90243579?v=4" width="100;" alt="meowarex"/>
                     <br />
