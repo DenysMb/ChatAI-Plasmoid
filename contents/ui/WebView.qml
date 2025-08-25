@@ -379,32 +379,61 @@ Item {
                 webview.runJavaScript("
                     document.addEventListener('keydown', function(event) {
                         if (event.key === 'Enter' && !event.shiftKey) {
-                            var duckDuckGoButton = document.querySelector('button[type=submit]');
-                            var chatGPTButton = document.querySelector('button[data-testid=\"send-button\"]');
-                            var googleGeminiButton = document.querySelector('button.send-button');
-                            var claudeButton = document.querySelector('button[aria-label=\"Send Message\"]');
-                            
-                            if (duckDuckGoButton) {
+                            var ae = document.activeElement;
+                            var isText = ae && (ae.tagName === 'TEXTAREA' || ae.isContentEditable || ae.getAttribute('role') === 'textbox' || (ae.tagName === 'INPUT' && (ae.type === 'text' || ae.type === 'search')));
+                            if (!isText) return;
+
+                            var container = (ae.closest('form,[role=\"form\"],[data-testid*=\"chat\"],[class*=\"chat\"],[id*=\"chat\"]')) || document;
+
+                            // Prefer chat-specific send buttons within the focused input's container
+                            var ddgSend = container.querySelector('button[aria-label*=\"Send\"],button[aria-label*=\"send\"],button[data-testid*=\"send\"],button[title*=\"Send\"],button[title*=\"send\"]');
+                            var chatGPTButton = container.querySelector('button[data-testid=\"send-button\"]');
+                            var googleGeminiButton = container.querySelector('button.send-button');
+                            var claudeButton = container.querySelector('button[aria-label=\"Send Message\"]');
+
+                            if (ddgSend) {
                                 event.preventDefault();
-                                duckDuckGoButton.click();
+                                event.stopPropagation();
+                                event.stopImmediatePropagation();
+                                ddgSend.click();
                                 waitForTextareaEnabledAndFocus();
+                                return;
                             }
 
                             if (chatGPTButton) {
                                 event.preventDefault();
+                                event.stopPropagation();
+                                event.stopImmediatePropagation();
                                 chatGPTButton.click();
                                 waitForTextareaEnabledAndFocus();
+                                return;
                             }
 
                             if (googleGeminiButton) {
                                 event.preventDefault();
+                                event.stopPropagation();
+                                event.stopImmediatePropagation();
                                 googleGeminiButton.click();
                                 waitForTextareaEnabledAndFocus();
+                                return;
                             }
 
                             if (claudeButton) {
                                 event.preventDefault();
+                                event.stopPropagation();
+                                event.stopImmediatePropagation();
                                 claudeButton.click();
+                                waitForTextareaEnabledAndFocus();
+                                return;
+                            }
+
+                            // Fallback: submit buttons within the same container only
+                            var fallbackSubmit = container.querySelector('button[type=\"submit\"],input[type=\"submit\"]');
+                            if (fallbackSubmit) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                event.stopImmediatePropagation();
+                                fallbackSubmit.click();
                                 waitForTextareaEnabledAndFocus();
                             }
                         }
