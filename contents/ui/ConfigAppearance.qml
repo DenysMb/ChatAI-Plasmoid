@@ -191,7 +191,5 @@ KCM.SimpleKCM {
             text: i18n("You can still use the Go back to... and Keep open actions by right-clicking the widget icon.")
             visible: hideHeader.checked || hideGoToButton.checked || hideKeepOpen.checked
         }
-
     }
-
 }

@@ -11,13 +11,13 @@ RowLayout {
     Layout.fillWidth: true
 
     // Signals for communication with parent components
-    signal goBackToHomePage()
-    signal closeWebViewRequested()
-    signal reloadPageRequested()
-    signal navigateBackRequested()
-    signal navigateForwardRequested()
-    signal printPageRequested()
-    signal toggleSearchRequested()
+    signal goBackToHomePage
+    signal closeWebViewRequested
+    signal reloadPageRequested
+    signal navigateBackRequested
+    signal navigateForwardRequested
+    signal printPageRequested
+    signal toggleSearchRequested
 
     // Properties for managing component state
     property var closeWebViewCallback: undefined    // Callback function for closing webview
@@ -79,53 +79,53 @@ RowLayout {
         PlasmaComponents3.ToolTip.visible: hovered && !pressed
         model: []
         editable: currentIndex === count - 1
-        
+
         property string customUrlText: ""
-        
+
         displayText: {
             if (currentIndex === count - 1 && editable) {
-                return customUrlText || ""
+                return customUrlText || "";
             }
-            return currentText
+            return currentText;
         }
-        
+
         onActivated: {
             if (currentIndex === count - 1) {
-                editable = true
-                customUrlText = ""
-                editText = ""
+                editable = true;
+                customUrlText = "";
+                editText = "";
                 Qt.callLater(() => {
-                    forceActiveFocus()
+                    forceActiveFocus();
                     if (urlComboBox.hasOwnProperty("textField")) {
-                        urlComboBox.textField.forceActiveFocus()
+                        urlComboBox.textField.forceActiveFocus();
                     }
-                })
+                });
             } else {
-                editable = false
-                handleModelSelection()
+                editable = false;
+                handleModelSelection();
             }
         }
 
         onEditTextChanged: {
             if (currentIndex === count - 1) {
-                customUrlText = editText
+                customUrlText = editText;
             }
         }
 
         Keys.onReturnPressed: event => {
             if (currentIndex === count - 1 && editText) {
-                let url = editText
-                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url
-                goBackToHomePage()
-                event.accepted = true
+                let url = editText;
+                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
+                goBackToHomePage();
+                event.accepted = true;
             }
         }
 
         onAccepted: {
             if (currentIndex === count - 1 && editText) {
-                let url = editText
-                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url
-                goBackToHomePage()
+                let url = editText;
+                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
+                goBackToHomePage();
             }
         }
 
@@ -141,9 +141,7 @@ RowLayout {
         checkable: true
         checked: plasmoid.configuration.autoHideHeader
         z: 3
-        PlasmaComponents3.ToolTip.text: checked ? 
-            i18n("Header will hide automatically when not in use") : 
-            i18n("Header will stay visible")
+        PlasmaComponents3.ToolTip.text: checked ? i18n("Header will hide automatically when not in use") : i18n("Header will stay visible")
         PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
         PlasmaComponents3.ToolTip.visible: hovered
         onToggled: plasmoid.configuration.autoHideHeader = checked
@@ -203,9 +201,7 @@ RowLayout {
         onToggled: plasmoid.configuration.pin = checked
         visible: !Boolean(plasmoid.configuration.hideKeepOpen)
         z: 3
-        PlasmaComponents3.ToolTip.text: checked ? 
-            i18n("Widget will stay open when clicking outside") : 
-            i18n("Widget will close when clicking outside")
+        PlasmaComponents3.ToolTip.text: checked ? i18n("Widget will stay open when clicking outside") : i18n("Widget will close when clicking outside")
         PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
         PlasmaComponents3.ToolTip.visible: hovered
     }
@@ -215,8 +211,8 @@ RowLayout {
         icon.name: "window-close"
         display: PlasmaComponents3.AbstractButton.IconOnly
         onClicked: {
-            closeWebViewRequested()
-            closeWebViewCallback?.()
+            closeWebViewRequested();
+            closeWebViewCallback?.();
         }
         visible: !plasmoid.configuration.hideCloseButton
         z: 3
@@ -228,38 +224,30 @@ RowLayout {
     // Helper Functions
     // Returns the number of available chat models
     function getModelsLength() {
-        return urlComboBox.model.length
+        return urlComboBox.model.length;
     }
 
     // Updates the chat model list and current selection
     // Handles both predefined and custom chat models
     function renderChatModel() {
         // Create model list from enabled predefined models
-        const chatModel = models
-            .filter(model => !model.prop.startsWith("showCustom_") && plasmoid.configuration[model.prop])
-            .map(model => model.text)
-            // Add custom sites to the model list
-            .concat((plasmoid.configuration.customSites || "")
-                .split(',')
-                .filter(site => site?.includes('|'))
-                .map(site => site.split('|')[0]))
-            .concat([i18n("Custom URL...")]);
+        const chatModel = models.filter(model => !model.prop.startsWith("showCustom_") && plasmoid.configuration[model.prop]).map(model => model.text)
+        // Add custom sites to the model list
+        .concat((plasmoid.configuration.customSites || "").split(',').filter(site => site?.includes('|')).map(site => site.split('|')[0])).concat([i18n("Custom URL...")]);
 
         // Update ComboBox model and select current item
         urlComboBox.model = chatModel;
-        
+
         const currentUrl = plasmoid.configuration.url;
         const currentModel = models.find(model => !model.prop.startsWith("showCustom_") && model.url === currentUrl);
-        
+
         if (currentModel) {
             const index = chatModel.indexOf(currentModel.text);
             urlComboBox.currentIndex = index;
             urlComboBox.editable = false;
         } else {
-            const customSite = (plasmoid.configuration.customSites || "")
-                .split(',')
-                .find(site => site?.includes('|') && site.split('|')[1] === currentUrl);
-            
+            const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.includes('|') && site.split('|')[1] === currentUrl);
+
             if (customSite) {
                 const siteName = customSite.split('|')[0];
                 const index = chatModel.indexOf(siteName);
@@ -287,24 +275,22 @@ RowLayout {
             return;
         }
 
-        const selectedText = urlComboBox.currentValue
-        if (!selectedText) return
+        const selectedText = urlComboBox.currentValue;
+        if (!selectedText)
+            return;
+        urlComboBox.displayText = selectedText;
 
-        urlComboBox.displayText = selectedText
-
-        const selectedModel = models.find(model => !model.prop.startsWith("showCustom_") && model.text === selectedText)
+        const selectedModel = models.find(model => !model.prop.startsWith("showCustom_") && model.text === selectedText);
         if (selectedModel) {
-            plasmoid.configuration.url = selectedModel.url
-            goBackToHomePage()
-            return
+            plasmoid.configuration.url = selectedModel.url;
+            goBackToHomePage();
+            return;
         }
 
-        const customSite = (plasmoid.configuration.customSites || "")
-            .split(',')
-            .find(site => site?.split('|')[0] === selectedText)
+        const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.split('|')[0] === selectedText);
         if (customSite) {
-            plasmoid.configuration.url = customSite.split('|')[1]
-            goBackToHomePage()
+            plasmoid.configuration.url = customSite.split('|')[1];
+            goBackToHomePage();
         }
     }
 
@@ -319,21 +305,53 @@ RowLayout {
     // Updates model list when chat service visibility settings change
     Connections {
         target: plasmoid.configuration
-        function onCustomSitesChanged() { renderChatModel() }
-        function onShowT3ChatChanged() { renderChatModel() }
-        function onShowDuckDuckGoChatChanged() { renderChatModel() }
-        function onShowChatGPTChanged() { renderChatModel() }
-        function onShowHugginChatChanged() { renderChatModel() }
-        function onShowGoogleGeminiChanged() { renderChatModel() }
-        function onShowYouChanged() { renderChatModel() }
-        function onShowPerplexityChanged() { renderChatModel() }
-        function onShowLobeChatChanged() { renderChatModel() }
-        function onShowBigAGIChanged() { renderChatModel() }
-        function onShowBlackBoxChanged() { renderChatModel() }
-        function onShowBingCopilotChanged() { renderChatModel() }
-        function onShowClaudeChanged() { renderChatModel() }
-        function onShowDeepSeekChanged() { renderChatModel() }
-        function onShowMetaAIChanged() { renderChatModel() }
-        function onShowGrokChanged() { renderChatModel() }
+        function onCustomSitesChanged() {
+            renderChatModel();
+        }
+        function onShowT3ChatChanged() {
+            renderChatModel();
+        }
+        function onShowDuckDuckGoChatChanged() {
+            renderChatModel();
+        }
+        function onShowChatGPTChanged() {
+            renderChatModel();
+        }
+        function onShowHugginChatChanged() {
+            renderChatModel();
+        }
+        function onShowGoogleGeminiChanged() {
+            renderChatModel();
+        }
+        function onShowYouChanged() {
+            renderChatModel();
+        }
+        function onShowPerplexityChanged() {
+            renderChatModel();
+        }
+        function onShowLobeChatChanged() {
+            renderChatModel();
+        }
+        function onShowBigAGIChanged() {
+            renderChatModel();
+        }
+        function onShowBlackBoxChanged() {
+            renderChatModel();
+        }
+        function onShowBingCopilotChanged() {
+            renderChatModel();
+        }
+        function onShowClaudeChanged() {
+            renderChatModel();
+        }
+        function onShowDeepSeekChanged() {
+            renderChatModel();
+        }
+        function onShowMetaAIChanged() {
+            renderChatModel();
+        }
+        function onShowGrokChanged() {
+            renderChatModel();
+        }
     }
 }

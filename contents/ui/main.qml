@@ -12,96 +12,111 @@ PlasmoidItem {
     // This property combines both predefined and custom sites
     property var models: {
         // Define base models with their default properties
-        let baseModels = [{
-            "id": "t3",
-            "url": "https://t3.chat",
-            "text": "T3 Chat",
-            "prop": "showT3Chat"
-        }, {
-            "id": "duckduckgo",
-            "url": "https://duckduckgo.com/chat",
-            "text": "DuckDuckGo Chat",
-            "prop": "showDuckDuckGoChat"
-        }, {
-            "id": "chatgpt",
-            "url": "https://chatgpt.com",
-            "text": "ChatGPT",
-            "prop": "showChatGPT"
-        }, {
-            "id": "huggingface",
-            "url": "https://huggingface.co/chat",
-            "text": "HugginChat",
-            "prop": "showHugginChat"
-        }, {
-            "id": "copilot",
-            "url": "https://copilot.microsoft.com/",
-            "text": "Bing Copilot",
-            "prop": "showBingCopilot"
-        }, {
-            "id": "google",
-            "url": "https://gemini.google.com/app",
-            "text": "Google Gemini",
-            "prop": "showGoogleGemini"
-        }, {
-            "id": "blackbox",
-            "url": "https://www.blackbox.ai",
-            "text": "BlackBox AI",
-            "prop": "showBlackBox"
-        }, {
-            "id": "you",
-            "url": "https://you.com/?chatMode=default",
-            "text": "You",
-            "prop": "showYou"
-        }, {
-            "id": "perplexity",
-            "url": "https://www.perplexity.ai",
-            "text": "Perplexity",
-            "prop": "showPerplexity"
-        }, {
-            "id": "lobechat",
-            "url": "https://lobechat.com/chat",
-            "text": "LobeChat",
-            "prop": "showLobeChat"
-        }, {
-            "id": "bigagi",
-            "url": "https://get.big-agi.com",
-            "text": "Big-AGI",
-            "prop": "showBigAGI"
-        }, {
-            "id": "claude",
-            "url": "https://claude.ai/new",
-            "text": "Claude",
-            "prop": "showClaude"
-        }, {
-            "id": "deepseek",
-            "url": "https://chat.deepseek.com",
-            "text": "DeepSeek",
-            "prop": "showDeepSeek"
-        }, {
-            "id": "meta",
-            "url": "https://www.meta.ai",
-            "text": "Meta AI",
-            "prop": "showMetaAI"
-        }, {
-            "id": "grok",
-            "url": "https://x.com/i/grok",
-            "text": "Grok",
-            "prop": "showGrok"
-        }];
+        let baseModels = [
+            {
+                "id": "t3",
+                "url": "https://t3.chat",
+                "text": "T3 Chat",
+                "prop": "showT3Chat"
+            },
+            {
+                "id": "duckduckgo",
+                "url": "https://duckduckgo.com/chat",
+                "text": "DuckDuckGo Chat",
+                "prop": "showDuckDuckGoChat"
+            },
+            {
+                "id": "chatgpt",
+                "url": "https://chatgpt.com",
+                "text": "ChatGPT",
+                "prop": "showChatGPT"
+            },
+            {
+                "id": "huggingface",
+                "url": "https://huggingface.co/chat",
+                "text": "HugginChat",
+                "prop": "showHugginChat"
+            },
+            {
+                "id": "copilot",
+                "url": "https://copilot.microsoft.com/",
+                "text": "Bing Copilot",
+                "prop": "showBingCopilot"
+            },
+            {
+                "id": "google",
+                "url": "https://gemini.google.com/app",
+                "text": "Google Gemini",
+                "prop": "showGoogleGemini"
+            },
+            {
+                "id": "blackbox",
+                "url": "https://www.blackbox.ai",
+                "text": "BlackBox AI",
+                "prop": "showBlackBox"
+            },
+            {
+                "id": "you",
+                "url": "https://you.com/?chatMode=default",
+                "text": "You",
+                "prop": "showYou"
+            },
+            {
+                "id": "perplexity",
+                "url": "https://www.perplexity.ai",
+                "text": "Perplexity",
+                "prop": "showPerplexity"
+            },
+            {
+                "id": "lobechat",
+                "url": "https://lobechat.com/chat",
+                "text": "LobeChat",
+                "prop": "showLobeChat"
+            },
+            {
+                "id": "bigagi",
+                "url": "https://get.big-agi.com",
+                "text": "Big-AGI",
+                "prop": "showBigAGI"
+            },
+            {
+                "id": "claude",
+                "url": "https://claude.ai/new",
+                "text": "Claude",
+                "prop": "showClaude"
+            },
+            {
+                "id": "deepseek",
+                "url": "https://chat.deepseek.com",
+                "text": "DeepSeek",
+                "prop": "showDeepSeek"
+            },
+            {
+                "id": "meta",
+                "url": "https://www.meta.ai",
+                "text": "Meta AI",
+                "prop": "showMetaAI"
+            },
+            {
+                "id": "grok",
+                "url": "https://x.com/i/grok",
+                "text": "Grok",
+                "prop": "showGrok"
+            }
+        ];
         // Add custom sites from configuration to the models list
         let customSites = plasmoid.configuration.customSites || [];
         if (Array.isArray(customSites)) {
-            customSites.forEach((site) => {
+            customSites.forEach(site => {
                 if (site && typeof site === 'string' && site.includes('|')) {
                     const [name, url] = site.split('|');
                     if (name && url)
                         baseModels.push({
-                        "id": name.toLowerCase().replace(/\s+/g, '-'),
-                        "url": url,
-                        "text": name,
-                        "prop": "showCustom_" + name.toLowerCase().replace(/\s+/g, '_')
-                    });
-
+                            "id": name.toLowerCase().replace(/\s+/g, '-'),
+                            "url": url,
+                            "text": name,
+                            "prop": "showCustom_" + name.toLowerCase().replace(/\s+/g, '_')
+                        });
                 }
             });
         }
@@ -141,7 +156,7 @@ PlasmoidItem {
             for (let i = children.length - 1; i >= 0; i--) {
                 children[i].parent = null;
             }
-            components.forEach((component) => {
+            components.forEach(component => {
                 component.parent = mainLayout;
             });
             // Update the anchors of headerMouseArea
@@ -194,7 +209,7 @@ PlasmoidItem {
             Layout.fillWidth: true
             z: 2 // Increase the z-index to ensure it is above the MouseArea
             // Callback to close the WebView and collapse the widget
-            closeWebViewCallback: function() {
+            closeWebViewCallback: function () {
                 webviewLoader.active = false;
                 root.expanded = false;
             }
@@ -235,7 +250,6 @@ PlasmoidItem {
                 onTriggered: {
                     if (!headerRoot.isInteracting)
                         headerRoot.headerVisible = false;
-
                 }
             }
 
@@ -259,7 +273,6 @@ PlasmoidItem {
                     headerRoot.isInteracting = stillInteracting;
                     if (!stillInteracting && !headerMouseArea.containsMouse)
                         hideTimer.restart();
-
                 }
             }
 
@@ -287,7 +300,6 @@ PlasmoidItem {
                 onExited: {
                     if (!headerRoot.isInteracting)
                         hideTimer.restart();
-
                 }
                 onPressed: {
                     headerRoot.isInteracting = true;
@@ -308,7 +320,6 @@ PlasmoidItem {
                     duration: 400
                     easing.type: Easing.InOutCubic
                 }
-
             }
 
             Behavior on opacity {
@@ -316,9 +327,7 @@ PlasmoidItem {
                     duration: 400
                     easing.type: Easing.InOutQuad
                 }
-
             }
-
         }
 
         // Mouse detection area
@@ -336,7 +345,6 @@ PlasmoidItem {
             onExited: {
                 if (!headerRoot.isInteracting)
                     hideTimer.restart();
-
             }
             // Pass mouse events to child components
             onClicked: mouse.accepted = false
@@ -351,7 +359,6 @@ PlasmoidItem {
                 right: parent.right
                 top: parent.top
             }
-
         }
 
         // WebView loader that manages the web content
@@ -369,7 +376,7 @@ PlasmoidItem {
             // Add status handling
             onStatusChanged: {
                 if (status === Loader.Error) {
-                    console.error("Failed to load WebView.qml")
+                    console.error("Failed to load WebView.qml");
                 }
             }
         }
@@ -380,12 +387,9 @@ PlasmoidItem {
             function onExpandedChanged() {
                 if (root.expanded)
                     webviewLoader.active = true;
-
             }
 
             target: root
         }
-
     }
-
 }
