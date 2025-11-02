@@ -15,6 +15,7 @@ import org.kde.kirigami 2.19 as Kirigami
 
 Item {
     id: webViewRoot
+    readonly property string effectiveProfileName: plasmoid.configuration.webEngineProfileName && plasmoid.configuration.webEngineProfileName.length ? plasmoid.configuration.webEngineProfileName : "chat-ai"
 
     function goBackToHomePage() {
         webview.url = plasmoid.configuration.url;
@@ -494,7 +495,7 @@ Item {
         WebEngineProfile {
             id: webProfile
             httpUserAgent: getUserAgent()
-            storageName: "chat-ai"
+            storageName: webViewRoot.effectiveProfileName
             offTheRecord: false
             httpCacheType: WebEngineProfile.DiskHttpCache
             persistentCookiesPolicy: WebEngineProfile.ForcePersistentCookies

@@ -221,5 +221,9 @@
       <label>Clear cache when closing</label>
       <default>false</default>
     </entry>
+    <entry name="webEngineProfileName" type="String">
+      <label>Storage name used for Qt WebEngine profile</label>
+      <default>chat-ai</default>
+    </entry>
   </group>
 </kcfg>
