@@ -33,44 +33,37 @@ Item {
     }
 
     function printPage() {
-        webview.runJavaScript("document.title", function(title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? 
-                plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : 
-                StandardPaths.writableLocation(StandardPaths.DownloadLocation);
-                
+        webview.runJavaScript("document.title", function (title) {
+            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+
             let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
             let filename = `${downloadDirectory}/${safeName}-${timestamp}.pdf`;
 
             // Add the PDF as a special type of download
             let pdfIndex = webview.downloads.addDownload(null, `${safeName}-${timestamp}.pdf`, filename, true);
-            
+
             // Store the PDF index for future reference
             let currentPdfIndex = pdfIndex;
-            
+
             webview.printToPdf(filename, WebEngineView.A4, WebEngineView.Portrait);
         });
     }
 
     function saveMHTML() {
-        webview.runJavaScript("document.title", function(title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? 
-                plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : 
-                StandardPaths.writableLocation(StandardPaths.DownloadLocation);
-                
+        webview.runJavaScript("document.title", function (title) {
+            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+
             let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
             let filename = `${downloadDirectory}/${safeName}-${timestamp}.mhtml`;
-            
+
             webview.triggerWebAction(WebEngineView.SavePage, filename);
         });
     }
 
-
     function getUserAgent() {
-        return plasmoid.configuration.url.includes("https://duckduckgo.com") || plasmoid.configuration.url.includes("x.com/i/grok")
-            ? "Mozilla/5.0 (Linux; Android 9; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36"
-            : ""
+        return plasmoid.configuration.url.includes("https://duckduckgo.com") || plasmoid.configuration.url.includes("x.com/i/grok") ? "Mozilla/5.0 (Linux; Android 9; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36" : "";
     }
 
     Notification {
@@ -83,10 +76,10 @@ Item {
     }
 
     function showNotification(title, message, icon = "dialog-information") {
-        webNotification.title = title || i18n("ChatAI")
-        webNotification.text = message
-        webNotification.iconName = icon
-        webNotification.sendEvent()
+        webNotification.title = title || i18n("ChatAI");
+        webNotification.text = message;
+        webNotification.iconName = icon;
+        webNotification.sendEvent();
     }
 
     function getProgressPath(path) {
@@ -101,12 +94,12 @@ Item {
 
     // Add this helper function before the WebEngineView
     function isDownloadInProgress(fileName) {
-        if (!webview || !webview.downloads) return false;
-        
+        if (!webview || !webview.downloads)
+            return false;
+
         for (let i = 0; i < webview.downloads.count; i++) {
             let item = webview.downloads.get(i);
-            if (item && item.state === WebEngineDownloadRequest.DownloadInProgress && 
-                item.fileName === fileName) {
+            if (item && item.state === WebEngineDownloadRequest.DownloadInProgress && item.fileName === fileName) {
                 return true;
             }
         }
@@ -186,7 +179,6 @@ Item {
             visible: linkContextMenu.link !== ""
             onClicked: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
         }
-
     }
 
     WebEngineView {
@@ -281,7 +273,7 @@ Item {
                     return absoluteUrl;
                 }
                 findFaviconInHTML();
-            `, function(result) {
+            `, function (result) {
                 if (result) {
                     // Process WebEngine favicon result
                     if (result.startsWith('image://favicon/'))
@@ -304,7 +296,7 @@ Item {
         anchors.fill: parent
         url: plasmoid.configuration.url
         profile: webProfile
-        onLinkHovered: (hoveredUrl) => {
+        onLinkHovered: hoveredUrl => {
             if (hoveredUrl == "") {
                 hideStatusText.start();
             } else {
@@ -317,7 +309,7 @@ Item {
             else
                 mouseArea.cursorShape = Qt.ArrowCursor;
         }
-        onContextMenuRequested: (request) => {
+        onContextMenuRequested: request => {
             // Use default menu for special elements (text fields, selection, etc)
             if (request.isContentEditable || request.selectedText || request.mediaType !== ContextMenuRequest.MediaTypeNone) {
                 request.accepted = false;  // Permite que o menu padrão apareça
@@ -334,7 +326,7 @@ Item {
         }
 
         // https://doc.qt.io/qt-6/qml-application-permissions.html
-        onPermissionRequested: function(request) {
+        onPermissionRequested: function (request) {
             if (request.permissionType === WebEnginePermission.Geolocation || request.permissionType === 8) {
                 if (plasmoid.configuration.geolocationEnabled) {
                     request.grant();
@@ -355,11 +347,11 @@ Item {
                 let isMicrophoneRequest = request.permissionType === 1 || request.permissionType === WebEnginePermission.MediaAudioCapture;
                 let isWebcamRequest = request.permissionType === 2 || request.permissionType === WebEnginePermission.MediaVideoCapture;
                 let isScreenShareRequest = request.permissionType === 5 || request.permissionType === WebEnginePermission.DesktopAudioVideoCapture;
-                return ;
+                return;
             }
             // Even if MediaAudioCapture and MediaVideoCapture are allowed, it is still necessary to allow DesktopAudioVideoCapture
-            if ( request.permissionType === WebEnginePermission.DesktopAudioVideoCapture  || request.permissionType === 3) {
-                if ( WebEnginePermission.MediaAudioCapture && WebEnginePermission.MediaVideoCapture ) {
+            if (request.permissionType === WebEnginePermission.DesktopAudioVideoCapture || request.permissionType === 3) {
+                if (WebEnginePermission.MediaAudioCapture && WebEnginePermission.MediaVideoCapture) {
                     request.grant();
                 } else {
                     request.deny();
@@ -379,11 +371,11 @@ Item {
                 webview.runJavaScript("
                     document.addEventListener('keydown', function(event) {
                         if (event.key === 'Enter' && !event.shiftKey) {
-                            var duckDuckGoButton = document.querySelector('button[type=submit]');
+                            var duckDuckGoButton = document.querySelector('button[aria-label=\"Send\"]');
                             var chatGPTButton = document.querySelector('button[data-testid=\"send-button\"]');
                             var googleGeminiButton = document.querySelector('button.send-button');
                             var claudeButton = document.querySelector('button[aria-label=\"Send Message\"]');
-                            
+
                             if (duckDuckGoButton) {
                                 event.preventDefault();
                                 duckDuckGoButton.click();
@@ -429,7 +421,7 @@ Item {
                 ");
             }
         }
-        onFeaturePermissionRequested: function(securityOrigin, feature) {
+        onFeaturePermissionRequested: function (securityOrigin, feature) {
             if (feature === WebEngineView.MediaAudioCapture)
                 grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.microphoneEnabled);
             else if (feature === WebEngineView.MediaVideoCapture)
@@ -438,11 +430,11 @@ Item {
                 grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.screenShareEnabled);
         }
 
-        onPrintRequested: function() {
-            webview.triggerWebAction(WebEngineView.Print)
+        onPrintRequested: function () {
+            webview.triggerWebAction(WebEngineView.Print);
         }
 
-        onPdfPrintingFinished: function(filePath, success) {
+        onPdfPrintingFinished: function (filePath, success) {
             // Find the index of the PDF download
             for (let i = 0; i < downloads.count; i++) {
                 if (downloads.get(i).fullPath === filePath) {
@@ -458,19 +450,12 @@ Item {
 
         // Helper function to check if it's an authentication URL
         function isAuthUrl(url) {
-            const authDomains = [
-                'accounts.google.com',
-                'appleid.apple.com',
-                'login.live.com',
-                'github.com/login',
-                'instagram.com/oauth',
-                'facebook.com/oidc'
-            ];
+            const authDomains = ['accounts.google.com', 'appleid.apple.com', 'login.live.com', 'github.com/login', 'instagram.com/oauth', 'facebook.com/oidc'];
             return authDomains.some(domain => url.includes(domain));
         }
 
         // Add these handlers to intercept new windows and tabs
-        onNewWindowRequested: function(request) {
+        onNewWindowRequested: function (request) {
             let url = request.requestedUrl.toString();
             if (isAuthUrl(url)) {
                 webview.url = url;
@@ -482,10 +467,9 @@ Item {
         }
 
         // Intercept links that try to open in new tab/window
-        onNavigationRequested: function(request) {
-            if (request.navigationType === WebEngineNavigationRequest.NavigationTypeRedirect || 
-                request.navigationType === WebEngineNavigationRequest.NavigationTypeLinkClicked) {
-                
+        onNavigationRequested: function (request) {
+            if (request.navigationType === WebEngineNavigationRequest.NavigationTypeRedirect || request.navigationType === WebEngineNavigationRequest.NavigationTypeLinkClicked) {
+
                 // If the link has target="_blank" or similar
                 if (request.userInitiated && request.disposition !== WebEngineNavigationRequest.CurrentTabDisposition) {
                     let url = request.url.toString();
@@ -521,20 +505,18 @@ Item {
 
                 return StandardPaths.writableLocation(StandardPaths.DownloadLocation);
             }
-            onPresentNotification: function(notification) {
-                showNotification(notification.title, notification.message)
-                notification.show()
+            onPresentNotification: function (notification) {
+                showNotification(notification.title, notification.message);
+                notification.show();
             }
-            onDownloadRequested: function(download) {
+            onDownloadRequested: function (download) {
                 // Ensure downloads model exists
                 if (!webview.downloads) {
                     webview.downloads = Qt.createQmlObject('import QtQml; ListModel {}', webview);
                 }
 
-                let downloadDirectory = plasmoid.configuration.downloadPath ? 
-                    plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : 
-                    StandardPaths.writableLocation(StandardPaths.DownloadLocation);
-                
+                let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+
                 if (!plasmoid.configuration.downloadPath) {
                     plasmoid.configuration.downloadPath = downloadDirectory;
                 }
@@ -544,14 +526,8 @@ Item {
                 // Check for duplicate downloads
                 for (let i = 0; i < webview.downloads.count; i++) {
                     let currentDownload = webview.downloads.get(i);
-                    if (currentDownload.state === WebEngineDownloadRequest.DownloadInProgress && 
-                        currentDownload.fileName === download.downloadFileName &&
-                        !currentDownload.isPdfExport) {
-                        showNotification(
-                            i18n("Download in progress"),
-                            i18n("The file '%1' is already being downloaded", download.downloadFileName),
-                            "dialog-warning"
-                        );
+                    if (currentDownload.state === WebEngineDownloadRequest.DownloadInProgress && currentDownload.fileName === download.downloadFileName && !currentDownload.isPdfExport) {
+                        showNotification(i18n("Download in progress"), i18n("The file '%1' is already being downloaded", download.downloadFileName), "dialog-warning");
                         download.cancel();
                         return;
                     }
@@ -559,42 +535,36 @@ Item {
 
                 // Create a unique ID for this download
                 let downloadId = Date.now().toString() + Math.random().toString(36).substring(7);
-                
-                let downloadIndex = webview.downloads.addDownload(
-                    download,
-                    download.downloadFileName,
-                    downloadDirectory + "/" + download.downloadFileName,
-                    false
-                );
+
+                let downloadIndex = webview.downloads.addDownload(download, download.downloadFileName, downloadDirectory + "/" + download.downloadFileName, false);
 
                 // Store the index in the download object for reference
                 let currentIndex = downloadIndex;
 
                 // Create independent connections for each download
-                let bytesConnection = function() {
+                let bytesConnection = function () {
                     if (currentIndex >= 0 && currentIndex < webview.downloads.count) {
                         let currentProgress = download.receivedBytes / download.totalBytes;
                         webview.downloads.setProperty(currentIndex, "progress", currentProgress);
                         webview.downloads.setProperty(currentIndex, "receivedBytes", download.receivedBytes);
                         webview.downloads.setProperty(currentIndex, "totalBytes", download.totalBytes);
                     }
-                }
+                };
 
-                let stateConnection = function(state) {
+                let stateConnection = function (state) {
                     if (currentIndex >= 0 && currentIndex < webview.downloads.count) {
                         webview.downloads.setProperty(currentIndex, "state", state);
                         if (state === WebEngineDownloadRequest.DownloadCompleted) {
                             webview.downloads.setProperty(currentIndex, "progress", 1.0);
                         }
                         // Clear connections after completion or cancellation
-                        if (state === WebEngineDownloadRequest.DownloadCompleted || 
-                            state === WebEngineDownloadRequest.DownloadCancelled) {
+                        if (state === WebEngineDownloadRequest.DownloadCompleted || state === WebEngineDownloadRequest.DownloadCancelled) {
                             download.receivedBytesChanged.disconnect(bytesConnection);
                             download.stateChanged.disconnect(stateConnection);
                             delete webview.downloadCache[downloadId];
                         }
                     }
-                }
+                };
 
                 // Connect signals to the updated functions
                 download.receivedBytesChanged.connect(bytesConnection);
@@ -633,17 +603,16 @@ Item {
                 const b = parseInt(hex.substring(4, 6), 16);
                 const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
                 return luma < 128;
-            
             }
         }
-}
+    }
 
     MouseArea {
         id: mouseArea
 
         anchors.fill: parent
         acceptedButtons: Qt.BackButton | Qt.ForwardButton
-        onPressed: (mouse) => {
+        onPressed: mouse => {
             if (mouse.button === Qt.BackButton)
                 webview.goBack();
             else if (mouse.button === Qt.ForwardButton)
@@ -679,9 +648,7 @@ Item {
                     statusBubble.visible = false;
                 }
             }
-
         }
-
     }
 
     Column {
@@ -777,7 +744,6 @@ Item {
                                 webview.downloads.remove(model.index);
                             }
                         }
-
                     }
                     // Cancel button (visible during download)
                     PlasmaComponents3.Button {
@@ -792,25 +758,21 @@ Item {
                                 // Disconnect signal handlers before canceling
                                 downloadData.download.receivedBytesChanged.disconnect(downloadData.bytesConnection);
                                 downloadData.download.stateChanged.disconnect(downloadData.stateConnection);
-                                
+
                                 // Cancel the download
                                 downloadData.download.cancel();
-                                
+
                                 // Clean up cache
                                 delete webview.downloadCache[model.downloadId];
-                                
+
                                 // Remove from downloads model
                                 webview.downloads.remove(index);
                             }
                         }
                     }
-
                 }
-
             }
-
         }
-
     }
 
     Rectangle {
@@ -835,22 +797,23 @@ Item {
                 top: parent.top
                 margins: Kirigami.Units.smallSpacing
             }
-            
+
             spacing: Kirigami.Units.smallSpacing
 
             PlasmaComponents3.TextField {
                 id: findField
-                
+
                 Layout.fillWidth: true
-                
+
                 placeholderText: i18n("Find in page...")
-                onTextChanged: if (text) webview.findText(text)
+                onTextChanged: if (text)
+                    webview.findText(text)
                 onAccepted: webview.findText(text)
                 Keys.onEscapePressed: findBarVisible = false
 
                 Component.onCompleted: {
                     if (findBarVisible) {
-                        forceActiveFocus()
+                        forceActiveFocus();
                     }
                 }
             }
@@ -879,8 +842,8 @@ Item {
                 PlasmaComponents3.ToolTip.text: i18n("Close")
                 PlasmaComponents3.ToolTip.visible: hovered
                 onClicked: {
-                    findBarVisible = false
-                    webview.findText("")
+                    findBarVisible = false;
+                    webview.findText("");
                 }
             }
         }
@@ -892,5 +855,4 @@ Item {
             }
         }
     }
-
 }
