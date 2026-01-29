@@ -159,14 +159,12 @@ PlasmoidItem {
             components.forEach(component => {
                 component.parent = mainLayout;
             });
-            // Update the anchors of headerMouseArea
+            // Update the alignment of headerMouseArea instead of anchors (layout-managed item)
             if (headerRoot && headerMouseArea) {
                 if (reverseLayout) {
-                    headerMouseArea.anchors.top = undefined;
-                    headerMouseArea.anchors.bottom = parent.bottom;
+                    headerMouseArea.Layout.alignment = Qt.AlignBottom;
                 } else {
-                    headerMouseArea.anchors.bottom = undefined;
-                    headerMouseArea.anchors.top = parent.top;
+                    headerMouseArea.Layout.alignment = Qt.AlignTop;
                 }
             }
         }
@@ -231,14 +229,12 @@ PlasmoidItem {
             visible: Layout.preferredHeight > 0
             opacity: Layout.preferredHeight > 0 ? 1 : 0
             clip: true
-            // Adjust the anchors of headerMouseArea based on the panel position
+            // Adjust the alignment of headerMouseArea based on the panel position
             Component.onCompleted: {
                 if (mainLayout.reverseLayout) {
-                    headerMouseArea.anchors.top = undefined;
-                    headerMouseArea.anchors.bottom = parent.bottom;
+                    headerMouseArea.Layout.alignment = Qt.AlignBottom;
                 } else {
-                    headerMouseArea.anchors.bottom = undefined;
-                    headerMouseArea.anchors.top = parent.top;
+                    headerMouseArea.Layout.alignment = Qt.AlignTop;
                 }
             }
 
@@ -301,11 +297,11 @@ PlasmoidItem {
                     if (!headerRoot.isInteracting)
                         hideTimer.restart();
                 }
-                onPressed: {
+                onPressed: function(mouse) {
                     headerRoot.isInteracting = true;
                     mouse.accepted = false;
                 }
-                onReleased: {
+                onReleased: function(mouse) {
                     headerRoot.isInteracting = false;
                     if (!containsMouse)
                         hideTimer.restart();
@@ -347,18 +343,15 @@ PlasmoidItem {
                     hideTimer.restart();
             }
             // Pass mouse events to child components
-            onClicked: mouse.accepted = false
-            onPressed: mouse.accepted = false
-            onReleased: mouse.accepted = false
-            onDoubleClicked: mouse.accepted = false
-            onPositionChanged: mouse.accepted = false
-            onPressAndHold: mouse.accepted = false
+            onClicked: function(mouse) { mouse.accepted = false; }
+            onPressed: function(mouse) { mouse.accepted = false; }
+            onReleased: function(mouse) { mouse.accepted = false; }
+            onDoubleClicked: function(mouse) { mouse.accepted = false; }
+            onPositionChanged: function(mouse) { mouse.accepted = false; }
+            onPressAndHold: function(mouse) { mouse.accepted = false; }
 
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-            }
+            // Use layout alignment and fill width instead of anchors
+            Layout.fillWidth: true
         }
 
         // WebView loader that manages the web content
