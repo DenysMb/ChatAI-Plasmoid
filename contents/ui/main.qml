@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
-import org.kde.kirigami 2.20 as Kirigami
+import org.kde.kirigami as Kirigami
 import org.kde.plasma.core as PlasmaCore
-import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.plasmoid
 
 // Main plasmoid item that contains all the widget functionality
 PlasmoidItem {
@@ -162,11 +162,9 @@ PlasmoidItem {
             // Update the anchors of headerMouseArea
             if (headerRoot && headerMouseArea) {
                 if (reverseLayout) {
-                    headerMouseArea.anchors.top = undefined;
-                    headerMouseArea.anchors.bottom = parent.bottom;
+                    headerMouseArea.Layout.alignment = Qt.AlignBottom;
                 } else {
-                    headerMouseArea.anchors.bottom = undefined;
-                    headerMouseArea.anchors.top = parent.top;
+                    headerMouseArea.Layout.alignment = Qt.AlignTop;
                 }
             }
         }
@@ -234,11 +232,9 @@ PlasmoidItem {
             // Adjust the anchors of headerMouseArea based on the panel position
             Component.onCompleted: {
                 if (mainLayout.reverseLayout) {
-                    headerMouseArea.anchors.top = undefined;
-                    headerMouseArea.anchors.bottom = parent.bottom;
+                    headerMouseArea.Layout.alignment = Qt.AlignBottom;
                 } else {
-                    headerMouseArea.anchors.bottom = undefined;
-                    headerMouseArea.anchors.top = parent.top;
+                    headerMouseArea.Layout.alignment = Qt.AlignTop;
                 }
             }
 
@@ -290,7 +286,9 @@ PlasmoidItem {
 
             // Intercept mouse events
             MouseArea {
-                anchors.fill: parent
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignTop
                 hoverEnabled: true
                 propagateComposedEvents: true
                 onEntered: {
@@ -354,11 +352,8 @@ PlasmoidItem {
             onPositionChanged: mouse.accepted = false
             onPressAndHold: mouse.accepted = false
 
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-            }
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignTop
         }
 
         // WebView loader that manages the web content

@@ -12,6 +12,10 @@
       <label>i18n("The name of the icon used in the compact representation (e.g. on a small panel).")</label>
       <default></default>
     </entry>
+    <entry name="iconMode" type="Int">
+      <label>i18n("Icon display mode (0: Favicon, 1: Adaptive, 2: Dark, 3: Light, 4: Outlined, 5: Filled, 6: Colorful)")</label>
+      <default>1</default>
+    </entry>
     <entry name="useFilledChatIcon" type="Bool">
       <label>i18n("Use the filled chat's icon instead of widget icon")</label>
       <default>false</default>
