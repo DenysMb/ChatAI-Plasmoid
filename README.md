@@ -37,17 +37,17 @@ A range of chatbots as Plasmoid for your KDE Plasma desktop
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/RevengeRip">
-                    <img src="https://avatars.githubusercontent.com/u/9915567?v=4" width="100;" alt="RevengeRip"/>
-                    <br />
-                    <sub><b>RevengeRip</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/vitor-dantas">
                     <img src="https://avatars.githubusercontent.com/u/45504386?v=4" width="100;" alt="vitor-dantas"/>
                     <br />
                     <sub><b>Vitor Dantas</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/postadelmaga">
+                    <img src="https://avatars.githubusercontent.com/u/2010800?v=4" width="100;" alt="postadelmaga"/>
+                    <br />
+                    <sub><b>postadelmaga</b></sub>
                 </a>
             </td>
 		</tr>
