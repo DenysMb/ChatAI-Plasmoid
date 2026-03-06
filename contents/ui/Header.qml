@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Dialogs
 import QtQuick.Layouts
 import org.kde.plasma.components 3.0 as PlasmaComponents3
-import org.kde.kirigami 2.20 as Kirigami
-import org.kde.plasma.plasmoid 2.0
+import org.kde.kirigami as Kirigami
+import org.kde.plasma.plasmoid
 import Qt.labs.platform 1.1
 import QtWebEngine
 
