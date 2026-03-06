@@ -78,14 +78,18 @@ Item {
     function getIconNameOrPath() {
         const mode = plasmoid.configuration.iconMode;
         
-        if (mode === 0) { // Favicon
+        if (mode === 7) {
+            return plasmoid.configuration.customIcon || fallbackIcon;
+        }
+        
+        if (mode === 0) {
             const faviconUrl = plasmoid.configuration.favIcon || plasmoid.configuration.lastFavIcon;
             if (faviconUrl) {
                 return faviconUrl.replace("image://favicon/", "");
             }
         }
 
-        if (mode >= 4) { // Outlined, Filled, Colorful
+        if (mode >= 4) {
             return getChatModelIcon() || fallbackIcon;
         }
 
@@ -93,7 +97,6 @@ Item {
         if (mode === 2) return "assets/logo-dark.svg";
         if (mode === 3) return "assets/logo-light.svg";
         
-        // Mode 1 or fallback
         return `assets/logo-${contrast}.svg`;
     }
 

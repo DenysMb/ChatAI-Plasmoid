@@ -3,15 +3,15 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
 import org.kde.kirigami 2.20 as Kirigami
+import org.kde.iconthemes as KIconThemes
 
 KCM.SimpleKCM {
     property alias cfg_iconMode: iconMode.currentIndex
+    property string cfg_customIcon: plasmoid.configuration.customIcon
 
-    // Remove padding for better layout
     leftPadding: 0
     rightPadding: 0
 
-    // Main form layout container
     Kirigami.FormLayout {
         anchors.left: parent.left
         width: Math.min(parent.width, Kirigami.Units.gridUnit * 25)
@@ -26,9 +26,39 @@ KCM.SimpleKCM {
                 i18n("Default light icon"),
                 i18n("Outlined icon"),
                 i18n("Filled icon"),
-                i18n("Colorful icon")
+                i18n("Colorful icon"),
+                i18n("Custom icon")
             ]
             Layout.fillWidth: true
+        }
+
+        QQC2.Button {
+            id: iconButton
+            visible: iconMode.currentIndex === 7
+            Kirigami.FormData.label: i18n("Custom Icon:")
+            implicitWidth: previewFrame.width + Kirigami.Units.smallSpacing * 2
+            implicitHeight: previewFrame.height + Kirigami.Units.smallSpacing * 2
+            hoverEnabled: true
+
+            KIconThemes.IconDialog {
+                id: iconDialog
+                onIconNameChanged: {
+                    if (iconName) {
+                        cfg_customIcon = iconName
+                        plasmoid.configuration.customIcon = iconName
+                    }
+                }
+            }
+
+            onClicked: iconDialog.open()
+
+            Kirigami.Icon {
+                id: previewFrame
+                anchors.centerIn: parent
+                width: Kirigami.Units.iconSizes.large
+                height: width
+                source: cfg_customIcon || "help-about"
+            }
         }
 
         // Separator between icon and header sections
