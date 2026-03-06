@@ -42,10 +42,7 @@ Item {
             let filename = `${downloadDirectory}/${safeName}-${timestamp}.pdf`;
 
             // Add the PDF as a special type of download
-            let pdfIndex = webview.downloads.addDownload(null, `${safeName}-${timestamp}.pdf`, filename, true);
-
-            // Store the PDF index for future reference
-            let currentPdfIndex = pdfIndex;
+            webview.downloads.addDownload(null, `${safeName}-${timestamp}.pdf`, filename, true);
 
             webview.printToPdf(filename, WebEngineView.A4, WebEngineView.Portrait);
         });
@@ -313,7 +310,7 @@ Item {
         onContextMenuRequested: request => {
             // Use default menu for special elements (text fields, selection, etc)
             if (request.isContentEditable || request.selectedText || request.mediaType !== ContextMenuRequest.MediaTypeNone) {
-                request.accepted = false;  // Permite que o menu padrão apareça
+                request.accepted = false;  // Allow default menu to appear
                 return;
             }
 

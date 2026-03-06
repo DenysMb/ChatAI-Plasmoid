@@ -34,7 +34,7 @@ PlasmoidItem {
             {
                 "id": "huggingface",
                 "url": "https://huggingface.co/chat",
-                "text": "HugginChat",
+                "text": "HuggingChat",
                 "prop": "showHugginChat"
             },
             {

@@ -127,7 +127,7 @@ KCM.SimpleKCM {
                         },
                         {
                             "id": "showHugginChat",
-                            "text": "HugginChat"
+                            "text": "HuggingChat"
                         },
                         {
                             "id": "showGoogleGemini",

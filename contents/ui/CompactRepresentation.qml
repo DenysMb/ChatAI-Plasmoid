@@ -31,15 +31,6 @@ Item {
         source: getIconSource()
     }
 
-    // Direct webview connection for loading state changes
-    Connections {
-        target: compactRoot.webview
-        enabled: compactRoot.webview !== null
-        function onLoadingChanged(loadingInfo) {
-            // Placeholder for potential future use
-        }
-    }
-
     function getIconSource() {
         let icon = getIconNameOrPath();
         if (icon.indexOf("/") !== -1 || icon.endsWith(".svg") || icon.endsWith(".png")) {

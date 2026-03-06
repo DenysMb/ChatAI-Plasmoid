@@ -12,7 +12,6 @@ RowLayout {
 
     // Signals for communication with parent components
     signal goBackToHomePage
-    signal closeWebViewRequested
     signal reloadPageRequested
     signal navigateBackRequested
     signal navigateForwardRequested
@@ -211,7 +210,6 @@ RowLayout {
         icon.name: "window-close"
         display: PlasmaComponents3.AbstractButton.IconOnly
         onClicked: {
-            closeWebViewRequested();
             closeWebViewCallback?.();
         }
         visible: !plasmoid.configuration.hideCloseButton
