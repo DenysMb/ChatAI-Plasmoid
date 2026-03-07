@@ -11,7 +11,7 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
 import org.kde.notification 1.0
-import org.kde.kirigami as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 
 Item {
     id: webViewRoot
@@ -598,9 +598,12 @@ Item {
             screenCaptureEnabled: true
             pluginsEnabled: true
             forceDarkMode: {
-                const color = Kirigami.Theme.backgroundColor;
-                const luma = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b;
-                return luma < 0.5;
+                const hex = Kirigami.Theme.backgroundColor.toString().substring(1);
+                const r = parseInt(hex.substring(0, 2), 16);
+                const g = parseInt(hex.substring(2, 4), 16);
+                const b = parseInt(hex.substring(4, 6), 16);
+                const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                return luma < 128;
             }
         }
     }

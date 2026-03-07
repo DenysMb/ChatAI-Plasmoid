@@ -1,23 +1,14 @@
 import QtQuick
-import QtQuick.Layouts
-import org.kde.kirigami as Kirigami
-import org.kde.plasma.plasmoid
-import org.kde.plasma.core as PlasmaCore
+import org.kde.kirigami 2.20 as Kirigami
+import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 Item {
     id: compactRoot
 
-    property var models: []
-    property var webview: null
+    property var models
+    property var webview
     property string fallbackIcon: "help-about"
-
-    readonly property bool isVertical: plasmoid.formFactor === PlasmaCore.Types.Vertical
-
-    Layout.minimumWidth: isVertical ? 0 : Kirigami.Units.iconSizes.large
-    Layout.minimumHeight: isVertical ? Kirigami.Units.iconSizes.large : 0
-
-    implicitWidth: Kirigami.Units.iconSizes.large
-    implicitHeight: Kirigami.Units.iconSizes.large
 
     MouseArea {
         id: mouseArea
@@ -27,80 +18,100 @@ Item {
 
     Kirigami.Icon {
         anchors.fill: parent
-        // Use a function that returns a URL or icon name appropriately
-        source: getIconSource()
+        source: Qt.resolvedUrl(getIcon())
+    }
+
+    // WebView connection handlers
+    // Monitor and respond to webview state changes
+    Connections {
+        // Parent webview connection
+        target: parent && parent.webviewRoot && parent.webviewRoot.webview ? parent.webviewRoot.webview : null
+        enabled: target ? true : false
     }
 
     // Direct webview connection for loading state changes
     Connections {
-        target: compactRoot.webview
-        enabled: compactRoot.webview !== null
+        target: webview
+        enabled: webview !== null
         function onLoadingChanged(loadingInfo) {
-            // Placeholder for potential future use
+            if (loadingInfo?.status === WebEngineLoadRequest.LoadSucceededStatus)
+            // Handle successful load
+            {}
         }
     }
 
-    function getIconSource() {
-        let icon = getIconNameOrPath();
-        if (icon.indexOf("/") !== -1 || icon.endsWith(".svg") || icon.endsWith(".png")) {
-            return Qt.resolvedUrl(icon);
-        }
-        return icon;
-    }
-
+    // Helper Functions
+    // Determines and returns the appropriate chat model icon based on:
+    // - Current chat service
+    // - System theme (light/dark)
+    // - User icon style preferences
     function getChatModelIcon() {
-        if (!models || models.length === 0) return `assets/logo-${getBackgroundColorContrast()}.svg`;
-
-        const mode = plasmoid.configuration.iconMode;
-        const currentModel = models.find(model => plasmoid.configuration.url.includes(model.url));
+        const currentModel = models.find(model => Plasmoid.configuration.url.includes(model.url));
         const colorContrast = getBackgroundColorContrast();
-        
-        // Mode 6 is Colorful. If not in colorful mode, some models only have colorful icons available
-        const hasOnlyColorfulIcon = mode !== 6 && ["lobechat", "bigagi"].includes(currentModel?.id);
+        const hasOnlyColorfulIcon = !Plasmoid.configuration.useColorfulChatIcon && ["lobechat", "bigagi"].includes(currentModel?.id);
 
         if (!currentModel || currentModel?.id === "blackbox" || hasOnlyColorfulIcon) {
             return `assets/logo-${colorContrast}.svg`;
         }
 
+        // Add custom icon mapping, For CustomModels & New Models when added
         if (currentModel.useIcon) {
-            const style = mode === 5 ? "filled" : "outlined";
+            const style = Plasmoid.configuration.useFilledChatIcon ? "filled" : "outlined";
             return `assets/${style}/${currentModel.useIcon}-${colorContrast}.svg`;
         }
 
-        if (mode === 6) {
+        if (Plasmoid.configuration.useColorfulChatIcon) {
             return `assets/colorful/${currentModel.id}.svg`;
         }
 
-        const style = mode === 5 ? "filled" : "outlined";
+        const style = Plasmoid.configuration.useFilledChatIcon ? "filled" : "outlined";
         return `assets/${style}/${currentModel.id}-${colorContrast}.svg`;
     }
 
-    function getIconNameOrPath() {
-        const mode = plasmoid.configuration.iconMode;
-        
-        if (mode === 0) { // Favicon
-            const faviconUrl = plasmoid.configuration.favIcon || plasmoid.configuration.lastFavIcon;
+    // Main icon selection function that determines which icon to display:
+    // 1. Website favicon (if enabled)
+    // 2. Chat model specific icon (if enabled)
+    // 3. Default icon based on theme
+    function getIcon() {
+        if (Plasmoid.configuration.useFavicon) {
+            const faviconUrl = Plasmoid.configuration.favIcon || Plasmoid.configuration.lastFavIcon
             if (faviconUrl) {
-                return faviconUrl.replace("image://favicon/", "");
+                return faviconUrl.replace("image://favicon/", "")
             }
         }
 
-        if (mode >= 4) { // Outlined, Filled, Colorful
-            return getChatModelIcon() || fallbackIcon;
-        }
+        if (Plasmoid.configuration.useDefaultDarkIcon)
+            return "assets/logo-dark.svg"
 
-        const contrast = getBackgroundColorContrast();
-        if (mode === 2) return "assets/logo-dark.svg";
-        if (mode === 3) return "assets/logo-light.svg";
-        
-        // Mode 1 or fallback
-        return `assets/logo-${contrast}.svg`;
+            if (Plasmoid.configuration.useDefaultLightIcon)
+                return "assets/logo-light.svg"
+
+                if (Plasmoid.configuration.useDefaultIcon) {
+                    const hex = `${PlasmaCore.Theme.backgroundColor}`.substring(1)
+                    const r = parseInt(hex.substring(0, 2), 16)
+                    const g = parseInt(hex.substring(2, 4), 16)
+                    const b = parseInt(hex.substring(4, 6), 16)
+                    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b
+                    const contrast = luma > 128 ? "dark" : "light"
+                    return "assets/logo-" + contrast + ".svg"
+                }
+
+                if (Plasmoid.configuration.useFilledChatIcon ||
+                    Plasmoid.configuration.useOutlinedChatIcon ||
+                    Plasmoid.configuration.useColorfulChatIcon) {
+                    return getChatModelIcon() || fallbackIcon
+                    }
+
+                    return "assets/logo-light.svg"
     }
 
+    // Calculates whether to use light or dark icons based on
+    // the system background color using luminance formula
+    // Returns: "dark" or "light" based on background contrast
     function getBackgroundColorContrast() {
-        // Use Kirigami.Theme for better Plasma 6 compatibility
-        const color = Kirigami.Theme.backgroundColor;
-        const luma = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b;
-        return luma > 0.5 ? "dark" : "light";
+        const hex = Kirigami.Theme.backgroundColor.toString().replace("#", "")
+        const [r, g, b] = [parseInt(hex.substring(0, 2), 16), parseInt(hex.substring(2, 4), 16), parseInt(hex.substring(4, 6), 16)]
+        const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b
+        return luma > 128 ? "dark" : "light"
     }
 }
