@@ -5,7 +5,14 @@ import org.kde.kcmutils as KCM
 import org.kde.kirigami 2.20 as Kirigami
 
 KCM.SimpleKCM {
-    property alias cfg_iconMode: iconMode.currentIndex
+    property string cfg_icon: plasmoid.configuration.icon
+    property alias cfg_useFilledChatIcon: useFilledChatIcon.checked
+    property alias cfg_useOutlinedChatIcon: useOutlinedChatIcon.checked
+    property alias cfg_useColorfulChatIcon: useColorfulChatIcon.checked
+    property alias cfg_useDefaultIcon: useDefaultIcon.checked
+    property alias cfg_useDefaultLightIcon: useDefaultLightIcon.checked
+    property alias cfg_useDefaultDarkIcon: useDefaultDarkIcon.checked
+    property alias cfg_useFavicon: useFavicon.checked
 
     // Remove padding for better layout
     leftPadding: 0
@@ -16,19 +23,61 @@ KCM.SimpleKCM {
         anchors.left: parent.left
         width: Math.min(parent.width, Kirigami.Units.gridUnit * 25)
 
-        QQC2.ComboBox {
-            id: iconMode
+        // Button group to ensure only one icon type can be selected
+        QQC2.ButtonGroup {
+            id: iconGroup
+        }
+
+        // Icon type selection section
+        QQC2.RadioButton {
+            id: useFavicon
+
             Kirigami.FormData.label: i18n("Icon:")
-            model: [
-                i18n("Use website favicon"),
-                i18n("Default adaptive icon"),
-                i18n("Default dark icon"),
-                i18n("Default light icon"),
-                i18n("Outlined icon"),
-                i18n("Filled icon"),
-                i18n("Colorful icon")
-            ]
-            Layout.fillWidth: true
+            text: i18n("Use website favicon")
+            QQC2.ButtonGroup.group: iconGroup
+        }
+
+        // Default icon options
+        QQC2.RadioButton {
+            id: useDefaultIcon
+
+            text: i18n("Default adaptive icon")
+            QQC2.ButtonGroup.group: iconGroup
+        }
+
+        QQC2.RadioButton {
+            id: useDefaultDarkIcon
+
+            text: i18n("Default dark icon")
+            QQC2.ButtonGroup.group: iconGroup
+        }
+
+        QQC2.RadioButton {
+            id: useDefaultLightIcon
+
+            text: i18n("Default light icon")
+            QQC2.ButtonGroup.group: iconGroup
+        }
+
+        QQC2.RadioButton {
+            id: useOutlinedChatIcon
+
+            text: i18n("Outlined icon")
+            QQC2.ButtonGroup.group: iconGroup
+        }
+
+        QQC2.RadioButton {
+            id: useFilledChatIcon
+
+            text: i18n("Filled icon")
+            QQC2.ButtonGroup.group: iconGroup
+        }
+
+        QQC2.RadioButton {
+            id: useColorfulChatIcon
+
+            text: i18n("Colorful icon")
+            QQC2.ButtonGroup.group: iconGroup
         }
 
         // Separator between icon and header sections
