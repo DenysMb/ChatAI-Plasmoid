@@ -15,6 +15,16 @@ import org.kde.kirigami as Kirigami
 Item {
     id: compactRoot
 
+    // Icon mode constants (must match ConfigAppearance.qml ComboBox order)
+    readonly property int iconModeFavicon: 0
+    readonly property int iconModeAdaptive: 1
+    readonly property int iconModeDark: 2
+    readonly property int iconModeLight: 3
+    readonly property int iconModeOutlined: 4
+    readonly property int iconModeFilled: 5
+    readonly property int iconModeColorful: 6
+    readonly property int iconModeCustom: 7
+
     property var models: []
     property var webview: null
     property string fallbackIcon: "help-about"
@@ -54,47 +64,47 @@ Item {
         const currentModel = models.find(model => plasmoid.configuration.url.includes(model.url));
         const colorContrast = getBackgroundColorContrast();
         
-        // Mode 6 is Colorful. If not in colorful mode, some models only have colorful icons available
-        const hasOnlyColorfulIcon = mode !== 6 && ["lobechat", "bigagi"].includes(currentModel?.id);
+        // Colorful mode. If not in colorful mode, some models only have colorful icons available
+        const hasOnlyColorfulIcon = mode !== iconModeColorful && ["lobechat", "bigagi"].includes(currentModel?.id);
 
         if (!currentModel || currentModel?.id === "blackbox" || hasOnlyColorfulIcon) {
             return `assets/logo-${colorContrast}.svg`;
         }
 
         if (currentModel.useIcon) {
-            const style = mode === 5 ? "filled" : "outlined";
+            const style = mode === iconModeFilled ? "filled" : "outlined";
             return `assets/${style}/${currentModel.useIcon}-${colorContrast}.svg`;
         }
 
-        if (mode === 6) {
+        if (mode === iconModeColorful) {
             return `assets/colorful/${currentModel.id}.svg`;
         }
 
-        const style = mode === 5 ? "filled" : "outlined";
+        const style = mode === iconModeFilled ? "filled" : "outlined";
         return `assets/${style}/${currentModel.id}-${colorContrast}.svg`;
     }
 
     function getIconNameOrPath() {
         const mode = plasmoid.configuration.iconMode;
         
-        if (mode === 7) {
+        if (mode === iconModeCustom) {
             return plasmoid.configuration.customIcon || fallbackIcon;
         }
         
-        if (mode === 0) {
+        if (mode === iconModeFavicon) {
             const faviconUrl = plasmoid.configuration.favIcon || plasmoid.configuration.lastFavIcon;
             if (faviconUrl) {
                 return faviconUrl.replace("image://favicon/", "");
             }
         }
 
-        if (mode >= 4) {
+        if (mode >= iconModeOutlined) {
             return getChatModelIcon() || fallbackIcon;
         }
 
         const contrast = getBackgroundColorContrast();
-        if (mode === 2) return "assets/logo-dark.svg";
-        if (mode === 3) return "assets/logo-light.svg";
+        if (mode === iconModeDark) return "assets/logo-dark.svg";
+        if (mode === iconModeLight) return "assets/logo-light.svg";
         
         return `assets/logo-${contrast}.svg`;
     }

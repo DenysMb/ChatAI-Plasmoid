@@ -14,6 +14,16 @@ import org.kde.iconthemes as KIconThemes
 import org.kde.kcmutils as KCM
 
 KCM.SimpleKCM {
+    // Icon mode constants (must match CompactRepresentation.qml)
+    readonly property int iconModeFavicon: 0
+    readonly property int iconModeAdaptive: 1
+    readonly property int iconModeDark: 2
+    readonly property int iconModeLight: 3
+    readonly property int iconModeOutlined: 4
+    readonly property int iconModeFilled: 5
+    readonly property int iconModeColorful: 6
+    readonly property int iconModeCustom: 7
+
     property alias cfg_iconMode: iconMode.currentIndex
     property string cfg_customIcon: plasmoid.configuration.customIcon
 
@@ -42,7 +52,7 @@ KCM.SimpleKCM {
 
         QQC2.Button {
             id: iconButton
-            visible: iconMode.currentIndex === 7
+            visible: iconMode.currentIndex === iconModeCustom
             Kirigami.FormData.label: i18n("Custom Icon:")
             implicitWidth: previewFrame.width + Kirigami.Units.smallSpacing * 2
             implicitHeight: previewFrame.height + Kirigami.Units.smallSpacing * 2

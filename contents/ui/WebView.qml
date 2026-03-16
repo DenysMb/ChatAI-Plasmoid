@@ -27,19 +27,24 @@ Item {
     readonly property string effectiveProfileName: plasmoid.configuration.webEngineProfileName && plasmoid.configuration.webEngineProfileName.length ? plasmoid.configuration.webEngineProfileName : "chat-ai"
 
     function goBackToHomePage() {
-        webview.url = plasmoid.configuration.url;
+        const url = plasmoid.configuration.url;
+        if (!url || typeof url !== 'string' || url.length === 0) {
+            console.error("Invalid or empty URL configuration");
+            return;
+        }
+        webview.url = url;
     }
 
     function goBack() {
-        webview.goBack();
+        if (webview) webview.goBack();
     }
 
     function goForward() {
-        webview.goForward();
+        if (webview) webview.goForward();
     }
 
     function reloadPage() {
-        webview.reloadAndBypassCache();
+        if (webview) webview.reloadAndBypassCache();
     }
 
     function printPage() {

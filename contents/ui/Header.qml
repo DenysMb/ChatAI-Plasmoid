@@ -33,6 +33,12 @@ RowLayout {
     property bool showCustomURLInput: false        // Toggle between URL selector and custom URL input
     property var webview: (parent && parent.webviewRoot) ? parent.webviewRoot.webview : null
 
+    // Utility function to ensure URL has a valid protocol
+    function sanitizeUrl(url) {
+        if (!url || typeof url !== 'string') return '';
+        return url.match(/^https?:\/\//i) ? url : "https://" + url;
+    }
+
     // Navigation buttons
     PlasmaComponents3.Button {
         icon.name: "go-previous"
@@ -122,8 +128,7 @@ RowLayout {
 
         Keys.onReturnPressed: event => {
             if (currentIndex === count - 1 && editText) {
-                let url = editText;
-                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
+                plasmoid.configuration.url = sanitizeUrl(editText);
                 goBackToHomePage();
                 event.accepted = true;
             }
@@ -131,8 +136,7 @@ RowLayout {
 
         onAccepted: {
             if (currentIndex === count - 1 && editText) {
-                let url = editText;
-                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
+                plasmoid.configuration.url = sanitizeUrl(editText);
                 goBackToHomePage();
             }
         }
@@ -274,9 +278,9 @@ RowLayout {
     function handleModelSelection() {
         if (urlComboBox.currentIndex === urlComboBox.count - 1) {
             // Custom URL handling
-            let url = urlComboBox.editText;
+            const url = urlComboBox.editText;
             if (url) {
-                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
+                plasmoid.configuration.url = sanitizeUrl(url);
                 goBackToHomePage();
             }
             return;
