@@ -1,11 +1,20 @@
+/*
+ *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
+ *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
+ *
+ *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
 import QtQuick
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import org.kde.plasma.components 3.0 as PlasmaComponents3
-import org.kde.kirigami as Kirigami
-import org.kde.plasma.plasmoid
-import Qt.labs.platform 1.1
 import QtWebEngine
+
+import org.kde.plasma.components 3.0 as PlasmaComponents3
+import org.kde.plasma.plasmoid
+import org.kde.kirigami as Kirigami
+
+import Qt.labs.platform 1.1
 
 RowLayout {
     Layout.fillWidth: true

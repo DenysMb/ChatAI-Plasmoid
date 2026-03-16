@@ -1,3 +1,10 @@
+/*
+ *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
+ *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
+ *
+ *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
 import QtCore
 import QtQuick
 import QtQuick.Controls
@@ -5,13 +12,15 @@ import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtQuick.LocalStorage 2.0
 import QtWebEngine
-import Qt.labs.platform 1.1
+
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
-import org.kde.notification 1.0
 import org.kde.kirigami as Kirigami
+import org.kde.notification 1.0
+
+import Qt.labs.platform 1.1
 
 Item {
     id: webViewRoot
