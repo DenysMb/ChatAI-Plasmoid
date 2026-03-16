@@ -312,57 +312,31 @@ RowLayout {
         restoreMode: Binding.RestoreBinding
     }
 
-    // Configuration change handlers
-    // Updates model list when chat service visibility settings change
+    // Debounce timer for model re-rendering
+    Timer {
+        id: modelUpdateTimer
+        interval: 50
+        onTriggered: renderChatModel()
+    }
+
+    // Configuration change handler - debounced to prevent multiple rapid re-renders
     Connections {
         target: plasmoid.configuration
-        function onCustomSitesChanged() {
-            renderChatModel();
-        }
-        function onShowT3ChatChanged() {
-            renderChatModel();
-        }
-        function onShowDuckDuckGoChatChanged() {
-            renderChatModel();
-        }
-        function onShowChatGPTChanged() {
-            renderChatModel();
-        }
-        function onShowHugginChatChanged() {
-            renderChatModel();
-        }
-        function onShowGoogleGeminiChanged() {
-            renderChatModel();
-        }
-        function onShowYouChanged() {
-            renderChatModel();
-        }
-        function onShowPerplexityChanged() {
-            renderChatModel();
-        }
-        function onShowLobeChatChanged() {
-            renderChatModel();
-        }
-        function onShowBigAGIChanged() {
-            renderChatModel();
-        }
-        function onShowBlackBoxChanged() {
-            renderChatModel();
-        }
-        function onShowBingCopilotChanged() {
-            renderChatModel();
-        }
-        function onShowClaudeChanged() {
-            renderChatModel();
-        }
-        function onShowDeepSeekChanged() {
-            renderChatModel();
-        }
-        function onShowMetaAIChanged() {
-            renderChatModel();
-        }
-        function onShowGrokChanged() {
-            renderChatModel();
-        }
+        function onCustomSitesChanged() { modelUpdateTimer.restart() }
+        function onShowT3ChatChanged() { modelUpdateTimer.restart() }
+        function onShowDuckDuckGoChatChanged() { modelUpdateTimer.restart() }
+        function onShowChatGPTChanged() { modelUpdateTimer.restart() }
+        function onShowHugginChatChanged() { modelUpdateTimer.restart() }
+        function onShowGoogleGeminiChanged() { modelUpdateTimer.restart() }
+        function onShowYouChanged() { modelUpdateTimer.restart() }
+        function onShowPerplexityChanged() { modelUpdateTimer.restart() }
+        function onShowLobeChatChanged() { modelUpdateTimer.restart() }
+        function onShowBigAGIChanged() { modelUpdateTimer.restart() }
+        function onShowBlackBoxChanged() { modelUpdateTimer.restart() }
+        function onShowBingCopilotChanged() { modelUpdateTimer.restart() }
+        function onShowClaudeChanged() { modelUpdateTimer.restart() }
+        function onShowDeepSeekChanged() { modelUpdateTimer.restart() }
+        function onShowMetaAIChanged() { modelUpdateTimer.restart() }
+        function onShowGrokChanged() { modelUpdateTimer.restart() }
     }
 }

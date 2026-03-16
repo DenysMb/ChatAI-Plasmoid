@@ -689,10 +689,10 @@ Item {
                     PlasmaComponents3.Label {
                         text: {
                             if (model.state === WebEngineDownloadRequest.DownloadCompleted) {
-                                return model.fileName + " - Completed";
+                                return i18n("%1 - Completed", model.fileName);
                             }
                             if (model.isPdfExport) {
-                                return model.fileName + " - Saving PDF...";
+                                return i18n("%1 - Saving PDF...", model.fileName);
                             }
                             let progress = Math.round((model.progress || 0) * 100);
                             let size = "";
@@ -701,7 +701,7 @@ Item {
                                 let total = (model.totalBytes / 1024 / 1024).toFixed(1);
                                 size = ` (${received}/${total} MB)`;
                             }
-                            return model.fileName + " - " + progress + "%" + size;
+                            return i18n("%1 - %2%%3", model.fileName, progress, size);
                         }
                         Layout.fillWidth: true
                         elide: Text.ElideMiddle
