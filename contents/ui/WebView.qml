@@ -288,32 +288,45 @@ Item {
                         return m ? { r: m[1], g: m[2], b: m[3] } : null;
                     }
 
-                    // Check if element is chat content (input, output, messages) — never apply transparency
+                    // Check if element is or contains chat content — never apply transparency
                     function isChatContent(el) {
                         var tag = el.tagName.toLowerCase();
-                        // Interactive input elements
-                        if (['input', 'textarea', 'select', 'button', 'fieldset', 'form', 'p', 'pre', 'code', 'li', 'ol', 'ul', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'a', 'strong', 'em', 'table'].indexOf(tag) >= 0) return true;
+                        // Text content tags
+                        if (['p', 'pre', 'code', 'li', 'ol', 'ul', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'em', 'table'].indexOf(tag) >= 0) return true;
+                        // Interactive elements
+                        if (['input', 'textarea', 'select', 'button', 'fieldset', 'form'].indexOf(tag) >= 0) return true;
                         if (el.isContentEditable || el.getAttribute('contenteditable') === 'true') return true;
                         var role = el.getAttribute('role') || '';
                         if (['textbox', 'searchbox', 'combobox', 'listbox', 'dialog', 'form', 'article', 'log', 'status'].indexOf(role) >= 0) return true;
                         var cls = (el.className && typeof el.className === 'string') ? el.className.toLowerCase() : '';
-                        // Input areas
-                        if (cls.match(/input|textarea|chat-input|prompt|editor|compose|message-input|ql-editor|ql-container|rich-textarea|text-input|send-button|input-area/)) return true;
-                        // Chat output / messages
+                        if (cls.match(/input|textarea|chat-input|prompt|editor|compose|message-input|ql-editor|ql-container|rich-textarea|text-input|send-button|input-area|tiptap|prosemirror/)) return true;
                         if (cls.match(/message|response|answer|reply|conversation|chat-turn|turn-|assistant|user-|bot-|markdown|prose|result|output/)) return true;
-                        // Data attributes commonly used for chat
-                        if (el.getAttribute('data-message-id') || el.getAttribute('data-testid')?.match(/message|conversation|turn/)) return true;
-                        // Contains text content directly (likely a message)
-                        if (el.querySelectorAll('textarea, input, [contenteditable=true], [role=textbox], .ql-editor').length > 0) return true;
+                        var testid = el.getAttribute('data-testid') || '';
+                        if (testid.match(/message|conversation|turn|chat-input|file-upload/)) return true;
+                        if (el.getAttribute('data-message-id')) return true;
                         return false;
+                    }
+
+                    // Check if element contains any chat content children
+                    function containsChatContent(el) {
+                        if (isChatContent(el)) return true;
+                        var found = el.querySelector(
+                            'textarea, input, [contenteditable=true], [role=textbox], ' +
+                            'fieldset, form, .ql-editor, .tiptap, .ProseMirror, ' +
+                            '[data-testid*=chat-input], [data-testid*=message], ' +
+                            '[class*=message], [class*=conversation], [class*=chat-turn], ' +
+                            '[class*=input-area], [class*=prompt], [class*=prose], ' +
+                            'p[data-placeholder], p[data-path-to-node]'
+                        );
+                        return found !== null;
                     }
 
                     function classifyElement(el) {
                         var rect = el.getBoundingClientRect();
                         if (rect.width < 10 || rect.height < 10) return 'skip';
 
-                        // Never touch interactive/input areas
-                        if (isChatContent(el)) return 'skip';
+                        // Never touch chat content or containers holding chat content
+                        if (isChatContent(el) || containsChatContent(el)) return 'skip';
 
                         var style = getComputedStyle(el);
                         var tag = el.tagName.toLowerCase();
@@ -337,7 +350,7 @@ Item {
                             return 'chrome';
                         }
 
-                        // Large background containers (wrappers, layouts, main content bg)
+                        // Large background containers — only if they don't hold chat
                         if (rect.width > viewW * 0.5 && rect.height > viewH * 0.3) {
                             return 'background';
                         }
@@ -350,9 +363,6 @@ Item {
                     allEls.forEach(function(el) {
                         var sel = makeSelector(el);
                         if (!sel || processed.has(sel)) return;
-
-                        // Skip interactive areas and their ancestors
-                        if (isChatContent(el)) return;
 
                         var color = parseBgColor(el);
                         if (!color) return;
