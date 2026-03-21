@@ -168,11 +168,12 @@ Item {
 
     property bool findBarVisible: false
 
-    // Re-inject transparency CSS when settings change live
+    // Re-inject CSS when settings change live
     Connections {
         target: plasmoid.configuration
         function onEnableTransparencyChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
         function onBackgroundTransparencyChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
+        function onFocusModeChanged() { if (webview.url.toString()) webview.injectFocusMode(); }
     }
 
     onFindBarVisibleChanged: {
@@ -530,6 +531,97 @@ Item {
             ");
         }
 
+        // Focus mode: hide sidebars, headers, and non-essential UI per service
+        function injectFocusMode() {
+            if (!plasmoid.configuration.focusMode) {
+                webview.runJavaScript("var el = document.getElementById('_chatai_focus'); if (el) el.remove();");
+                return;
+            }
+
+            var url = webview.url.toString();
+            var css = "";
+
+            if (url.includes("chatgpt.com")) {
+                css = `
+                    /* ChatGPT: hide sidebar, top nav */
+                    nav, div[class*="sidebar"], div[class*="Sidebar"],
+                    div[class*="drawer"], header:has(button[aria-label]) {
+                        display: none !important;
+                    }
+                    main { margin-left: 0 !important; }
+                    div[class*="thread"] { max-width: 100% !important; }
+                `;
+            } else if (url.includes("claude.ai")) {
+                css = `
+                    /* Claude: hide sidebar */
+                    div[class*="sidebar"], div[class*="Sidebar"],
+                    nav, aside, div[data-testid="sidebar"],
+                    div[class*="ConversationList"], div[class*="conversation-list"] {
+                        display: none !important;
+                    }
+                    main, div[class*="main"], div[class*="Main"] {
+                        margin-left: 0 !important;
+                        max-width: 100% !important;
+                    }
+                `;
+            } else if (url.includes("duckduckgo.com")) {
+                css = `
+                    /* DuckDuckGo: hide header, side panels */
+                    header, div[class*="header"], div[class*="Header"],
+                    div[class*="sidebar"], aside {
+                        display: none !important;
+                    }
+                    main { margin: 0 auto !important; max-width: 100% !important; }
+                `;
+            } else if (url.includes("gemini.google.com")) {
+                css = `
+                    /* Gemini: hide side nav, top bar */
+                    mat-sidenav, side-navigation, side-navigation-v2,
+                    header, .header-bar, mat-toolbar,
+                    c-wiz > header, div[class*="side-nav"] {
+                        display: none !important;
+                    }
+                    mat-sidenav-content, .main-container {
+                        margin-left: 0 !important;
+                        max-width: 100% !important;
+                    }
+                `;
+            } else if (url.includes("chat.deepseek.com")) {
+                css = `
+                    /* DeepSeek: hide sidebar */
+                    div[class*="sidebar"], div[class*="Sidebar"],
+                    nav, aside {
+                        display: none !important;
+                    }
+                    main, div[class*="main"] {
+                        margin-left: 0 !important;
+                        max-width: 100% !important;
+                    }
+                `;
+            } else if (url.includes("copilot.microsoft.com")) {
+                css = `
+                    /* Copilot: hide side elements */
+                    aside, nav, div[class*="sidebar"], div[class*="Sidebar"] {
+                        display: none !important;
+                    }
+                    main { margin: 0 !important; max-width: 100% !important; }
+                `;
+            }
+
+            if (!css) return;
+
+            webview.runJavaScript("
+                (function() {
+                    var s = document.getElementById('_chatai_focus');
+                    if (s) s.remove();
+                    s = document.createElement('style');
+                    s.id = '_chatai_focus';
+                    s.textContent = `" + css + "`;
+                    document.head.appendChild(s);
+                })();
+            ");
+        }
+
         onLoadProgressChanged: {
             if (loading)
                 updateBlurForProgress(loadProgress);
@@ -544,6 +636,7 @@ Item {
                 updateBlurForProgress(100);
                 checkAndUpdateFavicon();
                 injectTransparencyCSS();
+                injectFocusMode();
             }
 
             var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'claude', 'you'].some(site => plasmoid.configuration.url.includes(site));

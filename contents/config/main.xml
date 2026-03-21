@@ -175,5 +175,9 @@
       <label>Disguise as Chrome browser for better site compatibility</label>
       <default>true</default>
     </entry>
+    <entry name="focusMode" type="Bool">
+      <label>Hide sidebars and navigation for a cleaner chat view</label>
+      <default>false</default>
+    </entry>
   </group>
 </kcfg>

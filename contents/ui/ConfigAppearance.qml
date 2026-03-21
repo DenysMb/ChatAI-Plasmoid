@@ -68,6 +68,21 @@ KCM.SimpleKCM {
             Layout.fillWidth: true
         }
 
+        QQC2.CheckBox {
+            id: focusMode
+            text: i18n("Focus mode (hide sidebars and site navigation)")
+            checked: plasmoid.configuration.focusMode
+            onCheckedChanged: plasmoid.configuration.focusMode = checked
+            Layout.fillWidth: true
+        }
+
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            text: i18n("Hides sidebars, headers, and non-essential UI from supported chat services (ChatGPT, Claude, Gemini, DuckDuckGo, DeepSeek, Copilot). May break if sites update their layout.")
+            visible: focusMode.checked
+        }
+
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Layout.fillWidth: true
