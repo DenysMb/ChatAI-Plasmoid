@@ -50,13 +50,6 @@ A range of chatbots as Plasmoid for your KDE Plasma desktop
                     <sub><b>Vitor Dantas</b></sub>
                 </a>
             </td>
-            <td align="center">
-                <a href="https://github.com/postadelmaga">
-                    <img src="https://avatars.githubusercontent.com/u/2010800?v=4" width="100;" alt="postadelmaga"/>
-                    <br />
-                    <sub><b>postadelmaga</b></sub>
-                </a>
-            </td>
 		</tr>
 	<tbody>
 </table>
