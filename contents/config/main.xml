@@ -122,6 +122,10 @@
       <label>i18n("Load website on Plasma startup")</label>
       <default>false</default>
     </entry>
+    <entry name="keepWebEngineAlive" type="Bool">
+      <label>Keep WebEngine in memory after closing for faster reopening</label>
+      <default>true</default>
+    </entry>
     <entry name="spatialNavigationEnabled" type="Bool">
       <label>Enable spatial navigation for keyboard-based browsing</label>
       <default>false</default>

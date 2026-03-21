@@ -321,6 +321,15 @@ KCM.SimpleKCM {
                     Layout.fillWidth: true
                 }
 
+                QQC2.CheckBox {
+                    id: keepWebEngineAlive
+
+                    text: i18n("Keep in memory after closing (faster reopen)")
+                    checked: plasmoid.configuration.keepWebEngineAlive
+                    onCheckedChanged: plasmoid.configuration.keepWebEngineAlive = checked
+                    Layout.fillWidth: true
+                }
+
                 // Media permissions options
                 QQC2.CheckBox {
                     id: notificationsEnabled

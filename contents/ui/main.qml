@@ -206,8 +206,10 @@ PlasmoidItem {
             models: root.models
             Layout.fillWidth: true
             z: 2 // Increase the z-index to ensure it is above the MouseArea
-            // Callback to collapse the widget (WebView stays loaded for fast reopen)
+            // Callback to close/collapse the widget
             closeWebViewCallback: function () {
+                if (!plasmoid.configuration.keepWebEngineAlive)
+                    webviewLoader.active = false;
                 root.expanded = false;
             }
             // Handle navigation
