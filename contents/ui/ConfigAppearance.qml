@@ -140,7 +140,7 @@ KCM.SimpleKCM {
         Kirigami.InlineMessage {
             Layout.fillWidth: true
             text: i18n("You can still use the Go back to... and Keep open actions by right-clicking the widget icon.")
-            visible: hideHeader.checked || hideGoToButton.checked || hideKeepOpen.checked
+            visible: hideHeader.checked || hideKeepOpen.checked
         }
     }
 }
