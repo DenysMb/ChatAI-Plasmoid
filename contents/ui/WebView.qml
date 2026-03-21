@@ -365,7 +365,7 @@ Item {
         onContextMenuRequested: request => {
             // Use default menu for special elements (text fields, selection, etc)
             if (request.isContentEditable || request.selectedText || request.mediaType !== ContextMenuRequest.MediaTypeNone) {
-                request.accepted = false;  // Permite que o menu padrão apareça
+                request.accepted = false;  // Let the default menu appear
                 return;
             }
 
