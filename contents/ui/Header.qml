@@ -11,6 +11,20 @@ Item {
     Layout.fillWidth: true
     implicitHeight: headerRow.implicitHeight
 
+    // Signals for communication with parent components
+    signal goBackToHomePage
+    signal closeWebViewRequested
+    signal reloadPageRequested
+    signal navigateBackRequested
+    signal navigateForwardRequested
+    signal printPageRequested
+    signal toggleSearchRequested
+
+    // Properties for managing component state
+    property var closeWebViewCallback: undefined
+    property var models
+    property var webview: (parent && parent.webviewRoot) ? parent.webviewRoot.webview : null
+
     // Header gradient background
     Rectangle {
         anchors.fill: parent
@@ -25,21 +39,6 @@ Item {
     RowLayout {
         id: headerRow
         anchors.fill: parent
-
-    // Signals for communication with parent components
-    signal goBackToHomePage
-    signal closeWebViewRequested
-    signal reloadPageRequested
-    signal navigateBackRequested
-    signal navigateForwardRequested
-    signal printPageRequested
-    signal toggleSearchRequested
-
-    // Properties for managing component state
-    property var closeWebViewCallback: undefined    // Callback function for closing webview
-    property var models                            // Available chat models
-    property bool showCustomURLInput: false        // Toggle between URL selector and custom URL input
-    property var webview: (parent && parent.webviewRoot) ? parent.webviewRoot.webview : null
 
     // Navigation buttons
     PlasmaComponents3.Button {
