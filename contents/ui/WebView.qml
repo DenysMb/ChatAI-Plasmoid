@@ -122,18 +122,58 @@ Item {
         onActivated: findBarVisible = true
     }
 
-    ContextMenu {
+    PlasmaComponents3.Menu {
         id: linkContextMenu
 
-        canGoBack: webview.canGoBack
-        canGoForward: webview.canGoForward
+        property string link: ""
 
-        onBackRequested: webview.goBack()
-        onForwardRequested: webview.goForward()
-        onReloadRequested: reloadPage()
-        onSaveAsPdfRequested: printPage()
-        onSaveAsMHTMLRequested: saveMHTML()
-        onCopyLinkRequested: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
+        PlasmaComponents3.MenuItem {
+            text: i18n("Back")
+            icon.name: "go-previous"
+            enabled: webview.canGoBack
+            onTriggered: webview.goBack()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Forward")
+            icon.name: "go-next"
+            enabled: webview.canGoForward
+            onTriggered: webview.goForward()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Reload")
+            icon.name: "view-refresh"
+            onTriggered: reloadPage()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Save as PDF")
+            icon.name: "document-save-as"
+            visible: !linkContextMenu.link
+            onTriggered: printPage()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Save as MHTML")
+            icon.name: "document-save"
+            visible: !linkContextMenu.link
+            onTriggered: saveMHTML()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Open Link in Browser")
+            icon.name: "internet-web-browser"
+            visible: linkContextMenu.link !== ""
+            onTriggered: Qt.openUrlExternally(linkContextMenu.link)
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Copy Link Address")
+            icon.name: "edit-copy"
+            visible: linkContextMenu.link !== ""
+            onTriggered: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
+        }
     }
 
     WebEngineView {
