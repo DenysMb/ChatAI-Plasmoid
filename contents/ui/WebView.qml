@@ -608,15 +608,64 @@ Item {
                 `;
             }
 
-            if (!css) return;
-
+            // Inject known CSS or run heuristic fallback
             webview.runJavaScript("
                 (function() {
                     var s = document.getElementById('_chatai_focus');
                     if (s) s.remove();
                     s = document.createElement('style');
                     s.id = '_chatai_focus';
-                    s.textContent = `" + css + "`;
+
+                    var knownCSS = `" + css + "`;
+
+                    if (knownCSS.trim()) {
+                        s.textContent = knownCSS;
+                    } else {
+                        // Heuristic: analyze DOM and hide non-essential elements
+                        var viewW = window.innerWidth;
+                        var hidden = [];
+
+                        // 1. Hide semantic nav/aside/header elements
+                        document.querySelectorAll('nav, aside, [role=\"navigation\"], [role=\"banner\"], [role=\"complementary\"]').forEach(function(el) {
+                            var rect = el.getBoundingClientRect();
+                            // Skip if it's the main content area or tiny
+                            if (rect.width > viewW * 0.6 || rect.height < 20) return;
+                            hidden.push(el);
+                        });
+
+                        // 2. Hide fixed/absolute sidebars (narrow elements pinned to sides)
+                        document.querySelectorAll('div, section').forEach(function(el) {
+                            var style = getComputedStyle(el);
+                            if (style.position !== 'fixed' && style.position !== 'absolute' && style.position !== 'sticky') return;
+                            var rect = el.getBoundingClientRect();
+                            if (rect.width > viewW * 0.35) return; // too wide to be sidebar
+                            if (rect.height < viewW * 0.3) return; // too short to be sidebar
+                            // Likely a sidebar or panel
+                            hidden.push(el);
+                        });
+
+                        // 3. Hide top headers (full-width, short, at top)
+                        document.querySelectorAll('header, [role=\"banner\"]').forEach(function(el) {
+                            var rect = el.getBoundingClientRect();
+                            if (rect.top < 10 && rect.height < 80 && rect.width > viewW * 0.5) {
+                                hidden.push(el);
+                            }
+                        });
+
+                        // Build CSS from detected elements
+                        var css = '';
+                        hidden.forEach(function(el) {
+                            // Tag unique selectors for each element
+                            if (!el.dataset.chataiHidden) {
+                                el.dataset.chataiHidden = '1';
+                            }
+                        });
+                        css = '[data-chatai-hidden=\"1\"] { display: none !important; }\\n';
+                        css += 'main, [role=\"main\"] { margin-left: 0 !important; margin-right: 0 !important; max-width: 100% !important; width: 100% !important; }';
+
+                        s.textContent = css;
+                    }
+
                     document.head.appendChild(s);
                 })();
             ");
