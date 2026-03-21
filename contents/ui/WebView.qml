@@ -198,7 +198,6 @@ Item {
         // Inject CSS to make the website background semi-transparent
         function injectTransparencyCSS() {
             if (!plasmoid.configuration.enableTransparency) {
-                // Remove injected style if transparency was disabled
                 webview.runJavaScript("
                     var el = document.getElementById('_chatai_transparency');
                     if (el) el.remove();
@@ -206,32 +205,41 @@ Item {
                 return;
             }
 
-            var alpha = plasmoid.configuration.backgroundTransparency;
+            var opacity = plasmoid.configuration.backgroundTransparency;
             webview.runJavaScript("
                 (function() {
                     var styleId = '_chatai_transparency';
                     var existing = document.getElementById(styleId);
                     if (existing) existing.remove();
 
+                    // Grab computed bg colors and make them semi-transparent
+                    var targets = document.querySelectorAll(
+                        'html, body, body > *:first-child, body > div:first-of-type, ' +
+                        'main, #__next, #root, #app, .app, ' +
+                        '[class*=\"layout\"], [class*=\"Layout\"], ' +
+                        '[class*=\"container\"], [class*=\"Container\"], ' +
+                        '[class*=\"wrapper\"], [class*=\"Wrapper\"]'
+                    );
+
+                    var css = 'html, body { background-color: transparent !important; }\\n';
+
+                    targets.forEach(function(el) {
+                        var bg = getComputedStyle(el).backgroundColor;
+                        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+                            // Parse rgb/rgba and apply opacity
+                            var match = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);
+                            if (match) {
+                                var r = match[1], g = match[2], b = match[3];
+                                var selector = el.id ? '#' + el.id :
+                                    el.tagName.toLowerCase() + (el.className ? '.' + el.className.split(' ')[0] : '');
+                                css += selector + ' { background-color: rgba(' + r + ',' + g + ',' + b + ',' + " + opacity + " + ') !important; }\\n';
+                            }
+                        }
+                    });
+
                     var style = document.createElement('style');
                     style.id = styleId;
-                    style.textContent = `
-                        html, body {
-                            background-color: rgba(0, 0, 0, 0) !important;
-                        }
-                        body > *:first-child,
-                        body > div:first-of-type,
-                        main, #__next, #root, #app, .app,
-                        [class*='layout'], [class*='Layout'],
-                        [class*='container'], [class*='Container'],
-                        [class*='wrapper'], [class*='Wrapper'] {
-                            background-color: color-mix(
-                                in srgb,
-                                currentcolor 0%,
-                                transparent calc((1 - " + alpha + ") * 100%)
-                            ) !important;
-                        }
-                    `;
+                    style.textContent = css;
                     document.head.appendChild(style);
                 })();
             ");

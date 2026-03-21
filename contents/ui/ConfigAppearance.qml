@@ -106,6 +106,13 @@ KCM.SimpleKCM {
             }
         }
 
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            text: i18n("Affects the find bar, download bar, and link status bubble that appear over the web content.")
+            visible: true
+        }
+
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Layout.fillWidth: true
