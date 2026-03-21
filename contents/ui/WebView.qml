@@ -246,13 +246,6 @@ Item {
     WebEngineView {
         id: webview
 
-        // Opacity follows load progress: 0% → 0.3, 100% → 1.0
-        opacity: loading ? 0.3 + (loadProgress / 100) * 0.7 : 1.0
-        Behavior on opacity {
-            enabled: plasmoid.configuration.enableAnimations
-            NumberAnimation { duration: 150; easing.type: Easing.OutQuad }
-        }
-
         // Transparent WebEngine background when transparency is enabled
         backgroundColor: plasmoid.configuration.enableTransparency ? "transparent" : Kirigami.Theme.backgroundColor
 
@@ -535,57 +528,6 @@ Item {
 
             request.grant();
         }
-        // CSS backdrop blur follows load progress — blurs background only, text stays sharp
-        function updateBlurForProgress(progress) {
-            var blurPx = Math.round(12 * (1 - progress / 100));
-            var overlayAlpha = (1 - progress / 100) * 0.3; // 0.3 at 0% → 0 at 100%
-            var subtle = plasmoid.configuration.enableTransparency ? 0.5 : 0;
-
-            webview.runJavaScript("
-                (function() {
-                    var s = document.getElementById('_chatai_blur');
-                    if (!s) {
-                        s = document.createElement('style');
-                        s.id = '_chatai_blur';
-                        document.head.appendChild(s);
-                    }
-
-                    var blur = " + blurPx + ";
-                    var alpha = " + overlayAlpha.toFixed(3) + ";
-                    var subtle = " + subtle + ";
-
-                    if (blur <= 0 && subtle <= 0) {
-                        s.textContent = '#_chatai_blur_overlay { display: none; }';
-                        return;
-                    }
-
-                    var finalBlur = blur > 0 ? blur : subtle;
-                    var finalAlpha = blur > 0 ? alpha : 0;
-
-                    s.textContent = `
-                        #_chatai_blur_overlay {
-                            position: fixed;
-                            inset: 0;
-                            z-index: 99999;
-                            pointer-events: none;
-                            backdrop-filter: blur(${finalBlur}px);
-                            -webkit-backdrop-filter: blur(${finalBlur}px);
-                            background: rgba(0,0,0,${finalAlpha});
-                            transition: backdrop-filter 0.15s ease-out, background 0.15s ease-out,
-                                        -webkit-backdrop-filter 0.15s ease-out;
-                        }
-                    `;
-
-                    // Create overlay element if needed
-                    if (!document.getElementById('_chatai_blur_overlay')) {
-                        var div = document.createElement('div');
-                        div.id = '_chatai_blur_overlay';
-                        document.documentElement.appendChild(div);
-                    }
-                })();
-            ");
-        }
-
         // Focus mode: hide sidebars, headers, and non-essential UI per service
         function injectFocusMode() {
             if (!plasmoid.configuration.focusMode) {
@@ -726,18 +668,10 @@ Item {
             ");
         }
 
-        onLoadProgressChanged: {
-            if (loading)
-                updateBlurForProgress(loadProgress);
-        }
-
         onLoadingChanged: {
             injectBrowserSpoof();
 
-            if (loading) {
-                updateBlurForProgress(0);
-            } else {
-                updateBlurForProgress(100);
+            if (!webview.loading) {
                 checkAndUpdateFavicon();
                 injectTransparencyCSS();
                 injectFocusMode();
@@ -971,15 +905,6 @@ Item {
         }
     }
 
-    // Loading spinner (content blur is handled via CSS injection)
-    PlasmaComponents3.BusyIndicator {
-        anchors.centerIn: parent
-        z: 3
-        running: webview.loading
-        visible: running
-        implicitWidth: Kirigami.Units.gridUnit * 3
-        implicitHeight: implicitWidth
-    }
 
     MouseArea {
         id: mouseArea
