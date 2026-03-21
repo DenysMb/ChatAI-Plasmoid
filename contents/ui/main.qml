@@ -209,7 +209,7 @@ PlasmoidItem {
             // Callback to close/collapse the widget
             closeWebViewCallback: function () {
                 if (!plasmoid.configuration.keepWebEngineAlive)
-                    webviewLoader.active = false;
+                    unloadTimer.restart();
                 root.expanded = false;
             }
             // Handle navigation
@@ -357,7 +357,7 @@ PlasmoidItem {
             Layout.alignment: Qt.AlignTop
         }
 
-        // WebView loader — once loaded, stays alive for instant reopen
+        // WebView loader
         Loader {
             id: webviewLoader
 
@@ -372,11 +372,23 @@ PlasmoidItem {
             }
         }
 
-        // Activate WebView on first expand, keep it alive after that
+        // Unload WebEngine after 5 min of inactivity (when keepWebEngineAlive is off)
+        Timer {
+            id: unloadTimer
+            interval: 5 * 60 * 1000
+            onTriggered: {
+                if (!root.expanded)
+                    webviewLoader.active = false;
+            }
+        }
+
         Connections {
             function onExpandedChanged() {
-                if (root.expanded && !webviewLoader.active)
-                    webviewLoader.active = true;
+                if (root.expanded) {
+                    unloadTimer.stop();
+                    if (!webviewLoader.active)
+                        webviewLoader.active = true;
+                }
             }
 
             target: root
