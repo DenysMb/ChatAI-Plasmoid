@@ -206,9 +206,8 @@ PlasmoidItem {
             models: root.models
             Layout.fillWidth: true
             z: 2 // Increase the z-index to ensure it is above the MouseArea
-            // Callback to close the WebView and collapse the widget
+            // Callback to collapse the widget (WebView stays loaded for fast reopen)
             closeWebViewCallback: function () {
-                webviewLoader.active = false;
                 root.expanded = false;
             }
             // Handle navigation
@@ -356,31 +355,25 @@ PlasmoidItem {
             Layout.alignment: Qt.AlignTop
         }
 
-        // WebView loader that manages the web content
+        // WebView loader — once loaded, stays alive for instant reopen
         Loader {
             id: webviewLoader
 
-            // Improved the loading of the WebView & Added Error Handling
-            active: root.expanded || item !== null || plasmoid.configuration.loadOnStartup
-            asynchronous: true
+            active: false
             source: "WebView.qml"
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.topMargin: 0
 
-            // Add status handling
             onStatusChanged: {
-                if (status === Loader.Error) {
+                if (status === Loader.Error)
                     console.error("Failed to load WebView.qml");
-                }
             }
         }
 
-        // Monitor plasmoid expansion state
+        // Activate WebView on first expand, keep it alive after that
         Connections {
-            // Activate WebView when plasmoid is expanded
             function onExpandedChanged() {
-                if (root.expanded)
+                if (root.expanded && !webviewLoader.active)
                     webviewLoader.active = true;
             }
 
