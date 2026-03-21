@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Effects
 import QtQuick.Layouts
 import QtWebEngine
 import org.kde.plasma.components as PlasmaComponents3
@@ -11,9 +10,7 @@ Column {
 
     property var downloadsModel: null
     property var downloadCacheRef: ({})
-    readonly property bool blurEnabled: plasmoid.configuration.enableBlurEffects
     readonly property real overlayOpacity: plasmoid.configuration.overlayOpacity
-    readonly property bool animEnabled: plasmoid.configuration.enableAnimations
 
     visible: downloadsModel !== null && downloadsModel.count > 0
     spacing: 4
@@ -25,25 +22,12 @@ Column {
     Repeater {
         model: downloadsBarRoot.downloadsModel
 
-        delegate: Item {
+        delegate: Rectangle {
             width: parent.width
             height: 40
-
-            Rectangle {
-                id: dlBg
-                anchors.fill: parent
-                color: Kirigami.Theme.backgroundColor
-                opacity: downloadsBarRoot.blurEnabled ? downloadsBarRoot.overlayOpacity : 0.9
-                radius: Kirigami.Units.smallSpacing
-            }
-
-            MultiEffect {
-                source: dlBg
-                anchors.fill: dlBg
-                blurEnabled: downloadsBarRoot.blurEnabled
-                blur: 1.0
-                blurMax: 32
-            }
+            color: Kirigami.Theme.backgroundColor
+            opacity: downloadsBarRoot.overlayOpacity
+            radius: Kirigami.Units.smallSpacing
 
             RowLayout {
                 anchors.fill: parent

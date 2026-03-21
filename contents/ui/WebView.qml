@@ -2,7 +2,6 @@ import QtCore
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
-import QtQuick.Effects
 import QtQuick.Layouts
 import QtWebEngine
 import org.kde.plasma.components as PlasmaComponents3
@@ -682,7 +681,7 @@ Item {
         }
     }
 
-    Item {
+    Rectangle {
         id: statusBubble
 
         property int padding: 8
@@ -694,22 +693,9 @@ Item {
         width: statusText.paintedWidth + padding * 2
         height: statusText.paintedHeight + padding
         z: 5
-
-        Rectangle {
-            id: statusBg
-            anchors.fill: parent
-            color: Kirigami.Theme.backgroundColor
-            opacity: plasmoid.configuration.enableBlurEffects ? plasmoid.configuration.overlayOpacity : 0.9
-            radius: Kirigami.Units.smallSpacing
-        }
-
-        MultiEffect {
-            source: statusBg
-            anchors.fill: statusBg
-            blurEnabled: plasmoid.configuration.enableBlurEffects
-            blur: 1.0
-            blurMax: 32
-        }
+        color: Kirigami.Theme.backgroundColor
+        opacity: plasmoid.configuration.overlayOpacity
+        radius: Kirigami.Units.smallSpacing
 
         Text {
             id: statusText

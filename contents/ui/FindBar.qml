@@ -1,15 +1,13 @@
 import QtQuick
-import QtQuick.Effects
 import QtQuick.Layouts
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.plasmoid
 
-Item {
+Rectangle {
     id: findBarRoot
 
     property bool barVisible: false
-    readonly property bool blurEnabled: plasmoid.configuration.enableBlurEffects
     readonly property bool animEnabled: plasmoid.configuration.enableAnimations
     readonly property real overlayOpacity: plasmoid.configuration.overlayOpacity
 
@@ -19,28 +17,14 @@ Item {
 
     visible: barVisible
     height: visible ? findBarRow.height + Kirigami.Units.smallSpacing * 2 : 0
+    color: Kirigami.Theme.backgroundColor
+    opacity: overlayOpacity
+    radius: Kirigami.Units.smallSpacing
     z: 5
 
     function focusField() {
         findField.forceActiveFocus();
         findField.selectAll();
-    }
-
-    // Background with blur
-    Rectangle {
-        id: findBarBg
-        anchors.fill: parent
-        color: Kirigami.Theme.backgroundColor
-        opacity: findBarRoot.blurEnabled ? findBarRoot.overlayOpacity : 1.0
-        radius: Kirigami.Units.smallSpacing
-    }
-
-    MultiEffect {
-        source: findBarBg
-        anchors.fill: findBarBg
-        blurEnabled: findBarRoot.blurEnabled
-        blur: 1.0
-        blurMax: 32
     }
 
     RowLayout {
@@ -105,13 +89,6 @@ Item {
         NumberAnimation {
             duration: Kirigami.Units.shortDuration
             easing.type: Easing.InOutQuad
-        }
-    }
-
-    Behavior on opacity {
-        enabled: findBarRoot.animEnabled
-        NumberAnimation {
-            duration: Kirigami.Units.shortDuration
         }
     }
 }

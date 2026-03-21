@@ -45,14 +45,6 @@ KCM.SimpleKCM {
         }
 
         QQC2.CheckBox {
-            id: enableBlurEffects
-            text: i18n("Blur/glass effects on overlays")
-            checked: plasmoid.configuration.enableBlurEffects
-            onCheckedChanged: plasmoid.configuration.enableBlurEffects = checked
-            Layout.fillWidth: true
-        }
-
-        QQC2.CheckBox {
             id: enableAnimations
             text: i18n("Smooth animations")
             checked: plasmoid.configuration.enableAnimations
