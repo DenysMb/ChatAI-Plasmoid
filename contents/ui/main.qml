@@ -198,6 +198,15 @@ PlasmoidItem {
             }
         }
 
+        // Rounded clip container
+        Rectangle {
+            id: clipContainer
+            anchors.fill: parent
+            anchors.margins: Kirigami.Units.smallSpacing
+            radius: Kirigami.Units.largeSpacing
+            color: "transparent"
+            clip: true
+
         ColumnLayout {
             id: mainLayout
             anchors.fill: parent
@@ -443,5 +452,6 @@ PlasmoidItem {
             target: root
         }
         } // ColumnLayout
+        } // clipContainer
     } // Item fullRep
 }
