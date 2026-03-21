@@ -25,6 +25,76 @@ Item {
     property var models
     property var webview: (parent && parent.webviewRoot) ? parent.webviewRoot.webview : null
 
+    // Helper Functions
+    function renderChatModel() {
+        const chatModel = models.filter(model => !model.prop.startsWith("showCustom_") && plasmoid.configuration[model.prop]).map(model => model.text)
+        .concat((plasmoid.configuration.customSites || "").split(',').filter(site => site?.includes('|')).map(site => site.split('|')[0])).concat([i18n("Custom URL...")]);
+
+        urlComboBox.model = chatModel;
+
+        const currentUrl = plasmoid.configuration.url;
+        const currentModel = models.find(model => !model.prop.startsWith("showCustom_") && model.url === currentUrl);
+
+        if (currentModel) {
+            const index = chatModel.indexOf(currentModel.text);
+            urlComboBox.currentIndex = index;
+            urlComboBox.editable = false;
+        } else {
+            const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.includes('|') && site.split('|')[1] === currentUrl);
+            if (customSite) {
+                const siteName = customSite.split('|')[0];
+                const index = chatModel.indexOf(siteName);
+                urlComboBox.currentIndex = index;
+                urlComboBox.editable = false;
+            } else {
+                urlComboBox.currentIndex = chatModel.length - 1;
+                urlComboBox.customUrlText = currentUrl;
+                urlComboBox.editText = currentUrl;
+                urlComboBox.editable = true;
+            }
+        }
+    }
+
+    function handleModelSelection() {
+        if (urlComboBox.currentIndex === urlComboBox.count - 1) {
+            let url = urlComboBox.editText;
+            if (url) {
+                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
+                goBackToHomePage();
+            }
+            return;
+        }
+
+        const selectedText = urlComboBox.currentText;
+        if (!selectedText)
+            return;
+
+        const selectedModel = models.find(model => !model.prop.startsWith("showCustom_") && model.text === selectedText);
+        if (selectedModel) {
+            plasmoid.configuration.url = selectedModel.url;
+            goBackToHomePage();
+            return;
+        }
+
+        const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.split('|')[0] === selectedText);
+        if (customSite) {
+            plasmoid.configuration.url = customSite.split('|')[1];
+            goBackToHomePage();
+        }
+    }
+
+    // Reactive snapshot — re-renders when any service toggle changes
+    readonly property var modelVisibilityState: {
+        const snapshot = [plasmoid.configuration.customSites];
+        if (models) {
+            for (let i = 0; i < models.length; i++) {
+                snapshot.push(plasmoid.configuration[models[i].prop]);
+            }
+        }
+        return snapshot;
+    }
+    onModelVisibilityStateChanged: renderChatModel()
+
     // Header gradient background
     Rectangle {
         anchors.fill: parent
@@ -212,7 +282,7 @@ Item {
         icon.name: "window-pin"
         display: PlasmaComponents3.AbstractButton.IconOnly
         checkable: true
-        checked: Boolean(plasmoid.configuration.keepOpen)
+        checked: Boolean(plasmoid.configuration.pin)
         onToggled: plasmoid.configuration.pin = checked
         visible: !Boolean(plasmoid.configuration.hideKeepOpen)
         z: 3
@@ -236,88 +306,5 @@ Item {
         PlasmaComponents3.ToolTip.visible: hovered
     }
 
-    // Helper Functions
-    // Returns the number of available chat models
-    function getModelsLength() {
-        return urlComboBox.model.length;
-    }
-
-    // Updates the chat model list and current selection
-    // Handles both predefined and custom chat models
-    function renderChatModel() {
-        // Create model list from enabled predefined models
-        const chatModel = models.filter(model => !model.prop.startsWith("showCustom_") && plasmoid.configuration[model.prop]).map(model => model.text)
-        // Add custom sites to the model list
-        .concat((plasmoid.configuration.customSites || "").split(',').filter(site => site?.includes('|')).map(site => site.split('|')[0])).concat([i18n("Custom URL...")]);
-
-        // Update ComboBox model and select current item
-        urlComboBox.model = chatModel;
-
-        const currentUrl = plasmoid.configuration.url;
-        const currentModel = models.find(model => !model.prop.startsWith("showCustom_") && model.url === currentUrl);
-
-        if (currentModel) {
-            const index = chatModel.indexOf(currentModel.text);
-            urlComboBox.currentIndex = index;
-            urlComboBox.editable = false;
-        } else {
-            const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.includes('|') && site.split('|')[1] === currentUrl);
-
-            if (customSite) {
-                const siteName = customSite.split('|')[0];
-                const index = chatModel.indexOf(siteName);
-                urlComboBox.currentIndex = index;
-                urlComboBox.editable = false;
-            } else {
-                urlComboBox.currentIndex = chatModel.length - 1;
-                urlComboBox.customUrlText = currentUrl;
-                urlComboBox.editText = currentUrl;
-                urlComboBox.editable = true;
-            }
-        }
-    }
-
-    // Handles model selection from ComboBox
-    // Updates current URL and navigates to selected chat
-    function handleModelSelection() {
-        if (urlComboBox.currentIndex === urlComboBox.count - 1) {
-            // Custom URL handling
-            let url = urlComboBox.editText;
-            if (url) {
-                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
-                goBackToHomePage();
-            }
-            return;
-        }
-
-        const selectedText = urlComboBox.currentText;
-        if (!selectedText)
-            return;
-
-        const selectedModel = models.find(model => !model.prop.startsWith("showCustom_") && model.text === selectedText);
-        if (selectedModel) {
-            plasmoid.configuration.url = selectedModel.url;
-            goBackToHomePage();
-            return;
-        }
-
-        const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.split('|')[0] === selectedText);
-        if (customSite) {
-            plasmoid.configuration.url = customSite.split('|')[1];
-            goBackToHomePage();
-        }
-    }
-
-    // Reactive snapshot of all model visibility states.
-    readonly property var modelVisibilityState: {
-        const snapshot = [plasmoid.configuration.customSites];
-        if (models) {
-            for (let i = 0; i < models.length; i++) {
-                snapshot.push(plasmoid.configuration[models[i].prop]);
-            }
-        }
-        return snapshot;
-    }
-    onModelVisibilityStateChanged: renderChatModel()
     } // close RowLayout
 } // close Item
