@@ -299,16 +299,16 @@ PlasmoidItem {
                     if (!headerRoot.isInteracting)
                         hideTimer.restart();
                 }
-                onPressed: {
+                onPressed: event => {
                     headerRoot.isInteracting = true;
-                    mouse.accepted = false;
+                    event.accepted = false;
                 }
-                onReleased: {
+                onReleased: event => {
                     headerRoot.isInteracting = false;
                     if (!containsMouse)
                         hideTimer.restart();
 
-                    mouse.accepted = false;
+                    event.accepted = false;
                 }
             }
 
@@ -345,12 +345,12 @@ PlasmoidItem {
                     hideTimer.restart();
             }
             // Pass mouse events to child components
-            onClicked: mouse.accepted = false
-            onPressed: mouse.accepted = false
-            onReleased: mouse.accepted = false
-            onDoubleClicked: mouse.accepted = false
-            onPositionChanged: mouse.accepted = false
-            onPressAndHold: mouse.accepted = false
+            onClicked: event => event.accepted = false
+            onPressed: event => event.accepted = false
+            onReleased: event => event.accepted = false
+            onDoubleClicked: event => event.accepted = false
+            onPositionChanged: event => event.accepted = false
+            onPressAndHold: event => event.accepted = false
 
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignTop
