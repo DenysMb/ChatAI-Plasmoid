@@ -83,11 +83,11 @@ KCM.SimpleKCM {
         }
 
         QQC2.CheckBox {
-            id: hidePrintButton
+            id: hideAutoHideButton
 
             text: i18n("Hide Auto-Hide button")
-            checked: plasmoid.configuration.hidePrintButton
-            onCheckedChanged: plasmoid.configuration.hidePrintButton = checked
+            checked: plasmoid.configuration.hideAutoHideButton
+            onCheckedChanged: plasmoid.configuration.hideAutoHideButton = checked
             Layout.fillWidth: true
         }
 
