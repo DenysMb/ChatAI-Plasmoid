@@ -479,13 +479,11 @@ Item {
 
             request.grant();
         }
-        // CSS blur follows load progress
+        // CSS backdrop blur follows load progress — blurs background only, text stays sharp
         function updateBlurForProgress(progress) {
-            // blur: 12px at 0% → 0px at 100%
             var blurPx = Math.round(12 * (1 - progress / 100));
-            var sat = 0.4 + (progress / 100) * 0.6; // 0.4 → 1.0
-            var subtle = plasmoid.configuration.enableTransparency ? "blur(0.5px)" : "none";
-            var endFilter = (progress >= 100) ? subtle : ("blur(" + blurPx + "px) saturate(" + sat.toFixed(2) + ")");
+            var overlayAlpha = (1 - progress / 100) * 0.3; // 0.3 at 0% → 0 at 100%
+            var subtle = plasmoid.configuration.enableTransparency ? 0.5 : 0;
 
             webview.runJavaScript("
                 (function() {
@@ -495,7 +493,39 @@ Item {
                         s.id = '_chatai_blur';
                         document.head.appendChild(s);
                     }
-                    s.textContent = 'html { filter: " + endFilter + "; transition: filter 0.15s ease-out; }';
+
+                    var blur = " + blurPx + ";
+                    var alpha = " + overlayAlpha.toFixed(3) + ";
+                    var subtle = " + subtle + ";
+
+                    if (blur <= 0 && subtle <= 0) {
+                        s.textContent = '#_chatai_blur_overlay { display: none; }';
+                        return;
+                    }
+
+                    var finalBlur = blur > 0 ? blur : subtle;
+                    var finalAlpha = blur > 0 ? alpha : 0;
+
+                    s.textContent = `
+                        #_chatai_blur_overlay {
+                            position: fixed;
+                            inset: 0;
+                            z-index: 99999;
+                            pointer-events: none;
+                            backdrop-filter: blur(${finalBlur}px);
+                            -webkit-backdrop-filter: blur(${finalBlur}px);
+                            background: rgba(0,0,0,${finalAlpha});
+                            transition: backdrop-filter 0.15s ease-out, background 0.15s ease-out,
+                                        -webkit-backdrop-filter 0.15s ease-out;
+                        }
+                    `;
+
+                    // Create overlay element if needed
+                    if (!document.getElementById('_chatai_blur_overlay')) {
+                        var div = document.createElement('div');
+                        div.id = '_chatai_blur_overlay';
+                        document.documentElement.appendChild(div);
+                    }
                 })();
             ");
         }
