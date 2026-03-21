@@ -256,7 +256,8 @@ Item {
         // Transparent WebEngine background when transparency is enabled
         backgroundColor: plasmoid.configuration.enableTransparency ? "transparent" : Kirigami.Theme.backgroundColor
 
-        // Inject CSS to make the website background semi-transparent
+        // Smart transparency: analyzes DOM structure and applies layered
+        // transparency + backdrop-blur based on element role
         function injectTransparencyCSS() {
             if (!plasmoid.configuration.enableTransparency) {
                 webview.runJavaScript("
@@ -266,35 +267,89 @@ Item {
                 return;
             }
 
-            var opacity = plasmoid.configuration.backgroundTransparency;
+            var alpha = plasmoid.configuration.backgroundTransparency;
             webview.runJavaScript("
                 (function() {
                     var styleId = '_chatai_transparency';
                     var existing = document.getElementById(styleId);
                     if (existing) existing.remove();
 
-                    // Grab computed bg colors and make them semi-transparent
-                    var targets = document.querySelectorAll(
-                        'html, body, body > *:first-child, body > div:first-of-type, ' +
-                        'main, #__next, #root, #app, .app, ' +
-                        '[class*=\"layout\"], [class*=\"Layout\"], ' +
-                        '[class*=\"container\"], [class*=\"Container\"], ' +
-                        '[class*=\"wrapper\"], [class*=\"Wrapper\"]'
-                    );
-
+                    var alpha = " + alpha + ";
+                    var viewW = window.innerWidth;
+                    var viewH = window.innerHeight;
                     var css = 'html, body { background-color: transparent !important; }\\n';
+                    var processed = new Set();
 
-                    targets.forEach(function(el) {
+                    function makeSelector(el) {
+                        if (el.id) return '#' + CSS.escape(el.id);
+                        if (el.tagName === 'HTML' || el.tagName === 'BODY') return el.tagName.toLowerCase();
+                        var cls = el.className && typeof el.className === 'string' ? el.className.trim().split(/\\s+/)[0] : '';
+                        if (cls) return el.tagName.toLowerCase() + '.' + CSS.escape(cls);
+                        return null;
+                    }
+
+                    function parseBgColor(el) {
                         var bg = getComputedStyle(el).backgroundColor;
-                        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
-                            // Parse rgb/rgba and apply opacity
-                            var match = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);
-                            if (match) {
-                                var r = match[1], g = match[2], b = match[3];
-                                var selector = el.id ? '#' + el.id :
-                                    el.tagName.toLowerCase() + (el.className ? '.' + el.className.split(' ')[0] : '');
-                                css += selector + ' { background-color: rgba(' + r + ',' + g + ',' + b + ',' + " + opacity + " + ') !important; }\\n';
-                            }
+                        if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') return null;
+                        var m = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);
+                        return m ? { r: m[1], g: m[2], b: m[3] } : null;
+                    }
+
+                    function classifyElement(el) {
+                        var rect = el.getBoundingClientRect();
+                        if (rect.width < 10 || rect.height < 10) return 'skip';
+                        var style = getComputedStyle(el);
+                        var tag = el.tagName.toLowerCase();
+                        var role = el.getAttribute('role') || '';
+                        var cls = (el.className && typeof el.className === 'string') ? el.className.toLowerCase() : '';
+
+                        // Sidebars & navigation: high blur, very transparent
+                        if (tag === 'nav' || tag === 'aside' || role === 'navigation' || role === 'complementary' ||
+                            cls.match(/sidebar|sidenav|drawer|panel/)) {
+                            return 'chrome';
+                        }
+
+                        // Headers/toolbars: medium blur
+                        if (tag === 'header' || role === 'banner' || cls.match(/header|toolbar|topbar|appbar/)) {
+                            if (rect.height < 120) return 'chrome';
+                        }
+
+                        // Fixed/sticky narrow panels
+                        if ((style.position === 'fixed' || style.position === 'sticky') &&
+                            rect.width < viewW * 0.35 && rect.height > viewH * 0.3) {
+                            return 'chrome';
+                        }
+
+                        // Large background containers (wrappers, layouts, main content bg)
+                        if (rect.width > viewW * 0.5 && rect.height > viewH * 0.3) {
+                            return 'background';
+                        }
+
+                        return 'skip';
+                    }
+
+                    // Walk all elements with backgrounds
+                    var allEls = document.querySelectorAll('*');
+                    allEls.forEach(function(el) {
+                        var sel = makeSelector(el);
+                        if (!sel || processed.has(sel)) return;
+
+                        var color = parseBgColor(el);
+                        if (!color) return;
+
+                        var type = classifyElement(el);
+                        if (type === 'skip') return;
+
+                        processed.add(sel);
+
+                        if (type === 'chrome') {
+                            // Sidebars/headers: very transparent + strong blur
+                            css += sel + ' { background-color: rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + (alpha * 0.3).toFixed(3) + ') !important; ';
+                            css += 'backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; }\\n';
+                        } else if (type === 'background') {
+                            // Main content area: subtle transparency
+                            css += sel + ' { background-color: rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + alpha.toFixed(3) + ') !important; ';
+                            css += 'backdrop-filter: blur(2px) !important; -webkit-backdrop-filter: blur(2px) !important; }\\n';
                         }
                     });
 
