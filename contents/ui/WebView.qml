@@ -344,19 +344,17 @@ Item {
                 }
                 return;
             }
-            if (request.permissionType === WebEnginePermission.MediaAudioCapture || request.permissionType === 1 || request.permissionType === WebEnginePermission.MediaVideoCapture || request.permissionType === 2 || request.permissionType === 5) {
-                let isMicrophoneRequest = request.permissionType === 1 || request.permissionType === WebEnginePermission.MediaAudioCapture;
-                let isWebcamRequest = request.permissionType === 2 || request.permissionType === WebEnginePermission.MediaVideoCapture;
-                let isScreenShareRequest = request.permissionType === 5 || request.permissionType === WebEnginePermission.DesktopAudioVideoCapture;
+            if (request.permissionType === WebEnginePermission.MediaAudioCapture) {
+                plasmoid.configuration.microphoneEnabled ? request.grant() : request.deny();
                 return;
             }
-            // Even if MediaAudioCapture and MediaVideoCapture are allowed, it is still necessary to allow DesktopAudioVideoCapture
-            if (request.permissionType === WebEnginePermission.DesktopAudioVideoCapture || request.permissionType === 3) {
-                if (WebEnginePermission.MediaAudioCapture && WebEnginePermission.MediaVideoCapture) {
-                    request.grant();
-                } else {
-                    request.deny();
-                }
+            if (request.permissionType === WebEnginePermission.MediaVideoCapture) {
+                plasmoid.configuration.webcamEnabled ? request.grant() : request.deny();
+                return;
+            }
+            if (request.permissionType === WebEnginePermission.DesktopAudioVideoCapture) {
+                plasmoid.configuration.screenShareEnabled ? request.grant() : request.deny();
+                return;
             }
 
             request.grant();
