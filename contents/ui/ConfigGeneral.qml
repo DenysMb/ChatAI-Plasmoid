@@ -400,6 +400,21 @@ Action=Popup`
                 }
 
                 QQC2.CheckBox {
+                    id: spoofChromeBrowser
+                    text: i18n("Disguise as Chrome (better login compatibility)")
+                    checked: plasmoid.configuration.spoofChromeBrowser
+                    onCheckedChanged: plasmoid.configuration.spoofChromeBrowser = checked
+                    Layout.fillWidth: true
+                }
+
+                Kirigami.InlineMessage {
+                    Layout.fillWidth: true
+                    type: Kirigami.MessageType.Information
+                    text: i18n("Spoofs browser identity so login pages (Google, Claude, etc.) accept this widget as a regular Chrome browser. Recommended to keep enabled.")
+                    visible: spoofChromeBrowser.checked
+                }
+
+                QQC2.CheckBox {
                     id: spatialNavigationEnabled
                     text: i18n("Enable spatial navigation")
                     checked: plasmoid.configuration.spatialNavigationEnabled

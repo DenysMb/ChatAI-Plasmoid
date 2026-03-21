@@ -171,5 +171,9 @@
       <label>Show accent glow around the widget</label>
       <default>false</default>
     </entry>
+    <entry name="spoofChromeBrowser" type="Bool">
+      <label>Disguise as Chrome browser for better site compatibility</label>
+      <default>true</default>
+    </entry>
   </group>
 </kcfg>

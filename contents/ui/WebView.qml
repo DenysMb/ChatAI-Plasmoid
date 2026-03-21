@@ -65,8 +65,67 @@ Item {
         });
     }
 
+    readonly property string chromeDesktopUA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+    readonly property string chromeMobileUA: "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36"
+
     function getUserAgent() {
-        return plasmoid.configuration.url.includes("https://duckduckgo.com") || plasmoid.configuration.url.includes("x.com/i/grok") ? "Mozilla/5.0 (Linux; Android 9; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36" : "";
+        var needsMobile = plasmoid.configuration.url.includes("duckduckgo.com") || plasmoid.configuration.url.includes("x.com/i/grok");
+        if (needsMobile)
+            return chromeMobileUA;
+        if (plasmoid.configuration.spoofChromeBrowser)
+            return chromeDesktopUA;
+        return "";
+    }
+
+    // Spoof browser identity so auth pages (Google, Claude, etc.) work
+    function injectBrowserSpoof() {
+        if (!plasmoid.configuration.spoofChromeBrowser)
+            return;
+
+        webview.runJavaScript("
+            if (!window._chatAISpoofed) {
+                window._chatAISpoofed = true;
+
+                // Spoof navigator properties
+                Object.defineProperty(navigator, 'vendor', { get: function() { return 'Google Inc.'; } });
+                Object.defineProperty(navigator, 'platform', { get: function() { return 'Linux x86_64'; } });
+                Object.defineProperty(navigator, 'webdriver', { get: function() { return false; } });
+                Object.defineProperty(navigator, 'languages', { get: function() { return ['en-US', 'en']; } });
+
+                // Spoof window.chrome
+                if (!window.chrome) {
+                    window.chrome = {
+                        runtime: {},
+                        loadTimes: function() { return {}; },
+                        csi: function() { return {}; },
+                        app: { isInstalled: false }
+                    };
+                }
+
+                // Spoof plugins (Chrome has PDF viewer)
+                Object.defineProperty(navigator, 'plugins', {
+                    get: function() {
+                        return [
+                            { name: 'Chrome PDF Viewer', filename: 'internal-pdf-viewer', description: 'Portable Document Format' },
+                            { name: 'Chromium PDF Viewer', filename: 'internal-pdf-viewer', description: '' }
+                        ];
+                    }
+                });
+
+                // Hide webdriver/automation hints
+                delete navigator.__proto__.webdriver;
+
+                // Spoof permissions API behavior
+                if (navigator.permissions) {
+                    var origQuery = navigator.permissions.query;
+                    navigator.permissions.query = function(params) {
+                        if (params.name === 'notifications')
+                            return Promise.resolve({ state: Notification.permission });
+                        return origQuery.call(navigator.permissions, params);
+                    };
+                }
+            }
+        ");
     }
 
     Notification {
@@ -441,6 +500,7 @@ Item {
         }
 
         onLoadingChanged: {
+            injectBrowserSpoof();
             injectLoadingBlur(webview.loading);
 
             if (!webview.loading) {
