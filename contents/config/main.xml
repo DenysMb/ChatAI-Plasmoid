@@ -168,12 +168,8 @@
       <default>false</default>
     </entry>
     <entry name="accentBorder" type="Bool">
-      <label>Show accent color border around the widget</label>
+      <label>Show accent glow around the widget</label>
       <default>false</default>
-    </entry>
-    <entry name="accentBorderWidth" type="Int">
-      <label>Accent border width in pixels</label>
-      <default>2</default>
     </entry>
   </group>
 </kcfg>

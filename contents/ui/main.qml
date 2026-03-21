@@ -163,14 +163,39 @@ PlasmoidItem {
         Layout.minimumWidth: Kirigami.Units.gridUnit * 28
         Layout.minimumHeight: Kirigami.Units.gridUnit * 39
 
-        // Accent border around the whole widget
+        // Accent glow around the widget
         Rectangle {
+            id: glowOuter
             anchors.fill: parent
+            anchors.margins: -6
             color: "transparent"
-            border.color: plasmoid.configuration.accentBorder ? Kirigami.Theme.highlightColor : "transparent"
-            border.width: plasmoid.configuration.accentBorder ? plasmoid.configuration.accentBorderWidth : 0
-            radius: Kirigami.Units.smallSpacing
-            z: 10
+            radius: Kirigami.Units.largeSpacing
+            visible: plasmoid.configuration.accentBorder
+            z: -1
+
+            Rectangle {
+                anchors.fill: parent
+                radius: parent.radius
+                color: "transparent"
+                border.width: 6
+                border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.25)
+            }
+            Rectangle {
+                anchors.fill: parent
+                anchors.margins: 2
+                radius: parent.radius - 2
+                color: "transparent"
+                border.width: 4
+                border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.4)
+            }
+            Rectangle {
+                anchors.fill: parent
+                anchors.margins: 4
+                radius: parent.radius - 4
+                color: "transparent"
+                border.width: 2
+                border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.6)
+            }
         }
 
         ColumnLayout {

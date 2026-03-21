@@ -61,56 +61,11 @@ KCM.SimpleKCM {
         }
 
         QQC2.CheckBox {
-            id: accentBorder
-            text: i18n("Accent color border around widget")
+            id: accentGlow
+            text: i18n("Accent glow around widget")
             checked: plasmoid.configuration.accentBorder
             onCheckedChanged: plasmoid.configuration.accentBorder = checked
             Layout.fillWidth: true
-        }
-
-        RowLayout {
-            Kirigami.FormData.label: i18n("Border width:")
-            Layout.fillWidth: true
-            enabled: accentBorder.checked
-
-            QQC2.SpinBox {
-                id: accentBorderWidth
-                from: 1
-                to: 5
-                value: plasmoid.configuration.accentBorderWidth
-                onValueModified: plasmoid.configuration.accentBorderWidth = value
-            }
-
-            QQC2.Label {
-                text: i18n("px")
-            }
-        }
-
-        RowLayout {
-            Kirigami.FormData.label: i18n("Overlay opacity:")
-            Layout.fillWidth: true
-
-            QQC2.Slider {
-                id: overlayOpacity
-                from: 0.3
-                to: 1.0
-                stepSize: 0.05
-                value: plasmoid.configuration.overlayOpacity
-                onMoved: plasmoid.configuration.overlayOpacity = value
-                Layout.fillWidth: true
-            }
-
-            QQC2.Label {
-                text: Math.round(overlayOpacity.value * 100) + "%"
-                Layout.minimumWidth: Kirigami.Units.gridUnit * 2
-            }
-        }
-
-        Kirigami.InlineMessage {
-            Layout.fillWidth: true
-            type: Kirigami.MessageType.Information
-            text: i18n("Affects the find bar, download bar, and link status bubble that appear over the web content.")
-            visible: true
         }
 
         Kirigami.Separator {
