@@ -245,6 +245,13 @@ Item {
     WebEngineView {
         id: webview
 
+        // Dim while loading — CSS blur handles the rest once document is ready
+        opacity: loading ? 0.3 : 1.0
+        Behavior on opacity {
+            enabled: plasmoid.configuration.enableAnimations
+            NumberAnimation { duration: loading ? 100 : 800; easing.type: Easing.InOutQuad }
+        }
+
         // Transparent WebEngine background when transparency is enabled
         backgroundColor: plasmoid.configuration.enableTransparency ? "transparent" : Kirigami.Theme.backgroundColor
 
@@ -472,38 +479,31 @@ Item {
 
             request.grant();
         }
-        // Inject CSS blur: max on load start, eases to subtle on load end
-        function injectLoadingBlur(loading) {
-            if (loading) {
-                webview.runJavaScript("
-                    (function() {
-                        var s = document.getElementById('_chatai_blur');
-                        if (!s) {
-                            s = document.createElement('style');
-                            s.id = '_chatai_blur';
-                            document.head.appendChild(s);
-                        }
-                        s.textContent = 'html { filter: blur(8px) saturate(0.5); transition: filter 0.3s ease-out; }';
-                    })();
-                ");
-            } else {
-                var subtle = plasmoid.configuration.enableTransparency ? "blur(0.5px)" : "none";
-                webview.runJavaScript("
-                    (function() {
-                        var s = document.getElementById('_chatai_blur');
-                        if (s) {
-                            s.textContent = 'html { filter: " + subtle + "; transition: filter 0.8s ease-in-out; }';
-                        }
-                    })();
-                ");
-            }
+        // CSS blur injection: heavy blur during load, smooth unblur when done
+        function injectUnblur() {
+            var subtle = plasmoid.configuration.enableTransparency ? "blur(0.5px)" : "none";
+            webview.runJavaScript("
+                (function() {
+                    var s = document.getElementById('_chatai_blur');
+                    if (!s) {
+                        s = document.createElement('style');
+                        s.id = '_chatai_blur';
+                        document.head.appendChild(s);
+                    }
+                    // Start blurred, then transition to clear
+                    s.textContent = 'html { filter: blur(12px) saturate(0.4) brightness(0.9); }';
+                    requestAnimationFrame(function() {
+                        s.textContent = 'html { filter: " + subtle + "; transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1); }';
+                    });
+                })();
+            ");
         }
 
         onLoadingChanged: {
             injectBrowserSpoof();
-            injectLoadingBlur(webview.loading);
 
             if (!webview.loading) {
+                injectUnblur();
                 checkAndUpdateFavicon();
                 injectTransparencyCSS();
             }
