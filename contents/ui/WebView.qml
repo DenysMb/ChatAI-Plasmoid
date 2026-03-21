@@ -3,14 +3,11 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import QtQuick.LocalStorage 2.0
 import QtWebEngine
-import Qt.labs.platform 1.1
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.plasma.core as PlasmaCore
-import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
-import org.kde.notification 1.0
+import org.kde.notification
 import org.kde.kirigami as Kirigami
 
 Item {
@@ -126,59 +123,57 @@ Item {
         onActivated: findBarVisible = true
     }
 
-    PlasmaExtras.Menu {
+    PlasmaComponents3.Menu {
         id: linkContextMenu
 
         property string link
 
-        visualParent: webview
-
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Back")
-            icon: "go-previous"
+            icon.name: "go-previous"
             enabled: webview.canGoBack
-            onClicked: webview.goBack()
+            onTriggered: webview.goBack()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Forward")
-            icon: "go-next"
+            icon.name: "go-next"
             enabled: webview.canGoForward
-            onClicked: webview.goForward()
+            onTriggered: webview.goForward()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Reload")
-            icon: "view-refresh"
-            onClicked: reloadPage()
+            icon.name: "view-refresh"
+            onTriggered: reloadPage()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Save as PDF")
-            icon: "document-save-as"
+            icon.name: "document-save-as"
             visible: !linkContextMenu.link
-            onClicked: printPage()
+            onTriggered: printPage()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Save as MHTML")
-            icon: "document-save"
+            icon.name: "document-save"
             visible: !linkContextMenu.link
-            onClicked: saveMHTML()
+            onTriggered: saveMHTML()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Open Link in Browser")
-            icon: "internet-web-browser"
+            icon.name: "internet-web-browser"
             visible: linkContextMenu.link !== ""
-            onClicked: Qt.openUrlExternally(linkContextMenu.link)
+            onTriggered: Qt.openUrlExternally(linkContextMenu.link)
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Copy Link Address")
-            icon: "edit-copy"
+            icon.name: "edit-copy"
             visible: linkContextMenu.link !== ""
-            onClicked: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
+            onTriggered: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
         }
     }
 
@@ -322,7 +317,7 @@ Item {
             linkContextMenu.link = hasLink ? request.linkUrl.toString() : "";
 
             // Always show our custom menu when it's not a special element
-            linkContextMenu.open(request.position.x, request.position.y);
+            linkContextMenu.popup(request.position.x, request.position.y);
             request.accepted = true;
         }
 
@@ -422,15 +417,6 @@ Item {
                 ");
             }
         }
-        onFeaturePermissionRequested: function (securityOrigin, feature) {
-            if (feature === WebEngineView.MediaAudioCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.microphoneEnabled);
-            else if (feature === WebEngineView.MediaVideoCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.webcamEnabled);
-            else if (feature === WebEngineView.DesktopAudioVideoCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.screenShareEnabled);
-        }
-
         onPrintRequested: function () {
             webview.triggerWebAction(WebEngineView.Print);
         }

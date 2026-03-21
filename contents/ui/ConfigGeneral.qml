@@ -1,11 +1,11 @@
+import QtCore
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Dialogs
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
-import org.kde.kirigami 2.20 as Kirigami
+import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PlasmaComponents3
-import Qt.labs.platform 1.1
 import QtWebEngine
 
 // Main configuration component for general settings
@@ -273,7 +273,7 @@ KCM.SimpleKCM {
 
                                         PlasmaComponents3.Label {
                                             text: model.siteData.split("|")[1]
-                                            font.pointSize: theme.smallestFont.pointSize
+                                            font.pointSize: Kirigami.Theme.smallFont.pointSize
                                             opacity: 0.7
                                             Layout.fillWidth: true
                                             wrapMode: Text.WordWrap
