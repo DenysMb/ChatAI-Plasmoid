@@ -186,12 +186,6 @@ Item {
     WebEngineView {
         id: webview
 
-        opacity: loading ? 0.6 : 1.0
-        Behavior on opacity {
-            enabled: plasmoid.configuration.enableAnimations
-            NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-        }
-
         // Transparent WebEngine background when transparency is enabled
         backgroundColor: plasmoid.configuration.enableTransparency ? "transparent" : Kirigami.Theme.backgroundColor
 
@@ -419,7 +413,36 @@ Item {
 
             request.grant();
         }
+        // Inject CSS blur: max on load start, eases to subtle on load end
+        function injectLoadingBlur(loading) {
+            if (loading) {
+                webview.runJavaScript("
+                    (function() {
+                        var s = document.getElementById('_chatai_blur');
+                        if (!s) {
+                            s = document.createElement('style');
+                            s.id = '_chatai_blur';
+                            document.head.appendChild(s);
+                        }
+                        s.textContent = 'html { filter: blur(8px) saturate(0.5); transition: filter 0.3s ease-out; }';
+                    })();
+                ");
+            } else {
+                var subtle = plasmoid.configuration.enableTransparency ? "blur(0.5px)" : "none";
+                webview.runJavaScript("
+                    (function() {
+                        var s = document.getElementById('_chatai_blur');
+                        if (s) {
+                            s.textContent = 'html { filter: " + subtle + "; transition: filter 0.8s ease-in-out; }';
+                        }
+                    })();
+                ");
+            }
+        }
+
         onLoadingChanged: {
+            injectLoadingBlur(webview.loading);
+
             if (!webview.loading) {
                 checkAndUpdateFavicon();
                 injectTransparencyCSS();
@@ -653,27 +676,14 @@ Item {
         }
     }
 
-    // Loading overlay — fades in during load, fades out when done
-    Rectangle {
-        id: loadingOverlay
-        anchors.fill: parent
-        color: Kirigami.Theme.backgroundColor
-        opacity: webview.loading ? 0.4 : 0.0
-        visible: opacity > 0
+    // Loading spinner (content blur is handled via CSS injection)
+    PlasmaComponents3.BusyIndicator {
+        anchors.centerIn: parent
         z: 3
-
-        Behavior on opacity {
-            enabled: plasmoid.configuration.enableAnimations
-            NumberAnimation { duration: 400; easing.type: Easing.InOutQuad }
-        }
-
-        PlasmaComponents3.BusyIndicator {
-            anchors.centerIn: parent
-            running: webview.loading
-            visible: running
-            implicitWidth: Kirigami.Units.gridUnit * 3
-            implicitHeight: implicitWidth
-        }
+        running: webview.loading
+        visible: running
+        implicitWidth: Kirigami.Units.gridUnit * 3
+        implicitHeight: implicitWidth
     }
 
     MouseArea {
