@@ -52,6 +52,40 @@ KCM.SimpleKCM {
             Layout.fillWidth: true
         }
 
+        QQC2.CheckBox {
+            id: headerGradient
+            text: i18n("Header gradient (accent color tint)")
+            checked: plasmoid.configuration.headerGradient
+            onCheckedChanged: plasmoid.configuration.headerGradient = checked
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: accentBorder
+            text: i18n("Accent color border around widget")
+            checked: plasmoid.configuration.accentBorder
+            onCheckedChanged: plasmoid.configuration.accentBorder = checked
+            Layout.fillWidth: true
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Border width:")
+            Layout.fillWidth: true
+            enabled: accentBorder.checked
+
+            QQC2.SpinBox {
+                id: accentBorderWidth
+                from: 1
+                to: 5
+                value: plasmoid.configuration.accentBorderWidth
+                onValueModified: plasmoid.configuration.accentBorderWidth = value
+            }
+
+            QQC2.Label {
+                text: i18n("px")
+            }
+        }
+
         RowLayout {
             Kirigami.FormData.label: i18n("Overlay opacity:")
             Layout.fillWidth: true

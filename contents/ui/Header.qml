@@ -2,13 +2,29 @@ import QtCore
 import QtQuick
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import org.kde.plasma.components 3.0 as PlasmaComponents3
+import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.plasmoid
 import QtWebEngine
 
-RowLayout {
+Item {
     Layout.fillWidth: true
+    implicitHeight: headerRow.implicitHeight
+
+    // Header gradient background
+    Rectangle {
+        anchors.fill: parent
+        visible: plasmoid.configuration.headerGradient
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.15) }
+            GradientStop { position: 1.0; color: "transparent" }
+        }
+        radius: Kirigami.Units.smallSpacing
+    }
+
+    RowLayout {
+        id: headerRow
+        anchors.fill: parent
 
     // Signals for communication with parent components
     signal goBackToHomePage
@@ -302,9 +318,6 @@ RowLayout {
     }
 
     // Reactive snapshot of all model visibility states.
-    // QML automatically re-evaluates this binding whenever any accessed
-    // configuration property changes, so adding a new service to `models`
-    // requires no additional signal handler here.
     readonly property var modelVisibilityState: {
         const snapshot = [plasmoid.configuration.customSites];
         if (models) {
@@ -315,4 +328,5 @@ RowLayout {
         return snapshot;
     }
     onModelVisibilityStateChanged: renderChatModel()
-}
+    } // close RowLayout
+} // close Item

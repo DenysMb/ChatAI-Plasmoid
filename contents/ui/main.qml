@@ -146,11 +146,28 @@ PlasmoidItem {
     }
 
     // Widget appearance when expanded (full view)
-    fullRepresentation: ColumnLayout {
-        id: mainLayout
+    fullRepresentation: Item {
+        id: fullRep
 
         // Expose WebView root for other components
         property alias webviewRoot: webviewLoader.item
+
+        Layout.minimumWidth: Kirigami.Units.gridUnit * 28
+        Layout.minimumHeight: Kirigami.Units.gridUnit * 39
+
+        // Accent border around the whole widget
+        Rectangle {
+            anchors.fill: parent
+            color: "transparent"
+            border.color: plasmoid.configuration.accentBorder ? Kirigami.Theme.highlightColor : "transparent"
+            border.width: plasmoid.configuration.accentBorder ? plasmoid.configuration.accentBorderWidth : 0
+            radius: Kirigami.Units.smallSpacing
+            z: 10
+        }
+
+        ColumnLayout {
+            id: mainLayout
+            anchors.fill: parent
         // Update the property to use Types.Location and add the change monitor
         property bool reverseLayout: plasmoid.location === PlasmaCore.Types.TopEdge
 
@@ -174,9 +191,6 @@ PlasmoidItem {
             }
         }
 
-        // Set minimum dimensions for the expanded view
-        Layout.minimumWidth: Kirigami.Units.gridUnit * 28
-        Layout.minimumHeight: Kirigami.Units.gridUnit * 39
         Component.onCompleted: {
             reorderComponents();
         }
@@ -398,5 +412,6 @@ PlasmoidItem {
 
             target: root
         }
-    }
+        } // ColumnLayout
+    } // Item fullRep
 }

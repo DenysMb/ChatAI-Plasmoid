@@ -17,11 +17,9 @@
       <default>1</default>
     </entry>
     <entry name="favIcon" type="String">
-      <label>Base64 encoded favicon from website</label>
       <default></default>
     </entry>
     <entry name="lastFavIcon" type="String">
-      <label>Last successfully loaded favicon URL</label>
       <default></default>
     </entry>
     <entry name="showDuckDuckGoChat" type="Bool">
@@ -109,7 +107,6 @@
       <default></default>
     </entry>
     <entry name="customSites" type="String">
-      <label>i18n("List of custom sites")</label>
       <default></default>
     </entry>
     <entry name="keepOpen" type="Bool">
@@ -119,76 +116,67 @@
       <default>false</default>
     </entry>
     <entry name="loadOnStartup" type="Bool">
-      <label>i18n("Load website on Plasma startup")</label>
       <default>false</default>
     </entry>
     <entry name="keepWebEngineAlive" type="Bool">
-      <label>Keep WebEngine in memory after closing for faster reopening</label>
       <default>true</default>
     </entry>
     <entry name="spatialNavigationEnabled" type="Bool">
-      <label>Enable spatial navigation for keyboard-based browsing</label>
       <default>false</default>
     </entry>
     <entry name="javascriptCanPaste" type="Bool">
-      <label>Allow JavaScript to paste from clipboard</label>
       <default>true</default>
     </entry>
     <entry name="javascriptCanOpenWindows" type="Bool">
-      <label>Allow JavaScript to open new windows</label>
       <default>true</default>
     </entry>
     <entry name="javascriptCanAccessClipboard" type="Bool">
-      <label>Allow JavaScript to access clipboard</label>
       <default>true</default>
     </entry>
     <entry name="allowUnknownUrlSchemes" type="Bool">
-      <label>Allow unknown URL schemes</label>
       <default>true</default>
     </entry>
     <entry name="playbackRequiresUserGesture" type="Bool">
-      <label>Require user gesture for media playback</label>
       <default>false</default>
     </entry>
     <entry name="focusOnNavigationEnabled" type="Bool">
-      <label>Enable focus on navigation</label>
       <default>true</default>
     </entry>
     <entry name="notificationsEnabled" type="Bool">
-      <label>Allow notifications from websites</label>
       <default>true</default>
     </entry>
     <entry name="geolocationEnabled" type="Bool">
-      <label>Allow websites to access geolocation</label>
       <default>false</default>
     </entry>
     <entry name="autoHideHeader" type="Bool">
-      <label>Auto-hide header and show on mouse hover</label>
       <default>false</default>
     </entry>
     <entry name="webEngineProfileName" type="String">
-      <label>Storage name used for Qt WebEngine profile</label>
       <default>chat-ai</default>
     </entry>
-    <entry name="enableBlurEffects" type="Bool">
-      <label>Enable blur/glass effects on overlays</label>
-      <default>true</default>
-    </entry>
     <entry name="overlayOpacity" type="Double">
-      <label>Opacity for overlay elements (0.0 to 1.0)</label>
       <default>0.85</default>
     </entry>
     <entry name="enableAnimations" type="Bool">
-      <label>Enable smooth animations</label>
       <default>true</default>
     </entry>
     <entry name="enableTransparency" type="Bool">
-      <label>Enable transparent background with desktop blur behind</label>
       <default>false</default>
     </entry>
     <entry name="backgroundTransparency" type="Double">
-      <label>Background transparency level (0.0 fully transparent to 1.0 opaque)</label>
       <default>0.85</default>
+    </entry>
+    <entry name="headerGradient" type="Bool">
+      <label>Show gradient effect on header</label>
+      <default>false</default>
+    </entry>
+    <entry name="accentBorder" type="Bool">
+      <label>Show accent color border around the widget</label>
+      <default>false</default>
+    </entry>
+    <entry name="accentBorderWidth" type="Int">
+      <label>Accent border width in pixels</label>
+      <default>2</default>
     </entry>
   </group>
 </kcfg>
