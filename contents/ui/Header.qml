@@ -135,7 +135,7 @@ RowLayout {
     // Auto-Hide Button
     PlasmaComponents3.Button {
         id: autoHideButton
-        visible: !plasmoid.configuration.hidePrintButton
+        visible: !plasmoid.configuration.hideAutoHideButton
         icon.name: plasmoid.configuration.autoHideHeader ? "view-visible" : "view-hidden"
         display: PlasmaComponents3.AbstractButton.IconOnly
         checkable: true
