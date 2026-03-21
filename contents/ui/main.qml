@@ -291,13 +291,13 @@ PlasmoidItem {
                 }
             }
 
-            // Timer for hiding
+            // Timer for hiding — only hides if mouse is away AND no interaction
             Timer {
                 id: hideTimer
 
-                interval: 2000
+                interval: 4000
                 onTriggered: {
-                    if (!headerRoot.isInteracting)
+                    if (!headerRoot.isInteracting && !headerMouseArea.containsMouse)
                         headerRoot.headerVisible = false;
                 }
             }
@@ -337,11 +337,9 @@ PlasmoidItem {
                 target: headerRoot
             }
 
-            // Intercept mouse events
+            // Intercept mouse events on the header
             MouseArea {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.alignment: Qt.AlignTop
+                anchors.fill: parent
                 hoverEnabled: true
                 propagateComposedEvents: true
                 onEntered: {
@@ -360,7 +358,6 @@ PlasmoidItem {
                     headerRoot.isInteracting = false;
                     if (!containsMouse)
                         hideTimer.restart();
-
                     event.accepted = false;
                 }
             }
