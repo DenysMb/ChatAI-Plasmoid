@@ -125,7 +125,6 @@ Item {
     ContextMenu {
         id: linkContextMenu
 
-        visualParent: webview
         canGoBack: webview.canGoBack
         canGoForward: webview.canGoForward
 
