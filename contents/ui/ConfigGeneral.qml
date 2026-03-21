@@ -83,10 +83,7 @@ KCM.SimpleKCM {
         id: scrollView
 
         anchors.fill: parent
-        // Enable vertical scrollbar
-        Component.onCompleted: {
-            QQC2.ScrollBar.vertical.policy = QQC2.ScrollBar.AlwaysOn;
-        }
+        QQC2.ScrollBar.vertical.policy: QQC2.ScrollBar.AsNeeded
 
         Item {
             width: scrollView.width
