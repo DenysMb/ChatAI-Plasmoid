@@ -31,7 +31,55 @@ KCM.SimpleKCM {
             Layout.fillWidth: true
         }
 
-        // Separator between icon and header sections
+        // Separator between icon and effects sections
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Layout.fillWidth: true
+        }
+
+        // Visual Effects section
+        QQC2.Label {
+            Kirigami.FormData.label: i18n("Visual Effects")
+            font.bold: true
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: enableBlurEffects
+            text: i18n("Blur/glass effects on overlays")
+            checked: plasmoid.configuration.enableBlurEffects
+            onCheckedChanged: plasmoid.configuration.enableBlurEffects = checked
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: enableAnimations
+            text: i18n("Smooth animations")
+            checked: plasmoid.configuration.enableAnimations
+            onCheckedChanged: plasmoid.configuration.enableAnimations = checked
+            Layout.fillWidth: true
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Overlay opacity:")
+            Layout.fillWidth: true
+
+            QQC2.Slider {
+                id: overlayOpacity
+                from: 0.3
+                to: 1.0
+                stepSize: 0.05
+                value: plasmoid.configuration.overlayOpacity
+                onMoved: plasmoid.configuration.overlayOpacity = value
+                Layout.fillWidth: true
+            }
+
+            QQC2.Label {
+                text: Math.round(overlayOpacity.value * 100) + "%"
+                Layout.minimumWidth: Kirigami.Units.gridUnit * 2
+            }
+        }
+
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Layout.fillWidth: true

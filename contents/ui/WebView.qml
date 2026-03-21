@@ -2,6 +2,7 @@ import QtCore
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
+import QtQuick.Effects
 import QtQuick.Layouts
 import QtWebEngine
 import org.kde.plasma.components as PlasmaComponents3
@@ -178,6 +179,12 @@ Item {
 
     WebEngineView {
         id: webview
+
+        opacity: loading ? 0.6 : 1.0
+        Behavior on opacity {
+            enabled: plasmoid.configuration.enableAnimations
+            NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+        }
 
         property var downloadCache: ({})
 
@@ -586,6 +593,29 @@ Item {
         }
     }
 
+    // Loading overlay — fades in during load, fades out when done
+    Rectangle {
+        id: loadingOverlay
+        anchors.fill: parent
+        color: Kirigami.Theme.backgroundColor
+        opacity: webview.loading ? 0.4 : 0.0
+        visible: opacity > 0
+        z: 3
+
+        Behavior on opacity {
+            enabled: plasmoid.configuration.enableAnimations
+            NumberAnimation { duration: 400; easing.type: Easing.InOutQuad }
+        }
+
+        PlasmaComponents3.BusyIndicator {
+            anchors.centerIn: parent
+            running: webview.loading
+            visible: running
+            implicitWidth: Kirigami.Units.gridUnit * 3
+            implicitHeight: implicitWidth
+        }
+    }
+
     MouseArea {
         id: mouseArea
 
@@ -599,22 +629,39 @@ Item {
         }
     }
 
-    Rectangle {
+    Item {
         id: statusBubble
 
         property int padding: 8
 
-        color: Kirigami.Theme.backgroundColor
         visible: false
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        width: statusText.paintedWidth + padding
+        anchors.margins: Kirigami.Units.smallSpacing
+        width: statusText.paintedWidth + padding * 2
         height: statusText.paintedHeight + padding
+        z: 5
+
+        Rectangle {
+            id: statusBg
+            anchors.fill: parent
+            color: Kirigami.Theme.backgroundColor
+            opacity: plasmoid.configuration.enableBlurEffects ? plasmoid.configuration.overlayOpacity : 0.9
+            radius: Kirigami.Units.smallSpacing
+        }
+
+        MultiEffect {
+            source: statusBg
+            anchors.fill: statusBg
+            blurEnabled: plasmoid.configuration.enableBlurEffects
+            blur: 1.0
+            blurMax: 32
+        }
 
         Text {
             id: statusText
 
-            anchors.centerIn: statusBubble
+            anchors.centerIn: parent
             elide: Qt.ElideMiddle
             color: Kirigami.Theme.textColor
 
@@ -627,6 +674,11 @@ Item {
                     statusBubble.visible = false;
                 }
             }
+        }
+
+        Behavior on opacity {
+            enabled: plasmoid.configuration.enableAnimations
+            NumberAnimation { duration: 200 }
         }
     }
 
