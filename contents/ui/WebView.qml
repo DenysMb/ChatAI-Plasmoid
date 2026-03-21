@@ -90,11 +90,6 @@ Item {
         return "file:///" + path.replace(/^\/+/, '');
     }
 
-    function getOpenPath(path) {
-        // To open the file, it cannot have file://
-        return path.replace(/^file:\/+/, '').replace(/^\/+/, '/');
-    }
-
     // Add this helper function before the WebEngineView
     function isDownloadInProgress(fileName) {
         if (!webview || !webview.downloads)
@@ -116,8 +111,7 @@ Item {
 
     onFindBarVisibleChanged: {
         if (findBarVisible) {
-            findField.forceActiveFocus();
-            findField.selectAll();
+            findBarComponent.focusField();
         } else {
             webview.findText(""); // Clear any existing search
         }
@@ -128,58 +122,19 @@ Item {
         onActivated: findBarVisible = true
     }
 
-    PlasmaComponents3.Menu {
+    ContextMenu {
         id: linkContextMenu
 
-        property string link
+        visualParent: webview
+        canGoBack: webview.canGoBack
+        canGoForward: webview.canGoForward
 
-        PlasmaComponents3.MenuItem {
-            text: i18n("Back")
-            icon.name: "go-previous"
-            enabled: webview.canGoBack
-            onTriggered: webview.goBack()
-        }
-
-        PlasmaComponents3.MenuItem {
-            text: i18n("Forward")
-            icon.name: "go-next"
-            enabled: webview.canGoForward
-            onTriggered: webview.goForward()
-        }
-
-        PlasmaComponents3.MenuItem {
-            text: i18n("Reload")
-            icon.name: "view-refresh"
-            onTriggered: reloadPage()
-        }
-
-        PlasmaComponents3.MenuItem {
-            text: i18n("Save as PDF")
-            icon.name: "document-save-as"
-            visible: !linkContextMenu.link
-            onTriggered: printPage()
-        }
-
-        PlasmaComponents3.MenuItem {
-            text: i18n("Save as MHTML")
-            icon.name: "document-save"
-            visible: !linkContextMenu.link
-            onTriggered: saveMHTML()
-        }
-
-        PlasmaComponents3.MenuItem {
-            text: i18n("Open Link in Browser")
-            icon.name: "internet-web-browser"
-            visible: linkContextMenu.link !== ""
-            onTriggered: Qt.openUrlExternally(linkContextMenu.link)
-        }
-
-        PlasmaComponents3.MenuItem {
-            text: i18n("Copy Link Address")
-            icon.name: "edit-copy"
-            visible: linkContextMenu.link !== ""
-            onTriggered: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
-        }
+        onBackRequested: webview.goBack()
+        onForwardRequested: webview.goForward()
+        onReloadRequested: reloadPage()
+        onSaveAsPdfRequested: printPage()
+        onSaveAsMHTMLRequested: saveMHTML()
+        onCopyLinkRequested: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
     }
 
     WebEngineView {
@@ -636,136 +591,23 @@ Item {
         }
     }
 
-    Column {
+    DownloadBar {
         id: downloadsBar
 
-        visible: webview.downloads.count > 0
-        spacing: 4
+        downloadsModel: webview.downloads
+        downloadCacheRef: webview.downloadCache
 
         anchors {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
         }
-
-        Repeater {
-            model: webview.downloads
-
-            delegate: Rectangle {
-                width: parent.width
-                height: 40
-                color: Kirigami.Theme.backgroundColor
-                opacity: 0.9
-
-                RowLayout {
-                    anchors.fill: parent
-                    anchors.margins: 8
-                    spacing: 8
-
-                    PlasmaComponents3.Label {
-                        text: {
-                            if (model.state === WebEngineDownloadRequest.DownloadCompleted) {
-                                return model.fileName + " - Completed";
-                            }
-                            if (model.isPdfExport) {
-                                return model.fileName + " - Saving PDF...";
-                            }
-                            let progress = Math.round((model.progress || 0) * 100);
-                            let size = "";
-                            if (model.totalBytes > 0) {
-                                let received = (model.receivedBytes / 1024 / 1024).toFixed(1);
-                                let total = (model.totalBytes / 1024 / 1024).toFixed(1);
-                                size = ` (${received}/${total} MB)`;
-                            }
-                            return model.fileName + " - " + progress + "%" + size;
-                        }
-                        Layout.fillWidth: true
-                        elide: Text.ElideMiddle
-                    }
-                    // Progress bar (visible during download)
-                    PlasmaComponents3.ProgressBar {
-                        Layout.fillWidth: true
-                        indeterminate: model.isPdfExport
-                        from: 0
-                        to: 1
-                        value: model.progress || 0
-                        visible: model.state === WebEngineDownloadRequest.DownloadInProgress
-                    }
-                    // Buttons shown after download completion
-                    RowLayout {
-                        visible: model.state === WebEngineDownloadRequest.DownloadCompleted
-                        spacing: 4
-
-                        PlasmaComponents3.Button {
-                            icon.name: "document-open"
-                            PlasmaComponents3.ToolTip.text: i18n("Open file")
-                            PlasmaComponents3.ToolTip.visible: hovered
-                            onClicked: {
-                                if (model.fullPath) {
-                                    let openPath = getOpenPath(model.fullPath);
-                                    Qt.openUrlExternally(openPath);
-                                }
-                            }
-                        }
-
-                        PlasmaComponents3.Button {
-                            icon.name: "folder-open"
-                            PlasmaComponents3.ToolTip.text: i18n("Open folder")
-                            PlasmaComponents3.ToolTip.visible: hovered
-                            onClicked: {
-                                if (model.fullPath) {
-                                    let dirPath = model.fullPath.substring(0, model.fullPath.lastIndexOf("/"));
-                                    let openPath = getOpenPath(dirPath);
-                                    Qt.openUrlExternally(openPath);
-                                }
-                            }
-                        }
-
-                        PlasmaComponents3.Button {
-                            icon.name: "dialog-close"
-                            PlasmaComponents3.ToolTip.text: i18n("Close")
-                            PlasmaComponents3.ToolTip.visible: hovered
-                            onClicked: {
-                                webview.downloads.remove(model.index);
-                            }
-                        }
-                    }
-                    // Cancel button (visible during download)
-                    PlasmaComponents3.Button {
-                        icon.name: "dialog-cancel"
-                        visible: model.state === WebEngineDownloadRequest.DownloadInProgress && !model.isPdfExport
-                        PlasmaComponents3.ToolTip.text: i18n("Cancel")
-                        PlasmaComponents3.ToolTip.visible: hovered
-                        onClicked: {
-                            // Get the cached download object using the unique ID
-                            let downloadData = webview.downloadCache[model.downloadId];
-                            if (downloadData && downloadData.download) {
-                                // Disconnect signal handlers before canceling
-                                downloadData.download.receivedBytesChanged.disconnect(downloadData.bytesConnection);
-                                downloadData.download.stateChanged.disconnect(downloadData.stateConnection);
-
-                                // Cancel the download
-                                downloadData.download.cancel();
-
-                                // Clean up cache
-                                delete webview.downloadCache[model.downloadId];
-
-                                // Remove from downloads model
-                                webview.downloads.remove(index);
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
-    Rectangle {
-        id: findBar
-        visible: findBarVisible
-        height: visible ? findBarRow.height + Kirigami.Units.smallSpacing * 2 : 0
-        color: Kirigami.Theme.backgroundColor
-        z: 5
+    FindBar {
+        id: findBarComponent
+
+        barVisible: findBarVisible
 
         anchors {
             top: parent.top
@@ -773,71 +615,11 @@ Item {
             right: parent.right
         }
 
-        RowLayout {
-            id: findBarRow
-
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                margins: Kirigami.Units.smallSpacing
-            }
-
-            spacing: Kirigami.Units.smallSpacing
-
-            PlasmaComponents3.TextField {
-                id: findField
-
-                Layout.fillWidth: true
-
-                placeholderText: i18n("Find in page...")
-                onTextChanged: if (text)
-                    webview.findText(text)
-                onAccepted: webview.findText(text)
-                Keys.onEscapePressed: findBarVisible = false
-
-                Component.onCompleted: {
-                    if (findBarVisible) {
-                        forceActiveFocus();
-                    }
-                }
-            }
-
-            PlasmaComponents3.Button {
-                icon.name: "go-up"
-                display: PlasmaComponents3.AbstractButton.IconOnly
-                onClicked: webview.findText(findField.text, WebEngineView.FindBackward)
-                PlasmaComponents3.ToolTip.text: i18n("Find previous")
-                PlasmaComponents3.ToolTip.visible: hovered
-                enabled: findField.text !== ""
-            }
-
-            PlasmaComponents3.Button {
-                icon.name: "go-down"
-                display: PlasmaComponents3.AbstractButton.IconOnly
-                onClicked: webview.findText(findField.text)
-                PlasmaComponents3.ToolTip.text: i18n("Find next")
-                PlasmaComponents3.ToolTip.visible: hovered
-                enabled: findField.text !== ""
-            }
-
-            PlasmaComponents3.Button {
-                icon.name: "dialog-close"
-                display: PlasmaComponents3.AbstractButton.IconOnly
-                PlasmaComponents3.ToolTip.text: i18n("Close")
-                PlasmaComponents3.ToolTip.visible: hovered
-                onClicked: {
-                    findBarVisible = false;
-                    webview.findText("");
-                }
-            }
-        }
-
-        Behavior on height {
-            NumberAnimation {
-                duration: Kirigami.Units.shortDuration
-                easing.type: Easing.InOutQuad
-            }
+        onFindRequested: text => webview.findText(text)
+        onFindPreviousRequested: text => webview.findText(text, WebEngineView.FindBackward)
+        onClosed: {
+            findBarVisible = false;
+            webview.findText("");
         }
     }
 }
