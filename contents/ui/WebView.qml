@@ -3,12 +3,9 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import QtQuick.LocalStorage 2.0
 import QtWebEngine
-import Qt.labs.platform 1.1
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.plasma.core as PlasmaCore
-import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
 import org.kde.notification 1.0
 import org.kde.kirigami as Kirigami
@@ -16,6 +13,11 @@ import org.kde.kirigami as Kirigami
 Item {
     id: webViewRoot
     readonly property string effectiveProfileName: plasmoid.configuration.webEngineProfileName && plasmoid.configuration.webEngineProfileName.length ? plasmoid.configuration.webEngineProfileName : "chat-ai"
+    readonly property string effectiveDownloadPath: {
+        if (plasmoid.configuration.downloadPath)
+            return plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '');
+        return StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+    }
 
     function goBackToHomePage() {
         webview.url = plasmoid.configuration.url;
@@ -35,7 +37,7 @@ Item {
 
     function printPage() {
         webview.runJavaScript("document.title", function (title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+            let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
             let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
@@ -53,7 +55,7 @@ Item {
 
     function saveMHTML() {
         webview.runJavaScript("document.title", function (title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+            let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
             let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
@@ -88,11 +90,6 @@ Item {
         return "file:///" + path.replace(/^\/+/, '');
     }
 
-    function getOpenPath(path) {
-        // To open the file, it cannot have file://
-        return path.replace(/^file:\/+/, '').replace(/^\/+/, '/');
-    }
-
     // Add this helper function before the WebEngineView
     function isDownloadInProgress(fileName) {
         if (!webview || !webview.downloads)
@@ -114,8 +111,7 @@ Item {
 
     onFindBarVisibleChanged: {
         if (findBarVisible) {
-            findField.forceActiveFocus();
-            findField.selectAll();
+            findBarComponent.focusField();
         } else {
             webview.findText(""); // Clear any existing search
         }
@@ -126,59 +122,57 @@ Item {
         onActivated: findBarVisible = true
     }
 
-    PlasmaExtras.Menu {
+    PlasmaComponents3.Menu {
         id: linkContextMenu
 
-        property string link
+        property string link: ""
 
-        visualParent: webview
-
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Back")
-            icon: "go-previous"
+            icon.name: "go-previous"
             enabled: webview.canGoBack
-            onClicked: webview.goBack()
+            onTriggered: webview.goBack()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Forward")
-            icon: "go-next"
+            icon.name: "go-next"
             enabled: webview.canGoForward
-            onClicked: webview.goForward()
+            onTriggered: webview.goForward()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Reload")
-            icon: "view-refresh"
-            onClicked: reloadPage()
+            icon.name: "view-refresh"
+            onTriggered: reloadPage()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Save as PDF")
-            icon: "document-save-as"
+            icon.name: "document-save-as"
             visible: !linkContextMenu.link
-            onClicked: printPage()
+            onTriggered: printPage()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Save as MHTML")
-            icon: "document-save"
+            icon.name: "document-save"
             visible: !linkContextMenu.link
-            onClicked: saveMHTML()
+            onTriggered: saveMHTML()
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Open Link in Browser")
-            icon: "internet-web-browser"
+            icon.name: "internet-web-browser"
             visible: linkContextMenu.link !== ""
-            onClicked: Qt.openUrlExternally(linkContextMenu.link)
+            onTriggered: Qt.openUrlExternally(linkContextMenu.link)
         }
 
-        PlasmaExtras.MenuItem {
+        PlasmaComponents3.MenuItem {
             text: i18n("Copy Link Address")
-            icon: "edit-copy"
+            icon.name: "edit-copy"
             visible: linkContextMenu.link !== ""
-            onClicked: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
+            onTriggered: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
         }
     }
 
@@ -322,7 +316,7 @@ Item {
             linkContextMenu.link = hasLink ? request.linkUrl.toString() : "";
 
             // Always show our custom menu when it's not a special element
-            linkContextMenu.open(request.position.x, request.position.y);
+            linkContextMenu.popup(request.position.x, request.position.y);
             request.accepted = true;
         }
 
@@ -344,19 +338,17 @@ Item {
                 }
                 return;
             }
-            if (request.permissionType === WebEnginePermission.MediaAudioCapture || request.permissionType === 1 || request.permissionType === WebEnginePermission.MediaVideoCapture || request.permissionType === 2 || request.permissionType === 5) {
-                let isMicrophoneRequest = request.permissionType === 1 || request.permissionType === WebEnginePermission.MediaAudioCapture;
-                let isWebcamRequest = request.permissionType === 2 || request.permissionType === WebEnginePermission.MediaVideoCapture;
-                let isScreenShareRequest = request.permissionType === 5 || request.permissionType === WebEnginePermission.DesktopAudioVideoCapture;
+            if (request.permissionType === WebEnginePermission.MediaAudioCapture) {
+                plasmoid.configuration.microphoneEnabled ? request.grant() : request.deny();
                 return;
             }
-            // Even if MediaAudioCapture and MediaVideoCapture are allowed, it is still necessary to allow DesktopAudioVideoCapture
-            if (request.permissionType === WebEnginePermission.DesktopAudioVideoCapture || request.permissionType === 3) {
-                if (WebEnginePermission.MediaAudioCapture && WebEnginePermission.MediaVideoCapture) {
-                    request.grant();
-                } else {
-                    request.deny();
-                }
+            if (request.permissionType === WebEnginePermission.MediaVideoCapture) {
+                plasmoid.configuration.webcamEnabled ? request.grant() : request.deny();
+                return;
+            }
+            if (request.permissionType === WebEnginePermission.DesktopAudioVideoCapture) {
+                plasmoid.configuration.screenShareEnabled ? request.grant() : request.deny();
+                return;
             }
 
             request.grant();
@@ -368,69 +360,63 @@ Item {
 
             var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'claude', 'you'].some(site => plasmoid.configuration.url.includes(site));
 
-            if (isCompatibleModel) {
+            if (isCompatibleModel && !webview.loading) {
                 webview.runJavaScript("
-                    document.addEventListener('keydown', function(event) {
-                        if (event.key === 'Enter' && !event.shiftKey) {
-                            var duckDuckGoButton = document.querySelector('button[aria-label=\"Send\"]');
-                            var chatGPTButton = document.querySelector('button[data-testid=\"send-button\"]');
-                            var googleGeminiButton = document.querySelector('button.send-button');
-                            var claudeButton = document.querySelector('button[aria-label=\"Send Message\"]');
+                    if (!window._chatAIInjected) {
+                        window._chatAIInjected = true;
 
-                            if (duckDuckGoButton) {
-                                event.preventDefault();
-                                duckDuckGoButton.click();
-                                waitForTextareaEnabledAndFocus();
-                            }
+                        document.addEventListener('keydown', function(event) {
+                            if (event.key === 'Enter' && !event.shiftKey) {
+                                var duckDuckGoButton = document.querySelector('button[aria-label=\"Send\"]');
+                                var chatGPTButton = document.querySelector('button[data-testid=\"send-button\"]');
+                                var googleGeminiButton = document.querySelector('button.send-button');
+                                var claudeButton = document.querySelector('button[aria-label=\"Send Message\"]');
 
-                            if (chatGPTButton) {
-                                event.preventDefault();
-                                chatGPTButton.click();
-                                waitForTextareaEnabledAndFocus();
-                            }
+                                if (duckDuckGoButton) {
+                                    event.preventDefault();
+                                    duckDuckGoButton.click();
+                                    waitForTextareaEnabledAndFocus();
+                                }
 
-                            if (googleGeminiButton) {
-                                event.preventDefault();
-                                googleGeminiButton.click();
-                                waitForTextareaEnabledAndFocus();
-                            }
+                                if (chatGPTButton) {
+                                    event.preventDefault();
+                                    chatGPTButton.click();
+                                    waitForTextareaEnabledAndFocus();
+                                }
 
-                            if (claudeButton) {
-                                event.preventDefault();
-                                claudeButton.click();
-                                waitForTextareaEnabledAndFocus();
+                                if (googleGeminiButton) {
+                                    event.preventDefault();
+                                    googleGeminiButton.click();
+                                    waitForTextareaEnabledAndFocus();
+                                }
+
+                                if (claudeButton) {
+                                    event.preventDefault();
+                                    claudeButton.click();
+                                    waitForTextareaEnabledAndFocus();
+                                }
                             }
+                        });
+
+                        function waitForTextareaEnabledAndFocus() {
+                            var interval = 100;
+
+                            var textareaFocusInterval = setInterval(function() {
+                                var textarea = document.querySelector('textarea');
+                                if (textarea && !textarea.disabled) {
+                                    clearInterval(textareaFocusInterval);
+                                    setTimeout(function() {
+                                        textarea.focus();
+                                    }, 100);
+                                }
+                            }, interval);
                         }
-                    });
 
-                    function waitForTextareaEnabledAndFocus() {
-                        var attempts = 0;
-                        var interval = 100;
-
-                        var textareaFocusInterval = setInterval(function() {
-                            var textarea = document.querySelector('textarea');
-                            if (textarea && !textarea.disabled) {
-                                clearInterval(textareaFocusInterval);
-                                setTimeout(function() {
-                                    textarea.focus();
-                                }, 100);
-                            }
-                        }, interval);
+                        waitForTextareaEnabledAndFocus();
                     }
-
-                    waitForTextareaEnabledAndFocus();
                 ");
             }
         }
-        onFeaturePermissionRequested: function (securityOrigin, feature) {
-            if (feature === WebEngineView.MediaAudioCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.microphoneEnabled);
-            else if (feature === WebEngineView.MediaVideoCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.webcamEnabled);
-            else if (feature === WebEngineView.DesktopAudioVideoCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.screenShareEnabled);
-        }
-
         onPrintRequested: function () {
             webview.triggerWebAction(WebEngineView.Print);
         }
@@ -500,12 +486,7 @@ Item {
             httpCacheType: WebEngineProfile.DiskHttpCache
             persistentCookiesPolicy: WebEngineProfile.ForcePersistentCookies
             persistentPermissionsPolicy: WebEngineProfile.AskEveryTime
-            downloadPath: {
-                if (plasmoid.configuration.downloadPath)
-                    return plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '');
-
-                return StandardPaths.writableLocation(StandardPaths.DownloadLocation);
-            }
+            downloadPath: webViewRoot.effectiveDownloadPath
             onPresentNotification: function (notification) {
                 showNotification(notification.title, notification.message);
                 notification.show();
@@ -516,7 +497,7 @@ Item {
                     webview.downloads = Qt.createQmlObject('import QtQml; ListModel {}', webview);
                 }
 
-                let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+                let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
                 if (!plasmoid.configuration.downloadPath) {
                     plasmoid.configuration.downloadPath = downloadDirectory;
@@ -649,136 +630,23 @@ Item {
         }
     }
 
-    Column {
+    DownloadBar {
         id: downloadsBar
 
-        visible: webview.downloads.count > 0
-        spacing: 4
+        downloadsModel: webview.downloads
+        downloadCacheRef: webview.downloadCache
 
         anchors {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
         }
-
-        Repeater {
-            model: webview.downloads
-
-            delegate: Rectangle {
-                width: parent.width
-                height: 40
-                color: Kirigami.Theme.backgroundColor
-                opacity: 0.9
-
-                RowLayout {
-                    anchors.fill: parent
-                    anchors.margins: 8
-                    spacing: 8
-
-                    PlasmaComponents3.Label {
-                        text: {
-                            if (model.state === WebEngineDownloadRequest.DownloadCompleted) {
-                                return model.fileName + " - Completed";
-                            }
-                            if (model.isPdfExport) {
-                                return model.fileName + " - Saving PDF...";
-                            }
-                            let progress = Math.round((model.progress || 0) * 100);
-                            let size = "";
-                            if (model.totalBytes > 0) {
-                                let received = (model.receivedBytes / 1024 / 1024).toFixed(1);
-                                let total = (model.totalBytes / 1024 / 1024).toFixed(1);
-                                size = ` (${received}/${total} MB)`;
-                            }
-                            return model.fileName + " - " + progress + "%" + size;
-                        }
-                        Layout.fillWidth: true
-                        elide: Text.ElideMiddle
-                    }
-                    // Progress bar (visible during download)
-                    PlasmaComponents3.ProgressBar {
-                        Layout.fillWidth: true
-                        indeterminate: model.isPdfExport
-                        from: 0
-                        to: 1
-                        value: model.progress || 0
-                        visible: model.state === WebEngineDownloadRequest.DownloadInProgress
-                    }
-                    // Buttons shown after download completion
-                    RowLayout {
-                        visible: model.state === WebEngineDownloadRequest.DownloadCompleted
-                        spacing: 4
-
-                        PlasmaComponents3.Button {
-                            icon.name: "document-open"
-                            PlasmaComponents3.ToolTip.text: i18n("Open file")
-                            PlasmaComponents3.ToolTip.visible: hovered
-                            onClicked: {
-                                if (model.fullPath) {
-                                    let openPath = getOpenPath(model.fullPath);
-                                    Qt.openUrlExternally(openPath);
-                                }
-                            }
-                        }
-
-                        PlasmaComponents3.Button {
-                            icon.name: "folder-open"
-                            PlasmaComponents3.ToolTip.text: i18n("Open folder")
-                            PlasmaComponents3.ToolTip.visible: hovered
-                            onClicked: {
-                                if (model.fullPath) {
-                                    let dirPath = model.fullPath.substring(0, model.fullPath.lastIndexOf("/"));
-                                    let openPath = getOpenPath(dirPath);
-                                    Qt.openUrlExternally(openPath);
-                                }
-                            }
-                        }
-
-                        PlasmaComponents3.Button {
-                            icon.name: "dialog-close"
-                            PlasmaComponents3.ToolTip.text: i18n("Close")
-                            PlasmaComponents3.ToolTip.visible: hovered
-                            onClicked: {
-                                webview.downloads.remove(model.index);
-                            }
-                        }
-                    }
-                    // Cancel button (visible during download)
-                    PlasmaComponents3.Button {
-                        icon.name: "dialog-cancel"
-                        visible: model.state === WebEngineDownloadRequest.DownloadInProgress && !model.isPdfExport
-                        PlasmaComponents3.ToolTip.text: i18n("Cancel")
-                        PlasmaComponents3.ToolTip.visible: hovered
-                        onClicked: {
-                            // Get the cached download object using the unique ID
-                            let downloadData = webview.downloadCache[model.downloadId];
-                            if (downloadData && downloadData.download) {
-                                // Disconnect signal handlers before canceling
-                                downloadData.download.receivedBytesChanged.disconnect(downloadData.bytesConnection);
-                                downloadData.download.stateChanged.disconnect(downloadData.stateConnection);
-
-                                // Cancel the download
-                                downloadData.download.cancel();
-
-                                // Clean up cache
-                                delete webview.downloadCache[model.downloadId];
-
-                                // Remove from downloads model
-                                webview.downloads.remove(index);
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
-    Rectangle {
-        id: findBar
-        visible: findBarVisible
-        height: visible ? findBarRow.height + Kirigami.Units.smallSpacing * 2 : 0
-        color: Kirigami.Theme.backgroundColor
-        z: 5
+    FindBar {
+        id: findBarComponent
+
+        barVisible: findBarVisible
 
         anchors {
             top: parent.top
@@ -786,71 +654,11 @@ Item {
             right: parent.right
         }
 
-        RowLayout {
-            id: findBarRow
-
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                margins: Kirigami.Units.smallSpacing
-            }
-
-            spacing: Kirigami.Units.smallSpacing
-
-            PlasmaComponents3.TextField {
-                id: findField
-
-                Layout.fillWidth: true
-
-                placeholderText: i18n("Find in page...")
-                onTextChanged: if (text)
-                    webview.findText(text)
-                onAccepted: webview.findText(text)
-                Keys.onEscapePressed: findBarVisible = false
-
-                Component.onCompleted: {
-                    if (findBarVisible) {
-                        forceActiveFocus();
-                    }
-                }
-            }
-
-            PlasmaComponents3.Button {
-                icon.name: "go-up"
-                display: PlasmaComponents3.AbstractButton.IconOnly
-                onClicked: webview.findText(findField.text, WebEngineView.FindBackward)
-                PlasmaComponents3.ToolTip.text: i18n("Find previous")
-                PlasmaComponents3.ToolTip.visible: hovered
-                enabled: findField.text !== ""
-            }
-
-            PlasmaComponents3.Button {
-                icon.name: "go-down"
-                display: PlasmaComponents3.AbstractButton.IconOnly
-                onClicked: webview.findText(findField.text)
-                PlasmaComponents3.ToolTip.text: i18n("Find next")
-                PlasmaComponents3.ToolTip.visible: hovered
-                enabled: findField.text !== ""
-            }
-
-            PlasmaComponents3.Button {
-                icon.name: "dialog-close"
-                display: PlasmaComponents3.AbstractButton.IconOnly
-                PlasmaComponents3.ToolTip.text: i18n("Close")
-                PlasmaComponents3.ToolTip.visible: hovered
-                onClicked: {
-                    findBarVisible = false;
-                    webview.findText("");
-                }
-            }
-        }
-
-        Behavior on height {
-            NumberAnimation {
-                duration: Kirigami.Units.shortDuration
-                easing.type: Easing.InOutQuad
-            }
+        onFindRequested: text => webview.findText(text)
+        onFindPreviousRequested: text => webview.findText(text, WebEngineView.FindBackward)
+        onClosed: {
+            findBarVisible = false;
+            webview.findText("");
         }
     }
 }

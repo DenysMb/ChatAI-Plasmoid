@@ -16,34 +16,6 @@
       <label>i18n("Icon display mode (0: Favicon, 1: Adaptive, 2: Dark, 3: Light, 4: Outlined, 5: Filled, 6: Colorful)")</label>
       <default>1</default>
     </entry>
-    <entry name="useFilledChatIcon" type="Bool">
-      <label>i18n("Use the filled chat's icon instead of widget icon")</label>
-      <default>false</default>
-    </entry>
-    <entry name="useOutlinedChatIcon" type="Bool">
-      <label>Use the outline chat's icon instead of widget icon</label>
-      <default>false</default>
-    </entry>
-    <entry name="useColorfulChatIcon" type="Bool">
-      <label>Use the colorful chat's icon instead of widget icon</label>
-      <default>false</default>
-    </entry>
-    <entry name="useDefaultIcon" type="Bool">
-      <label>Use the widget's default adaptive icon</label>
-      <default>true</default>
-    </entry>
-    <entry name="useDefaultLightIcon" type="Bool">
-      <label>Use the widget's default light icon</label>
-      <default>false</default>
-    </entry>
-    <entry name="useDefaultDarkIcon" type="Bool">
-      <label>Use the widget's default dark icon</label>
-      <default>false</default>
-    </entry>
-    <entry name="useFavicon" type="Bool">
-      <label>Use website favicon as widget icon</label>
-      <default>false</default>
-    </entry>
     <entry name="favIcon" type="String">
       <label>Base64 encoded favicon from website</label>
       <default></default>
@@ -100,16 +72,13 @@
     <entry name="hideHeader" type="Bool">
       <default>false</default>
     </entry>
-    <entry name="hideGoToButton" type="Bool">
-      <default>false</default>
-    </entry>
     <entry name="hideKeepOpen" type="Bool">
       <default>false</default>
     </entry>
     <entry name="hideCustomURL" type="Bool">
       <default>false</default>
     </entry>
-    <entry name="hidePrintButton" type="Bool">
+    <entry name="hideAutoHideButton" type="Bool">
       <default>false</default>
     </entry>
     <entry name="hideCloseButton" type="Bool">
@@ -181,33 +150,9 @@
       <label>Enable focus on navigation</label>
       <default>true</default>
     </entry>
-    <entry name="centerOnScreen" type="Bool">
-      <label>Center window on screen when opened</label>
-      <default>false</default>
-    </entry>
-    <entry name="dialogWidth" type="Int">
-      <label>Last saved dialog width</label>
-      <default>0</default>
-    </entry>
-    <entry name="dialogHeight" type="Int">
-      <label>Last saved dialog height</label>
-      <default>0</default>
-    </entry>
     <entry name="notificationsEnabled" type="Bool">
       <label>Allow notifications from websites</label>
       <default>true</default>
-    </entry>
-    <entry name="notificationFlags" type="Int">
-      <label>Notification display flags</label>
-      <default>0</default>
-    </entry>
-    <entry name="notificationUrgency" type="Int">
-      <label>Notification urgency level</label>
-      <default>1</default>
-    </entry>
-    <entry name="notificationTimeout" type="Int">
-      <label>Notification timeout in milliseconds (0 for no timeout)</label>
-      <default>5000</default>
     </entry>
     <entry name="geolocationEnabled" type="Bool">
       <label>Allow websites to access geolocation</label>
@@ -215,14 +160,6 @@
     </entry>
     <entry name="autoHideHeader" type="Bool">
       <label>Auto-hide header and show on mouse hover</label>
-      <default>false</default>
-    </entry>
-    <entry name="cachePath" type="String">
-      <label>Cache directory path</label>
-      <default></default>
-    </entry>
-    <entry name="clearCacheOnExit" type="Bool">
-      <label>Clear cache when closing</label>
       <default>false</default>
     </entry>
     <entry name="webEngineProfileName" type="String">

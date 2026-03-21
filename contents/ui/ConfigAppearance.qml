@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.kcmutils as KCM
-import org.kde.kirigami 2.20 as Kirigami
+import org.kde.kirigami as Kirigami
 
 KCM.SimpleKCM {
     property alias cfg_iconMode: iconMode.currentIndex
@@ -83,11 +83,11 @@ KCM.SimpleKCM {
         }
 
         QQC2.CheckBox {
-            id: hidePrintButton
+            id: hideAutoHideButton
 
             text: i18n("Hide Auto-Hide button")
-            checked: plasmoid.configuration.hidePrintButton
-            onCheckedChanged: plasmoid.configuration.hidePrintButton = checked
+            checked: plasmoid.configuration.hideAutoHideButton
+            onCheckedChanged: plasmoid.configuration.hideAutoHideButton = checked
             Layout.fillWidth: true
         }
 
@@ -140,7 +140,7 @@ KCM.SimpleKCM {
         Kirigami.InlineMessage {
             Layout.fillWidth: true
             text: i18n("You can still use the Go back to... and Keep open actions by right-clicking the widget icon.")
-            visible: hideHeader.checked || hideGoToButton.checked || hideKeepOpen.checked
+            visible: hideHeader.checked || hideKeepOpen.checked
         }
     }
 }

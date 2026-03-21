@@ -1,10 +1,10 @@
+import QtCore
 import QtQuick
 import QtQuick.Dialogs
 import QtQuick.Layouts
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.plasmoid
-import Qt.labs.platform 1.1
 import QtWebEngine
 
 RowLayout {
@@ -135,7 +135,7 @@ RowLayout {
     // Auto-Hide Button
     PlasmaComponents3.Button {
         id: autoHideButton
-        visible: !plasmoid.configuration.hidePrintButton
+        visible: !plasmoid.configuration.hideAutoHideButton
         icon.name: plasmoid.configuration.autoHideHeader ? "view-visible" : "view-hidden"
         display: PlasmaComponents3.AbstractButton.IconOnly
         checkable: true
@@ -301,57 +301,18 @@ RowLayout {
         restoreMode: Binding.RestoreBinding
     }
 
-    // Configuration change handlers
-    // Updates model list when chat service visibility settings change
-    Connections {
-        target: plasmoid.configuration
-        function onCustomSitesChanged() {
-            renderChatModel();
+    // Reactive snapshot of all model visibility states.
+    // QML automatically re-evaluates this binding whenever any accessed
+    // configuration property changes, so adding a new service to `models`
+    // requires no additional signal handler here.
+    readonly property var modelVisibilityState: {
+        const snapshot = [plasmoid.configuration.customSites];
+        if (models) {
+            for (let i = 0; i < models.length; i++) {
+                snapshot.push(plasmoid.configuration[models[i].prop]);
+            }
         }
-        function onShowT3ChatChanged() {
-            renderChatModel();
-        }
-        function onShowDuckDuckGoChatChanged() {
-            renderChatModel();
-        }
-        function onShowChatGPTChanged() {
-            renderChatModel();
-        }
-        function onShowHugginChatChanged() {
-            renderChatModel();
-        }
-        function onShowGoogleGeminiChanged() {
-            renderChatModel();
-        }
-        function onShowYouChanged() {
-            renderChatModel();
-        }
-        function onShowPerplexityChanged() {
-            renderChatModel();
-        }
-        function onShowLobeChatChanged() {
-            renderChatModel();
-        }
-        function onShowBigAGIChanged() {
-            renderChatModel();
-        }
-        function onShowBlackBoxChanged() {
-            renderChatModel();
-        }
-        function onShowBingCopilotChanged() {
-            renderChatModel();
-        }
-        function onShowClaudeChanged() {
-            renderChatModel();
-        }
-        function onShowDeepSeekChanged() {
-            renderChatModel();
-        }
-        function onShowMetaAIChanged() {
-            renderChatModel();
-        }
-        function onShowGrokChanged() {
-            renderChatModel();
-        }
+        return snapshot;
     }
+    onModelVisibilityStateChanged: renderChatModel()
 }
