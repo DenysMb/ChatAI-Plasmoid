@@ -245,11 +245,11 @@ Item {
     WebEngineView {
         id: webview
 
-        // Dim while loading — CSS blur handles the rest once document is ready
-        opacity: loading ? 0.3 : 1.0
+        // Opacity follows load progress: 0% → 0.3, 100% → 1.0
+        opacity: loading ? 0.3 + (loadProgress / 100) * 0.7 : 1.0
         Behavior on opacity {
             enabled: plasmoid.configuration.enableAnimations
-            NumberAnimation { duration: loading ? 100 : 800; easing.type: Easing.InOutQuad }
+            NumberAnimation { duration: 150; easing.type: Easing.OutQuad }
         }
 
         // Transparent WebEngine background when transparency is enabled
@@ -479,9 +479,14 @@ Item {
 
             request.grant();
         }
-        // CSS blur injection: heavy blur during load, smooth unblur when done
-        function injectUnblur() {
+        // CSS blur follows load progress
+        function updateBlurForProgress(progress) {
+            // blur: 12px at 0% → 0px at 100%
+            var blurPx = Math.round(12 * (1 - progress / 100));
+            var sat = 0.4 + (progress / 100) * 0.6; // 0.4 → 1.0
             var subtle = plasmoid.configuration.enableTransparency ? "blur(0.5px)" : "none";
+            var endFilter = (progress >= 100) ? subtle : ("blur(" + blurPx + "px) saturate(" + sat.toFixed(2) + ")");
+
             webview.runJavaScript("
                 (function() {
                     var s = document.getElementById('_chatai_blur');
@@ -490,20 +495,23 @@ Item {
                         s.id = '_chatai_blur';
                         document.head.appendChild(s);
                     }
-                    // Start blurred, then transition to clear
-                    s.textContent = 'html { filter: blur(12px) saturate(0.4) brightness(0.9); }';
-                    requestAnimationFrame(function() {
-                        s.textContent = 'html { filter: " + subtle + "; transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1); }';
-                    });
+                    s.textContent = 'html { filter: " + endFilter + "; transition: filter 0.15s ease-out; }';
                 })();
             ");
+        }
+
+        onLoadProgressChanged: {
+            if (loading)
+                updateBlurForProgress(loadProgress);
         }
 
         onLoadingChanged: {
             injectBrowserSpoof();
 
-            if (!webview.loading) {
-                injectUnblur();
+            if (loading) {
+                updateBlurForProgress(0);
+            } else {
+                updateBlurForProgress(100);
                 checkAndUpdateFavicon();
                 injectTransparencyCSS();
             }
