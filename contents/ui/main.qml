@@ -141,7 +141,7 @@ PlasmoidItem {
     Binding {
         target: root
         property: "hideOnWindowDeactivate"
-        value: !plasmoid.configuration.pin
+        value: !plasmoid.configuration.keepOpen
         restoreMode: Binding.RestoreBinding
     }
 

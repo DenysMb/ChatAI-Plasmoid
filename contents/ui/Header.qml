@@ -282,8 +282,8 @@ Item {
         icon.name: "window-pin"
         display: PlasmaComponents3.AbstractButton.IconOnly
         checkable: true
-        checked: Boolean(plasmoid.configuration.pin)
-        onToggled: plasmoid.configuration.pin = checked
+        checked: Boolean(plasmoid.configuration.keepOpen)
+        onToggled: plasmoid.configuration.keepOpen = checked
         visible: !Boolean(plasmoid.configuration.hideKeepOpen)
         z: 3
         PlasmaComponents3.ToolTip.text: checked ? i18n("Widget will stay open when clicking outside") : i18n("Widget will close when clicking outside")
