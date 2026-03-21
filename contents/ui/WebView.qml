@@ -366,57 +366,60 @@ Item {
 
             var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'claude', 'you'].some(site => plasmoid.configuration.url.includes(site));
 
-            if (isCompatibleModel) {
+            if (isCompatibleModel && !webview.loading) {
                 webview.runJavaScript("
-                    document.addEventListener('keydown', function(event) {
-                        if (event.key === 'Enter' && !event.shiftKey) {
-                            var duckDuckGoButton = document.querySelector('button[aria-label=\"Send\"]');
-                            var chatGPTButton = document.querySelector('button[data-testid=\"send-button\"]');
-                            var googleGeminiButton = document.querySelector('button.send-button');
-                            var claudeButton = document.querySelector('button[aria-label=\"Send Message\"]');
+                    if (!window._chatAIInjected) {
+                        window._chatAIInjected = true;
 
-                            if (duckDuckGoButton) {
-                                event.preventDefault();
-                                duckDuckGoButton.click();
-                                waitForTextareaEnabledAndFocus();
-                            }
+                        document.addEventListener('keydown', function(event) {
+                            if (event.key === 'Enter' && !event.shiftKey) {
+                                var duckDuckGoButton = document.querySelector('button[aria-label=\"Send\"]');
+                                var chatGPTButton = document.querySelector('button[data-testid=\"send-button\"]');
+                                var googleGeminiButton = document.querySelector('button.send-button');
+                                var claudeButton = document.querySelector('button[aria-label=\"Send Message\"]');
 
-                            if (chatGPTButton) {
-                                event.preventDefault();
-                                chatGPTButton.click();
-                                waitForTextareaEnabledAndFocus();
-                            }
+                                if (duckDuckGoButton) {
+                                    event.preventDefault();
+                                    duckDuckGoButton.click();
+                                    waitForTextareaEnabledAndFocus();
+                                }
 
-                            if (googleGeminiButton) {
-                                event.preventDefault();
-                                googleGeminiButton.click();
-                                waitForTextareaEnabledAndFocus();
-                            }
+                                if (chatGPTButton) {
+                                    event.preventDefault();
+                                    chatGPTButton.click();
+                                    waitForTextareaEnabledAndFocus();
+                                }
 
-                            if (claudeButton) {
-                                event.preventDefault();
-                                claudeButton.click();
-                                waitForTextareaEnabledAndFocus();
+                                if (googleGeminiButton) {
+                                    event.preventDefault();
+                                    googleGeminiButton.click();
+                                    waitForTextareaEnabledAndFocus();
+                                }
+
+                                if (claudeButton) {
+                                    event.preventDefault();
+                                    claudeButton.click();
+                                    waitForTextareaEnabledAndFocus();
+                                }
                             }
+                        });
+
+                        function waitForTextareaEnabledAndFocus() {
+                            var interval = 100;
+
+                            var textareaFocusInterval = setInterval(function() {
+                                var textarea = document.querySelector('textarea');
+                                if (textarea && !textarea.disabled) {
+                                    clearInterval(textareaFocusInterval);
+                                    setTimeout(function() {
+                                        textarea.focus();
+                                    }, 100);
+                                }
+                            }, interval);
                         }
-                    });
 
-                    function waitForTextareaEnabledAndFocus() {
-                        var attempts = 0;
-                        var interval = 100;
-
-                        var textareaFocusInterval = setInterval(function() {
-                            var textarea = document.querySelector('textarea');
-                            if (textarea && !textarea.disabled) {
-                                clearInterval(textareaFocusInterval);
-                                setTimeout(function() {
-                                    textarea.focus();
-                                }, 100);
-                            }
-                        }, interval);
+                        waitForTextareaEnabledAndFocus();
                     }
-
-                    waitForTextareaEnabledAndFocus();
                 ");
             }
         }
