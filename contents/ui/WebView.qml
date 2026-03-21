@@ -7,7 +7,7 @@ import QtWebEngine
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
-import org.kde.notification
+import org.kde.notification 1.0
 import org.kde.kirigami as Kirigami
 
 Item {
