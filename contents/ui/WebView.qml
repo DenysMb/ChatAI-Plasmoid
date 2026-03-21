@@ -110,6 +110,13 @@ Item {
 
     property bool findBarVisible: false
 
+    // Re-inject transparency CSS when settings change live
+    Connections {
+        target: plasmoid.configuration
+        function onEnableTransparencyChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
+        function onBackgroundTransparencyChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
+    }
+
     onFindBarVisibleChanged: {
         if (findBarVisible) {
             findBarComponent.focusField();
@@ -184,6 +191,51 @@ Item {
         Behavior on opacity {
             enabled: plasmoid.configuration.enableAnimations
             NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+        }
+
+        // Transparent WebEngine background when transparency is enabled
+        backgroundColor: plasmoid.configuration.enableTransparency ? "transparent" : Kirigami.Theme.backgroundColor
+
+        // Inject CSS to make the website background semi-transparent
+        function injectTransparencyCSS() {
+            if (!plasmoid.configuration.enableTransparency) {
+                // Remove injected style if transparency was disabled
+                webview.runJavaScript("
+                    var el = document.getElementById('_chatai_transparency');
+                    if (el) el.remove();
+                ");
+                return;
+            }
+
+            var alpha = plasmoid.configuration.backgroundTransparency;
+            webview.runJavaScript("
+                (function() {
+                    var styleId = '_chatai_transparency';
+                    var existing = document.getElementById(styleId);
+                    if (existing) existing.remove();
+
+                    var style = document.createElement('style');
+                    style.id = styleId;
+                    style.textContent = `
+                        html, body {
+                            background-color: rgba(0, 0, 0, 0) !important;
+                        }
+                        body > *:first-child,
+                        body > div:first-of-type,
+                        main, #__next, #root, #app, .app,
+                        [class*='layout'], [class*='Layout'],
+                        [class*='container'], [class*='Container'],
+                        [class*='wrapper'], [class*='Wrapper'] {
+                            background-color: color-mix(
+                                in srgb,
+                                currentcolor 0%,
+                                transparent calc((1 - " + alpha + ") * 100%)
+                            ) !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                })();
+            ");
         }
 
         property var downloadCache: ({})
@@ -363,6 +415,7 @@ Item {
         onLoadingChanged: {
             if (!webview.loading) {
                 checkAndUpdateFavicon();
+                injectTransparencyCSS();
             }
 
             var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'claude', 'you'].some(site => plasmoid.configuration.url.includes(site));

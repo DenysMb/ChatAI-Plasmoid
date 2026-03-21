@@ -182,5 +182,13 @@
       <label>Enable smooth animations</label>
       <default>true</default>
     </entry>
+    <entry name="enableTransparency" type="Bool">
+      <label>Enable transparent background with desktop blur behind</label>
+      <default>false</default>
+    </entry>
+    <entry name="backgroundTransparency" type="Double">
+      <label>Background transparency level (0.0 fully transparent to 1.0 opaque)</label>
+      <default>0.85</default>
+    </entry>
   </group>
 </kcfg>

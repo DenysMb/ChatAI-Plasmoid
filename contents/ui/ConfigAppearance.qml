@@ -85,6 +85,54 @@ KCM.SimpleKCM {
             Layout.fillWidth: true
         }
 
+        // Transparency section
+        QQC2.Label {
+            Kirigami.FormData.label: i18n("Transparency")
+            font.bold: true
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: enableTransparency
+            text: i18n("Transparent background with desktop blur")
+            checked: plasmoid.configuration.enableTransparency
+            onCheckedChanged: plasmoid.configuration.enableTransparency = checked
+            Layout.fillWidth: true
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Background opacity:")
+            Layout.fillWidth: true
+            enabled: enableTransparency.checked
+
+            QQC2.Slider {
+                id: backgroundTransparency
+                from: 0.0
+                to: 0.95
+                stepSize: 0.05
+                value: plasmoid.configuration.backgroundTransparency
+                onMoved: plasmoid.configuration.backgroundTransparency = value
+                Layout.fillWidth: true
+            }
+
+            QQC2.Label {
+                text: Math.round(backgroundTransparency.value * 100) + "%"
+                Layout.minimumWidth: Kirigami.Units.gridUnit * 2
+            }
+        }
+
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            text: i18n("Makes the website background semi-transparent so the desktop blur shows through. Lower values = more transparent. Requires compositor with blur support.")
+            visible: enableTransparency.checked
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Layout.fillWidth: true
+        }
+
         // Header Options section
         QQC2.Label {
             Kirigami.FormData.label: i18n("Header Options")

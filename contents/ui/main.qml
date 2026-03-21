@@ -8,6 +8,11 @@ import org.kde.plasma.plasmoid
 PlasmoidItem {
     id: root
 
+    // Translucent background lets compositor blur the desktop behind the popup
+    backgroundHints: plasmoid.configuration.enableTransparency
+        ? PlasmaCore.Types.TranslucentBackground
+        : PlasmaCore.Types.DefaultBackground
+
     // Define the available chat models and their properties
     // This property combines both predefined and custom sites
     property var models: {
