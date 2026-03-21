@@ -137,6 +137,14 @@ PlasmoidItem {
         }
     }
 
+    // Hide popup when clicking outside (unless pinned)
+    Binding {
+        target: root
+        property: "hideOnWindowDeactivate"
+        value: !plasmoid.configuration.pin
+        restoreMode: Binding.RestoreBinding
+    }
+
     // Widget appearance when collapsed (icon only)
     compactRepresentation: CompactRepresentation {
         id: compactRep

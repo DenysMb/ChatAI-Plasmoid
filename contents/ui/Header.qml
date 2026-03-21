@@ -290,10 +290,9 @@ Item {
             return;
         }
 
-        const selectedText = urlComboBox.currentValue;
+        const selectedText = urlComboBox.currentText;
         if (!selectedText)
             return;
-        urlComboBox.displayText = selectedText;
 
         const selectedModel = models.find(model => !model.prop.startsWith("showCustom_") && model.text === selectedText);
         if (selectedModel) {
@@ -307,13 +306,6 @@ Item {
             plasmoid.configuration.url = customSite.split('|')[1];
             goBackToHomePage();
         }
-    }
-
-    Binding {
-        target: root
-        property: "hideOnWindowDeactivate"
-        value: !plasmoid.configuration.pin
-        restoreMode: Binding.RestoreBinding
     }
 
     // Reactive snapshot of all model visibility states.
