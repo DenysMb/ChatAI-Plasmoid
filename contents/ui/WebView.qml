@@ -16,6 +16,11 @@ import org.kde.kirigami as Kirigami
 Item {
     id: webViewRoot
     readonly property string effectiveProfileName: plasmoid.configuration.webEngineProfileName && plasmoid.configuration.webEngineProfileName.length ? plasmoid.configuration.webEngineProfileName : "chat-ai"
+    readonly property string effectiveDownloadPath: {
+        if (plasmoid.configuration.downloadPath)
+            return plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '');
+        return StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+    }
 
     function goBackToHomePage() {
         webview.url = plasmoid.configuration.url;
@@ -35,7 +40,7 @@ Item {
 
     function printPage() {
         webview.runJavaScript("document.title", function (title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+            let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
             let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
@@ -53,7 +58,7 @@ Item {
 
     function saveMHTML() {
         webview.runJavaScript("document.title", function (title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+            let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
             let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
@@ -500,12 +505,7 @@ Item {
             httpCacheType: WebEngineProfile.DiskHttpCache
             persistentCookiesPolicy: WebEngineProfile.ForcePersistentCookies
             persistentPermissionsPolicy: WebEngineProfile.AskEveryTime
-            downloadPath: {
-                if (plasmoid.configuration.downloadPath)
-                    return plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '');
-
-                return StandardPaths.writableLocation(StandardPaths.DownloadLocation);
-            }
+            downloadPath: webViewRoot.effectiveDownloadPath
             onPresentNotification: function (notification) {
                 showNotification(notification.title, notification.message);
                 notification.show();
@@ -516,7 +516,7 @@ Item {
                     webview.downloads = Qt.createQmlObject('import QtQml; ListModel {}', webview);
                 }
 
-                let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+                let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
                 if (!plasmoid.configuration.downloadPath) {
                     plasmoid.configuration.downloadPath = downloadDirectory;
