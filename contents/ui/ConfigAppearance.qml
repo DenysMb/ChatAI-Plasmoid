@@ -110,26 +110,6 @@ KCM.SimpleKCM {
             visible: enableBlur.checked
         }
 
-        RowLayout {
-            Kirigami.FormData.label: i18n("Background opacity:")
-            Layout.fillWidth: true
-            enabled: enableBlur.checked
-
-            QQC2.Slider {
-                id: backgroundTransparency
-                from: 0.0
-                to: 0.95
-                stepSize: 0.05
-                value: plasmoid.configuration.backgroundTransparency
-                onMoved: plasmoid.configuration.backgroundTransparency = value
-                Layout.fillWidth: true
-            }
-
-            QQC2.Label {
-                text: Math.round(backgroundTransparency.value * 100) + "%"
-                Layout.minimumWidth: Kirigami.Units.gridUnit * 2
-            }
-        }
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true

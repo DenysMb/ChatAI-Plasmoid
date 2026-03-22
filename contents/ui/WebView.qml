@@ -175,10 +175,6 @@ Item {
     // Re-inject CSS when settings change live
     Connections {
         target: plasmoid.configuration
-        function onBackgroundTransparencyChanged() {
-            if (webview.url.toString() && plasmoid.configuration.enableBlur)
-                webview.runJavaScript("if(window._chatai_applyBlur){window._chatai_alpha=" + plasmoid.configuration.backgroundTransparency + ";window._chatai_applyBlur();}");
-        }
         function onEnableBlurChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
         function onFocusModeChanged() { if (webview.url.toString()) webview.injectFocusMode(); }
     }
@@ -285,12 +281,11 @@ Item {
                 );
                 return;
             }
-            var alpha = plasmoid.configuration.backgroundTransparency;
             webview.runJavaScript(
                 "(function() { try {" +
-                "  window._chatai_alpha = " + alpha + ";" +
                 "  window._chatai_applyBlur = function() {" +
-                "    var a = window._chatai_alpha;" +
+                "    var a = 0.5;" +
+                "    var b = 8;" +
                 "    document.documentElement.style.setProperty('background-color', 'transparent', 'important');" +
                 "    document.body.style.setProperty('background-color', 'transparent', 'important');" +
                 "    document.body.querySelectorAll('body > *, body > * > *').forEach(function(el) {" +
@@ -301,8 +296,8 @@ Item {
                 "      var m = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);" +
                 "      if (!m) return;" +
                 "      el.style.setProperty('background-color', 'rgba(' + m[1] + ',' + m[2] + ',' + m[3] + ',' + a + ')', 'important');" +
-                "      el.style.setProperty('backdrop-filter', 'blur(8px)', 'important');" +
-                "      el.style.setProperty('-webkit-backdrop-filter', 'blur(8px)', 'important');" +
+                "      el.style.setProperty('backdrop-filter', 'blur(' + b + 'px)', 'important');" +
+                "      el.style.setProperty('-webkit-backdrop-filter', 'blur(' + b + 'px)', 'important');" +
                 "    });" +
                 "  };" +
                 "  window._chatai_applyBlur();" +
