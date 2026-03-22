@@ -88,25 +88,32 @@ KCM.SimpleKCM {
             Layout.fillWidth: true
         }
 
-        // Transparency section
+        // Transparency & Blur section
         QQC2.Label {
-            Kirigami.FormData.label: i18n("Transparency")
+            Kirigami.FormData.label: i18n("Transparency & Blur")
             font.bold: true
             Layout.fillWidth: true
         }
 
         QQC2.CheckBox {
-            id: enableTransparency
-            text: i18n("Transparent background with desktop blur")
-            checked: plasmoid.configuration.enableTransparency
-            onCheckedChanged: plasmoid.configuration.enableTransparency = checked
+            id: enableBlur
+            text: i18n("Enable blur effect")
+            checked: plasmoid.configuration.enableBlur
+            onCheckedChanged: plasmoid.configuration.enableBlur = checked
             Layout.fillWidth: true
+        }
+
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            text: i18n("Blurs the desktop behind the popup and makes web page backgrounds semi-transparent. Requires a compositor with blur support.")
+            visible: enableBlur.checked
         }
 
         RowLayout {
             Kirigami.FormData.label: i18n("Background opacity:")
             Layout.fillWidth: true
-            enabled: enableTransparency.checked
+            enabled: enableBlur.checked
 
             QQC2.Slider {
                 id: backgroundTransparency
@@ -122,13 +129,6 @@ KCM.SimpleKCM {
                 text: Math.round(backgroundTransparency.value * 100) + "%"
                 Layout.minimumWidth: Kirigami.Units.gridUnit * 2
             }
-        }
-
-        Kirigami.InlineMessage {
-            Layout.fillWidth: true
-            type: Kirigami.MessageType.Information
-            text: i18n("Makes the website background semi-transparent so the desktop blur shows through. Lower values = more transparent. Requires compositor with blur support.")
-            visible: enableTransparency.checked
         }
 
         Kirigami.Separator {

@@ -9,7 +9,7 @@ PlasmoidItem {
     id: root
 
     // Translucent background lets compositor blur the desktop behind the popup
-    Plasmoid.backgroundHints: plasmoid.configuration.enableTransparency
+    Plasmoid.backgroundHints: plasmoid.configuration.enableBlur
         ? PlasmaCore.Types.TranslucentBackground
         : PlasmaCore.Types.DefaultBackground
 
@@ -279,6 +279,9 @@ PlasmoidItem {
             onNavigateBackRequested: webviewRoot.goBack()
             onNavigateForwardRequested: webviewRoot.goForward()
             onPrintPageRequested: webviewRoot.printPage()
+            onInjectTransparencyRequested: {
+                if (webviewRoot) webviewRoot.toggleBlur();
+            }
             onToggleSearchRequested: {
                 if (webviewRoot && webviewRoot.findBarVisible !== undefined) {
                     webviewRoot.findBarVisible = !webviewRoot.findBarVisible;
@@ -304,7 +307,7 @@ PlasmoidItem {
             Timer {
                 id: hideTimer
 
-                interval: 4000
+                interval: 1500
                 onTriggered: {
                     if (!headerRoot.isInteracting && !headerMouseArea.containsMouse)
                         headerRoot.headerVisible = false;

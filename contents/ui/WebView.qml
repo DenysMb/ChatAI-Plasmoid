@@ -19,7 +19,12 @@ Item {
         return StandardPaths.writableLocation(StandardPaths.DownloadLocation);
     }
 
+    function toggleBlur() {
+        plasmoid.configuration.enableBlur = !plasmoid.configuration.enableBlur;
+    }
+
     function goBackToHomePage() {
+        plasmoid.configuration.lastVisitedUrl = "";
         webview.url = plasmoid.configuration.url;
     }
 
@@ -132,7 +137,6 @@ Item {
         id: webNotification
         componentName: "chatai_plasmoid"
         eventId: "notification"
-        defaultAction: i18n("Open")
         title: i18n("ChatAI")
         iconName: "dialog-information"
     }
@@ -171,8 +175,11 @@ Item {
     // Re-inject CSS when settings change live
     Connections {
         target: plasmoid.configuration
-        function onEnableTransparencyChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
-        function onBackgroundTransparencyChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
+        function onBackgroundTransparencyChanged() {
+            if (webview.url.toString() && plasmoid.configuration.enableBlur)
+                webview.runJavaScript("if(window._chatai_applyBlur){window._chatai_alpha=" + plasmoid.configuration.backgroundTransparency + ";window._chatai_applyBlur();}");
+        }
+        function onEnableBlurChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
         function onFocusModeChanged() { if (webview.url.toString()) webview.injectFocusMode(); }
     }
 
@@ -246,149 +253,69 @@ Item {
     WebEngineView {
         id: webview
 
-        // Transparent WebEngine background when transparency is enabled
-        backgroundColor: plasmoid.configuration.enableTransparency ? "transparent" : Kirigami.Theme.backgroundColor
+        property bool _forceOpaque: false
+        backgroundColor: (!plasmoid.configuration.enableBlur || _forceOpaque) ? Kirigami.Theme.backgroundColor : "transparent"
 
-        // Smart transparency: analyzes DOM structure and applies layered
-        // transparency + backdrop-blur based on element role
+        // Brief opacity flip to force WebEngine compositing reset
+        Timer {
+            id: bgFlipTimer
+            interval: 50
+            onTriggered: webview._forceOpaque = false
+        }
+        function kickTransparency() {
+            _forceOpaque = true;
+            bgFlipTimer.start();
+        }
+
+        // Background-only transparency: inline styles on html/body and
+        // top-level wrapper elements, leaving all content areas intact
         function injectTransparencyCSS() {
-            if (!plasmoid.configuration.enableTransparency) {
-                webview.runJavaScript("
-                    var el = document.getElementById('_chatai_transparency');
-                    if (el) el.remove();
-                ");
+            if (!plasmoid.configuration.enableBlur) {
+                webview.runJavaScript(
+                    "(function() { try {" +
+                    "  if (window._chatai_resizeHandler) { window.removeEventListener('resize', window._chatai_resizeHandler); window._chatai_resizeHandler = null; }" +
+                    "  document.documentElement.style.removeProperty('background-color');" +
+                    "  document.body.style.removeProperty('background-color');" +
+                    "  document.body.querySelectorAll('body > *, body > * > *').forEach(function(el) {" +
+                    "    el.style.removeProperty('background-color');" +
+                    "    el.style.removeProperty('backdrop-filter');" +
+                    "    el.style.removeProperty('-webkit-backdrop-filter');" +
+                    "  });" +
+                    "} catch(e) {} })();"
+                );
                 return;
             }
-
             var alpha = plasmoid.configuration.backgroundTransparency;
-            webview.runJavaScript("
-                (function() {
-                    var styleId = '_chatai_transparency';
-                    var existing = document.getElementById(styleId);
-                    if (existing) existing.remove();
-
-                    var alpha = " + alpha + ";
-                    var viewW = window.innerWidth;
-                    var viewH = window.innerHeight;
-                    var css = 'html, body { background-color: transparent !important; }\\n';
-                    var processed = new Set();
-
-                    function makeSelector(el) {
-                        if (el.id) return '#' + CSS.escape(el.id);
-                        if (el.tagName === 'HTML' || el.tagName === 'BODY') return el.tagName.toLowerCase();
-                        var cls = el.className && typeof el.className === 'string' ? el.className.trim().split(/\\s+/)[0] : '';
-                        if (cls) return el.tagName.toLowerCase() + '.' + CSS.escape(cls);
-                        return null;
-                    }
-
-                    function parseBgColor(el) {
-                        var bg = getComputedStyle(el).backgroundColor;
-                        if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') return null;
-                        var m = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);
-                        return m ? { r: m[1], g: m[2], b: m[3] } : null;
-                    }
-
-                    // Check if element is or contains chat content — never apply transparency
-                    function isChatContent(el) {
-                        var tag = el.tagName.toLowerCase();
-                        // Text content tags
-                        if (['p', 'pre', 'code', 'li', 'ol', 'ul', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'em', 'table'].indexOf(tag) >= 0) return true;
-                        // Interactive elements
-                        if (['input', 'textarea', 'select', 'button', 'fieldset', 'form'].indexOf(tag) >= 0) return true;
-                        if (el.isContentEditable || el.getAttribute('contenteditable') === 'true') return true;
-                        var role = el.getAttribute('role') || '';
-                        if (['textbox', 'searchbox', 'combobox', 'listbox', 'dialog', 'form', 'article', 'log', 'status'].indexOf(role) >= 0) return true;
-                        var cls = (el.className && typeof el.className === 'string') ? el.className.toLowerCase() : '';
-                        if (cls.match(/input|textarea|chat-input|prompt|editor|compose|message-input|ql-editor|ql-container|rich-textarea|text-input|send-button|input-area|tiptap|prosemirror/)) return true;
-                        if (cls.match(/message|response|answer|reply|conversation|chat-turn|turn-|assistant|user-|bot-|markdown|prose|result|output/)) return true;
-                        var testid = el.getAttribute('data-testid') || '';
-                        if (testid.match(/message|conversation|turn|chat-input|file-upload/)) return true;
-                        if (el.getAttribute('data-message-id')) return true;
-                        return false;
-                    }
-
-                    // Check if element contains any chat content children
-                    function containsChatContent(el) {
-                        if (isChatContent(el)) return true;
-                        var found = el.querySelector(
-                            'textarea, input, [contenteditable=true], [role=textbox], ' +
-                            'fieldset, form, .ql-editor, .tiptap, .ProseMirror, ' +
-                            '[data-testid*=chat-input], [data-testid*=message], ' +
-                            '[class*=message], [class*=conversation], [class*=chat-turn], ' +
-                            '[class*=input-area], [class*=prompt], [class*=prose], ' +
-                            'p[data-placeholder], p[data-path-to-node]'
-                        );
-                        return found !== null;
-                    }
-
-                    function classifyElement(el) {
-                        var rect = el.getBoundingClientRect();
-                        if (rect.width < 10 || rect.height < 10) return 'skip';
-
-                        // Never touch chat content or containers holding chat content
-                        if (isChatContent(el) || containsChatContent(el)) return 'skip';
-
-                        var style = getComputedStyle(el);
-                        var tag = el.tagName.toLowerCase();
-                        var role = el.getAttribute('role') || '';
-                        var cls = (el.className && typeof el.className === 'string') ? el.className.toLowerCase() : '';
-
-                        // Sidebars & navigation: high blur, very transparent
-                        if (tag === 'nav' || tag === 'aside' || role === 'navigation' || role === 'complementary' ||
-                            cls.match(/sidebar|sidenav|drawer|panel/)) {
-                            return 'chrome';
-                        }
-
-                        // Headers/toolbars: medium blur
-                        if (tag === 'header' || role === 'banner' || cls.match(/header|toolbar|topbar|appbar/)) {
-                            if (rect.height < 120) return 'chrome';
-                        }
-
-                        // Fixed/sticky narrow panels
-                        if ((style.position === 'fixed' || style.position === 'sticky') &&
-                            rect.width < viewW * 0.35 && rect.height > viewH * 0.3) {
-                            return 'chrome';
-                        }
-
-                        // Large background containers — only if they don't hold chat
-                        if (rect.width > viewW * 0.5 && rect.height > viewH * 0.3) {
-                            return 'background';
-                        }
-
-                        return 'skip';
-                    }
-
-                    // Walk all elements with backgrounds
-                    var allEls = document.querySelectorAll('*');
-                    allEls.forEach(function(el) {
-                        var sel = makeSelector(el);
-                        if (!sel || processed.has(sel)) return;
-
-                        var color = parseBgColor(el);
-                        if (!color) return;
-
-                        var type = classifyElement(el);
-                        if (type === 'skip') return;
-
-                        processed.add(sel);
-
-                        if (type === 'chrome') {
-                            // Sidebars/headers: very transparent + strong blur
-                            css += sel + ' { background-color: rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + (alpha * 0.3).toFixed(3) + ') !important; ';
-                            css += 'backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; }\\n';
-                        } else if (type === 'background') {
-                            // Main content area: subtle transparency
-                            css += sel + ' { background-color: rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + alpha.toFixed(3) + ') !important; ';
-                            css += 'backdrop-filter: blur(2px) !important; -webkit-backdrop-filter: blur(2px) !important; }\\n';
-                        }
-                    });
-
-                    var style = document.createElement('style');
-                    style.id = styleId;
-                    style.textContent = css;
-                    document.head.appendChild(style);
-                })();
-            ");
+            webview.runJavaScript(
+                "(function() { try {" +
+                "  window._chatai_alpha = " + alpha + ";" +
+                "  window._chatai_applyBlur = function() {" +
+                "    var a = window._chatai_alpha;" +
+                "    document.documentElement.style.setProperty('background-color', 'transparent', 'important');" +
+                "    document.body.style.setProperty('background-color', 'transparent', 'important');" +
+                "    document.body.querySelectorAll('body > *, body > * > *').forEach(function(el) {" +
+                "      var r = el.getBoundingClientRect();" +
+                "      if (r.width < window.innerWidth * 0.3) return;" +
+                "      var bg = getComputedStyle(el).backgroundColor;" +
+                "      if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') return;" +
+                "      var m = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);" +
+                "      if (!m) return;" +
+                "      el.style.setProperty('background-color', 'rgba(' + m[1] + ',' + m[2] + ',' + m[3] + ',' + a + ')', 'important');" +
+                "      el.style.setProperty('backdrop-filter', 'blur(8px)', 'important');" +
+                "      el.style.setProperty('-webkit-backdrop-filter', 'blur(8px)', 'important');" +
+                "    });" +
+                "  };" +
+                "  window._chatai_applyBlur();" +
+                "  if (!window._chatai_resizeHandler) {" +
+                "    var timer = null;" +
+                "    window._chatai_resizeHandler = function() {" +
+                "      clearTimeout(timer);" +
+                "      timer = setTimeout(window._chatai_applyBlur, 300);" +
+                "    };" +
+                "    window.addEventListener('resize', window._chatai_resizeHandler);" +
+                "  }" +
+                "} catch(e) {} })();"
+            );
         }
 
         property var downloadCache: ({})
@@ -501,8 +428,15 @@ Item {
         }
 
         anchors.fill: parent
-        url: plasmoid.configuration.url
+        url: plasmoid.configuration.lastVisitedUrl || plasmoid.configuration.url
         profile: webProfile
+
+        // Save current URL so it persists across WebView unload/reload
+        onUrlChanged: {
+            var u = url.toString();
+            if (u && u !== "about:blank" && u !== plasmoid.configuration.lastVisitedUrl)
+                plasmoid.configuration.lastVisitedUrl = u;
+        }
         onLinkHovered: hoveredUrl => {
             if (hoveredUrl == "") {
                 hideStatusText.start();
@@ -710,6 +644,7 @@ Item {
 
             if (!webview.loading) {
                 checkAndUpdateFavicon();
+                webview.kickTransparency();
                 injectTransparencyCSS();
                 injectFocusMode();
             }

@@ -19,6 +19,7 @@ Item {
     signal navigateForwardRequested
     signal printPageRequested
     signal toggleSearchRequested
+    signal injectTransparencyRequested
 
     // Properties for managing component state
     property var closeWebViewCallback: undefined
@@ -264,6 +265,19 @@ Item {
         id: folderDialog
         currentFolder: plasmoid.configuration.downloadPath || StandardPaths.writableLocation(StandardPaths.DownloadLocation)
         onAccepted: plasmoid.configuration.downloadPath = selectedFolder
+    }
+
+    // Toggle blur button
+    PlasmaComponents3.Button {
+        icon.name: plasmoid.configuration.enableBlur ? "blur" : "edit-opacity"
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        checkable: true
+        checked: plasmoid.configuration.enableBlur
+        onToggled: injectTransparencyRequested()
+        z: 3
+        PlasmaComponents3.ToolTip.text: checked ? i18n("Blur enabled — click to disable") : i18n("Blur disabled — click to enable")
+        PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+        PlasmaComponents3.ToolTip.visible: hovered
     }
 
     // Search button - Toggles the find bar

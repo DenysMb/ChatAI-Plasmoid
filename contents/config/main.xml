@@ -8,6 +8,9 @@
     <entry name="url" type="String">
       <default>https://duckduckgo.com/chat</default>
     </entry>
+    <entry name="lastVisitedUrl" type="String">
+      <default></default>
+    </entry>
     <entry name="icon" type="String">
       <label>i18n("The name of the icon used in the compact representation (e.g. on a small panel).")</label>
       <default></default>
@@ -157,11 +160,12 @@
     <entry name="enableAnimations" type="Bool">
       <default>true</default>
     </entry>
-    <entry name="enableTransparency" type="Bool">
-      <default>false</default>
-    </entry>
     <entry name="backgroundTransparency" type="Double">
       <default>0.85</default>
+    </entry>
+    <entry name="enableBlur" type="Bool">
+      <label>Enable blur effect (desktop + web page backgrounds)</label>
+      <default>true</default>
     </entry>
     <entry name="headerGradient" type="Bool">
       <label>Show gradient effect on header</label>
