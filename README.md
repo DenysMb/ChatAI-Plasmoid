@@ -9,17 +9,17 @@ A range of chatbots as Plasmoid for your KDE Plasma desktop
 	<tbody>
 		<tr>
             <td align="center">
-                <a href="https://github.com/DenysMb">
-                    <img src="https://avatars.githubusercontent.com/u/33737137?v=4" width="100;" alt="DenysMb"/>
-                    <br />
-                    <sub><b>Denys Madureira</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/postadelmaga">
                     <img src="https://avatars.githubusercontent.com/u/2010800?v=4" width="100;" alt="postadelmaga"/>
                     <br />
                     <sub><b>postadelmaga</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/DenysMb">
+                    <img src="https://avatars.githubusercontent.com/u/33737137?v=4" width="100;" alt="DenysMb"/>
+                    <br />
+                    <sub><b>Denys Madureira</b></sub>
                 </a>
             </td>
             <td align="center">
