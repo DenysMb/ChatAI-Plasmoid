@@ -157,6 +157,10 @@ PlasmoidItem {
         // Update the property to use Types.Location and add the change monitor
         property bool reverseLayout: plasmoid.location === PlasmaCore.Types.TopEdge
 
+        // Default dimensions (used when no saved size exists)
+        readonly property int defaultWidth: Kirigami.Units.gridUnit * 28
+        readonly property int defaultHeight: Kirigami.Units.gridUnit * 39
+
         // Function to reorder components
         function reorderComponents() {
             let components = reverseLayout ? [webviewLoader, headerMouseArea, headerRoot] : [headerRoot, headerMouseArea, webviewLoader];
@@ -178,11 +182,41 @@ PlasmoidItem {
         }
 
         // Set minimum dimensions for the expanded view
-        Layout.minimumWidth: Kirigami.Units.gridUnit * 28
-        Layout.minimumHeight: Kirigami.Units.gridUnit * 39
+        Layout.minimumWidth: Kirigami.Units.gridUnit * 20
+        Layout.minimumHeight: Kirigami.Units.gridUnit * 28
+        // Use saved dimensions if available, otherwise use defaults
+        Layout.preferredWidth: plasmoid.configuration.dialogWidth > 0 ? plasmoid.configuration.dialogWidth : defaultWidth
+        Layout.preferredHeight: plasmoid.configuration.dialogHeight > 0 ? plasmoid.configuration.dialogHeight : defaultHeight
+
         Component.onCompleted: {
             reorderComponents();
         }
+
+        // Save window size when user resizes
+        // Use a timer to debounce saves (avoid saving on every pixel change)
+        Timer {
+            id: saveSizeTimer
+            interval: 500
+            repeat: false
+            onTriggered: {
+                // Only save if the size is valid and different from saved value
+                const currentWidth = Math.round(mainLayout.width);
+                const currentHeight = Math.round(mainLayout.height);
+                const savedWidth = plasmoid.configuration.dialogWidth;
+                const savedHeight = plasmoid.configuration.dialogHeight;
+                
+                // Save if dimensions are valid and different from what's saved
+                if (currentWidth > 0 && currentHeight > 0 &&
+                    (currentWidth !== savedWidth || currentHeight !== savedHeight)) {
+                    plasmoid.configuration.dialogWidth = currentWidth;
+                    plasmoid.configuration.dialogHeight = currentHeight;
+                }
+            }
+        }
+
+        onWidthChanged: saveSizeTimer.restart()
+        onHeightChanged: saveSizeTimer.restart()
+
         spacing: 0
 
         // Add monitor for plasmoid location change
