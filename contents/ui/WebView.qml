@@ -571,6 +571,31 @@ Item {
         }
     }
 
+    PlasmaComponents3.ProgressBar {
+        id: loadingProgressBar
+
+        z: 10
+        visible: webview.loading && webview.loadProgress < 100
+        height: visible ? 3 : 0
+
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+
+        from: 0
+        to: 100
+        value: webview.loadProgress
+
+        Behavior on height {
+            NumberAnimation {
+                duration: Kirigami.Units.shortDuration
+                easing.type: Easing.InOutQuad
+            }
+        }
+    }
+
     Rectangle {
         id: statusBubble
 
