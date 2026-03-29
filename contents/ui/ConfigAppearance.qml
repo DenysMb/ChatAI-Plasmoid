@@ -1,35 +1,17 @@
-/*
- *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
- *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
- *
- *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
- */
-
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
-
-import org.kde.kirigami 2.20 as Kirigami
-import org.kde.iconthemes as KIconThemes
 import org.kde.kcmutils as KCM
+import org.kde.kirigami as Kirigami
 
 KCM.SimpleKCM {
-    // Icon mode constants (must match CompactRepresentation.qml)
-    readonly property int iconModeFavicon: 0
-    readonly property int iconModeAdaptive: 1
-    readonly property int iconModeDark: 2
-    readonly property int iconModeLight: 3
-    readonly property int iconModeOutlined: 4
-    readonly property int iconModeFilled: 5
-    readonly property int iconModeColorful: 6
-    readonly property int iconModeCustom: 7
-
     property alias cfg_iconMode: iconMode.currentIndex
-    property string cfg_customIcon: plasmoid.configuration.customIcon
 
+    // Remove padding for better layout
     leftPadding: 0
     rightPadding: 0
 
+    // Main form layout container
     Kirigami.FormLayout {
         anchors.left: parent.left
         width: Math.min(parent.width, Kirigami.Units.gridUnit * 25)
@@ -44,42 +26,91 @@ KCM.SimpleKCM {
                 i18n("Default light icon"),
                 i18n("Outlined icon"),
                 i18n("Filled icon"),
-                i18n("Colorful icon"),
-                i18n("Custom icon")
+                i18n("Colorful icon")
             ]
             Layout.fillWidth: true
         }
 
-        QQC2.Button {
-            id: iconButton
-            visible: iconMode.currentIndex === iconModeCustom
-            Kirigami.FormData.label: i18n("Custom Icon:")
-            implicitWidth: previewFrame.width + Kirigami.Units.smallSpacing * 2
-            implicitHeight: previewFrame.height + Kirigami.Units.smallSpacing * 2
-            hoverEnabled: true
-
-            KIconThemes.IconDialog {
-                id: iconDialog
-                onIconNameChanged: {
-                    if (iconName) {
-                        cfg_customIcon = iconName
-                        plasmoid.configuration.customIcon = iconName
-                    }
-                }
-            }
-
-            onClicked: iconDialog.open()
-
-            Kirigami.Icon {
-                id: previewFrame
-                anchors.centerIn: parent
-                width: Kirigami.Units.iconSizes.large
-                height: width
-                source: cfg_customIcon || "help-about"
-            }
+        // Separator between icon and effects sections
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Layout.fillWidth: true
         }
 
-        // Separator between icon and header sections
+        // Visual Effects section
+        QQC2.Label {
+            Kirigami.FormData.label: i18n("Visual Effects")
+            font.bold: true
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: enableAnimations
+            text: i18n("Smooth animations")
+            checked: plasmoid.configuration.enableAnimations
+            onCheckedChanged: plasmoid.configuration.enableAnimations = checked
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: headerGradient
+            text: i18n("Header gradient (accent color tint)")
+            checked: plasmoid.configuration.headerGradient
+            onCheckedChanged: plasmoid.configuration.headerGradient = checked
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: accentGlow
+            text: i18n("Accent glow around widget")
+            checked: plasmoid.configuration.accentBorder
+            onCheckedChanged: plasmoid.configuration.accentBorder = checked
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: focusMode
+            text: i18n("Focus mode (hide sidebars and site navigation)")
+            checked: plasmoid.configuration.focusMode
+            onCheckedChanged: plasmoid.configuration.focusMode = checked
+            Layout.fillWidth: true
+        }
+
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            text: i18n("Hides sidebars, headers, and non-essential UI from supported chat services (ChatGPT, Claude, Gemini, DuckDuckGo, DeepSeek, Copilot). May break if sites update their layout.")
+            visible: focusMode.checked
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Layout.fillWidth: true
+        }
+
+        // Transparency & Blur section
+        QQC2.Label {
+            Kirigami.FormData.label: i18n("Transparency & Blur")
+            font.bold: true
+            Layout.fillWidth: true
+        }
+
+        QQC2.CheckBox {
+            id: enableBlur
+            text: i18n("Enable blur effect")
+            checked: plasmoid.configuration.enableBlur
+            onCheckedChanged: plasmoid.configuration.enableBlur = checked
+            Layout.fillWidth: true
+        }
+
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            text: i18n("Blurs the desktop behind the popup and makes web page backgrounds semi-transparent. Requires a compositor with blur support.")
+            visible: enableBlur.checked
+        }
+
+
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Layout.fillWidth: true
@@ -131,11 +162,11 @@ KCM.SimpleKCM {
         }
 
         QQC2.CheckBox {
-            id: hidePrintButton
+            id: hideAutoHideButton
 
             text: i18n("Hide Auto-Hide button")
-            checked: plasmoid.configuration.hidePrintButton
-            onCheckedChanged: plasmoid.configuration.hidePrintButton = checked
+            checked: plasmoid.configuration.hideAutoHideButton
+            onCheckedChanged: plasmoid.configuration.hideAutoHideButton = checked
             Layout.fillWidth: true
         }
 

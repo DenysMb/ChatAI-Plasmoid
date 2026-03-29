@@ -1,21 +1,12 @@
-/*
- *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
- *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
- *
- *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
- */
-
+import QtCore
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import QtWebEngine
-
-import org.kde.plasma.components as PlasmaComponents3
-import org.kde.kirigami 2.20 as Kirigami
 import org.kde.kcmutils as KCM
-
-import Qt.labs.platform 1.1
+import org.kde.kirigami as Kirigami
+import org.kde.plasma.components as PlasmaComponents3
+import QtWebEngine
 
 // Main configuration component for general settings
 KCM.SimpleKCM {
@@ -92,10 +83,7 @@ KCM.SimpleKCM {
         id: scrollView
 
         anchors.fill: parent
-        // Enable vertical scrollbar
-        Component.onCompleted: {
-            QQC2.ScrollBar.vertical.policy = QQC2.ScrollBar.AlwaysOn;
-        }
+        QQC2.ScrollBar.vertical.policy: QQC2.ScrollBar.AsNeeded
 
         Item {
             width: scrollView.width
@@ -136,7 +124,7 @@ KCM.SimpleKCM {
                         },
                         {
                             "id": "showHugginChat",
-                            "text": "HuggingChat"
+                            "text": "HugginChat"
                         },
                         {
                             "id": "showGoogleGemini",
@@ -282,7 +270,7 @@ KCM.SimpleKCM {
 
                                         PlasmaComponents3.Label {
                                             text: model.siteData.split("|")[1]
-                                            font.pointSize: theme.smallestFont.pointSize
+                                            font.pointSize: Kirigami.Theme.smallFont.pointSize
                                             opacity: 0.7
                                             Layout.fillWidth: true
                                             wrapMode: Text.WordWrap
@@ -327,6 +315,15 @@ KCM.SimpleKCM {
                     text: i18n("Load website on Plasma startup")
                     checked: plasmoid.configuration.loadOnStartup
                     onCheckedChanged: plasmoid.configuration.loadOnStartup = checked
+                    Layout.fillWidth: true
+                }
+
+                QQC2.CheckBox {
+                    id: keepWebEngineAlive
+
+                    text: i18n("Keep in memory after closing (faster reopen)")
+                    checked: plasmoid.configuration.keepWebEngineAlive
+                    onCheckedChanged: plasmoid.configuration.keepWebEngineAlive = checked
                     Layout.fillWidth: true
                 }
 
@@ -400,6 +397,21 @@ Action=Popup`
                     text: i18n("Web Features")
                     font.bold: true
                     Layout.fillWidth: true
+                }
+
+                QQC2.CheckBox {
+                    id: spoofChromeBrowser
+                    text: i18n("Disguise as Chrome (better login compatibility)")
+                    checked: plasmoid.configuration.spoofChromeBrowser
+                    onCheckedChanged: plasmoid.configuration.spoofChromeBrowser = checked
+                    Layout.fillWidth: true
+                }
+
+                Kirigami.InlineMessage {
+                    Layout.fillWidth: true
+                    type: Kirigami.MessageType.Information
+                    text: i18n("Spoofs browser identity so login pages (Google, Claude, etc.) accept this widget as a regular Chrome browser. Recommended to keep enabled.")
+                    visible: spoofChromeBrowser.checked
                 }
 
                 QQC2.CheckBox {

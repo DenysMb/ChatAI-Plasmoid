@@ -1,41 +1,126 @@
-/*
- *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
- *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
- *
- *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
- */
-
+import QtCore
 import QtQuick
 import QtQuick.Dialogs
 import QtQuick.Layouts
-
-import org.kde.plasma.components 3.0 as PlasmaComponents3
+import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
+import org.kde.plasma.plasmoid
+import QtWebEngine
 
-import Qt.labs.platform 1.1
-
-RowLayout {
+Item {
     Layout.fillWidth: true
+    implicitHeight: headerRow.implicitHeight
 
     // Signals for communication with parent components
     signal goBackToHomePage
+    signal closeWebViewRequested
     signal reloadPageRequested
     signal navigateBackRequested
     signal navigateForwardRequested
     signal printPageRequested
     signal toggleSearchRequested
+    signal injectTransparencyRequested
 
     // Properties for managing component state
-    property var closeWebViewCallback: undefined    // Callback function for closing webview
-    property var models                            // Available chat models
-    property bool showCustomURLInput: false        // Toggle between URL selector and custom URL input
+    property var closeWebViewCallback: undefined
+    property var models
     property var webview: (parent && parent.webviewRoot) ? parent.webviewRoot.webview : null
 
-    // Utility function to ensure URL has a valid protocol
-    function sanitizeUrl(url) {
-        if (!url || typeof url !== 'string') return '';
-        return url.match(/^https?:\/\//i) ? url : "https://" + url;
+    // Helper Functions
+    function renderChatModel() {
+        // Parse custom sites once and reuse
+        const customSitesRaw = plasmoid.configuration.customSites || "";
+        const parsedCustomSites = customSitesRaw.split(',').filter(site => site && site.includes('|')).map(site => {
+            const sep = site.indexOf('|');
+            return { name: site.substring(0, sep), url: site.substring(sep + 1) };
+        });
+
+        const chatModel = models.filter(model => !model.prop.startsWith("showCustom_") && plasmoid.configuration[model.prop]).map(model => model.text)
+            .concat(parsedCustomSites.map(s => s.name)).concat([i18n("Custom URL...")]);
+
+        urlComboBox.model = chatModel;
+
+        const currentUrl = plasmoid.configuration.url;
+        const currentModel = models.find(model => !model.prop.startsWith("showCustom_") && model.url === currentUrl);
+
+        if (currentModel) {
+            urlComboBox.currentIndex = chatModel.indexOf(currentModel.text);
+            urlComboBox.editable = false;
+        } else {
+            const customSite = parsedCustomSites.find(s => s.url === currentUrl);
+            if (customSite) {
+                urlComboBox.currentIndex = chatModel.indexOf(customSite.name);
+                urlComboBox.editable = false;
+            } else {
+                urlComboBox.currentIndex = chatModel.length - 1;
+                urlComboBox.customUrlText = currentUrl;
+                urlComboBox.editText = currentUrl;
+                urlComboBox.editable = true;
+            }
+        }
     }
+
+    function handleModelSelection() {
+        if (urlComboBox.currentIndex === urlComboBox.count - 1) {
+            let url = urlComboBox.editText;
+            if (url) {
+                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
+                goBackToHomePage();
+            }
+            return;
+        }
+
+        const selectedText = urlComboBox.currentText;
+        if (!selectedText)
+            return;
+
+        const selectedModel = models.find(model => !model.prop.startsWith("showCustom_") && model.text === selectedText);
+        if (selectedModel) {
+            plasmoid.configuration.url = selectedModel.url;
+            goBackToHomePage();
+            return;
+        }
+
+        const customSiteEntry = (plasmoid.configuration.customSites || "").split(',').find(site => site && site.includes('|') && site.substring(0, site.indexOf('|')) === selectedText);
+        if (customSiteEntry) {
+            plasmoid.configuration.url = customSiteEntry.substring(customSiteEntry.indexOf('|') + 1);
+            goBackToHomePage();
+        }
+    }
+
+    // Reactive snapshot — re-renders when any service toggle changes
+    // Uses debounce timer to coalesce rapid config changes (e.g. multiple toggles)
+    readonly property var modelVisibilityState: {
+        const snapshot = [plasmoid.configuration.customSites];
+        if (models) {
+            for (let i = 0; i < models.length; i++) {
+                snapshot.push(plasmoid.configuration[models[i].prop]);
+            }
+        }
+        return snapshot;
+    }
+    onModelVisibilityStateChanged: renderDebounce.restart()
+
+    Timer {
+        id: renderDebounce
+        interval: 50
+        onTriggered: renderChatModel()
+    }
+
+    // Header gradient background
+    Rectangle {
+        anchors.fill: parent
+        visible: plasmoid.configuration.headerGradient
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.15) }
+            GradientStop { position: 1.0; color: "transparent" }
+        }
+        radius: Kirigami.Units.smallSpacing
+    }
+
+    RowLayout {
+        id: headerRow
+        anchors.fill: parent
 
     // Navigation buttons
     PlasmaComponents3.Button {
@@ -126,7 +211,8 @@ RowLayout {
 
         Keys.onReturnPressed: event => {
             if (currentIndex === count - 1 && editText) {
-                plasmoid.configuration.url = sanitizeUrl(editText);
+                let url = editText;
+                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
                 goBackToHomePage();
                 event.accepted = true;
             }
@@ -134,7 +220,8 @@ RowLayout {
 
         onAccepted: {
             if (currentIndex === count - 1 && editText) {
-                plasmoid.configuration.url = sanitizeUrl(editText);
+                let url = editText;
+                plasmoid.configuration.url = url.match(/^https?:\/\//) ? url : "https://" + url;
                 goBackToHomePage();
             }
         }
@@ -145,7 +232,7 @@ RowLayout {
     // Auto-Hide Button
     PlasmaComponents3.Button {
         id: autoHideButton
-        visible: !plasmoid.configuration.hidePrintButton
+        visible: !plasmoid.configuration.hideAutoHideButton
         icon.name: plasmoid.configuration.autoHideHeader ? "view-visible" : "view-hidden"
         display: PlasmaComponents3.AbstractButton.IconOnly
         checkable: true
@@ -191,6 +278,19 @@ RowLayout {
         onAccepted: plasmoid.configuration.downloadPath = selectedFolder
     }
 
+    // Toggle blur button
+    PlasmaComponents3.Button {
+        icon.name: plasmoid.configuration.enableBlur ? "blur" : "edit-opacity"
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        checkable: true
+        checked: plasmoid.configuration.enableBlur
+        onToggled: injectTransparencyRequested()
+        z: 3
+        PlasmaComponents3.ToolTip.text: checked ? i18n("Blur enabled — click to disable") : i18n("Blur disabled — click to enable")
+        PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+        PlasmaComponents3.ToolTip.visible: hovered
+    }
+
     // Search button - Toggles the find bar
     PlasmaComponents3.Button {
         icon.name: "search"
@@ -208,7 +308,7 @@ RowLayout {
         display: PlasmaComponents3.AbstractButton.IconOnly
         checkable: true
         checked: Boolean(plasmoid.configuration.keepOpen)
-        onToggled: plasmoid.configuration.pin = checked
+        onToggled: plasmoid.configuration.keepOpen = checked
         visible: !Boolean(plasmoid.configuration.hideKeepOpen)
         z: 3
         PlasmaComponents3.ToolTip.text: checked ? i18n("Widget will stay open when clicking outside") : i18n("Widget will close when clicking outside")
@@ -221,6 +321,7 @@ RowLayout {
         icon.name: "window-close"
         display: PlasmaComponents3.AbstractButton.IconOnly
         onClicked: {
+            closeWebViewRequested();
             closeWebViewCallback?.();
         }
         visible: !plasmoid.configuration.hideCloseButton
@@ -230,111 +331,5 @@ RowLayout {
         PlasmaComponents3.ToolTip.visible: hovered
     }
 
-    // Helper Functions
-    // Returns the number of available chat models
-    function getModelsLength() {
-        return urlComboBox.model.length;
-    }
-
-    // Updates the chat model list and current selection
-    // Handles both predefined and custom chat models
-    function renderChatModel() {
-        // Create model list from enabled predefined models
-        const chatModel = models.filter(model => !model.prop.startsWith("showCustom_") && plasmoid.configuration[model.prop]).map(model => model.text)
-        // Add custom sites to the model list
-        .concat((plasmoid.configuration.customSites || "").split(',').filter(site => site?.includes('|')).map(site => site.split('|')[0])).concat([i18n("Custom URL...")]);
-
-        // Update ComboBox model and select current item
-        urlComboBox.model = chatModel;
-
-        const currentUrl = plasmoid.configuration.url;
-        const currentModel = models.find(model => !model.prop.startsWith("showCustom_") && model.url === currentUrl);
-
-        if (currentModel) {
-            const index = chatModel.indexOf(currentModel.text);
-            urlComboBox.currentIndex = index;
-            urlComboBox.editable = false;
-        } else {
-            const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.includes('|') && site.split('|')[1] === currentUrl);
-
-            if (customSite) {
-                const siteName = customSite.split('|')[0];
-                const index = chatModel.indexOf(siteName);
-                urlComboBox.currentIndex = index;
-                urlComboBox.editable = false;
-            } else {
-                urlComboBox.currentIndex = chatModel.length - 1;
-                urlComboBox.customUrlText = currentUrl;
-                urlComboBox.editText = currentUrl;
-                urlComboBox.editable = true;
-            }
-        }
-    }
-
-    // Handles model selection from ComboBox
-    // Updates current URL and navigates to selected chat
-    function handleModelSelection() {
-        if (urlComboBox.currentIndex === urlComboBox.count - 1) {
-            // Custom URL handling
-            const url = urlComboBox.editText;
-            if (url) {
-                plasmoid.configuration.url = sanitizeUrl(url);
-                goBackToHomePage();
-            }
-            return;
-        }
-
-        const selectedText = urlComboBox.currentValue;
-        if (!selectedText)
-            return;
-        urlComboBox.displayText = selectedText;
-
-        const selectedModel = models.find(model => !model.prop.startsWith("showCustom_") && model.text === selectedText);
-        if (selectedModel) {
-            plasmoid.configuration.url = selectedModel.url;
-            goBackToHomePage();
-            return;
-        }
-
-        const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.split('|')[0] === selectedText);
-        if (customSite) {
-            plasmoid.configuration.url = customSite.split('|')[1];
-            goBackToHomePage();
-        }
-    }
-
-    Binding {
-        target: root
-        property: "hideOnWindowDeactivate"
-        value: !plasmoid.configuration.pin
-        restoreMode: Binding.RestoreBinding
-    }
-
-    // Debounce timer for model re-rendering
-    Timer {
-        id: modelUpdateTimer
-        interval: 50
-        onTriggered: renderChatModel()
-    }
-
-    // Configuration change handler - debounced to prevent multiple rapid re-renders
-    Connections {
-        target: plasmoid.configuration
-        function onCustomSitesChanged() { modelUpdateTimer.restart() }
-        function onShowT3ChatChanged() { modelUpdateTimer.restart() }
-        function onShowDuckDuckGoChatChanged() { modelUpdateTimer.restart() }
-        function onShowChatGPTChanged() { modelUpdateTimer.restart() }
-        function onShowHugginChatChanged() { modelUpdateTimer.restart() }
-        function onShowGoogleGeminiChanged() { modelUpdateTimer.restart() }
-        function onShowYouChanged() { modelUpdateTimer.restart() }
-        function onShowPerplexityChanged() { modelUpdateTimer.restart() }
-        function onShowLobeChatChanged() { modelUpdateTimer.restart() }
-        function onShowBigAGIChanged() { modelUpdateTimer.restart() }
-        function onShowBlackBoxChanged() { modelUpdateTimer.restart() }
-        function onShowBingCopilotChanged() { modelUpdateTimer.restart() }
-        function onShowClaudeChanged() { modelUpdateTimer.restart() }
-        function onShowDeepSeekChanged() { modelUpdateTimer.restart() }
-        function onShowMetaAIChanged() { modelUpdateTimer.restart() }
-        function onShowGrokChanged() { modelUpdateTimer.restart() }
-    }
-}
+    } // close RowLayout
+} // close Item

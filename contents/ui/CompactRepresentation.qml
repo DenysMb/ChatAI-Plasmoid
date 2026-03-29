@@ -1,28 +1,11 @@
-/*
- *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
- *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
- *
- *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
- */
-
 import QtQuick
 import QtQuick.Layouts
-
-import org.kde.plasma.core as PlasmaCore
 import org.kde.kirigami as Kirigami
+import org.kde.plasma.plasmoid
+import org.kde.plasma.core as PlasmaCore
 
 Item {
     id: compactRoot
-
-    // Icon mode constants (must match ConfigAppearance.qml ComboBox order)
-    readonly property int iconModeFavicon: 0
-    readonly property int iconModeAdaptive: 1
-    readonly property int iconModeDark: 2
-    readonly property int iconModeLight: 3
-    readonly property int iconModeOutlined: 4
-    readonly property int iconModeFilled: 5
-    readonly property int iconModeColorful: 6
-    readonly property int iconModeCustom: 7
 
     property var models: []
     property var webview: null
@@ -30,11 +13,11 @@ Item {
 
     readonly property bool isVertical: plasmoid.formFactor === PlasmaCore.Types.Vertical
 
-    Layout.minimumWidth: isVertical ? 0 : Kirigami.Units.iconSizes.medium
-    Layout.minimumHeight: isVertical ? Kirigami.Units.iconSizes.medium : 0
+    Layout.minimumWidth: isVertical ? 0 : Kirigami.Units.iconSizes.large
+    Layout.minimumHeight: isVertical ? Kirigami.Units.iconSizes.large : 0
 
-    implicitWidth: Kirigami.Units.iconSizes.medium
-    implicitHeight: Kirigami.Units.iconSizes.medium
+    implicitWidth: Kirigami.Units.iconSizes.large
+    implicitHeight: Kirigami.Units.iconSizes.large
 
     MouseArea {
         id: mouseArea
@@ -46,6 +29,15 @@ Item {
         anchors.fill: parent
         // Use a function that returns a URL or icon name appropriately
         source: getIconSource()
+    }
+
+    // Direct webview connection for loading state changes
+    Connections {
+        target: compactRoot.webview
+        enabled: compactRoot.webview !== null
+        function onLoadingChanged(loadingInfo) {
+            // Placeholder for potential future use
+        }
     }
 
     function getIconSource() {
@@ -63,48 +55,45 @@ Item {
         const currentModel = models.find(model => plasmoid.configuration.url.includes(model.url));
         const colorContrast = getBackgroundColorContrast();
         
-        // Colorful mode. If not in colorful mode, some models only have colorful icons available
-        const hasOnlyColorfulIcon = mode !== iconModeColorful && ["lobechat", "bigagi"].includes(currentModel?.id);
+        // Mode 6 is Colorful. If not in colorful mode, some models only have colorful icons available
+        const hasOnlyColorfulIcon = mode !== 6 && ["lobechat", "bigagi"].includes(currentModel?.id);
 
         if (!currentModel || currentModel?.id === "blackbox" || hasOnlyColorfulIcon) {
             return `assets/logo-${colorContrast}.svg`;
         }
 
         if (currentModel.useIcon) {
-            const style = mode === iconModeFilled ? "filled" : "outlined";
+            const style = mode === 5 ? "filled" : "outlined";
             return `assets/${style}/${currentModel.useIcon}-${colorContrast}.svg`;
         }
 
-        if (mode === iconModeColorful) {
+        if (mode === 6) {
             return `assets/colorful/${currentModel.id}.svg`;
         }
 
-        const style = mode === iconModeFilled ? "filled" : "outlined";
+        const style = mode === 5 ? "filled" : "outlined";
         return `assets/${style}/${currentModel.id}-${colorContrast}.svg`;
     }
 
     function getIconNameOrPath() {
         const mode = plasmoid.configuration.iconMode;
         
-        if (mode === iconModeCustom) {
-            return plasmoid.configuration.customIcon || fallbackIcon;
-        }
-        
-        if (mode === iconModeFavicon) {
+        if (mode === 0) { // Favicon
             const faviconUrl = plasmoid.configuration.favIcon || plasmoid.configuration.lastFavIcon;
             if (faviconUrl) {
                 return faviconUrl.replace("image://favicon/", "");
             }
         }
 
-        if (mode >= iconModeOutlined) {
+        if (mode >= 4) { // Outlined, Filled, Colorful
             return getChatModelIcon() || fallbackIcon;
         }
 
         const contrast = getBackgroundColorContrast();
-        if (mode === iconModeDark) return "assets/logo-dark.svg";
-        if (mode === iconModeLight) return "assets/logo-light.svg";
+        if (mode === 2) return "assets/logo-dark.svg";
+        if (mode === 3) return "assets/logo-light.svg";
         
+        // Mode 1 or fallback
         return `assets/logo-${contrast}.svg`;
     }
 

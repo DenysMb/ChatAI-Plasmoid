@@ -1,20 +1,17 @@
-/*
- *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
- *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
- *
- *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
- */
-
 import QtQuick
 import QtQuick.Layouts
-
+import org.kde.kirigami as Kirigami
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
-import org.kde.kirigami as Kirigami
 
 // Main plasmoid item that contains all the widget functionality
 PlasmoidItem {
     id: root
+
+    // Translucent background lets compositor blur the desktop behind the popup
+    Plasmoid.backgroundHints: plasmoid.configuration.enableBlur
+        ? PlasmaCore.Types.TranslucentBackground
+        : PlasmaCore.Types.DefaultBackground
 
     // Define the available chat models and their properties
     // This property combines both predefined and custom sites
@@ -42,7 +39,7 @@ PlasmoidItem {
             {
                 "id": "huggingface",
                 "url": "https://huggingface.co/chat",
-                "text": "HuggingChat",
+                "text": "HugginChat",
                 "prop": "showHugginChat"
             },
             {
@@ -140,6 +137,14 @@ PlasmoidItem {
         }
     }
 
+    // Hide popup when clicking outside (unless pinned)
+    Binding {
+        target: root
+        property: "hideOnWindowDeactivate"
+        value: !plasmoid.configuration.keepOpen
+        restoreMode: Binding.RestoreBinding
+    }
+
     // Widget appearance when collapsed (icon only)
     compactRepresentation: CompactRepresentation {
         id: compactRep
@@ -149,17 +154,65 @@ PlasmoidItem {
     }
 
     // Widget appearance when expanded (full view)
-    fullRepresentation: ColumnLayout {
-        id: mainLayout
+    fullRepresentation: Item {
+        id: fullRep
 
         // Expose WebView root for other components
         property alias webviewRoot: webviewLoader.item
+
+        Layout.minimumWidth: Kirigami.Units.gridUnit * 28
+        Layout.minimumHeight: Kirigami.Units.gridUnit * 39
+
+        // Accent glow around the widget (only created when enabled)
+        Loader {
+            active: plasmoid.configuration.accentBorder
+            anchors.fill: parent
+            anchors.margins: -6
+            z: -1
+            sourceComponent: Rectangle {
+                color: "transparent"
+                radius: Kirigami.Units.largeSpacing
+
+                Rectangle {
+                    anchors.fill: parent
+                    radius: parent.radius
+                    color: "transparent"
+                    border.width: 6
+                    border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.25)
+                }
+                Rectangle {
+                    anchors.fill: parent
+                    anchors.margins: 2
+                    radius: parent.radius - 2
+                    color: "transparent"
+                    border.width: 4
+                    border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.4)
+                }
+                Rectangle {
+                    anchors.fill: parent
+                    anchors.margins: 4
+                    radius: parent.radius - 4
+                    color: "transparent"
+                    border.width: 2
+                    border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.6)
+                }
+            }
+        }
+
+        // Rounded clip container
+        Rectangle {
+            id: clipContainer
+            anchors.fill: parent
+            anchors.margins: Kirigami.Units.smallSpacing
+            radius: Kirigami.Units.largeSpacing
+            color: "transparent"
+            clip: true
+
+        ColumnLayout {
+            id: mainLayout
+            anchors.fill: parent
         // Update the property to use Types.Location and add the change monitor
         property bool reverseLayout: plasmoid.location === PlasmaCore.Types.TopEdge
-
-        // Default dimensions (used when no saved size exists)
-        readonly property int defaultWidth: Kirigami.Units.gridUnit * 28
-        readonly property int defaultHeight: Kirigami.Units.gridUnit * 39
 
         // Function to reorder components
         function reorderComponents() {
@@ -181,42 +234,9 @@ PlasmoidItem {
             }
         }
 
-        // Set minimum dimensions for the expanded view
-        Layout.minimumWidth: Kirigami.Units.gridUnit * 20
-        Layout.minimumHeight: Kirigami.Units.gridUnit * 28
-        // Use saved dimensions if available, otherwise use defaults
-        Layout.preferredWidth: plasmoid.configuration.dialogWidth > 0 ? plasmoid.configuration.dialogWidth : defaultWidth
-        Layout.preferredHeight: plasmoid.configuration.dialogHeight > 0 ? plasmoid.configuration.dialogHeight : defaultHeight
-
         Component.onCompleted: {
             reorderComponents();
         }
-
-        // Save window size when user resizes
-        // Use a timer to debounce saves (avoid saving on every pixel change)
-        Timer {
-            id: saveSizeTimer
-            interval: 500
-            repeat: false
-            onTriggered: {
-                // Only save if the size is valid and different from saved value
-                const currentWidth = Math.round(mainLayout.width);
-                const currentHeight = Math.round(mainLayout.height);
-                const savedWidth = plasmoid.configuration.dialogWidth;
-                const savedHeight = plasmoid.configuration.dialogHeight;
-                
-                // Save if dimensions are valid and different from what's saved
-                if (currentWidth > 0 && currentHeight > 0 &&
-                    (currentWidth !== savedWidth || currentHeight !== savedHeight)) {
-                    plasmoid.configuration.dialogWidth = currentWidth;
-                    plasmoid.configuration.dialogHeight = currentHeight;
-                }
-            }
-        }
-
-        onWidthChanged: saveSizeTimer.restart()
-        onHeightChanged: saveSizeTimer.restart()
-
         spacing: 0
 
         // Add monitor for plasmoid location change
@@ -248,9 +268,10 @@ PlasmoidItem {
             models: root.models
             Layout.fillWidth: true
             z: 2 // Increase the z-index to ensure it is above the MouseArea
-            // Callback to close the WebView and collapse the widget
+            // Callback to close/collapse the widget
             closeWebViewCallback: function () {
-                webviewLoader.active = false;
+                if (!plasmoid.configuration.keepWebEngineAlive)
+                    unloadTimer.restart();
                 root.expanded = false;
             }
             // Handle navigation
@@ -259,6 +280,9 @@ PlasmoidItem {
             onNavigateBackRequested: webviewRoot.goBack()
             onNavigateForwardRequested: webviewRoot.goForward()
             onPrintPageRequested: webviewRoot.printPage()
+            onInjectTransparencyRequested: {
+                if (webviewRoot) webviewRoot.toggleBlur();
+            }
             onToggleSearchRequested: {
                 if (webviewRoot && webviewRoot.findBarVisible !== undefined) {
                     webviewRoot.findBarVisible = !webviewRoot.findBarVisible;
@@ -280,26 +304,25 @@ PlasmoidItem {
                 }
             }
 
-            // Timer for hiding
+            // Timer for hiding — only hides if mouse is away AND no interaction
             Timer {
                 id: hideTimer
 
-                interval: 2000
+                interval: 1500
                 onTriggered: {
-                    if (!headerRoot.isInteracting)
+                    if (!headerRoot.isInteracting && !headerMouseArea.containsMouse)
                         headerRoot.headerVisible = false;
                 }
             }
 
-            // Timer to check interactions
+            // Check if any child still has focus or is pressed (runs only while isInteracting)
             Timer {
                 id: interactionTimer
 
-                interval: 500
+                interval: 1000
                 repeat: true
                 running: headerRoot.isInteracting
                 onTriggered: {
-                    // Check if there is still interaction with any component
                     let stillInteracting = false;
                     for (let i = 0; i < headerRoot.children.length; i++) {
                         let child = headerRoot.children[i];
@@ -314,7 +337,7 @@ PlasmoidItem {
                 }
             }
 
-            // Connections to monitor interactions
+            // Monitor focus gain on header children
             Connections {
                 function onActiveFocusChanged() {
                     if (target.activeFocus) {
@@ -326,11 +349,9 @@ PlasmoidItem {
                 target: headerRoot
             }
 
-            // Intercept mouse events
+            // Intercept mouse events on the header
             MouseArea {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.alignment: Qt.AlignTop
+                anchors.fill: parent
                 hoverEnabled: true
                 propagateComposedEvents: true
                 onEntered: {
@@ -341,21 +362,21 @@ PlasmoidItem {
                     if (!headerRoot.isInteracting)
                         hideTimer.restart();
                 }
-                onPressed: {
+                onPressed: event => {
                     headerRoot.isInteracting = true;
-                    mouse.accepted = false;
+                    event.accepted = false;
                 }
-                onReleased: {
+                onReleased: event => {
                     headerRoot.isInteracting = false;
                     if (!containsMouse)
                         hideTimer.restart();
-
-                    mouse.accepted = false;
+                    event.accepted = false;
                 }
             }
 
-            // Animations
+            // Animations — only run when auto-hide is active and animations enabled
             Behavior on Layout.preferredHeight {
+                enabled: plasmoid.configuration.enableAnimations && plasmoid.configuration.autoHideHeader && !plasmoid.configuration.hideHeader
                 NumberAnimation {
                     duration: 400
                     easing.type: Easing.InOutCubic
@@ -363,6 +384,7 @@ PlasmoidItem {
             }
 
             Behavior on opacity {
+                enabled: plasmoid.configuration.enableAnimations && plasmoid.configuration.autoHideHeader && !plasmoid.configuration.hideHeader
                 NumberAnimation {
                     duration: 400
                     easing.type: Easing.InOutQuad
@@ -387,46 +409,54 @@ PlasmoidItem {
                     hideTimer.restart();
             }
             // Pass mouse events to child components
-            onClicked: mouse.accepted = false
-            onPressed: mouse.accepted = false
-            onReleased: mouse.accepted = false
-            onDoubleClicked: mouse.accepted = false
-            onPositionChanged: mouse.accepted = false
-            onPressAndHold: mouse.accepted = false
+            onClicked: event => event.accepted = false
+            onPressed: event => event.accepted = false
+            onReleased: event => event.accepted = false
+            onDoubleClicked: event => event.accepted = false
+            onPositionChanged: event => event.accepted = false
+            onPressAndHold: event => event.accepted = false
 
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignTop
         }
 
-        // WebView loader that manages the web content
+        // WebView loader
         Loader {
             id: webviewLoader
 
-            // Improved the loading of the WebView & Added Error Handling
-            active: root.expanded || item !== null || plasmoid.configuration.loadOnStartup
-            asynchronous: true
+            active: false
             source: "WebView.qml"
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.topMargin: 0
 
-            // Add status handling
             onStatusChanged: {
-                if (status === Loader.Error) {
+                if (status === Loader.Error)
                     console.error("Failed to load WebView.qml");
-                }
             }
         }
 
-        // Monitor plasmoid expansion state
+        // Unload WebEngine after 5 min of inactivity (when keepWebEngineAlive is off)
+        Timer {
+            id: unloadTimer
+            interval: 5 * 60 * 1000
+            onTriggered: {
+                if (!root.expanded)
+                    webviewLoader.active = false;
+            }
+        }
+
         Connections {
-            // Activate WebView when plasmoid is expanded
             function onExpandedChanged() {
-                if (root.expanded)
-                    webviewLoader.active = true;
+                if (root.expanded) {
+                    unloadTimer.stop();
+                    if (!webviewLoader.active)
+                        webviewLoader.active = true;
+                }
             }
 
             target: root
         }
-    }
+        } // ColumnLayout
+        } // clipContainer
+    } // Item fullRep
 }
