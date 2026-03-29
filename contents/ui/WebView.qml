@@ -1,61 +1,58 @@
-/*
- *  SPDX-FileCopyrightText: 2024 Denys Madureira <denysmb@zoho.com>
- *  SPDX-FileCopyrightText: 2025 Bruno Gonçalves <bigbruno@gmail.com>
- *
- *  SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
- */
-
 import QtCore
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtWebEngine
-
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
-import org.kde.kirigami as Kirigami
 import org.kde.notification 1.0
-
-import Qt.labs.platform 1.1
-
-import "."
+import org.kde.kirigami as Kirigami
 
 Item {
     id: webViewRoot
     readonly property string effectiveProfileName: plasmoid.configuration.webEngineProfileName && plasmoid.configuration.webEngineProfileName.length ? plasmoid.configuration.webEngineProfileName : "chat-ai"
+    readonly property string effectiveDownloadPath: {
+        if (plasmoid.configuration.downloadPath)
+            return plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '');
+        return StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+    }
+
+    function toggleBlur() {
+        plasmoid.configuration.enableBlur = !plasmoid.configuration.enableBlur;
+    }
 
     function goBackToHomePage() {
-        const url = plasmoid.configuration.url;
-        if (!url || typeof url !== 'string' || url.length === 0) {
-            console.error("Invalid or empty URL configuration");
-            return;
-        }
-        webview.url = url;
+        plasmoid.configuration.lastVisitedUrl = "";
+        webview.url = plasmoid.configuration.url;
     }
 
     function goBack() {
-        if (webview) webview.goBack();
+        webview.goBack();
     }
 
     function goForward() {
-        if (webview) webview.goForward();
+        webview.goForward();
     }
 
     function reloadPage() {
-        if (webview) webview.reloadAndBypassCache();
+        webview.reloadAndBypassCache();
     }
 
     function printPage() {
         webview.runJavaScript("document.title", function (title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+            let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
             let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
             let filename = `${downloadDirectory}/${safeName}-${timestamp}.pdf`;
 
             // Add the PDF as a special type of download
-            webview.downloads.addDownload(null, `${safeName}-${timestamp}.pdf`, filename, true);
+            let pdfIndex = webview.downloads.addDownload(null, `${safeName}-${timestamp}.pdf`, filename, true);
+
+            // Store the PDF index for future reference
+            let currentPdfIndex = pdfIndex;
 
             webview.printToPdf(filename, WebEngineView.A4, WebEngineView.Portrait);
         });
@@ -63,7 +60,7 @@ Item {
 
     function saveMHTML() {
         webview.runJavaScript("document.title", function (title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+            let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
             let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
@@ -73,15 +70,73 @@ Item {
         });
     }
 
+    readonly property string chromeDesktopUA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+    readonly property string chromeMobileUA: "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36"
+
     function getUserAgent() {
-        return plasmoid.configuration.url.includes("https://duckduckgo.com") || plasmoid.configuration.url.includes("x.com/i/grok") ? "Mozilla/5.0 (Linux; Android 9; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36" : "";
+        var needsMobile = plasmoid.configuration.url.includes("duckduckgo.com") || plasmoid.configuration.url.includes("x.com/i/grok");
+        if (needsMobile)
+            return chromeMobileUA;
+        if (plasmoid.configuration.spoofChromeBrowser)
+            return chromeDesktopUA;
+        return "";
+    }
+
+    // Spoof browser identity so auth pages (Google, Claude, etc.) work
+    function injectBrowserSpoof() {
+        if (!plasmoid.configuration.spoofChromeBrowser)
+            return;
+
+        webview.runJavaScript("
+            if (!window._chatAISpoofed) {
+                window._chatAISpoofed = true;
+
+                // Spoof navigator properties
+                Object.defineProperty(navigator, 'vendor', { get: function() { return 'Google Inc.'; } });
+                Object.defineProperty(navigator, 'platform', { get: function() { return 'Linux x86_64'; } });
+                Object.defineProperty(navigator, 'webdriver', { get: function() { return false; } });
+                Object.defineProperty(navigator, 'languages', { get: function() { return ['en-US', 'en']; } });
+
+                // Spoof window.chrome
+                if (!window.chrome) {
+                    window.chrome = {
+                        runtime: {},
+                        loadTimes: function() { return {}; },
+                        csi: function() { return {}; },
+                        app: { isInstalled: false }
+                    };
+                }
+
+                // Spoof plugins (Chrome has PDF viewer)
+                Object.defineProperty(navigator, 'plugins', {
+                    get: function() {
+                        return [
+                            { name: 'Chrome PDF Viewer', filename: 'internal-pdf-viewer', description: 'Portable Document Format' },
+                            { name: 'Chromium PDF Viewer', filename: 'internal-pdf-viewer', description: '' }
+                        ];
+                    }
+                });
+
+                // Hide webdriver/automation hints
+                delete navigator.__proto__.webdriver;
+
+                // Spoof permissions API behavior
+                if (navigator.permissions) {
+                    var origQuery = navigator.permissions.query;
+                    navigator.permissions.query = function(params) {
+                        if (params.name === 'notifications')
+                            return Promise.resolve({ state: Notification.permission });
+                        return origQuery.call(navigator.permissions, params);
+                    };
+                }
+            }
+        ");
     }
 
     Notification {
         id: webNotification
         componentName: "chatai_plasmoid"
         eventId: "notification"
-        defaultAction: i18n("Open")
         title: i18n("ChatAI")
         iconName: "dialog-information"
     }
@@ -96,11 +151,6 @@ Item {
     function getProgressPath(path) {
         // For the progress bar, it needs file:///
         return "file:///" + path.replace(/^\/+/, '');
-    }
-
-    function getOpenPath(path) {
-        // To open the file, it cannot have file://
-        return path.replace(/^file:\/+/, '').replace(/^\/+/, '/');
     }
 
     // Add this helper function before the WebEngineView
@@ -122,21 +172,156 @@ Item {
 
     property bool findBarVisible: false
 
+    // Re-inject CSS when settings change live
+    Connections {
+        target: plasmoid.configuration
+        function onEnableBlurChanged() { if (webview.url.toString()) webview.injectTransparencyCSS(); }
+        function onFocusModeChanged() { if (webview.url.toString()) webview.injectFocusMode(); }
+    }
+
+    onFindBarVisibleChanged: {
+        if (findBarVisible) {
+            findBarComponent.focusField();
+        } else {
+            webview.findText(""); // Clear any existing search
+        }
+    }
+
     Shortcut {
         sequence: StandardKey.Find
         onActivated: findBarVisible = true
     }
 
-    ContextMenu {
+    PlasmaComponents3.Menu {
         id: linkContextMenu
-        webviewItem: webview
-        onReloadRequested: reloadPage()
-        onSavePdfRequested: printPage()
-        onSaveMhtmlRequested: saveMHTML()
+
+        property string link: ""
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Back")
+            icon.name: "go-previous"
+            enabled: webview.canGoBack
+            onTriggered: webview.goBack()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Forward")
+            icon.name: "go-next"
+            enabled: webview.canGoForward
+            onTriggered: webview.goForward()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Reload")
+            icon.name: "view-refresh"
+            onTriggered: reloadPage()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Save as PDF")
+            icon.name: "document-save-as"
+            visible: !linkContextMenu.link
+            onTriggered: printPage()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Save as MHTML")
+            icon.name: "document-save"
+            visible: !linkContextMenu.link
+            onTriggered: saveMHTML()
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Open Link in Browser")
+            icon.name: "internet-web-browser"
+            visible: linkContextMenu.link !== ""
+            onTriggered: Qt.openUrlExternally(linkContextMenu.link)
+        }
+
+        PlasmaComponents3.MenuItem {
+            text: i18n("Copy Link Address")
+            icon.name: "edit-copy"
+            visible: linkContextMenu.link !== ""
+            onTriggered: webview.triggerWebAction(WebEngineView.CopyLinkToClipboard)
+        }
     }
 
     WebEngineView {
         id: webview
+
+        property bool _forceOpaque: false
+        backgroundColor: (!plasmoid.configuration.enableBlur || _forceOpaque) ? Kirigami.Theme.backgroundColor : "transparent"
+
+        // Brief opacity flip to force WebEngine compositing reset
+        Timer {
+            id: bgFlipTimer
+            interval: 50
+            onTriggered: webview._forceOpaque = false
+        }
+        function kickTransparency() {
+            _forceOpaque = true;
+            bgFlipTimer.start();
+        }
+
+        // Background-only transparency: inline styles on html/body and
+        // top-level wrapper elements, leaving all content areas intact
+        readonly property string _jsRemoveBlur: `
+            (function() { try {
+                if (window._chatai_resizeHandler) {
+                    window.removeEventListener('resize', window._chatai_resizeHandler);
+                    window._chatai_resizeHandler = null;
+                }
+                document.documentElement.style.removeProperty('background-color');
+                document.body.style.removeProperty('background-color');
+                document.body.querySelectorAll('body > *, body > * > *').forEach(function(el) {
+                    el.style.removeProperty('background-color');
+                    el.style.removeProperty('backdrop-filter');
+                    el.style.removeProperty('-webkit-backdrop-filter');
+                });
+            } catch(e) {} })();`
+
+        readonly property string _jsApplyBlur: `
+            (function() { try {
+                window._chatai_applyBlur = function() {
+                    var a = 0.5, b = 8;
+                    var minW = window.innerWidth * 0.3;
+                    document.documentElement.style.setProperty('background-color', 'transparent', 'important');
+                    document.body.style.setProperty('background-color', 'transparent', 'important');
+                    var els = document.body.querySelectorAll('body > *, body > * > *');
+                    var targets = [];
+                    for (var i = 0; i < els.length; i++) {
+                        var r = els[i].getBoundingClientRect();
+                        if (r.width < minW) continue;
+                        var bg = getComputedStyle(els[i]).backgroundColor;
+                        if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') continue;
+                        var m = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);
+                        if (m) targets.push({ el: els[i], r: m[1], g: m[2], b: m[3] });
+                    }
+                    for (var j = 0; j < targets.length; j++) {
+                        var t = targets[j];
+                        t.el.style.setProperty('background-color', 'rgba(' + t.r + ',' + t.g + ',' + t.b + ',' + a + ')', 'important');
+                        t.el.style.setProperty('backdrop-filter', 'blur(' + b + 'px)', 'important');
+                        t.el.style.setProperty('-webkit-backdrop-filter', 'blur(' + b + 'px)', 'important');
+                    }
+                };
+                window._chatai_applyBlur();
+                if (!window._chatai_resizeHandler) {
+                    var timer = null;
+                    window._chatai_resizeHandler = function() {
+                        clearTimeout(timer);
+                        timer = setTimeout(window._chatai_applyBlur, 300);
+                    };
+                    window.addEventListener('resize', window._chatai_resizeHandler);
+                }
+            } catch(e) {} })();`
+
+        function injectTransparencyCSS() {
+            if (!plasmoid.configuration.enableBlur) {
+                webview.runJavaScript(webview._jsRemoveBlur);
+                return;
+            }
+            webview.runJavaScript(webview._jsApplyBlur);
+        }
 
         property var downloadCache: ({})
 
@@ -153,11 +338,6 @@ Item {
                     "isPdfExport": isPdf,
                     "state": WebEngineDownloadRequest.DownloadInProgress
                 };
-
-                if (downloadItem) {
-                    // Store reference in cache
-                    webview.downloadCache[downloadId] = downloadItem;
-                }
 
                 this.append(download);
                 return this.count - 1;
@@ -248,8 +428,15 @@ Item {
         }
 
         anchors.fill: parent
-        url: plasmoid.configuration.url
+        url: plasmoid.configuration.lastVisitedUrl || plasmoid.configuration.url
         profile: webProfile
+
+        // Save current URL so it persists across WebView unload/reload
+        onUrlChanged: {
+            var u = url.toString();
+            if (u && u !== "about:blank" && u !== plasmoid.configuration.lastVisitedUrl)
+                plasmoid.configuration.lastVisitedUrl = u;
+        }
         onLinkHovered: hoveredUrl => {
             if (hoveredUrl == "") {
                 hideStatusText.start();
@@ -266,7 +453,7 @@ Item {
         onContextMenuRequested: request => {
             // Use default menu for special elements (text fields, selection, etc)
             if (request.isContentEditable || request.selectedText || request.mediaType !== ContextMenuRequest.MediaTypeNone) {
-                request.accepted = false;  // Allow default menu to appear
+                request.accepted = false;  // Let the default menu appear
                 return;
             }
 
@@ -275,7 +462,7 @@ Item {
             linkContextMenu.link = hasLink ? request.linkUrl.toString() : "";
 
             // Always show our custom menu when it's not a special element
-            linkContextMenu.open(request.position.x, request.position.y);
+            linkContextMenu.popup(request.position.x, request.position.y);
             request.accepted = true;
         }
 
@@ -297,93 +484,258 @@ Item {
                 }
                 return;
             }
-            if (request.permissionType === WebEnginePermission.MediaAudioCapture || request.permissionType === 1 || request.permissionType === WebEnginePermission.MediaVideoCapture || request.permissionType === 2 || request.permissionType === 5) {
-                let isMicrophoneRequest = request.permissionType === 1 || request.permissionType === WebEnginePermission.MediaAudioCapture;
-                let isWebcamRequest = request.permissionType === 2 || request.permissionType === WebEnginePermission.MediaVideoCapture;
-                let isScreenShareRequest = request.permissionType === 5 || request.permissionType === WebEnginePermission.DesktopAudioVideoCapture;
+            if (request.permissionType === WebEnginePermission.MediaAudioCapture) {
+                plasmoid.configuration.microphoneEnabled ? request.grant() : request.deny();
                 return;
             }
-            // Even if MediaAudioCapture and MediaVideoCapture are allowed, it is still necessary to allow DesktopAudioVideoCapture
-            if (request.permissionType === WebEnginePermission.DesktopAudioVideoCapture || request.permissionType === 3) {
-                if (WebEnginePermission.MediaAudioCapture && WebEnginePermission.MediaVideoCapture) {
-                    request.grant();
-                } else {
-                    request.deny();
-                }
+            if (request.permissionType === WebEnginePermission.MediaVideoCapture) {
+                plasmoid.configuration.webcamEnabled ? request.grant() : request.deny();
+                return;
+            }
+            if (request.permissionType === WebEnginePermission.DesktopAudioVideoCapture) {
+                plasmoid.configuration.screenShareEnabled ? request.grant() : request.deny();
+                return;
             }
 
             request.grant();
         }
-        onLoadingChanged: {
-            if (!webview.loading) {
-                checkAndUpdateFavicon();
+        // Focus mode: hide sidebars, headers, and non-essential UI per service
+        function injectFocusMode() {
+            if (!plasmoid.configuration.focusMode) {
+                webview.runJavaScript("var el = document.getElementById('_chatai_focus'); if (el) el.remove();");
+                return;
             }
 
-            var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'claude', 'you'].some(site => plasmoid.configuration.url.includes(site));
+            var url = webview.url.toString();
+            var css = "";
 
-            if (isCompatibleModel) {
-                webview.runJavaScript("
-                    document.addEventListener('keydown', function(event) {
-                        if (event.key === 'Enter' && !event.shiftKey) {
-                            var duckDuckGoButton = document.querySelector('button[aria-label=\"Send\"]');
-                            var chatGPTButton = document.querySelector('button[data-testid=\"send-button\"]');
-                            var googleGeminiButton = document.querySelector('button.send-button');
-                            var claudeButton = document.querySelector('button[aria-label=\"Send Message\"]');
+            if (url.includes("chatgpt.com")) {
+                css = `
+                    /* ChatGPT: hide sidebar, top nav */
+                    nav, div[class*="sidebar"], div[class*="Sidebar"],
+                    div[class*="drawer"], header:has(button[aria-label]) {
+                        display: none !important;
+                    }
+                    main { margin-left: 0 !important; }
+                    div[class*="thread"] { max-width: 100% !important; }
+                `;
+            } else if (url.includes("claude.ai")) {
+                css = `
+                    /* Claude: hide sidebar */
+                    div[class*="sidebar"], div[class*="Sidebar"],
+                    nav, aside, div[data-testid="sidebar"],
+                    div[class*="ConversationList"], div[class*="conversation-list"] {
+                        display: none !important;
+                    }
+                    main, div[class*="main"], div[class*="Main"] {
+                        margin-left: 0 !important;
+                        max-width: 100% !important;
+                    }
+                `;
+            } else if (url.includes("duckduckgo.com")) {
+                css = `
+                    /* DuckDuckGo: hide header, side panels */
+                    header, div[class*="header"], div[class*="Header"],
+                    div[class*="sidebar"], aside {
+                        display: none !important;
+                    }
+                    main { margin: 0 auto !important; max-width: 100% !important; }
+                `;
+            } else if (url.includes("gemini.google.com")) {
+                css = `
+                    /* Gemini: hide side nav, top bar */
+                    mat-sidenav, side-navigation, side-navigation-v2,
+                    header, .header-bar, mat-toolbar,
+                    c-wiz > header, div[class*="side-nav"] {
+                        display: none !important;
+                    }
+                    mat-sidenav-content, .main-container {
+                        margin-left: 0 !important;
+                        max-width: 100% !important;
+                    }
+                `;
+            } else if (url.includes("chat.deepseek.com")) {
+                css = `
+                    /* DeepSeek: hide sidebar */
+                    div[class*="sidebar"], div[class*="Sidebar"],
+                    nav, aside {
+                        display: none !important;
+                    }
+                    main, div[class*="main"] {
+                        margin-left: 0 !important;
+                        max-width: 100% !important;
+                    }
+                `;
+            } else if (url.includes("copilot.microsoft.com")) {
+                css = `
+                    /* Copilot: hide side elements */
+                    aside, nav, div[class*="sidebar"], div[class*="Sidebar"] {
+                        display: none !important;
+                    }
+                    main { margin: 0 !important; max-width: 100% !important; }
+                `;
+            }
 
-                            if (duckDuckGoButton) {
-                                event.preventDefault();
-                                duckDuckGoButton.click();
-                                waitForTextareaEnabledAndFocus();
+            // Inject known CSS or run heuristic fallback
+            webview.runJavaScript("
+                (function() {
+                    var s = document.getElementById('_chatai_focus');
+                    if (s) s.remove();
+                    s = document.createElement('style');
+                    s.id = '_chatai_focus';
+
+                    var knownCSS = `" + css + "`;
+
+                    if (knownCSS.trim()) {
+                        s.textContent = knownCSS;
+                    } else {
+                        // Heuristic: analyze DOM and hide non-essential elements
+                        var viewW = window.innerWidth;
+                        var hidden = [];
+
+                        // 1. Hide semantic nav/aside/header elements
+                        document.querySelectorAll('nav, aside, [role=\"navigation\"], [role=\"banner\"], [role=\"complementary\"]').forEach(function(el) {
+                            var rect = el.getBoundingClientRect();
+                            // Skip if it's the main content area or tiny
+                            if (rect.width > viewW * 0.6 || rect.height < 20) return;
+                            hidden.push(el);
+                        });
+
+                        // 2. Hide fixed/absolute sidebars (narrow elements pinned to sides)
+                        //    Only check direct children of body and their direct children to avoid scanning thousands of elements
+                        document.querySelectorAll('body > div, body > section, body > div > div, body > div > section').forEach(function(el) {
+                            var style = getComputedStyle(el);
+                            if (style.position !== 'fixed' && style.position !== 'absolute' && style.position !== 'sticky') return;
+                            var rect = el.getBoundingClientRect();
+                            if (rect.width > viewW * 0.35) return; // too wide to be sidebar
+                            if (rect.height < viewW * 0.3) return; // too short to be sidebar
+                            // Likely a sidebar or panel
+                            hidden.push(el);
+                        });
+
+                        // 3. Hide top headers (full-width, short, at top)
+                        document.querySelectorAll('header, [role=\"banner\"]').forEach(function(el) {
+                            var rect = el.getBoundingClientRect();
+                            if (rect.top < 10 && rect.height < 80 && rect.width > viewW * 0.5) {
+                                hidden.push(el);
                             }
+                        });
 
-                            if (chatGPTButton) {
-                                event.preventDefault();
-                                chatGPTButton.click();
-                                waitForTextareaEnabledAndFocus();
+                        // Build CSS from detected elements
+                        var css = '';
+                        hidden.forEach(function(el) {
+                            // Tag unique selectors for each element
+                            if (!el.dataset.chataiHidden) {
+                                el.dataset.chataiHidden = '1';
                             }
+                        });
+                        css = '[data-chatai-hidden=\"1\"] { display: none !important; }\\n';
+                        css += 'main, [role=\"main\"] { margin-left: 0 !important; margin-right: 0 !important; max-width: 100% !important; width: 100% !important; }';
 
-                            if (googleGeminiButton) {
-                                event.preventDefault();
-                                googleGeminiButton.click();
-                                waitForTextareaEnabledAndFocus();
-                            }
-
-                            if (claudeButton) {
-                                event.preventDefault();
-                                claudeButton.click();
-                                waitForTextareaEnabledAndFocus();
-                            }
-                        }
-                    });
-
-                    function waitForTextareaEnabledAndFocus() {
-                        var attempts = 0;
-                        var interval = 100;
-
-                        var textareaFocusInterval = setInterval(function() {
-                            var textarea = document.querySelector('textarea');
-                            if (textarea && !textarea.disabled) {
-                                clearInterval(textareaFocusInterval);
-                                setTimeout(function() {
-                                    textarea.focus();
-                                }, 100);
-                            }
-                        }, interval);
+                        s.textContent = css;
                     }
 
-                    waitForTextareaEnabledAndFocus();
-                ");
-            }
-        }
-        onFeaturePermissionRequested: function (securityOrigin, feature) {
-            if (feature === WebEngineView.MediaAudioCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.microphoneEnabled);
-            else if (feature === WebEngineView.MediaVideoCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.webcamEnabled);
-            else if (feature === WebEngineView.DesktopAudioVideoCapture)
-                grantFeaturePermission(securityOrigin, feature, plasmoid.configuration.screenShareEnabled);
+                    document.head.appendChild(s);
+                })();
+            ");
         }
 
+        // Pre-built keyboard shortcut + textarea focus JS (uses MutationObserver instead of setInterval)
+        readonly property string _jsKeyboardShortcuts: `
+            if (!window._chatAIInjected) {
+                window._chatAIInjected = true;
+
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' && !event.shiftKey) {
+                        var btn = document.querySelector('button[aria-label="Send"]')
+                            || document.querySelector('button[data-testid="send-button"]')
+                            || document.querySelector('button.send-button')
+                            || document.querySelector('button[aria-label="Send Message"]');
+                        if (btn) {
+                            event.preventDefault();
+                            btn.click();
+                            window._chatAIWaitForTextarea();
+                        }
+                    }
+                });
+
+                window._chatAIWaitForTextarea = function() {
+                    var textarea = document.querySelector('textarea');
+                    if (textarea && !textarea.disabled) {
+                        setTimeout(function() { textarea.focus(); }, 100);
+                        return;
+                    }
+                    var observer = new MutationObserver(function(mutations, obs) {
+                        var ta = document.querySelector('textarea');
+                        if (ta && !ta.disabled) {
+                            obs.disconnect();
+                            setTimeout(function() { ta.focus(); }, 100);
+                        }
+                    });
+                    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled'] });
+                    setTimeout(function() { observer.disconnect(); }, 5000);
+                };
+
+                window._chatAIWaitForTextarea();
+            }`
+
+        // New chat shortcut injection — remaps custom shortcut to default Ctrl+Shift+O
+        function buildNewChatShortcutJS() {
+            var shortcut = plasmoid.configuration.newChatShortcut || "Ctrl+Shift+O";
+            // Parse shortcut string into modifiers + key
+            var parts = shortcut.split('+').map(function(s) { return s.trim().toLowerCase(); });
+            var key = parts[parts.length - 1];
+            var ctrl = parts.indexOf('ctrl') >= 0;
+            var shift = parts.indexOf('shift') >= 0;
+            var alt = parts.indexOf('alt') >= 0;
+            var isDefault = (ctrl && shift && !alt && key === 'o');
+
+            if (isDefault) return ""; // No remapping needed
+
+            return `
+                if (!window._chatAINewChatShortcut) {
+                    window._chatAINewChatShortcut = true;
+                    document.addEventListener('keydown', function(event) {
+                        var match = event.key.toLowerCase() === '${key}'
+                            && event.ctrlKey === ${ctrl}
+                            && event.shiftKey === ${shift}
+                            && event.altKey === ${alt};
+                        if (match) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            document.dispatchEvent(new KeyboardEvent('keydown', {
+                                key: 'O', code: 'KeyO', keyCode: 79,
+                                ctrlKey: true, shiftKey: true, altKey: false,
+                                bubbles: true, cancelable: true
+                            }));
+                        }
+                    }, true);
+                }`;
+        }
+
+        // Compatible sites for keyboard shortcut injection
+        readonly property var _compatibleSites: ['duckduckgo', 'chatgpt', 'google', 'claude', 'you']
+
+        onLoadingChanged: {
+            injectBrowserSpoof();
+
+            if (!webview.loading) {
+                checkAndUpdateFavicon();
+                webview.kickTransparency();
+                injectTransparencyCSS();
+                injectFocusMode();
+
+                // Check actual page URL (not configured home URL) for keyboard shortcuts
+                var currentUrl = webview.url.toString();
+                if (_compatibleSites.some(function(site) { return currentUrl.includes(site); })) {
+                    webview.runJavaScript(webview._jsKeyboardShortcuts);
+                }
+
+                // Inject new-chat shortcut remapping (on all sites)
+                var newChatJS = buildNewChatShortcutJS();
+                if (newChatJS) webview.runJavaScript(newChatJS);
+            }
+        }
         onPrintRequested: function () {
             webview.triggerWebAction(WebEngineView.Print);
         }
@@ -445,6 +797,19 @@ Item {
             }
         }
 
+        Component.onDestruction: {
+            // Disconnect all active download signal connections to prevent leaks
+            for (var id in downloadCache) {
+                var entry = downloadCache[id];
+                if (entry && entry.download && entry.bytesConnection) {
+                    try {
+                        entry.download.receivedBytesChanged.disconnect(entry.bytesConnection);
+                        entry.download.stateChanged.disconnect(entry.stateConnection);
+                    } catch(e) {}
+                }
+            }
+        }
+
         WebEngineProfile {
             id: webProfile
             httpUserAgent: getUserAgent()
@@ -453,12 +818,7 @@ Item {
             httpCacheType: WebEngineProfile.DiskHttpCache
             persistentCookiesPolicy: WebEngineProfile.ForcePersistentCookies
             persistentPermissionsPolicy: WebEngineProfile.AskEveryTime
-            downloadPath: {
-                if (plasmoid.configuration.downloadPath)
-                    return plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '');
-
-                return StandardPaths.writableLocation(StandardPaths.DownloadLocation);
-            }
+            downloadPath: webViewRoot.effectiveDownloadPath
             onPresentNotification: function (notification) {
                 showNotification(notification.title, notification.message);
                 notification.show();
@@ -469,7 +829,7 @@ Item {
                     webview.downloads = Qt.createQmlObject('import QtQml; ListModel {}', webview);
                 }
 
-                let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+                let downloadDirectory = webViewRoot.effectiveDownloadPath;
 
                 if (!plasmoid.configuration.downloadPath) {
                     plasmoid.configuration.downloadPath = downloadDirectory;
@@ -558,6 +918,7 @@ Item {
         }
     }
 
+
     MouseArea {
         id: mouseArea
 
@@ -571,47 +932,26 @@ Item {
         }
     }
 
-    PlasmaComponents3.ProgressBar {
-        id: loadingProgressBar
-
-        z: 10
-        visible: webview.loading && webview.loadProgress < 100
-        height: visible ? 3 : 0
-
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-
-        from: 0
-        to: 100
-        value: webview.loadProgress
-
-        Behavior on height {
-            NumberAnimation {
-                duration: Kirigami.Units.shortDuration
-                easing.type: Easing.InOutQuad
-            }
-        }
-    }
-
     Rectangle {
         id: statusBubble
 
         property int padding: 8
 
-        color: Kirigami.Theme.backgroundColor
         visible: false
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        width: statusText.paintedWidth + padding
+        anchors.margins: Kirigami.Units.smallSpacing
+        width: statusText.paintedWidth + padding * 2
         height: statusText.paintedHeight + padding
+        z: 5
+        color: Kirigami.Theme.backgroundColor
+        opacity: plasmoid.configuration.overlayOpacity
+        radius: Kirigami.Units.smallSpacing
 
         Text {
             id: statusText
 
-            anchors.centerIn: statusBubble
+            anchors.centerIn: parent
             elide: Qt.ElideMiddle
             color: Kirigami.Theme.textColor
 
@@ -625,29 +965,42 @@ Item {
                 }
             }
         }
+
+        Behavior on opacity {
+            enabled: plasmoid.configuration.enableAnimations
+            NumberAnimation { duration: 200 }
+        }
     }
 
     DownloadBar {
+        id: downloadsBar
+
         downloadsModel: webview.downloads
-        downloadCache: webview.downloadCache
-        webviewItem: webview
+        downloadCacheRef: webview.downloadCache
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
     }
 
     FindBar {
-        id: findBar
-        findBarVisible: webViewRoot.findBarVisible
-        webviewItem: webview
+        id: findBarComponent
 
-        onCloseRequested: {
-            webViewRoot.findBarVisible = false;
+        barVisible: findBarVisible
+
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
         }
 
-        onFindBarVisibleChanged: {
-            if (findBarVisible) {
-                findBar.focusAndSelect();
-            } else {
-                findBar.clearSearch();
-            }
+        onFindRequested: text => webview.findText(text)
+        onFindPreviousRequested: text => webview.findText(text, WebEngineView.FindBackward)
+        onClosed: {
+            findBarVisible = false;
+            webview.findText("");
         }
     }
 }
