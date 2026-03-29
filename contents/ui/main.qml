@@ -163,38 +163,39 @@ PlasmoidItem {
         Layout.minimumWidth: Kirigami.Units.gridUnit * 28
         Layout.minimumHeight: Kirigami.Units.gridUnit * 39
 
-        // Accent glow around the widget
-        Rectangle {
-            id: glowOuter
+        // Accent glow around the widget (only created when enabled)
+        Loader {
+            active: plasmoid.configuration.accentBorder
             anchors.fill: parent
             anchors.margins: -6
-            color: "transparent"
-            radius: Kirigami.Units.largeSpacing
-            visible: plasmoid.configuration.accentBorder
             z: -1
+            sourceComponent: Rectangle {
+                color: "transparent"
+                radius: Kirigami.Units.largeSpacing
 
-            Rectangle {
-                anchors.fill: parent
-                radius: parent.radius
-                color: "transparent"
-                border.width: 6
-                border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.25)
-            }
-            Rectangle {
-                anchors.fill: parent
-                anchors.margins: 2
-                radius: parent.radius - 2
-                color: "transparent"
-                border.width: 4
-                border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.4)
-            }
-            Rectangle {
-                anchors.fill: parent
-                anchors.margins: 4
-                radius: parent.radius - 4
-                color: "transparent"
-                border.width: 2
-                border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.6)
+                Rectangle {
+                    anchors.fill: parent
+                    radius: parent.radius
+                    color: "transparent"
+                    border.width: 6
+                    border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.25)
+                }
+                Rectangle {
+                    anchors.fill: parent
+                    anchors.margins: 2
+                    radius: parent.radius - 2
+                    color: "transparent"
+                    border.width: 4
+                    border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.4)
+                }
+                Rectangle {
+                    anchors.fill: parent
+                    anchors.margins: 4
+                    radius: parent.radius - 4
+                    color: "transparent"
+                    border.width: 2
+                    border.color: Qt.rgba(Kirigami.Theme.highlightColor.r, Kirigami.Theme.highlightColor.g, Kirigami.Theme.highlightColor.b, 0.6)
+                }
             }
         }
 
@@ -314,15 +315,14 @@ PlasmoidItem {
                 }
             }
 
-            // Timer to check interactions
+            // Check if any child still has focus or is pressed (runs only while isInteracting)
             Timer {
                 id: interactionTimer
 
-                interval: 500
+                interval: 1000
                 repeat: true
                 running: headerRoot.isInteracting
                 onTriggered: {
-                    // Check if there is still interaction with any component
                     let stillInteracting = false;
                     for (let i = 0; i < headerRoot.children.length; i++) {
                         let child = headerRoot.children[i];
@@ -337,7 +337,7 @@ PlasmoidItem {
                 }
             }
 
-            // Connections to monitor interactions
+            // Monitor focus gain on header children
             Connections {
                 function onActiveFocusChanged() {
                     if (target.activeFocus) {
@@ -374,8 +374,9 @@ PlasmoidItem {
                 }
             }
 
-            // Animations
+            // Animations — only run when auto-hide is active and animations enabled
             Behavior on Layout.preferredHeight {
+                enabled: plasmoid.configuration.enableAnimations && plasmoid.configuration.autoHideHeader && !plasmoid.configuration.hideHeader
                 NumberAnimation {
                     duration: 400
                     easing.type: Easing.InOutCubic
@@ -383,6 +384,7 @@ PlasmoidItem {
             }
 
             Behavior on opacity {
+                enabled: plasmoid.configuration.enableAnimations && plasmoid.configuration.autoHideHeader && !plasmoid.configuration.hideHeader
                 NumberAnimation {
                     duration: 400
                     easing.type: Easing.InOutQuad

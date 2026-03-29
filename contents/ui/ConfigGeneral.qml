@@ -399,6 +399,38 @@ Action=Popup`
                     Layout.fillWidth: true
                 }
 
+                RowLayout {
+                    Layout.fillWidth: true
+                    Kirigami.FormData.label: i18n("New chat shortcut:")
+
+                    QQC2.TextField {
+                        id: newChatShortcutField
+                        Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+                        text: plasmoid.configuration.newChatShortcut || "Ctrl+Shift+O"
+                        placeholderText: "Ctrl+Shift+O"
+                        onEditingFinished: {
+                            const trimmed = text.trim();
+                            plasmoid.configuration.newChatShortcut = trimmed.length ? trimmed : "Ctrl+Shift+O";
+                        }
+                    }
+
+                    QQC2.Button {
+                        text: i18n("Reset")
+                        icon.name: "edit-undo"
+                        onClicked: {
+                            newChatShortcutField.text = "Ctrl+Shift+O";
+                            plasmoid.configuration.newChatShortcut = "Ctrl+Shift+O";
+                        }
+                    }
+                }
+
+                Kirigami.InlineMessage {
+                    Layout.fillWidth: true
+                    type: Kirigami.MessageType.Information
+                    text: i18n("Default is Ctrl+Shift+O (standard on most AI chat sites). If you change it, the custom shortcut will trigger the default one on the page.")
+                    visible: (plasmoid.configuration.newChatShortcut || "Ctrl+Shift+O") !== "Ctrl+Shift+O"
+                }
+
                 QQC2.CheckBox {
                     id: spoofChromeBrowser
                     text: i18n("Disguise as Chrome (better login compatibility)")

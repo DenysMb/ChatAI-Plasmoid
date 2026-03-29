@@ -265,52 +265,62 @@ Item {
 
         // Background-only transparency: inline styles on html/body and
         // top-level wrapper elements, leaving all content areas intact
+        readonly property string _jsRemoveBlur: `
+            (function() { try {
+                if (window._chatai_resizeHandler) {
+                    window.removeEventListener('resize', window._chatai_resizeHandler);
+                    window._chatai_resizeHandler = null;
+                }
+                document.documentElement.style.removeProperty('background-color');
+                document.body.style.removeProperty('background-color');
+                document.body.querySelectorAll('body > *, body > * > *').forEach(function(el) {
+                    el.style.removeProperty('background-color');
+                    el.style.removeProperty('backdrop-filter');
+                    el.style.removeProperty('-webkit-backdrop-filter');
+                });
+            } catch(e) {} })();`
+
+        readonly property string _jsApplyBlur: `
+            (function() { try {
+                window._chatai_applyBlur = function() {
+                    var a = 0.5, b = 8;
+                    var minW = window.innerWidth * 0.3;
+                    document.documentElement.style.setProperty('background-color', 'transparent', 'important');
+                    document.body.style.setProperty('background-color', 'transparent', 'important');
+                    var els = document.body.querySelectorAll('body > *, body > * > *');
+                    var targets = [];
+                    for (var i = 0; i < els.length; i++) {
+                        var r = els[i].getBoundingClientRect();
+                        if (r.width < minW) continue;
+                        var bg = getComputedStyle(els[i]).backgroundColor;
+                        if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') continue;
+                        var m = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);
+                        if (m) targets.push({ el: els[i], r: m[1], g: m[2], b: m[3] });
+                    }
+                    for (var j = 0; j < targets.length; j++) {
+                        var t = targets[j];
+                        t.el.style.setProperty('background-color', 'rgba(' + t.r + ',' + t.g + ',' + t.b + ',' + a + ')', 'important');
+                        t.el.style.setProperty('backdrop-filter', 'blur(' + b + 'px)', 'important');
+                        t.el.style.setProperty('-webkit-backdrop-filter', 'blur(' + b + 'px)', 'important');
+                    }
+                };
+                window._chatai_applyBlur();
+                if (!window._chatai_resizeHandler) {
+                    var timer = null;
+                    window._chatai_resizeHandler = function() {
+                        clearTimeout(timer);
+                        timer = setTimeout(window._chatai_applyBlur, 300);
+                    };
+                    window.addEventListener('resize', window._chatai_resizeHandler);
+                }
+            } catch(e) {} })();`
+
         function injectTransparencyCSS() {
             if (!plasmoid.configuration.enableBlur) {
-                webview.runJavaScript(
-                    "(function() { try {" +
-                    "  if (window._chatai_resizeHandler) { window.removeEventListener('resize', window._chatai_resizeHandler); window._chatai_resizeHandler = null; }" +
-                    "  document.documentElement.style.removeProperty('background-color');" +
-                    "  document.body.style.removeProperty('background-color');" +
-                    "  document.body.querySelectorAll('body > *, body > * > *').forEach(function(el) {" +
-                    "    el.style.removeProperty('background-color');" +
-                    "    el.style.removeProperty('backdrop-filter');" +
-                    "    el.style.removeProperty('-webkit-backdrop-filter');" +
-                    "  });" +
-                    "} catch(e) {} })();"
-                );
+                webview.runJavaScript(webview._jsRemoveBlur);
                 return;
             }
-            webview.runJavaScript(
-                "(function() { try {" +
-                "  window._chatai_applyBlur = function() {" +
-                "    var a = 0.5;" +
-                "    var b = 8;" +
-                "    document.documentElement.style.setProperty('background-color', 'transparent', 'important');" +
-                "    document.body.style.setProperty('background-color', 'transparent', 'important');" +
-                "    document.body.querySelectorAll('body > *, body > * > *').forEach(function(el) {" +
-                "      var r = el.getBoundingClientRect();" +
-                "      if (r.width < window.innerWidth * 0.3) return;" +
-                "      var bg = getComputedStyle(el).backgroundColor;" +
-                "      if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') return;" +
-                "      var m = bg.match(/rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)/);" +
-                "      if (!m) return;" +
-                "      el.style.setProperty('background-color', 'rgba(' + m[1] + ',' + m[2] + ',' + m[3] + ',' + a + ')', 'important');" +
-                "      el.style.setProperty('backdrop-filter', 'blur(' + b + 'px)', 'important');" +
-                "      el.style.setProperty('-webkit-backdrop-filter', 'blur(' + b + 'px)', 'important');" +
-                "    });" +
-                "  };" +
-                "  window._chatai_applyBlur();" +
-                "  if (!window._chatai_resizeHandler) {" +
-                "    var timer = null;" +
-                "    window._chatai_resizeHandler = function() {" +
-                "      clearTimeout(timer);" +
-                "      timer = setTimeout(window._chatai_applyBlur, 300);" +
-                "    };" +
-                "    window.addEventListener('resize', window._chatai_resizeHandler);" +
-                "  }" +
-                "} catch(e) {} })();"
-            );
+            webview.runJavaScript(webview._jsApplyBlur);
         }
 
         property var downloadCache: ({})
@@ -328,11 +338,6 @@ Item {
                     "isPdfExport": isPdf,
                     "state": WebEngineDownloadRequest.DownloadInProgress
                 };
-
-                if (downloadItem) {
-                    // Store reference in cache
-                    webview.downloadCache[downloadId] = downloadItem;
-                }
 
                 this.append(download);
                 return this.count - 1;
@@ -597,7 +602,8 @@ Item {
                         });
 
                         // 2. Hide fixed/absolute sidebars (narrow elements pinned to sides)
-                        document.querySelectorAll('div, section').forEach(function(el) {
+                        //    Only check direct children of body and their direct children to avoid scanning thousands of elements
+                        document.querySelectorAll('body > div, body > section, body > div > div, body > div > section').forEach(function(el) {
                             var style = getComputedStyle(el);
                             if (style.position !== 'fixed' && style.position !== 'absolute' && style.position !== 'sticky') return;
                             var rect = el.getBoundingClientRect();
@@ -634,6 +640,82 @@ Item {
             ");
         }
 
+        // Pre-built keyboard shortcut + textarea focus JS (uses MutationObserver instead of setInterval)
+        readonly property string _jsKeyboardShortcuts: `
+            if (!window._chatAIInjected) {
+                window._chatAIInjected = true;
+
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' && !event.shiftKey) {
+                        var btn = document.querySelector('button[aria-label="Send"]')
+                            || document.querySelector('button[data-testid="send-button"]')
+                            || document.querySelector('button.send-button')
+                            || document.querySelector('button[aria-label="Send Message"]');
+                        if (btn) {
+                            event.preventDefault();
+                            btn.click();
+                            window._chatAIWaitForTextarea();
+                        }
+                    }
+                });
+
+                window._chatAIWaitForTextarea = function() {
+                    var textarea = document.querySelector('textarea');
+                    if (textarea && !textarea.disabled) {
+                        setTimeout(function() { textarea.focus(); }, 100);
+                        return;
+                    }
+                    var observer = new MutationObserver(function(mutations, obs) {
+                        var ta = document.querySelector('textarea');
+                        if (ta && !ta.disabled) {
+                            obs.disconnect();
+                            setTimeout(function() { ta.focus(); }, 100);
+                        }
+                    });
+                    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled'] });
+                    setTimeout(function() { observer.disconnect(); }, 5000);
+                };
+
+                window._chatAIWaitForTextarea();
+            }`
+
+        // New chat shortcut injection — remaps custom shortcut to default Ctrl+Shift+O
+        function buildNewChatShortcutJS() {
+            var shortcut = plasmoid.configuration.newChatShortcut || "Ctrl+Shift+O";
+            // Parse shortcut string into modifiers + key
+            var parts = shortcut.split('+').map(function(s) { return s.trim().toLowerCase(); });
+            var key = parts[parts.length - 1];
+            var ctrl = parts.indexOf('ctrl') >= 0;
+            var shift = parts.indexOf('shift') >= 0;
+            var alt = parts.indexOf('alt') >= 0;
+            var isDefault = (ctrl && shift && !alt && key === 'o');
+
+            if (isDefault) return ""; // No remapping needed
+
+            return `
+                if (!window._chatAINewChatShortcut) {
+                    window._chatAINewChatShortcut = true;
+                    document.addEventListener('keydown', function(event) {
+                        var match = event.key.toLowerCase() === '${key}'
+                            && event.ctrlKey === ${ctrl}
+                            && event.shiftKey === ${shift}
+                            && event.altKey === ${alt};
+                        if (match) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            document.dispatchEvent(new KeyboardEvent('keydown', {
+                                key: 'O', code: 'KeyO', keyCode: 79,
+                                ctrlKey: true, shiftKey: true, altKey: false,
+                                bubbles: true, cancelable: true
+                            }));
+                        }
+                    }, true);
+                }`;
+        }
+
+        // Compatible sites for keyboard shortcut injection
+        readonly property var _compatibleSites: ['duckduckgo', 'chatgpt', 'google', 'claude', 'you']
+
         onLoadingChanged: {
             injectBrowserSpoof();
 
@@ -642,65 +724,16 @@ Item {
                 webview.kickTransparency();
                 injectTransparencyCSS();
                 injectFocusMode();
-            }
 
-            var isCompatibleModel = ['duckduckgo', 'chatgpt', 'google', 'claude', 'you'].some(site => plasmoid.configuration.url.includes(site));
+                // Check actual page URL (not configured home URL) for keyboard shortcuts
+                var currentUrl = webview.url.toString();
+                if (_compatibleSites.some(function(site) { return currentUrl.includes(site); })) {
+                    webview.runJavaScript(webview._jsKeyboardShortcuts);
+                }
 
-            if (isCompatibleModel && !webview.loading) {
-                webview.runJavaScript("
-                    if (!window._chatAIInjected) {
-                        window._chatAIInjected = true;
-
-                        document.addEventListener('keydown', function(event) {
-                            if (event.key === 'Enter' && !event.shiftKey) {
-                                var duckDuckGoButton = document.querySelector('button[aria-label=\"Send\"]');
-                                var chatGPTButton = document.querySelector('button[data-testid=\"send-button\"]');
-                                var googleGeminiButton = document.querySelector('button.send-button');
-                                var claudeButton = document.querySelector('button[aria-label=\"Send Message\"]');
-
-                                if (duckDuckGoButton) {
-                                    event.preventDefault();
-                                    duckDuckGoButton.click();
-                                    waitForTextareaEnabledAndFocus();
-                                }
-
-                                if (chatGPTButton) {
-                                    event.preventDefault();
-                                    chatGPTButton.click();
-                                    waitForTextareaEnabledAndFocus();
-                                }
-
-                                if (googleGeminiButton) {
-                                    event.preventDefault();
-                                    googleGeminiButton.click();
-                                    waitForTextareaEnabledAndFocus();
-                                }
-
-                                if (claudeButton) {
-                                    event.preventDefault();
-                                    claudeButton.click();
-                                    waitForTextareaEnabledAndFocus();
-                                }
-                            }
-                        });
-
-                        function waitForTextareaEnabledAndFocus() {
-                            var interval = 100;
-
-                            var textareaFocusInterval = setInterval(function() {
-                                var textarea = document.querySelector('textarea');
-                                if (textarea && !textarea.disabled) {
-                                    clearInterval(textareaFocusInterval);
-                                    setTimeout(function() {
-                                        textarea.focus();
-                                    }, 100);
-                                }
-                            }, interval);
-                        }
-
-                        waitForTextareaEnabledAndFocus();
-                    }
-                ");
+                // Inject new-chat shortcut remapping (on all sites)
+                var newChatJS = buildNewChatShortcutJS();
+                if (newChatJS) webview.runJavaScript(newChatJS);
             }
         }
         onPrintRequested: function () {
@@ -761,6 +794,19 @@ Item {
             // Ensure the downloads model is initialized
             if (!downloads) {
                 downloads = Qt.createQmlObject('import QtQml; ListModel {}', webview);
+            }
+        }
+
+        Component.onDestruction: {
+            // Disconnect all active download signal connections to prevent leaks
+            for (var id in downloadCache) {
+                var entry = downloadCache[id];
+                if (entry && entry.download && entry.bytesConnection) {
+                    try {
+                        entry.download.receivedBytesChanged.disconnect(entry.bytesConnection);
+                        entry.download.stateChanged.disconnect(entry.stateConnection);
+                    } catch(e) {}
+                }
             }
         }
 

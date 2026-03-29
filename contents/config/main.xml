@@ -183,5 +183,9 @@
       <label>Hide sidebars and navigation for a cleaner chat view</label>
       <default>false</default>
     </entry>
+    <entry name="newChatShortcut" type="String">
+      <label>Keyboard shortcut to open a new chat (e.g. Ctrl+Shift+O, Ctrl+N)</label>
+      <default>Ctrl+Shift+O</default>
+    </entry>
   </group>
 </kcfg>

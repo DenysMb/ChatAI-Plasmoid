@@ -28,8 +28,15 @@ Item {
 
     // Helper Functions
     function renderChatModel() {
+        // Parse custom sites once and reuse
+        const customSitesRaw = plasmoid.configuration.customSites || "";
+        const parsedCustomSites = customSitesRaw.split(',').filter(site => site && site.includes('|')).map(site => {
+            const sep = site.indexOf('|');
+            return { name: site.substring(0, sep), url: site.substring(sep + 1) };
+        });
+
         const chatModel = models.filter(model => !model.prop.startsWith("showCustom_") && plasmoid.configuration[model.prop]).map(model => model.text)
-        .concat((plasmoid.configuration.customSites || "").split(',').filter(site => site?.includes('|')).map(site => site.split('|')[0])).concat([i18n("Custom URL...")]);
+            .concat(parsedCustomSites.map(s => s.name)).concat([i18n("Custom URL...")]);
 
         urlComboBox.model = chatModel;
 
@@ -37,15 +44,12 @@ Item {
         const currentModel = models.find(model => !model.prop.startsWith("showCustom_") && model.url === currentUrl);
 
         if (currentModel) {
-            const index = chatModel.indexOf(currentModel.text);
-            urlComboBox.currentIndex = index;
+            urlComboBox.currentIndex = chatModel.indexOf(currentModel.text);
             urlComboBox.editable = false;
         } else {
-            const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.includes('|') && site.split('|')[1] === currentUrl);
+            const customSite = parsedCustomSites.find(s => s.url === currentUrl);
             if (customSite) {
-                const siteName = customSite.split('|')[0];
-                const index = chatModel.indexOf(siteName);
-                urlComboBox.currentIndex = index;
+                urlComboBox.currentIndex = chatModel.indexOf(customSite.name);
                 urlComboBox.editable = false;
             } else {
                 urlComboBox.currentIndex = chatModel.length - 1;
@@ -77,14 +81,15 @@ Item {
             return;
         }
 
-        const customSite = (plasmoid.configuration.customSites || "").split(',').find(site => site?.split('|')[0] === selectedText);
-        if (customSite) {
-            plasmoid.configuration.url = customSite.split('|')[1];
+        const customSiteEntry = (plasmoid.configuration.customSites || "").split(',').find(site => site && site.includes('|') && site.substring(0, site.indexOf('|')) === selectedText);
+        if (customSiteEntry) {
+            plasmoid.configuration.url = customSiteEntry.substring(customSiteEntry.indexOf('|') + 1);
             goBackToHomePage();
         }
     }
 
     // Reactive snapshot — re-renders when any service toggle changes
+    // Uses debounce timer to coalesce rapid config changes (e.g. multiple toggles)
     readonly property var modelVisibilityState: {
         const snapshot = [plasmoid.configuration.customSites];
         if (models) {
@@ -94,7 +99,13 @@ Item {
         }
         return snapshot;
     }
-    onModelVisibilityStateChanged: renderChatModel()
+    onModelVisibilityStateChanged: renderDebounce.restart()
+
+    Timer {
+        id: renderDebounce
+        interval: 50
+        onTriggered: renderChatModel()
+    }
 
     // Header gradient background
     Rectangle {
