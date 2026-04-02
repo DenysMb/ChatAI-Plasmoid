@@ -47,6 +47,11 @@ Item {
     }
 
     function printPage() {
+        // Ensure downloads model exists before use
+        if (!webview.downloads) {
+            webview.downloads = Qt.createQmlObject('import QtQml; ListModel {}', webview);
+        }
+
         webview.runJavaScript("document.title", function (title) {
             let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
 
@@ -54,7 +59,6 @@ Item {
             let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
             let filename = `${downloadDirectory}/${safeName}-${timestamp}.pdf`;
 
-            // Add the PDF as a special type of download
             webview.downloads.addDownload(null, `${safeName}-${timestamp}.pdf`, filename, true);
 
             webview.printToPdf(filename, WebEngineView.A4, WebEngineView.Portrait);
@@ -62,15 +66,7 @@ Item {
     }
 
     function saveMHTML() {
-        webview.runJavaScript("document.title", function (title) {
-            let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
-
-            let timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-            let safeName = title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
-            let filename = `${downloadDirectory}/${safeName}-${timestamp}.mhtml`;
-
-            webview.triggerWebAction(WebEngineView.SavePage, filename);
-        });
+        webview.triggerWebAction(WebEngineView.SavePage);
     }
 
     function getUserAgent() {
@@ -439,7 +435,9 @@ Item {
         }
 
         Component.onCompleted: {
-            // Ensure the downloads model is initialized
+            if (!plasmoid.configuration.downloadPath) {
+                plasmoid.configuration.downloadPath = StandardPaths.writableLocation(StandardPaths.DownloadLocation);
+            }
             if (!downloads) {
                 downloads = Qt.createQmlObject('import QtQml; ListModel {}', webview);
             }
@@ -469,11 +467,7 @@ Item {
                     webview.downloads = Qt.createQmlObject('import QtQml; ListModel {}', webview);
                 }
 
-                let downloadDirectory = plasmoid.configuration.downloadPath ? plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '') : StandardPaths.writableLocation(StandardPaths.DownloadLocation);
-
-                if (!plasmoid.configuration.downloadPath) {
-                    plasmoid.configuration.downloadPath = downloadDirectory;
-                }
+                let downloadDirectory = plasmoid.configuration.downloadPath.toString().replace(/^file:\/\//, '');
 
                 download.downloadDirectory = downloadDirectory;
 

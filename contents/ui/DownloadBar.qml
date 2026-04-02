@@ -7,6 +7,7 @@
 
 import QtQuick
 import QtQuick.Layouts
+import QtWebEngine
 
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
